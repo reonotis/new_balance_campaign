@@ -1,0 +1,11 @@
+.session-error{
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem 3rem;
+  background: #ffc9c9;
+}
+ul {
+  list-style: none;
+  list-style-position: inherit;
+}
