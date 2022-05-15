@@ -16,9 +16,9 @@
         <link rel="stylesheet" href="{{ asset('css/admin.css') }}?<?= date('YmdHis') ?>">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>	<!-- 住所入力 -->
-        <script src="http://code.jquery.com/jquery-1.9.0.js" type="text/javascript" ></script>
+        <script src="http://code.jquery.com/jquery-3.6.0.js" type="text/javascript" ></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/admin.js') }}?<?= date('YmdHis') ?>" type="text/javascript" ></script>
 
     </head>
