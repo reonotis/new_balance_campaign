@@ -8,7 +8,6 @@ $(function() {
     $("#popup-img-mask").fadeIn(250);
   });
 
-
   // ×ボタンをクリックしたら
   $("#popup-img-close-btn").click(function() {
     $("#popup-img-mask").fadeOut(250);
