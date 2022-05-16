@@ -17,10 +17,9 @@
         <link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}">
 
         <!-- Scripts -->
-        <script src="http://code.jquery.com/jquery-1.9.0.js" type="text/javascript" ></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript" ></script>
         <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>	<!-- 住所入力 -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/try_on.js') }}" defer></script>
 
 
     </head>
