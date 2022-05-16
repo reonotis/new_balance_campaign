@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}?<?= date('YmdHis') ?>">
         <link rel="stylesheet" href="{{ asset('css/flash.css') }}?<?= date('YmdHis') ?>">
         <link rel="stylesheet" href="{{ asset('css/try_on.css') }}?<?= date('YmdHis') ?>">
+        <link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
