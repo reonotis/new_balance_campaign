@@ -337,9 +337,11 @@ class TryOnController extends Controller
             "name" => $this->_f_name . " " .$this->_l_name,
             "read" => $this->_f_read . " " .$this->_l_read,
             "zip"  => $this->_zip21 . "-" .$this->_zip22 ,
-            "streetAddress"  => $this->_pref21 . "" .$this->_addr21 . "" .$this->_street21 ,
+            "streetAddress"  => $this->_pref21 . " " .$this->_addr21 . " " .$this->_street21 ,
             "tel"  => $this->_tel,
             "email"  => $this->_email,
+            "reason"  => $this->_reason_applying,
+            "img_pass"  => asset('storage/try_on_img_resize/' . $this->_baseFileName),
             "url"  => url('').'/admin'
         ];
         Mail::send('emails.try_on.reportMail', $data, function($message){
