@@ -20,7 +20,7 @@ class AdminTryOnController extends BaseController
     public function index()
     {
         //
-        $tryOns = TryOn::paginate(5);
+        $tryOns = TryOn::paginate(20);
         return view('admin.try_on.index', compact('tryOns'));
     }
 
