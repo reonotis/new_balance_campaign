@@ -321,7 +321,7 @@ class TryOnController extends Controller
         ];
         Mail::send('emails.try_on.thankYouMail', $data, function($message){
             $message->to($this->_email)
-            ->from('nbrun@fluss.co.jp')
+            ->from('info@newbalance-campaign.jp')
             ->bcc("fujisawareon@yahoo.co.jp")
             ->subject('ご応募ありがとございました。');
         });
@@ -346,7 +346,7 @@ class TryOnController extends Controller
         ];
         Mail::send('emails.try_on.reportMail', $data, function($message){
             $message->to("nbrun@fluss.co.jp")
-            ->from('nbrun@fluss.co.jp')
+            ->from('info@newbalance-campaign.jp')
             ->bcc("fujisawareon@yahoo.co.jp")
             ->subject('「TRY ONキャンペーン」に申し込みがありました');
         });
