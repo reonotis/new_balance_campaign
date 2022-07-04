@@ -49,8 +49,15 @@
                         $msgs = session('errors');
                     @endphp
                     <x-flash-massege class="mb-4" :errors="$msgs" />
+                    <div class="p-6 bg-white">
+                        <div class="card-header mb-4">
+                            本キャンペーンの申し込みが期間が終了しました。
+                        </div>
+                        <div class="card-body">
+                        </div>
+                    </div>
 
-                    <form action="{{route('try_on.store')}}" method="post" enctype="multipart/form-data" >
+                    {{-- <form action="{{route('try_on.store')}}" method="post" enctype="multipart/form-data" >
                         @csrf
                         <div class="itemRow">
                             <div class="itemTitle">お名前</div>
@@ -78,16 +85,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="itemRow">
-                            <div class="itemTitle">ご年齢</div>
-                            <div class="itemContent">
-                                <div class="flex" >
-                                    <div class="w-28 px-2 flex justify-start items-center" >
-                                        <input type='number' name='age' value='{{ old("age") }}' class='fc_form1 mr-1' placeholder='35' min='1' >歳
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class='itemRow'>
                             <div class='itemTitle'>住所</div>
                             <div class='itemContent'>
@@ -156,7 +153,7 @@
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
