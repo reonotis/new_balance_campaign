@@ -10,8 +10,8 @@ use Mail;
 
 class TryOnController extends Controller
 {
-    protected $_startDateTime = "2022-04-13 00:00:00";
-    protected $_endDateTime = "2022-05-15 23:59:59";
+    protected $_startDateTime = "2022-05-20 00:00:00";
+    protected $_endDateTime = "2022-06-11 23:59:59";
 
 	protected $_f_name = "";
 	protected $_l_name = "";
@@ -39,7 +39,7 @@ class TryOnController extends Controller
     {
         $this->_secretariat = config('mail.secretariat');
 
-	}
+    }
 
     /**
      * Display a listing of the resource.

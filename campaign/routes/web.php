@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TryOnController;
+use App\Http\Controllers\{TryOnController, KokuritsuArukuTokyoController};
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminTryOnController;
 
@@ -17,24 +17,26 @@ use App\Http\Controllers\Admin\AdminTryOnController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-
-
 Route::resource('try_on', TryOnController::class)->only([
     'index', 'store'
 ]);
+Route::get('/try_on/complete', [TryOnController::class, 'complete'])->name('try_on.complete');
 
-// Route::group(function(){
-    Route::get('/try_on/complete', [TryOnController::class, 'complete'])->name('try_on.complete');
-// });
-
+// 国立までアルク東京
+Route::group(['prefix'=>'aruku-tokyo-2022'],function(){
+    Route::get('', [KokuritsuArukuTokyoController::class, 'index'])->name('aruku-tokyo-2022.index');
+    Route::post('/store', [KokuritsuArukuTokyoController::class, 'store'])->name('aruku-tokyo-2022.store');
+    Route::get('/complete', [KokuritsuArukuTokyoController::class, 'complete'])->name('aruku-tokyo-2022.complete');
+    Route::get('/outsidePeriod', [KokuritsuArukuTokyoController::class, 'outsidePeriod'])->name('aruku-tokyo-2022.outsidePeriod');
+});
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {

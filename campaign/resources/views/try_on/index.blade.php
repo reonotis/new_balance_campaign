@@ -49,15 +49,15 @@
                         $msgs = session('errors');
                     @endphp
                     <x-flash-massege class="mb-4" :errors="$msgs" />
+
                     <div class="p-6 bg-white">
                         <div class="card-header mb-4">
                             本キャンペーンの申し込みが期間が終了しました。
                         </div>
-                        <div class="card-body">
-                        </div>
+                        <div class="card-body"></div>
                     </div>
 
-                    {{-- <form action="{{route('try_on.store')}}" method="post" enctype="multipart/form-data" >
+                     <form action="{{route('try_on.store')}}" method="post" enctype="multipart/form-data" >
                         @csrf
                         <div class="itemRow">
                             <div class="itemTitle">お名前</div>
@@ -153,7 +153,7 @@
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>
                         </div>
-                    </form> --}}
+                    </form>
                 </div>
             </div>
         </div>
