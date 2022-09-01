@@ -8,6 +8,7 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-2 mb-2" ><a href="{{ route('admin.try_on') }}" class="list-href" >TRY ON キャンペーン のリストを確認する</a></div>
+                <div class="p-2 mb-2" ><a href="{{ route('admin.aruku-tokyo-2022') }}" class="list-href" >国立までアルクTOKYO キャンペーン のリストを確認する</a></div>
             </div>
         </div>
     </div>

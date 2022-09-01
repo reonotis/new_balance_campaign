@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{TryOnController, KokuritsuArukuTokyoController};
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminTryOnController;
-
+use App\Http\Controllers\Admin\{AdminController,
+        AdminTryOnController,
+        AdminArukuTokyo2022Controller
+    };
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::group(['prefix'=>'aruku-tokyo-2022'],function(){
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
+    Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
 });
 
 

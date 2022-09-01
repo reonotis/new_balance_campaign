@@ -1,7 +1,7 @@
 <x-FCTokyoKokuritsu-layout>
     <x-slot name="header">
         <h2 class="text-white text-center text-3xl font-bold leading-tight">
-            国立アルク東京キャンペーン <br class="brSp2">お申込フォーム
+            国立までアルク東京キャンペーン <br class="brSp2">お申込フォーム
         </h2>
     </x-slot>
 

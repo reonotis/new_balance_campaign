@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Mail;
 
 class KokuritsuArukuTokyoController extends Controller
 {
-    protected $_startDateTime = "2022-08-01 00:00:00";
-    protected $_endDateTime = "2022-08-30 23:59:59";
+    protected $_startDateTime = "2022-09-01 00:00:00";
+    protected $_endDateTime = "2022-09-21 23:59:59";
 
 	protected $_f_name = "";
 	protected $_l_name = "";
@@ -220,6 +220,7 @@ class KokuritsuArukuTokyoController extends Controller
             "streetAddress"  => $this->_pref21 . " " .$this->_address21 . " " .$this->_street21 ,
             "tel"  => $this->_tel,
             "email"  => $this->_email,
+            "size"  => $this->_shoes_size,
             "url"  => url('').'/admin'
         ];
 
