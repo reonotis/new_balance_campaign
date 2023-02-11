@@ -136,7 +136,7 @@ class GoMurakamiController extends Controller
 
         if(strlen($request->zip21) <> 3 || strlen($request->zip22) <> 4  )$this->_errorMSG[] = "郵便番号は3桁-4桁で入力してください";
         if (!$request->pref21) $this->_errorMSG[] = "都道府県を入力してください";
-        if (!$request->addr21) $this->_errorMSG[] = "市区町村を入力してください";
+        if (!$request->address21) $this->_errorMSG[] = "市区町村を入力してください";
         if (!$request->street21) $this->_errorMSG[] = "番地を入力してください";
 
         if (!preg_match(\App\Consts\Common::DENWABANGOU, $request->tel)) $this->_errorMSG[] = "電話番号は市外局番から-(ハイフン)を含めて入力してください";
@@ -172,7 +172,7 @@ class GoMurakamiController extends Controller
         $this->_zip21    = $request->zip21;
         $this->_zip22    = $request->zip22;
         $this->_pref21   = $request->pref21;
-        $this->_address21= $request->addr21;
+        $this->_address21= $request->address21;
         $this->_street21 = $request->street21;
         $this->_tel      = $request->tel;
         $this->_email    = $request->email1;
