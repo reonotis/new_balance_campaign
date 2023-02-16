@@ -262,7 +262,7 @@ class GoMurakamiController extends Controller
             $message->to("nb_go-murakami-2023@fluss.co.jp")
                 ->from('nb_go-murakami-2023@fluss.co.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「TRY ONキャンペーン」に申し込みがありました');
+                ->subject('「村上宗孝選手応援 キャンペーン」に申し込みがありました');
         });
     }
 
