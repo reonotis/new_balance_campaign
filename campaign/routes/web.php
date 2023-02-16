@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{TryOnController,
+use App\Http\Controllers\{
+        GoMurakamiController,
         KokuritsuArukuTokyoController,
-        GoMurakamiController
+        TryOnController,
+        TryOn2023Controller
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
+        AdminGoMurakami2023Controller,
         AdminArukuTokyo2022Controller
     };
 
@@ -50,11 +53,21 @@ Route::group(['prefix'=>'go-murakami-2023'],function(){
     Route::get('/outsidePeriod', [GoMurakamiController::class, 'outsidePeriod'])->name('go-murakami-2023.outsidePeriod');
 });
 
+// try_on 2023
+Route::group(['prefix'=>'try-on-2023'],function(){
+    Route::get('', [TryOn2023Controller::class, 'index'])->name('try-on-2023.index');
+    Route::post('/store', [TryOn2023Controller::class, 'store'])->name('try-on-2023.store');
+    Route::get('/complete', [TryOn2023Controller::class, 'complete'])->name('try-on-2023.complete');
+    Route::get('/outsidePeriod', [TryOn2023Controller::class, 'outsidePeriod'])->name('try-on-2023.outsidePeriod');
+});
+
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
+    Route::get('/try-on-2023', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.try-on-2023');
+    Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');
     Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
+    Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
 });
 
 require __DIR__.'/auth.php';

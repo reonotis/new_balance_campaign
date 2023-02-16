@@ -1,6 +1,7 @@
 <x-GoMurakami-layout>
     <x-slot name="header">
-        <h2 class="text-white text-center text-3xl font-bold leading-tight">
+        <img src="{{ asset('img/logo/nb_w.svg') }}" style="width:150px;margin: 0 auto 30px;" >
+        <h2 class="text-black text-center text-3xl font-bold leading-tight" style="text-shadow:5px 0px 5px #fff,-5px 0px 5px #fff,1px 1px 5px #fff,0px -5px 5px #fff,0px 5px 5px #fff;">
             村上宗孝選手応援<br class="brSp1">キャンペーン <br class="brSp2">お申込フォーム
         </h2>
     </x-slot>

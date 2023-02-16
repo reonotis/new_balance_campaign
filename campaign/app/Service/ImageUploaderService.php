@@ -22,7 +22,7 @@ class ImageUploaderService
      * @return string
      * @throws \Exception
      */
-    public function checkFileExtension($file): string
+    public function checkFileExtension(UploadedFile $file): string
     {
         Log::info('checkFileExtension');
         if(!$file)throw new Exception("画像が選択されていません");
@@ -36,14 +36,14 @@ class ImageUploaderService
         return $extension;
     }
 
-
     /**
      * ファイルを保存する
      * @param UploadedFile $file
-     * @return string
+     * @param string $dir
+     * @param string $FileName
      * @throws \Exception
      */
-    public function imgStore($file, $dir, $FileName)
+    public function imgStore(UploadedFile $file, string $dir, string $FileName)
     {
         Log::info('imgStore');
         // 画像を保存する
@@ -60,18 +60,19 @@ class ImageUploaderService
 
     /**
      * ディレクトリが無ければ作成する
+     * @param string $directoryName
      */
-    public function makeDirectory($directoryName)
+    public function makeDirectory(string $directoryName)
     {
+        Log::info('makeDirectory');
         $dir = storage_path('app/public/'. $directoryName);
         if(!file_exists($dir)){
+            // ディレクトリが無ければ作成する
             if(mkdir('storage/app/public/'. $directoryName, 0777)){
-                //作成に成功した時の処理
-                //作成したディレクトリのパーミッションを確実に変更
+                // 作成したディレクトリのパーミッションを確実に変更
                 chmod('storage/app/public/'. $directoryName, 0777);
             }
         }
-        return;
     }
 
 }

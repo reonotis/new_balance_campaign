@@ -1,18 +1,21 @@
 
-body{
-  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans JP",'Lato',"ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN","ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ", Meiryo,"Helvetica Neue", HelveticaNeue, Helvetica,Arial,"Segoe UI",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background: #9ac2e6;
 }
-
-.list-href{
-  color: #0d51b6;
-  text-decoration: underline;
+.admin-header {
+    border-bottom: solid 3px #0a2153;
 }
-.list-href:hover{
+.list-href {
+    color: #06214a;
+    text-decoration: underline;
+}
+.list-href:hover {
   color: #87aadf;
   text-decoration: none;
 }
 
-#popup-img-mask{
+#popup-img-mask {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -24,7 +27,7 @@ body{
   align-items: center;
 }
 
-#popup-img{
+#popup-img {
   width: 80vw;
   height: 80vh;
   margin: 0 auto;
