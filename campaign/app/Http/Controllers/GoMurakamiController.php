@@ -237,7 +237,7 @@ class GoMurakamiController extends Controller
         ];
         Mail::send('emails.goMurakami.thankYouMail', $data, function($message){
             $message->to($this->_email)
-                ->from('nb_go-murakami-2023@fluss.co.jp')
+                ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject('ご応募ありがとございました。');
         });
@@ -260,7 +260,7 @@ class GoMurakamiController extends Controller
         ];
         Mail::send('emails.goMurakami.reportMail', $data, function($message){
             $message->to("nb_go-murakami-2023@fluss.co.jp")
-                ->from('nb_go-murakami-2023@fluss.co.jp')
+                ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject('「村上宗孝選手応援 キャンペーン」に申し込みがありました');
         });
