@@ -1,7 +1,7 @@
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold leading-tight">
-            村上宗孝選手応援キャンペーン
+            村上宗隆選手応援キャンペーン
         </h2>
     </x-slot>
 

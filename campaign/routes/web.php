@@ -45,7 +45,7 @@ Route::group(['prefix'=>'aruku-tokyo-2022'],function(){
     Route::get('/outsidePeriod', [KokuritsuArukuTokyoController::class, 'outsidePeriod'])->name('aruku-tokyo-2022.outsidePeriod');
 });
 
-// 村上宗孝選手応援キャンペーン
+// 村上宗隆選手応援キャンペーン
 Route::group(['prefix'=>'go-murakami-2023'],function(){
     Route::get('', [GoMurakamiController::class, 'index'])->name('go-murakami-2023.index');
     Route::post('/store', [GoMurakamiController::class, 'store'])->name('go-murakami-2023.store');

@@ -262,7 +262,7 @@ class GoMurakamiController extends Controller
             $message->to("nb_go-murakami-2023@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「村上宗孝選手応援 キャンペーン」に申し込みがありました');
+                ->subject('「村上宗隆選手応援 キャンペーン」に申し込みがありました');
         });
     }
 
@@ -273,7 +273,7 @@ class GoMurakamiController extends Controller
         $now = date('Y-m-d H:i:s');
 
         if($now <= $this->_startDateTime || $now >= $this->_endDateTime){
-            Redirect::route('aruku-tokyo-2022.outsidePeriod')->send();
+            Redirect::route('goMurakami.outsidePeriod')->send();
         }
     }
 

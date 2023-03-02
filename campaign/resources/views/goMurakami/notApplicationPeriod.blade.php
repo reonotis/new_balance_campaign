@@ -1,7 +1,7 @@
 <x-FCTokyoKokuritsu-layout>
     <x-slot name="header">
         <h2 class="text-white text-center text-3xl font-bold leading-tight">
-            村上宗孝選手応援キャンペーン <br class="brSp2">お申込フォーム
+            村上宗隆選手応援キャンペーン <br class="brSp2">お申込フォーム
         </h2>
     </x-slot>
 
