@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\GoMurakami;
+use App\Models\TryOn2023;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\{DB, Log};
 
-class AdminGoMurakami2023Controller extends BaseController
+/**
+ */
+class AdminTryOn20232Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -20,8 +21,8 @@ class AdminGoMurakami2023Controller extends BaseController
      */
     public function index(): View
     {
-        $applyList = GoMurakami::where('delete_flag', 0)->paginate(50);
-        return view('admin.goMurakami.index', compact('applyList'));
+        $applyList = TryOn2023::where('delete_flag', 0)->paginate(50);
+        return view('admin.tryOn2023.index', compact('applyList'));
     }
 
 }

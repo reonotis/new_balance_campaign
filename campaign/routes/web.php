@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
+        AdminTryOn20232Controller,
         AdminGoMurakami2023Controller,
         AdminArukuTokyo2022Controller
     };
@@ -64,7 +65,7 @@ Route::group(['prefix'=>'try-on-2023'],function(){
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/try-on-2023', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.try-on-2023');
+    Route::get('/try-on-2023', [AdminTryOn20232Controller::class, 'index'])->name('admin.try-on-2023');
     Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');
     Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
     Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
