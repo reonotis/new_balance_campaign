@@ -13,6 +13,7 @@
                         <tr>
                             <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100 rounded-tl">日時</th>
                             <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100">名前</th>
+                            <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100">年齢</th>
                             <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100">住所</th>
                             <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100">電話番号</th>
                             <th class="px-4 py-3 tracking-wider text-gray-900 text-sm bg-gray-100">メールアドレス</th>
@@ -28,6 +29,7 @@
                                     <p class="customer-name" >{{ $apply->f_name ." ". $apply->l_name }} 様</p>
                                     <p class="customer-read" >{{ $apply->f_read ." ". $apply->l_read }}</p>
                                 </td>
+                                <td class="border-b-2 border-gray-200 px-4 py-2">{{ $apply->age }}歳</td>
                                 <td class="border-b-2 border-gray-200 px-4 py-2">
                                     <p class="customer-read" >{{ $apply->zip21 ." - ". $apply->zip22 }}</p>
                                     <p class="customer-read" >{{ $apply->pref21 ." ". $apply->addr21 }}</p>

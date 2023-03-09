@@ -193,7 +193,7 @@ class TryOn2023Controller extends Controller
             $message->to($this->_email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ご応募ありがとございました。');
+                ->subject('お申込みありがとうございます。');
         });
     }
 

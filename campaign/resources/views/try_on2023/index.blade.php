@@ -92,7 +92,7 @@
                             <div class="itemContent">
                                 <div class='flex'>
                                     <div class="w-1/2 px-2">
-                                        <input type='number' name='age' id='age' value='{{ old("age") }}'>
+                                        <input type='number' name='age' id='age' value='{{ old("age") }}' min='1'>
                                     </div>
                                 </div>
                             </div>
