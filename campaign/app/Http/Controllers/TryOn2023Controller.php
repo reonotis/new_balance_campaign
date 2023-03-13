@@ -150,6 +150,7 @@ class TryOn2023Controller extends Controller
         // 指定されたディレクトリが存在するか確認
         $dirName = 'TO2023';
         $IMGUploader->makeDirectory($dirName);
+        $IMGUploader->makeDirectory($dirName . '/resize/');
         // 画像を保存する
         $IMGUploader->imgStore($file,'public/' . $dirName, $this->_baseFileName);
 

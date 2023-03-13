@@ -55,7 +55,7 @@ class ImageUploaderService
                 $constraint->aspectRatio();
             })
             ->orientate()
-            ->save(storage_path('app/'. $dir. '/') . $FileName);
+            ->save(storage_path('app/'. $dir. '/resize/') . $FileName);
     }
 
     /**
