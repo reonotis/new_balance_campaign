@@ -17,7 +17,7 @@ class GoMurakamiController extends Controller
 {
 //    protected $_startDateTime = "2023-03-01 00:00:00";
     protected $_startDateTime = "2023-02-01 00:00:00";
-    protected $_endDateTime = "2023-03-31 23:59:59";
+    protected $_endDateTime = "2023-05-07 23:59:59";
 
     protected $_f_name = "";
     protected $_l_name = "";
