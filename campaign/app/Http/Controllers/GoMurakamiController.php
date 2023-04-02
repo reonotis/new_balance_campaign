@@ -41,7 +41,7 @@ class GoMurakamiController extends Controller
     function __construct()
     {
         $this->_secretariat = config('mail.secretariat');
-        if(\Route::currentRouteName() <> 'aruku-tokyo-2022.outsidePeriod'){
+        if(\Route::currentRouteName() <> 'go-murakami-2023.outsidePeriod'){
             $this->checkApplicationPeriod();
         }
     }
@@ -274,7 +274,7 @@ class GoMurakamiController extends Controller
         $now = date('Y-m-d H:i:s');
 
         if($now <= $this->_startDateTime || $now >= $this->_endDateTime){
-            Redirect::route('goMurakami.outsidePeriod')->send();
+            Redirect::route('go-murakami-2023.outsidePeriod')->send();
         }
     }
 
