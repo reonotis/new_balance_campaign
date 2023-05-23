@@ -116,7 +116,7 @@ class MinatoRunnersBaseController extends Controller
         $this->_zip22 = $request->zip22;
         $this->_pref21 = $request->pref21;
         $this->_address21 = $request->address21;
-        $this->_street21 = $request->street21;
+        if (!empty($request->street21)) $this->_street21 = $request->street21;
         $this->_tel = $request->tel;
         $this->_email = $request->email;
     }
@@ -227,7 +227,7 @@ class MinatoRunnersBaseController extends Controller
             Redirect::route('minato.outsidePeriod')->send();
         }
 
-        if(!$this->checkNumberApplications()){
+        if (!$this->checkNumberApplications()) {
             Redirect::route('minato.outsidePeriod')->send();
         }
     }
@@ -238,7 +238,7 @@ class MinatoRunnersBaseController extends Controller
     {
         $now = date('Y-m-d H:i:s');
         if ($now <= $this->_startDateTime) {
-            $checkMessage = 'まだ開始されていません<br>' . date('n月d日' , strtotime($this->_startDateTime)) . 'から申込が開始されます';
+            $checkMessage = 'まだ開始されていません<br>' . date('n月d日', strtotime($this->_startDateTime)) . 'から申込が開始されます';
             return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
         if ($now >= $this->_endDateTime) {
@@ -246,7 +246,7 @@ class MinatoRunnersBaseController extends Controller
             return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
 
-        if(!$this->checkNumberApplications()){
+        if (!$this->checkNumberApplications()) {
             $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
             return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
@@ -257,7 +257,7 @@ class MinatoRunnersBaseController extends Controller
     private function checkNumberApplications()
     {
         $count = MinatoRunnersBase::where('delete_flag', 0)->count();
-        if($count >= self::APPLICATION_LIMIT){
+        if ($count >= self::APPLICATION_LIMIT) {
             return false;
         }
         return true;
