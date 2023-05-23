@@ -5,7 +5,8 @@ use App\Http\Controllers\{
         GoMurakamiController,
         KokuritsuArukuTokyoController,
         TryOnController,
-        TryOn2023Controller
+        TryOn2023Controller,
+        MinatoRunnersBaseController
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
@@ -60,6 +61,14 @@ Route::group(['prefix'=>'try-on-2023'],function(){
     Route::post('/store', [TryOn2023Controller::class, 'store'])->name('try-on-2023.store');
     Route::get('/complete', [TryOn2023Controller::class, 'complete'])->name('try-on-2023.complete');
     Route::get('/outsidePeriod', [TryOn2023Controller::class, 'outsidePeriod'])->name('try-on-2023.outsidePeriod');
+});
+
+// minato-runners-base
+Route::group(['prefix'=>'minato-runners-base'],function(){
+    Route::get('', [MinatoRunnersBaseController::class, 'index'])->name('minato.index');
+    Route::post('/store', [MinatoRunnersBaseController::class, 'store'])->name('minato.store');
+    Route::get('/complete', [MinatoRunnersBaseController::class, 'complete'])->name('minato.complete');
+    Route::get('/outsidePeriod', [MinatoRunnersBaseController::class, 'outsidePeriod'])->name('minato.outsidePeriod');
 });
 
 // 管理者

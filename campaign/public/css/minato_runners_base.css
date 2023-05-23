@@ -1,0 +1,131 @@
+
+body {
+    background: #94D1CA;
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.support {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 6rem 1rem;
+    background: linear-gradient(#fff 20%, #FCE5ED 80%);
+    position: relative;
+}
+
+.support-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.relation > img {
+    width: 100%;
+}
+
+
+/* 改行 */
+.brSp2 {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .brSp2 {
+        display: block;
+    }
+}
+
+
+.form-area {
+    /*background: #fff4;*/
+}
+
+.item-row {
+    width: 100%;
+    margin: 0 auto 80px;
+    position: relative;
+}
+
+.item-title {
+    position: absolute;
+    width: 200px;
+    padding: 5px;
+    background: #fff;
+    color: #94D1CA;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    border: solid 1px #94D1CA;
+    border-radius: 25px;
+}
+
+.item-content {
+    top: 44px;
+    position: relative;
+    width: 100%;
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+}
+
+
+@media screen and (max-width: 700px) {
+    .item-row {
+        width: 100%;
+        margin: 0 auto 80px;
+        padding: 0;
+    }
+
+    .itemTitle {
+        height: 30px;
+        top: -15px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.mail_supplement {
+    line-height: 1.2rem;
+    color: #777;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input::placeholder {
+    color: #ded;
+}
+
+.submit-btn {
+    padding: 1rem 3rem;
+    background: #fff;
+    color: #94D1CA;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+
+.submit-btn:hover {
+    background: #94D1CA;
+    color: #fff;
+}

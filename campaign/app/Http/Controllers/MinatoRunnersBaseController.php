@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TryOn2023;
+use App\Models\MinatoRunnersBase;
 use App\Service\ImageUploaderService;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\TO2023Request;
+use App\Http\Requests\MinatoRunnersBaseRequest;
 use Illuminate\Support\Facades\{DB, Log, Redirect};
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Mail;
 
-class TryOn2023Controller extends Controller
+class MinatoRunnersBaseController extends Controller
 {
-    protected string $_startDateTime = "2023-05-19 00:01:00";
+    const APPLICATION_LIMIT = 20;
+    protected string $_startDateTime = "2023-05-20 00:00:00";
     protected string $_endDateTime = "2023-06-26 23:59:59";
 
     protected string $_f_name = "";
@@ -39,7 +40,7 @@ class TryOn2023Controller extends Controller
     function __construct()
     {
         $this->_secretariat = config('mail.secretariat');
-        if (\Route::currentRouteName() <> 'try-on-2023.outsidePeriod') {
+        if (\Route::currentRouteName() <> 'minato.outsidePeriod') {
             $this->checkApplicationPeriod();
         }
     }
@@ -51,7 +52,7 @@ class TryOn2023Controller extends Controller
      */
     public function index(): View
     {
-        return view('try_on2023.index');
+        return view('minato_runners_base.index');
     }
 
     /**
@@ -61,25 +62,22 @@ class TryOn2023Controller extends Controller
      */
     public function complete(): View
     {
-        return view('try_on2023.complete');
+        return view('minato_runners_base.complete');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param TO2023Request $request
+     * @param MinatoRunnersBaseRequest $request
      * @return Application|RedirectResponse|Response|Redirector
      */
-    public function store(TO2023Request $request)
+    public function store(MinatoRunnersBaseRequest $request)
     {
         // バリデーションcheck
         $request->validated();
         try {
             // クラス変数に格納する
             $this->storeVariable($request);
-
-            // 画像処理
-            $this->imgCheckAndUpload($request->image);
 
             // 応募内容を登録
             DB::beginTransaction();
@@ -92,7 +90,7 @@ class TryOn2023Controller extends Controller
             $this->sendReportMail();
 
             DB::commit();
-            return redirect('/try-on-2023/complete');
+            Redirect::route('minato.complete')->send();
 
         } catch (Exception $e) {
             DB::rollback();
@@ -104,9 +102,9 @@ class TryOn2023Controller extends Controller
 
     /**
      * クラス変数に格納する
-     * @param TO2023Request $request
+     * @param MinatoRunnersBaseRequest $request
      */
-    public function storeVariable(TO2023Request $request)
+    public function storeVariable(MinatoRunnersBaseRequest $request)
     {
         Log::info('storeVariable');
         $this->_f_name = $request->f_name;
@@ -121,7 +119,6 @@ class TryOn2023Controller extends Controller
         $this->_street21 = $request->street21;
         $this->_tel = $request->tel;
         $this->_email = $request->email;
-        $this->_reason_applying = $request->reason_applying;
     }
 
     /**
@@ -163,22 +160,20 @@ class TryOn2023Controller extends Controller
     private function insertApplication(): void
     {
         Log::info('insertApplication');
-        $tryOn2023 = new TryOn2023;
-        $tryOn2023->f_name = $this->_f_name;
-        $tryOn2023->l_name = $this->_l_name;
-        $tryOn2023->f_read = $this->_f_read;
-        $tryOn2023->l_read = $this->_l_read;
-        $tryOn2023->age = $this->_age;
-        $tryOn2023->zip21 = $this->_zip21;
-        $tryOn2023->zip22 = $this->_zip22;
-        $tryOn2023->pref21 = $this->_pref21;
-        $tryOn2023->address21 = $this->_address21;
-        $tryOn2023->street21 = $this->_street21;
-        $tryOn2023->tel = $this->_tel;
-        $tryOn2023->email = $this->_email;
-        $tryOn2023->img_pass = $this->_baseFileName;
-        $tryOn2023->reason_applying = $this->_reason_applying;
-        $tryOn2023->save();
+        $minatoRunnersBase = new MinatoRunnersBase;
+        $minatoRunnersBase->f_name = $this->_f_name;
+        $minatoRunnersBase->l_name = $this->_l_name;
+        $minatoRunnersBase->f_read = $this->_f_read;
+        $minatoRunnersBase->l_read = $this->_l_read;
+        $minatoRunnersBase->age = $this->_age;
+        $minatoRunnersBase->zip21 = $this->_zip21;
+        $minatoRunnersBase->zip22 = $this->_zip22;
+        $minatoRunnersBase->pref21 = $this->_pref21;
+        $minatoRunnersBase->address21 = $this->_address21;
+        $minatoRunnersBase->street21 = $this->_street21;
+        $minatoRunnersBase->tel = $this->_tel;
+        $minatoRunnersBase->email = $this->_email;
+        $minatoRunnersBase->save();
     }
 
     /**
@@ -190,7 +185,7 @@ class TryOn2023Controller extends Controller
         $data = [
             "customerName" => $this->_f_name . $this->_l_name
         ];
-        Mail::send('emails.try_on2023.thankYouMail', $data, function ($message) {
+        Mail::send('emails.minato_runners_base.thankYouMail', $data, function ($message) {
             $message->to($this->_email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
@@ -208,18 +203,17 @@ class TryOn2023Controller extends Controller
             "name" => $this->_f_name . " " . $this->_l_name,
             "read" => $this->_f_read . " " . $this->_l_read,
             "zip" => $this->_zip21 . "-" . $this->_zip22,
+            "age" => $this->_age,
             "streetAddress" => $this->_pref21 . " " . $this->_address21 . " " . $this->_street21,
             "tel" => $this->_tel,
             "email" => $this->_email,
-            "reason" => $this->_reason_applying,
-            "img_pass" => asset('storage/try_on2023_img_resize/' . $this->_baseFileName),
             "url" => url('') . '/admin'
         ];
-        Mail::send('emails.try_on2023.reportMail', $data, function ($message) {
+        Mail::send('emails.minato_runners_base.reportMail', $data, function ($message) {
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「Running TRY ON キャンペーン」に申し込みがありました');
+                ->subject('「MINATO RUNNERS BASE イベント」に申し込みがありました');
         });
     }
 
@@ -230,24 +224,43 @@ class TryOn2023Controller extends Controller
         $now = date('Y-m-d H:i:s');
 
         if ($now <= $this->_startDateTime || $now >= $this->_endDateTime) {
-            Redirect::route('try-on-2023.outsidePeriod')->send();
+            Redirect::route('minato.outsidePeriod')->send();
+        }
+
+        if(!$this->checkNumberApplications()){
+            Redirect::route('minato.outsidePeriod')->send();
         }
     }
 
     /**
-     * @return View
      */
-    public function outsidePeriod(): View
+    public function outsidePeriod()
     {
         $now = date('Y-m-d H:i:s');
-        $checkMessage = '';
         if ($now <= $this->_startDateTime) {
-            $checkMessage = 'まだ開始されていません';
+            $checkMessage = 'まだ開始されていません<br>' . date('n月d日' , strtotime($this->_startDateTime)) . 'から申込が開始されます';
+            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
         if ($now >= $this->_endDateTime) {
             $checkMessage = '募集期間は終了しました';
+            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
-        return view('try_on2023.notApplicationPeriod', compact('checkMessage'));
+
+        if(!$this->checkNumberApplications()){
+            $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
+            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
+        }
+
+        Redirect::route('minato.index')->send();
+    }
+
+    private function checkNumberApplications()
+    {
+        $count = MinatoRunnersBase::where('delete_flag', 0)->count();
+        if($count >= self::APPLICATION_LIMIT){
+            return false;
+        }
+        return true;
     }
 
 }
