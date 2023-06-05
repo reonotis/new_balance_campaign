@@ -2,6 +2,7 @@
 
     <x-slot name="support">
         <div class="support-content">
+            <p>女性限定</p>
             <p>スーパースポーツゼビオ 名古屋みなとアクルス店ランニングクラブ</p>
             <p>MINATO RUNNERS BASE</p>
             <p>スペシャルイベント</p>
