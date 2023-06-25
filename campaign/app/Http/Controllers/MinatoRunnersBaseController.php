@@ -18,7 +18,7 @@ class MinatoRunnersBaseController extends Controller
 {
     const APPLICATION_LIMIT = 20;
     protected string $_startDateTime = "2023-05-20 00:00:00";
-    protected string $_endDateTime = "2023-06-26 23:59:59";
+    protected string $_endDateTime = "2023-06-24 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
