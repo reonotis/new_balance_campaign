@@ -17,7 +17,7 @@ use Mail;
 class TryOn2023Controller extends Controller
 {
     protected string $_startDateTime = "2023-05-19 00:01:00";
-    protected string $_endDateTime = "2023-06-26 23:59:59";
+    protected string $_endDateTime = "2023-07-04 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
