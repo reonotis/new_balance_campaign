@@ -16,9 +16,18 @@ use Mail;
 
 class MinatoRunnersBaseController extends Controller
 {
-    const APPLICATION_LIMIT = 20;
-    protected string $_startDateTime = "2023-05-20 00:00:00";
-    protected string $_endDateTime = "2023-06-24 23:59:59";
+    const APPLICATION_LIMIT = 40;
+    // 1回目
+    // protected string $_startDateTime = "2023-05-20 00:00:00";
+    // protected string $_endDateTime = "2023-06-24 23:59:59";
+
+    // 2回目
+    protected string $_startDateTime = "2023-07-01 00:00:00";
+    protected string $_endDateTime = "2023-07-22 23:59:59";
+
+    // 3回目
+    // protected string $_startDateTime = "2023-06-01 00:00:00";
+    // protected string $_endDateTime = "2023-09-02 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
