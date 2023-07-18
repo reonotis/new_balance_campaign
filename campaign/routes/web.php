@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
         GoMurakamiController,
+        GolfTryOn2023Controller,
         KokuritsuArukuTokyoController,
         TryOnController,
         TryOn2023Controller,
@@ -69,6 +70,14 @@ Route::group(['prefix'=>'minato-runners-base'],function(){
     Route::post('/store', [MinatoRunnersBaseController::class, 'store'])->name('minato.store');
     Route::get('/complete', [MinatoRunnersBaseController::class, 'complete'])->name('minato.complete');
     Route::get('/outsidePeriod', [MinatoRunnersBaseController::class, 'outsidePeriod'])->name('minato.outsidePeriod');
+});
+
+// golf try-on 2023
+Route::group(['prefix'=>'golf-try-on-2023'],function(){
+    Route::get('', [GolfTryOn2023Controller::class, 'index'])->name('golf-try-on-2023.index');
+    Route::post('/store', [GolfTryOn2023Controller::class, 'store'])->name('golf-try-on-2023.store');
+    Route::get('/complete', [GolfTryOn2023Controller::class, 'complete'])->name('golf-try-on-2023.complete');
+    Route::get('/outsidePeriod', [GolfTryOn2023Controller::class, 'outsidePeriod'])->name('golf-try-on-2023.outsidePeriod');
 });
 
 // 管理者
