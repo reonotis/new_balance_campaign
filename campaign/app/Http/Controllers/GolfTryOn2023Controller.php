@@ -219,7 +219,7 @@ class GolfTryOn2023Controller extends Controller
             "url" => url('') . '/admin'
         ];
         Mail::send('emails.golf_try_on_2023.reportMail', $data, function ($message) {
-            $message->to("nbrun@fluss.co.jp")
+            $message->to("nbgolf@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject('「 ゴルフTRY ON キャンペーン」に申し込みがありました');

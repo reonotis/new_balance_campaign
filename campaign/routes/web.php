@@ -13,7 +13,8 @@ use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
         AdminTryOn20232Controller,
         AdminGoMurakami2023Controller,
-        AdminArukuTokyo2022Controller
+        AdminArukuTokyo2022Controller,
+        AdminGolfTryOn2023Controller
     };
 
 /*
@@ -87,6 +88,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');
     Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
     Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
+    Route::get('/golf-try-on-2023', [AdminGolfTryOn2023Controller::class, 'index'])->name('admin.golf-try-on-2023');
 });
 
 require __DIR__.'/auth.php';

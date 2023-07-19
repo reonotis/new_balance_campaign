@@ -11,6 +11,7 @@
                 <div class="p-2 mb-2" ><a href="{{ route('admin.go-murakami-2023') }}" class="list-href" >村上宗隆選手応援 キャンペーン のリストを確認する</a></div>
                 <div class="p-2 mb-2" ><a href="{{ route('admin.aruku-tokyo-2022') }}" class="list-href" >国立までアルクTOKYO キャンペーン のリストを確認する</a></div>
                 <div class="p-2 mb-2" ><a href="{{ route('admin.try_on') }}" class="list-href" >TRY ON キャンペーン のリストを確認する</a></div>
+                <div class="p-2 mb-2" ><a href="{{ route('admin.golf-try-on-2023') }}" class="list-href" >GOLF TRY ON 2023 キャンペーン のリストを確認する</a></div>
             </div>
         </div>
     </div>
