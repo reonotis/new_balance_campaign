@@ -154,10 +154,10 @@ class S223Controller extends Controller
             "url" => url('') . '/admin'
         ];
         Mail::send('emails.s223.reportMail', $data, function ($message) {
-            $message->to("nbrun@fluss.co.jp")
+            $message->to("nb-platium@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「S223 キャンペーン」に申し込みがありました');
+                ->subject('「NewBalance Fall ＆ Winter 2023 Apparel Collection」に申し込みがありました');
         });
     }
 
