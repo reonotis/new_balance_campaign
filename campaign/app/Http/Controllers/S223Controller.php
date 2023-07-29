@@ -19,18 +19,6 @@ class S223Controller extends Controller
     protected string $_startDateTime = "2023-07-25 00:01:00";
     protected string $_endDateTime = "2023-08-10 23:59:59";
 
-    protected string $_f_name = "";
-    protected string $_l_name = "";
-    protected string $_f_read = "";
-    protected string $_l_read = "";
-    protected int $_age = 0;
-    protected int $_sex = 0;
-    protected string $_zip21 = "";
-    protected string $_zip22 = "";
-    protected string $_pref21 = "";
-    protected string $_address21 = "";
-    protected string $_street21 = "";
-    protected string $_tel = "";
     protected string $_email = "";
 
     protected string $_secretariat = "";
@@ -81,7 +69,7 @@ class S223Controller extends Controller
             $this->insertApplication($request);
 
             // thank youメール
-            $this->sendThankYouMail();
+            $this->sendThankYouMail($request);
 
             // reportメール
             $this->sendReportMail($request);
@@ -123,11 +111,12 @@ class S223Controller extends Controller
     /**
      * 申し込み者に自動返信メールを送信
      */
-    private function sendThankYouMail()
+    private function sendThankYouMail(S223Request $request)
     {
+        $this->_email = $request->email;
         Log::info('sendThankYouMail');
         $data = [
-            "customerName" => $this->_f_name . $this->_l_name
+            "customerName" => $request->f_name . $request->l_name
         ];
         Mail::send('emails.s223.thankYouMail', $data, function ($message) {
             $message->to($this->_email)
