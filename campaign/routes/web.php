@@ -7,14 +7,16 @@ use App\Http\Controllers\{
         KokuritsuArukuTokyoController,
         TryOnController,
         TryOn2023Controller,
-        MinatoRunnersBaseController
+        MinatoRunnersBaseController,
+        S223Controller
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
         AdminTryOn20232Controller,
         AdminGoMurakami2023Controller,
         AdminArukuTokyo2022Controller,
-        AdminGolfTryOn2023Controller
+        AdminGolfTryOn2023Controller,
+        AdminS223Controller
     };
 
 /*
@@ -81,6 +83,14 @@ Route::group(['prefix'=>'golf-try-on-2023'],function(){
     Route::get('/outsidePeriod', [GolfTryOn2023Controller::class, 'outsidePeriod'])->name('golf-try-on-2023.outsidePeriod');
 });
 
+// S223アパレル展示会
+Route::group(['prefix'=>'s223'],function(){
+    Route::get('', [S223Controller::class, 'index'])->name('s223.index');
+    Route::post('/store', [S223Controller::class, 'store'])->name('s223.store');
+    Route::get('/complete', [S223Controller::class, 'complete'])->name('s223.complete');
+    Route::get('/outsidePeriod', [S223Controller::class, 'outsidePeriod'])->name('s223.outsidePeriod');
+});
+
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
@@ -89,6 +99,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
     Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
     Route::get('/golf-try-on-2023', [AdminGolfTryOn2023Controller::class, 'index'])->name('admin.golf-try-on-2023');
+    Route::get('/s223', [AdminS223Controller::class, 'index'])->name('admin.s223');
 });
 
 require __DIR__.'/auth.php';

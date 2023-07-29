@@ -18,4 +18,5 @@ class Common
         self::SEX_OTHER => 'その他',
     ];
 
+    public const APPLY_TYPE_S223 = 1;
 }
