@@ -81,7 +81,7 @@ class S223Controller extends Controller
             $this->insertApplication($request);
 
             // thank youメール
-//            $this->sendThankYouMail();
+            $this->sendThankYouMail();
 
             // reportメール
             $this->sendReportMail($request);
