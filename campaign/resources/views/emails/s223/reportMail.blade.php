@@ -1,4 +1,4 @@
-「NewBalance Fall ＆ Winter 2023 Apparel Collection」にお申し込みがありました。<br>
+「New Balance Fall ＆ Winter 2023 Apparel Collection (8月10日開催)」にお申し込みがありました。<br>
 <br>
 --------------------------------------<br>
 【申し込み内容】<br>
