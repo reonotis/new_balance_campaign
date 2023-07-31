@@ -202,13 +202,6 @@ class S223Controller extends Controller
             $choiceTimeList[$s223Record->choice_1]['count']++;
         }
 
-        // 上限に達しているか確認
-        foreach ($choiceTimeList as $choiceTime) {
-            if ($choiceTime['count'] >= $choiceTime['limit']) {
-                $choiceTime['apply_limit'] = true;
-            }
-        }
-
         return $choiceTimeList;
     }
 

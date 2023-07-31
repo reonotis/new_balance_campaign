@@ -68,11 +68,6 @@ body {
     color: #333;
 }
 
-.mail_supplement.important {
-    color: red;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
 
 input[type="text"],
 input[type="email"],

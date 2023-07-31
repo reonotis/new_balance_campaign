@@ -30,14 +30,10 @@
                                                     @if(old('choice_time') == $key)
                                                        checked="checked"
                                                     @endif
-                                                    @if($val['apply_limit'])
-                                                        disabled = "disabled"
-                                                    @endif
                                                 >{{ $val['time'] }}</label>
                                         </span>
                                     @endforeach
                                 </div>
-                                <p class="support-msg">※選択できない時間帯は、申込数が上限に達しています。</p>
                             </div>
                         </div>
                         <div class="itemRow">
@@ -111,7 +107,7 @@
                         <div class="itemRow">
                             <label for="email" class="itemTitle">メールアドレス</label>
                             <div class="itemContent px-2">
-                                <p class="mail_supplement important mb-1">※myNBでご登録のメールアドレスをご入力お願いいたします。</p>
+                                <p class="mail_supplement mb-1">※myNBでご登録のメールアドレスをご入力お願いいたします。</p>
                                 <p class="mail_supplement mb-1">※メールアドレスは確認用の為、2回入力してください</p>
                                 <p class="mail_supplement mb-1">
                                     ※docomo、au、softbank、iCloud等の各キャリアのメールアドレスは、ドメイン指定受信を設定されている可能性がありメールが正しく届かない事がある為、PC用のメールアドレスを記入する事をお勧め致します。</p>
