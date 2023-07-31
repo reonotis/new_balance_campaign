@@ -66,7 +66,7 @@
             </div>
 
             <h2 class="text-white text-center text-3xl font-bold leading-tight">
-                New Balance Fall ＆ Winter 2023 Apparel Collection<br class="brSp2">(8月10日開催) 応募フォーム
+                New Balance Fall ＆ Winter 2023 Apparel Collection <br class="brSp2">(8月10日開催) 応募フォーム
             </h2>
         </div>
     </header>
