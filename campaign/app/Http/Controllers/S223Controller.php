@@ -17,7 +17,7 @@ use Mail;
 class S223Controller extends Controller
 {
     protected string $_startDateTime = "2023-07-25 00:01:00";
-    protected string $_endDateTime = "2023-08-10 23:59:59";
+    protected string $_endDateTime = "2023-08-03 23:59:59";
 
     protected string $_email = "";
 
