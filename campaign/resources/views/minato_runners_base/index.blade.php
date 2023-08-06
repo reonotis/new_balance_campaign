@@ -6,10 +6,11 @@
             <p>スーパースポーツゼビオ 名古屋みなとアクルス店ランニングクラブ</p>
             <p>MINATO RUNNERS BASE</p>
             <p>スペシャルイベント</p>
-            <p>ランニング＆スポーツメイク講座</p>
-            <p>日時：7/23（日）10:30-12:30</p>
+            <p>ヨガ＆ランニング教室</p>
+            <p>日時：9/3（日）10:30-12:30</p>
             <p>実施場所：ららぽーとみなとアクルス　屋外イベントスペース「デカゴン」</p>
             <p>集合解散場所：屋外イベントスペース「デカゴン」</p>
+            <p>※ヨガマットはこちらでもご用意していますので、お気軽にご参加ください！</p>
         </div>
     </x-slot>
     <x-slot name="header">
@@ -176,6 +177,23 @@
                                         <input type="email" name="email_confirmation" value="{{ old("email_confirmation") }}"
                                                class="form-control" placeholder="sample@newbalance.co.jp(確認用)">
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-row">
+                            <div class="item-title">
+                                <label for="email">どこでイベントについて知りましたか？</label>
+                            </div>
+                            <div class="item-content px-2">
+                                <div class="">
+                                    @foreach(App\Consts\MinatoRunnersBaseConst::HOW_FOUND as $key => $val)
+                                        <span>
+                                            <label>
+                                                <input type="checkbox" class="how_found" name="how_found[]" value="{{ $key }}"
+                                                       {{ !empty(old("how_found")) && in_array((string)$key, old("how_found"), true) ? 'checked' : '' }}
+                                                >{{ $val }}</label>
+                                        </span>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

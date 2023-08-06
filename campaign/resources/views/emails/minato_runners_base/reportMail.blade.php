@@ -8,6 +8,10 @@
 <b>■電話番号</b>　　 : {{ $tel }}<br>
 <b>■住所</b>　　　　 : {{ $zip }}<br>
 　　　　　　　　{{ $streetAddress }}<br>
+<b>■イベントを知ったきっかけ</b>:<br>
+@foreach($howFound as $val)
+    ・{{ $val }}<br>
+@endforeach
 <br>
 --------------------------------------<br>
 <br>

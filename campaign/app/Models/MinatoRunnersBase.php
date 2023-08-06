@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string tel
  * @property string email
  * @property string img_pass
+ * @property string how_found
  * @property int reason_applying
  */
 class MinatoRunnersBase extends Model

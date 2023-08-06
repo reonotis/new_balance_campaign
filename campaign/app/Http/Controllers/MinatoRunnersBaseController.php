@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MinatoRunnersBase;
 use App\Service\ImageUploaderService;
+use App\Consts\MinatoRunnersBaseConst;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
@@ -22,12 +23,12 @@ class MinatoRunnersBaseController extends Controller
     // protected string $_endDateTime = "2023-06-24 23:59:59";
 
     // 2回目
-    protected string $_startDateTime = "2023-07-01 00:00:00";
-    protected string $_endDateTime = "2023-07-22 23:59:59";
+    // protected string $_startDateTime = "2023-07-01 00:00:00";
+    // protected string $_endDateTime = "2023-07-22 23:59:59";
 
     // 3回目
-    // protected string $_startDateTime = "2023-06-01 00:00:00";
-    // protected string $_endDateTime = "2023-09-02 23:59:59";
+    protected string $_startDateTime = "2023-08-04 00:00:00";
+    protected string $_endDateTime = "2023-09-02 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
@@ -41,7 +42,7 @@ class MinatoRunnersBaseController extends Controller
     protected string $_street21 = "";
     protected string $_tel = "";
     protected string $_email = "";
-    protected string $_reason_applying = "";
+    protected string $_how_found = "";
     private string $_baseFileName = "";
 
     protected $_secretariat = "";
@@ -96,7 +97,7 @@ class MinatoRunnersBaseController extends Controller
             $this->sendThankYouMail();
 
             // reportメール
-            $this->sendReportMail();
+            $this->sendReportMail($request);
 
             DB::commit();
             Redirect::route('minato.complete')->send();
@@ -128,6 +129,9 @@ class MinatoRunnersBaseController extends Controller
         if (!empty($request->street21)) $this->_street21 = $request->street21;
         $this->_tel = $request->tel;
         $this->_email = $request->email;
+        if(!empty($request->how_found)){
+            $this->_how_found =  implode(',', $request->how_found);
+        }
     }
 
     /**
@@ -182,6 +186,7 @@ class MinatoRunnersBaseController extends Controller
         $minatoRunnersBase->street21 = $this->_street21;
         $minatoRunnersBase->tel = $this->_tel;
         $minatoRunnersBase->email = $this->_email;
+        $minatoRunnersBase->how_found = $this->_how_found;
         $minatoRunnersBase->save();
     }
 
@@ -205,9 +210,16 @@ class MinatoRunnersBaseController extends Controller
     /**
      * レポートメールを送信
      */
-    private function sendReportMail()
+    private function sendReportMail(MinatoRunnersBaseRequest $request)
     {
         Log::info('sendReportMail');
+
+        $howFound = [];
+        if(!empty($request->how_found)){
+            foreach ($request->how_found as $val)
+            $howFound[] = MinatoRunnersBaseConst::HOW_FOUND[$val];
+        }
+
         $data = [
             "name" => $this->_f_name . " " . $this->_l_name,
             "read" => $this->_f_read . " " . $this->_l_read,
@@ -216,6 +228,7 @@ class MinatoRunnersBaseController extends Controller
             "streetAddress" => $this->_pref21 . " " . $this->_address21 . " " . $this->_street21,
             "tel" => $this->_tel,
             "email" => $this->_email,
+            "howFound" => $howFound,
             "url" => url('') . '/admin'
         ];
         Mail::send('emails.minato_runners_base.reportMail', $data, function ($message) {

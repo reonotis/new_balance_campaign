@@ -41,28 +41,27 @@ body {
 .item-row {
     width: 100%;
     margin: 0 auto 80px;
-    position: relative;
 }
 
 .item-title {
-    position: absolute;
-    width: 200px;
-    padding: 5px;
-    background: #fff;
-    color: #94D1CA;
+    min-width: 200px;
+    display: inline-block;
+    padding: 5px 30px;
     font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
-    border: solid 1px #94D1CA;
+    border: solid 1px #fff;
     border-radius: 25px;
+    background: #94D1CA;
+    color: #fff;
 }
 
 .item-content {
-    top: 44px;
     position: relative;
     width: 100%;
     background: #fff;
     padding: 1rem;
+    margin-top: .25rem;
     margin-bottom: 1rem;
     border-radius: 15px;
 }
@@ -75,12 +74,10 @@ body {
         padding: 0;
     }
 
-    .itemTitle {
-        height: 30px;
-        top: -15px;
-        left: 0;
-        right: 0;
-        margin: auto;
+    .item-title {
+        width: 100%;
+        text-align: left;
+        padding: 5px 30px;
     }
 }
 
@@ -111,6 +108,11 @@ textarea {
 
 input::placeholder {
     color: #ded;
+}
+
+label:has(input[type="checkbox"]){
+    margin-right: 1rem;
+    white-space: nowrap
 }
 
 .submit-btn {

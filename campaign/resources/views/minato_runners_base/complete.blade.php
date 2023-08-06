@@ -6,10 +6,11 @@
             <p>スーパースポーツゼビオ 名古屋みなとアクルス店ランニングクラブ</p>
             <p>MINATO RUNNERS BASE</p>
             <p>スペシャルイベント</p>
-            <p>ランニング＆スポーツメイク講座</p>
-            <p>日時：7/23（日）10:30-12:30</p>
+            <p>ヨガ＆ランニング教室</p>
+            <p>日時：9/3（日）10:30-12:30</p>
             <p>実施場所：ららぽーとみなとアクルス　屋外イベントスペース「デカゴン」</p>
             <p>集合解散場所：屋外イベントスペース「デカゴン」</p>
+            <p>※ヨガマットはこちらでもご用意していますので、お気軽にご参加ください！</p>
         </div>
     </x-slot>
 
@@ -50,7 +51,7 @@
         </div>
 
         <h2 class="text-white text-center text-3xl font-bold leading-tight">
-            Running TRY ON キャンペーン <br class="brSp2">お申込フォーム
+            MINATO RUNNERS BASE キャンペーン <br class="brSp2">お申込フォーム
         </h2>
     </x-slot>
 

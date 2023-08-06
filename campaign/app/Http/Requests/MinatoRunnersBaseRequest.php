@@ -20,6 +20,7 @@ use Illuminate\Http\UploadedFile;
  * @property string email
  * @property string img_pass
  * @property int reason_applying
+ * @property array how_found
  * @property UploadedFile image
  */
 class MinatoRunnersBaseRequest extends FormRequest
