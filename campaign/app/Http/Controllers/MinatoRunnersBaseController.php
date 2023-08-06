@@ -203,7 +203,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to($this->_email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('お申込みありがとうございます。');
+                ->subject('ゼビオ名古屋みなとアクルス店 イベントへのお申込みが完了しました。');
         });
     }
 
