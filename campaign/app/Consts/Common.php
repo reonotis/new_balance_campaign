@@ -19,4 +19,5 @@ class Common
     ];
 
     public const APPLY_TYPE_S223 = 1;
+    public const APPLY_TYPE_GO_FUN = 2;
 }

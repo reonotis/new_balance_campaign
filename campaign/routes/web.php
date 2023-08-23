@@ -8,7 +8,8 @@ use App\Http\Controllers\{
         TryOnController,
         TryOn2023Controller,
         MinatoRunnersBaseController,
-        S223Controller
+        S223Controller,
+        GoFunController
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
@@ -90,6 +91,15 @@ Route::group(['prefix'=>'s223'],function(){
     Route::get('/complete', [S223Controller::class, 'complete'])->name('s223.complete');
     Route::get('/outsidePeriod', [S223Controller::class, 'outsidePeriod'])->name('s223.outsidePeriod');
 });
+
+// GO FUN! キャンペーン
+Route::group(['prefix'=>'go_fun'],function(){
+    Route::get('', [GoFunController::class, 'index'])->name('go_fun.index');
+    Route::post('/store', [GoFunController::class, 'store'])->name('go_fun.store');
+    Route::get('/complete', [GoFunController::class, 'complete'])->name('go_fun.complete');
+    Route::get('/outsidePeriod', [GoFunController::class, 'outsidePeriod'])->name('go_fun.outsidePeriod');
+});
+
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
