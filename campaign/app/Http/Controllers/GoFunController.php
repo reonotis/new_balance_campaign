@@ -17,7 +17,7 @@ use Mail;
 
 class GoFunController extends Controller
 {
-    protected string $startDateTime = "2023-09-07 00:00:00";
+    protected string $startDateTime = "2023-08-07 00:00:00";
     protected string $endDateTime = "2023-10-13 23:59:59";
 
     protected string $email = "";

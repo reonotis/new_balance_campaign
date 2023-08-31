@@ -9,18 +9,48 @@ use Exception;
 
 class ImageUploaderService
 {
-    private $_fileExtension = ['jpg', 'jpeg', 'png'];
-    private $_resize_maxWidth = '400';
+    private array $_fileExtension = ['jpg', 'jpeg', 'png'];
+    private string $_resize_maxWidth = '400';
 
     function __construct()
     {
     }
 
     /**
+     * 画像のバリデーションを確認してアップロードする
+     * @param UploadedFile $file
+     * @param string $dirName
+     * @return string
+     * @throws Exception
+     */
+    public function imgCheckAndUpload(UploadedFile $file, string $dirName): string
+    {
+        Log::info('imgCheckAndUpload');
+
+        // 登録可能な拡張子か確認して取得する
+        $extension = $this->checkFileExtension($file);
+
+        // ファイル名の作成 => TO_ {日時} . {拡張子}
+        $fileName = sprintf(
+            '%s_%s.%s',
+            $dirName,
+            time(),
+            $extension
+        );
+
+        // 指定されたディレクトリが存在するか確認
+        $this->makeDirectory($dirName);
+        $this->makeDirectory($dirName . '/resize/');
+        // 画像を保存する
+        $this->imgStore($file, 'public/' . $dirName, $fileName);
+        return $fileName;
+    }
+
+    /**
      * 渡されたファイルが登録可能な拡張子か確認するしてOKなら拡張子を返す
      * @param UploadedFile $file
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public function checkFileExtension(UploadedFile $file): string
     {
@@ -31,7 +61,7 @@ class ImageUploaderService
         $extension = $file->extension();
         if(! in_array($extension, $this->_fileExtension)){
             $fileExtension = json_encode($this->_fileExtension);
-            throw new \Exception("登録できる画像の拡張子は". $fileExtension ."のみです。");
+            throw new Exception("登録できる画像の拡張子は". $fileExtension ."のみです。");
         }
         return $extension;
     }
@@ -41,7 +71,7 @@ class ImageUploaderService
      * @param UploadedFile $file
      * @param string $dir
      * @param string $FileName
-     * @throws \Exception
+     * @throws Exception
      */
     public function imgStore(UploadedFile $file, string $dir, string $FileName)
     {

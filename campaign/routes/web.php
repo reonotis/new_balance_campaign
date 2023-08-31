@@ -2,14 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+        TryOn2023AutumnController,
         GoMurakamiController,
         GolfTryOn2023Controller,
+        GoFunController,
         KokuritsuArukuTokyoController,
-        TryOnController,
-        TryOn2023Controller,
         MinatoRunnersBaseController,
         S223Controller,
-        GoFunController
+        TryOnController,
+        TryOn2023Controller
     };
 use App\Http\Controllers\Admin\{AdminController,
         AdminTryOnController,
@@ -98,6 +99,14 @@ Route::group(['prefix'=>'go_fun'],function(){
     Route::post('/store', [GoFunController::class, 'store'])->name('go_fun.store');
     Route::get('/complete', [GoFunController::class, 'complete'])->name('go_fun.complete');
     Route::get('/outsidePeriod', [GoFunController::class, 'outsidePeriod'])->name('go_fun.outsidePeriod');
+});
+
+// try_on 2023 autumn キャンペーン
+Route::group(['prefix'=>'try-on-2023-autumn'],function(){
+    Route::get('', [TryOn2023AutumnController::class, 'index'])->name('try-on-2023-autumn.index');
+    Route::post('/store', [TryOn2023AutumnController::class, 'store'])->name('try-on-2023-autumn.store');
+    Route::get('/complete', [TryOn2023AutumnController::class, 'complete'])->name('try-on-2023-autumn.complete');
+    Route::get('/outsidePeriod', [TryOn2023AutumnController::class, 'outsidePeriod'])->name('try-on-2023-autumn.outsidePeriod');
 });
 
 
