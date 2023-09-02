@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Consts\CommonApplyConst;
+use App\Http\Requests\TryOnRequest;
+use App\Service\CommonApplyService;
 use App\Service\ImageUploaderService;
 use App\Consts\Common;
-use App\Models\CommonApply;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
@@ -17,20 +20,27 @@ use Mail;
 
 class GoFunController extends Controller
 {
-    protected string $startDateTime = "2023-08-07 00:00:00";
-    protected string $endDateTime = "2023-10-13 23:59:59";
+    private int $applyType;
+    private CommonApplyService $commonApplyService;
+    private imageUploaderService $imageUploaderService;
 
     protected string $email = "";
     protected string $baseFileName = "";
 
-    protected string $_secretariat = "";
+    protected string $secretariat = "";
 
     function __construct()
     {
-        $this->_secretariat = config('mail.secretariat');
+        $this->applyType = CommonApplyConst::APPLY_TYPE_GO_FUN;
+        $this->commonApplyService = new CommonApplyService($this->applyType);
+        $this->imageUploaderService = new ImageUploaderService();
+        // 申込期間外であればエラー画面に遷移
         if (\Route::currentRouteName() <> 'go_fun.outsidePeriod') {
-            $this->checkApplicationPeriod();
+            if (!$this->commonApplyService->checkApplicationDuration()) {
+                Redirect::route('go_fun.outsidePeriod')->send();
+            }
         }
+        $this->secretariat = config('mail.secretariat');
     }
 
     /**
@@ -67,10 +77,10 @@ class GoFunController extends Controller
             DB::beginTransaction();
 
             // 画像処理
-            $this->imgCheckAndUpload($request->image);
+            $fileName = $this->imgUpload($request);
 
             // 応募内容を登録
-            $this->insertApplication($request);
+            $this->insertApplication($request, $fileName);
 
             // thank youメール
             $this->sendThankYouMail($request);
@@ -90,25 +100,16 @@ class GoFunController extends Controller
 
     /**
      * 申し込み内容をDBに登録
-     *
      */
-    private function insertApplication(GoFunRequest $request): void
+    private function insertApplication(GoFunRequest $request, string $fileName): void
     {
         Log::info('insertApplication');
-        $goFun = new CommonApply;
-        $goFun->apply_type = Common::APPLY_TYPE_GO_FUN;
-        $goFun->f_name = $request->f_name;
-        $goFun->l_name = $request->l_name;
-        $goFun->f_read = $request->f_read;
-        $goFun->l_read = $request->l_read;
-        $goFun->zip21 = $request->zip21;
-        $goFun->zip22 = $request->zip22;
-        $goFun->pref21 = $request->pref21;
-        $goFun->address21 = $request->address21;
-        $goFun->street21 = $request->street21;
-        $goFun->tel = $request->tel;
-        $goFun->email = $request->email;
-        $goFun->save();
+        $birthday = Carbon::createFromDate($request->birth_year, $request->birth_month, $request->birth_day);
+        $originalColumn = [
+            'img_pass' => $fileName,
+            'birthday' => $birthday,
+        ];
+        $this->commonApplyService->insertCommonApply($request, $originalColumn);
     }
 
     /**
@@ -155,46 +156,16 @@ class GoFunController extends Controller
     }
 
     /**
-     * @return void
-     */
-    public function checkApplicationPeriod()
-    {
-        $now = date('Y-m-d H:i:s');
-
-        if ($now <= $this->startDateTime || $now >= $this->endDateTime) {
-            Redirect::route('go_fun.outsidePeriod')->send();
-        }
-    }
-
-    /**
-     * 画像のバリデーションを確認してアップロードする
+     * 画像のバリデーションを確認してアップロードし、ファイル名を返却する
      *
-     * @param UploadedFile $file
-     * @return void
+     * @param TryOnRequest $request
+     * @return string
      * @throws Exception
      */
-    private function imgCheckAndUpload($file)
+    private function imgUpload(GoFunRequest $request): string
     {
-        Log::info('imgCheckAndUpload');
-
-        $IMGUploader = New ImageUploaderService();
-        // 登録可能な拡張子か確認して取得する
-        $extension = $IMGUploader->checkFileExtension($file);
-
-        // ファイル名の作成 => TO_ {日時} . {拡張子}
-        $this->baseFileName = sprintf(
-            '%s_%s.%s',
-            'go_fun',
-            time(),
-            $extension
-        );
-
-        // 指定されたディレクトリが存在するか確認
-        $dirName = 'go_fun';
-        $IMGUploader->makeDirectory($dirName);
-        $IMGUploader->makeDirectory($dirName . '/resize/');
-        // 画像を保存する
-        $IMGUploader->imgStore($file,'public/' . $dirName, $this->baseFileName);
+        $dirName = CommonApplyConst::IMG_DIR[$this->applyType];
+        return $this->imageUploaderService->imgCheckAndUpload($request->image, $dirName);
     }
 
     /**
@@ -202,14 +173,7 @@ class GoFunController extends Controller
      */
     public function outsidePeriod(): View
     {
-        $now = date('Y-m-d H:i:s');
-        $checkMessage = '';
-        if ($now <= $this->startDateTime) {
-            $checkMessage = 'まだ開始されていません';
-        }
-        if ($now >= $this->endDateTime) {
-            $checkMessage = '募集期間は終了しました';
-        }
+        $checkMessage = $this->commonApplyService->getDurationMessage();
         return view('go_fun.notApplicationPeriod', compact('checkMessage'));
     }
 

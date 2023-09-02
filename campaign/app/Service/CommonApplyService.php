@@ -80,4 +80,23 @@ class CommonApplyService
         }
         return $commonApply->save();
     }
+
+    /**
+     * @param int $applyType
+     */
+    public function getByApplyType(int $applyType)
+    {
+        return CommonApply::where('delete_flag', 0)
+            ->where('apply_type', $applyType)->get();
+    }
+
+    /**
+     * @param int $applyType
+     */
+    public function getByApplyTypeWithPaginate(int $applyType, int $paginate)
+    {
+        return CommonApply::where('delete_flag', 0)
+            ->where('apply_type', $applyType)->paginate($paginate);
+    }
+
 }

@@ -19,14 +19,16 @@ use Route;
 class TryOn2023AutumnController extends Controller
 {
 
+    private int $applyType;
     protected string $secretariat = '';
     private string $email;
-    protected CommonApplyService $commonApplyService;
-    protected imageUploaderService $imageUploaderService;
+    private CommonApplyService $commonApplyService;
+    private imageUploaderService $imageUploaderService;
 
     function __construct()
     {
-        $this->commonApplyService = new CommonApplyService(CommonApplyConst::APPLY_TYPE_TRY_ON_2023_AUTUMN);
+        $this->applyType = CommonApplyConst::APPLY_TYPE_TRY_ON_2023_AUTUMN;
+        $this->commonApplyService = new CommonApplyService($this->applyType);
         $this->imageUploaderService = new ImageUploaderService();
         // 申込期間外であればエラー画面に遷移
         if (Route::currentRouteName() <> 'try-on-2023-autumn.outsidePeriod') {
@@ -97,7 +99,8 @@ class TryOn2023AutumnController extends Controller
      */
     private function imgUpload(TryOnRequest $request): string
     {
-        return $this->imageUploaderService->imgCheckAndUpload($request->image, 'try-on-2023-autumn');
+        $dirName = CommonApplyConst::IMG_DIR[$this->applyType];
+        return $this->imageUploaderService->imgCheckAndUpload($request->image, $dirName);
     }
 
     /**
@@ -108,7 +111,6 @@ class TryOn2023AutumnController extends Controller
      */
     private function insertApplication(TryOnRequest $request, string $fileName): void
     {
-        Log::info('insertApplication');
         Log::info('insertApplication');
         $originalColumn = [
             'img_pass' => $fileName,

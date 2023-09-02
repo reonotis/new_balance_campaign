@@ -12,7 +12,8 @@ use App\Http\Controllers\{
         TryOnController,
         TryOn2023Controller
     };
-use App\Http\Controllers\Admin\{AdminController,
+use App\Http\Controllers\Admin\{AdminCommonApplyController,
+        AdminController,
         AdminTryOnController,
         AdminTryOn20232Controller,
         AdminGoMurakami2023Controller,
@@ -119,6 +120,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/try_on', [AdminTryOnController::class, 'index'])->name('admin.try_on');
     Route::get('/golf-try-on-2023', [AdminGolfTryOn2023Controller::class, 'index'])->name('admin.golf-try-on-2023');
     Route::get('/s223', [AdminS223Controller::class, 'index'])->name('admin.s223');
+    Route::get('/common_apply/{applyType}', [AdminCommonApplyController::class, 'index'])->name('admin.common_apply');
+    Route::get('/common_apply_csv_dl/{applyType}', [AdminCommonApplyController::class, 'csv_dl'])->name('admin.common_apply_csv_dl');
 });
 
 require __DIR__.'/auth.php';

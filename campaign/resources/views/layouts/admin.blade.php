@@ -20,6 +20,9 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/admin.js') }}?<?= date('YmdHis') ?>" type="text/javascript" defer></script>
 
+        @if(isset($head))
+            {{ $head }}
+        @endif
     </head>
     <body class="antialiased">
         <div class="min-h-screen ">

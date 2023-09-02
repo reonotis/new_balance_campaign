@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string f_read
  * @property string l_read
  * @property int sex
+ * @property string birthday
  * @property int age
  * @property string tel
  * @property string email
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string comment
  * @property int choice_1
  * @property int choice_2
+ * @property \Illuminate\Support\Carbon created_at
  */
 class CommonApply extends Model
 {
@@ -32,7 +34,8 @@ class CommonApply extends Model
 
     protected $table = 'common_apply';
     protected $date = [
-        'created_at'
+        'birthday',
+        'created_at',
     ];
 
     /**
