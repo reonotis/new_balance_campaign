@@ -74,11 +74,11 @@ class TryOn2023AutumnController extends Controller
             // 応募内容を登録
             $this->insertApplication($request, $fileName);
 
-            // thank youメール
-            $this->sendThankYouMail($request);
-
             // reportメール
             $this->sendReportMail($request);
+
+            // thank youメール
+            $this->sendThankYouMail($request);
 
             DB::commit();
             return redirect('/try-on-2023-autumn/complete');
@@ -130,7 +130,7 @@ class TryOn2023AutumnController extends Controller
         $data = [
             'customerName' => $request->f_name . $request->l_name
         ];
-        Mail::send('emails.try_on2023.thankYouMail', $data, function ($message) {
+        Mail::send('emails.try_on_2023_autumn.thankYouMail', $data, function ($message) {
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc('fujisawareon@yahoo.co.jp')
@@ -150,17 +150,18 @@ class TryOn2023AutumnController extends Controller
             'name' => $request->f_name . ' ' . $request->l_name,
             'read' => $request->f_read . ' ' . $request->l_read,
             'sex' => Common::SEX_LIST[$request->sex],
+            'age' => $request->age,
             'zip' => $request->zip21 . '-' . $request->zip22,
             'streetAddress' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
             'tel' => $request->tel,
             'email' => $request->email,
-            'url' => url('') . '/admin'
+            'url' => url('') . '/admin',
         ];
-        Mail::send('emails.try_on2023.reportMail', $data, function ($message) {
+        Mail::send('emails.try_on_2023_autumn.reportMail', $data, function ($message) {
             $message->to('nb-platium@fluss.co.jp')
                 ->from('info@newbalance-campaign.jp')
                 ->bcc('fujisawareon@yahoo.co.jp')
-                ->subject('「New Balance GO FUN! キャンペーン」に申し込みがありました');
+                ->subject('「ランニングTRY ON キャンペーン」に申し込みがありました');
         });
     }
 

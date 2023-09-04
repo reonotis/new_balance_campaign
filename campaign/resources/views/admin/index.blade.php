@@ -14,7 +14,7 @@
                 <div class="p-2 mb-2" ><a href="{{ route('admin.golf-try-on-2023') }}" class="list-href" >GOLF TRY ON 2023 キャンペーン のリストを確認する</a></div>
                 <div class="p-2 mb-2" ><a href="{{ route('admin.s223') }}" class="list-href" >New Balance Fall ＆ Winter 2023 Apparel Collection 申込リストを確認する</a></div>
                 <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => '2']) }}" class="list-href" > GO_FUN申込リストを確認する</a></div>
-                <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => '3']) }}" class="list-href" > try on 2023 秋申込リストを確認する</a></div>
+                <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => '3']) }}" class="list-href" > Try On 2023 Autumn申込リストを確認する</a></div>
             </div>
         </div>
     </div>

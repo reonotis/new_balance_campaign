@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Consts\CommonApplyConst;
-use App\Http\Requests\TryOnRequest;
 use App\Service\CommonApplyService;
 use App\Service\ImageUploaderService;
 use App\Consts\Common;
@@ -14,9 +13,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\GoFunRequest;
 use Illuminate\Support\Facades\{DB, Log, Redirect};
-use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Redirector;
 use Mail;
+use Route;
 
 class GoFunController extends Controller
 {
@@ -25,7 +24,6 @@ class GoFunController extends Controller
     private imageUploaderService $imageUploaderService;
 
     protected string $email = "";
-    protected string $baseFileName = "";
 
     protected string $secretariat = "";
 
@@ -35,7 +33,7 @@ class GoFunController extends Controller
         $this->commonApplyService = new CommonApplyService($this->applyType);
         $this->imageUploaderService = new ImageUploaderService();
         // 申込期間外であればエラー画面に遷移
-        if (\Route::currentRouteName() <> 'go_fun.outsidePeriod') {
+        if (Route::currentRouteName() <> 'go_fun.outsidePeriod') {
             if (!$this->commonApplyService->checkApplicationDuration()) {
                 Redirect::route('go_fun.outsidePeriod')->send();
             }
@@ -145,7 +143,7 @@ class GoFunController extends Controller
             'streetAddress' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
             'tel' => $request->tel,
             'email' => $request->email,
-            'url' => url('') . '/admin'
+            'url' => url('') . '/admin',
         ];
         Mail::send('emails.go_fun.reportMail', $data, function ($message) {
             $message->to('nb-platium@fluss.co.jp')
@@ -158,7 +156,7 @@ class GoFunController extends Controller
     /**
      * 画像のバリデーションを確認してアップロードし、ファイル名を返却する
      *
-     * @param TryOnRequest $request
+     * @param GoFunRequest $request
      * @return string
      * @throws Exception
      */

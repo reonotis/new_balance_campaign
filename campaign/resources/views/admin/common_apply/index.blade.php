@@ -11,12 +11,9 @@
         </h2>
     </x-slot>
 
-
     <div class="pt-4 pb-12 px-12">
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
-
-
                 @if(empty($applyList))
                     申し込みはありません
                 @else
@@ -57,6 +54,9 @@
                                                     <img src="{{ $apply[$itemKey] }}"
                                                          class="resize_img"
                                                          style="width:100px; margin: 0 auto">
+                                                    @break
+                                                @case('comment')
+                                                    {!! nl2br(e($apply[$itemKey])) !!}
                                                     @break
                                                 @default
                                                     <p>{{ $apply[$itemKey] }}</p>
