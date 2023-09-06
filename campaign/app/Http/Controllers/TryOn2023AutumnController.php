@@ -158,7 +158,7 @@ class TryOn2023AutumnController extends Controller
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.try_on_2023_autumn.reportMail', $data, function ($message) {
-            $message->to('nb-platium@fluss.co.jp')
+            $message->to('nb_gofun_2023@fluss.co.jp')
                 ->from('info@newbalance-campaign.jp')
                 ->bcc('fujisawareon@yahoo.co.jp')
                 ->subject('「ランニングTRY ON キャンペーン」に申し込みがありました');
