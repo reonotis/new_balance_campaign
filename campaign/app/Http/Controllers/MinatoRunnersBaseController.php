@@ -17,7 +17,7 @@ use Mail;
 
 class MinatoRunnersBaseController extends Controller
 {
-    const APPLICATION_LIMIT = 62;
+    const APPLICATION_LIMIT = 20;
     // 1回目
     // protected string $_startDateTime = "2023-05-20 00:00:00";
     // protected string $_endDateTime = "2023-06-24 23:59:59";
@@ -27,8 +27,12 @@ class MinatoRunnersBaseController extends Controller
     // protected string $_endDateTime = "2023-07-22 23:59:59";
 
     // 3回目
-    protected string $_startDateTime = "2023-08-04 00:00:00";
-    protected string $_endDateTime = "2023-09-02 23:59:59";
+    // protected string $_startDateTime = "2023-08-04 00:00:00";
+    // protected string $_endDateTime = "2023-09-02 23:59:59";
+
+    // 4回目
+    protected string $_startDateTime = "2023-09-30 00:00:00";
+    protected string $_endDateTime = "2023-10-20 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
@@ -278,7 +282,9 @@ class MinatoRunnersBaseController extends Controller
 
     private function checkNumberApplications()
     {
-        $count = MinatoRunnersBase::where('delete_flag', 0)->count();
+        $count = MinatoRunnersBase::where('delete_flag', 0)
+            ->where('created_at', '>=', $this->_startDateTime)
+            ->count();
         if ($count >= self::APPLICATION_LIMIT) {
             return false;
         }
