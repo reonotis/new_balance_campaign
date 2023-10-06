@@ -7,6 +7,7 @@ use App\Consts\CommonApplyConst;
 use App\Models\CommonApply;
 use App\Service\CommonApplyService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -44,6 +45,21 @@ class AdminCommonApplyController extends BaseController
             ->with('displayItemList', $displayItemList)
             ->with('paginationList', $paginationList)
             ->with('applyList', $applyList);
+    }
+
+    /**
+     * @param int $applyType
+     */
+    public function redirectApplyForm(int $applyType)
+    {
+        if (!isset(CommonApplyConst::APPLY_URL_NAME[$applyType])) {
+            dd('不正な画面遷移です');
+        }
+
+        $urlName = CommonApplyConst::APPLY_URL_NAME[$applyType];
+
+
+        Redirect::route($urlName)->send();
     }
 
     /**
@@ -162,7 +178,7 @@ class AdminCommonApplyController extends BaseController
                 return $apply->comment;
             case 'img_pass':
                 $directory = CommonApplyConst::IMG_DIR[$this->applyType];
-                return asset("storage/$directory/" . $apply->img_pass);
+                return asset("storage/$directory/resize/" . $apply->img_pass);
             case 'address':
                 return [
                     $apply->zip21 . '-' . $apply->zip22,

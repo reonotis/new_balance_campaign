@@ -6,9 +6,24 @@ class CommonApplyConst
 {
     public const APPLY_TYPE_GO_FUN = 2;
     public const APPLY_TYPE_TRY_ON_2023_AUTUMN = 3;
+    public const APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 = 4;
+
+    /**
+     * 申込タイトル
+     */
     public const APPLY_TITLE_LIST = [
         self::APPLY_TYPE_GO_FUN => 'GO FUN キャンペーン',
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'Running TRY ON 2023 Autumnキャンペーン',
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'Fresh Foam X 1080v13 TRY ON Campaign',
+    ];
+
+    /**
+     * 申込サイトのルーティングネーム
+     */
+    public const APPLY_URL_NAME = [
+        self::APPLY_TYPE_GO_FUN => 'go_fun.index',
+        self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'try-on-2023-autumn.index',
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13.index',
     ];
 
     /**
@@ -21,7 +36,11 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => [
             'start_date_time' => '2023-08-07 00:00:00',
-            'end_date_time' => '2023-12-25 23:59:59',
+            'end_date_time' => '2023-10-15 23:59:59',
+        ],
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => [
+            'start_date_time' => '2023-10-03 00:00:00',
+            'end_date_time' => '2023-12-10 23:59:59',
         ],
     ];
 
@@ -46,6 +65,23 @@ class CommonApplyConst
             'img_pass',
         ],
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+            'img_pass',
+        ],
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => [
             'f_name',
             'l_name',
             'f_read',
@@ -88,10 +124,24 @@ class CommonApplyConst
             'comment' => '返却同期',
             'img_pass' => 'レシート画像',
         ],
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => [
+            'name' => '名前',
+            'sex' => '性別',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => '返却同期',
+            'img_pass' => 'レシート画像',
+        ],
     ];
 
+    /**
+     * 画像を格納するディレクトリ名
+     */
     public const IMG_DIR = [
         self::APPLY_TYPE_GO_FUN => 'go_fun',
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'try-on-2023-autumn',
+        self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13',
     ];
 }

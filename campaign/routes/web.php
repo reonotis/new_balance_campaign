@@ -10,7 +10,8 @@ use App\Http\Controllers\{
         MinatoRunnersBaseController,
         S223Controller,
         TryOnController,
-        TryOn2023Controller
+        TryOn2023Controller,
+        TryOn2023FreshFormX1080v13Controller
     };
 use App\Http\Controllers\Admin\{AdminCommonApplyController,
         AdminController,
@@ -111,6 +112,15 @@ Route::group(['prefix'=>'try-on-2023-autumn'],function(){
 });
 
 
+// try_on 2023 autumn キャンペーン
+Route::group(['prefix'=>'try-on-2023-fresh-form-1080-v13'],function(){
+    Route::get('', [TryOn2023FreshFormX1080v13Controller::class, 'index'])->name('try-on-2023-fresh-form-1080-v13.index');
+    Route::post('/store', [TryOn2023FreshFormX1080v13Controller::class, 'store'])->name('try-on-2023-fresh-form-1080-v13.store');
+    Route::get('/complete', [TryOn2023FreshFormX1080v13Controller::class, 'complete'])->name('try-on-2023-fresh-form-1080-v13.complete');
+    Route::get('/outsidePeriod', [TryOn2023FreshFormX1080v13Controller::class, 'outsidePeriod'])->name('try-on-2023-fresh-form-1080-v13.outsidePeriod');
+});
+
+
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
@@ -121,6 +131,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/golf-try-on-2023', [AdminGolfTryOn2023Controller::class, 'index'])->name('admin.golf-try-on-2023');
     Route::get('/s223', [AdminS223Controller::class, 'index'])->name('admin.s223');
     Route::get('/common_apply/{applyType}', [AdminCommonApplyController::class, 'index'])->name('admin.common_apply');
+    Route::get('/common_apply/redirect_apply_form/{applyType}', [AdminCommonApplyController::class, 'redirectApplyForm'])->name('admin.redirect_apply_form');
     Route::get('/common_apply_csv_dl/{applyType}', [AdminCommonApplyController::class, 'csv_dl'])->name('admin.common_apply_csv_dl');
 });
 

@@ -14,6 +14,7 @@
     <div class="pt-4 pb-12 px-12">
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div><a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a></div>
                 @if(empty($applyList))
                     申し込みはありません
                 @else

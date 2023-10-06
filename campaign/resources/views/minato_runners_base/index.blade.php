@@ -128,7 +128,7 @@
                                     <div class="px-1">-</div>
                                     <div class="px-2 w-32">
                                         <input type='text' name='zip22' value='{{ old("zip22") }}'
-                                               onKeyUp='AjaxZip3.zip2addr("zip21","zip22","pref21","address21");'
+                                               onKeyUp='AjaxZip3.zip2addr("zip21","zip22","pref21","address21","street21");'
                                                placeholder='0051'>
                                     </div>
                                 </div>
