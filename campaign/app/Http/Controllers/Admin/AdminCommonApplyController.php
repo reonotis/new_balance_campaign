@@ -56,10 +56,7 @@ class AdminCommonApplyController extends BaseController
             dd('不正な画面遷移です');
         }
 
-        $urlName = CommonApplyConst::APPLY_URL_NAME[$applyType];
-
-
-        Redirect::route($urlName)->send();
+        Redirect::route(CommonApplyConst::APPLY_URL_NAME[$applyType])->send();
     }
 
     /**

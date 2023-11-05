@@ -7,6 +7,7 @@ class CommonApplyConst
     public const APPLY_TYPE_GO_FUN = 2;
     public const APPLY_TYPE_TRY_ON_2023_AUTUMN = 3;
     public const APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 = 4;
+    public const APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN = 5;
 
     /**
      * 申込タイトル
@@ -15,6 +16,7 @@ class CommonApplyConst
         self::APPLY_TYPE_GO_FUN => 'GO FUN キャンペーン',
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'Running TRY ON 2023 Autumnキャンペーン',
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'Fresh Foam X 1080v13 TRY ON Campaign',
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'スペシャルチャンスキャンペーン',
     ];
 
     /**
@@ -24,6 +26,7 @@ class CommonApplyConst
         self::APPLY_TYPE_GO_FUN => 'go_fun.index',
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'try-on-2023-autumn.index',
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13.index',
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign.index',
     ];
 
     /**
@@ -41,6 +44,11 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => [
             'start_date_time' => '2023-10-03 00:00:00',
             'end_date_time' => '2023-12-10 23:59:59',
+        ],
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => [
+            'start_date_time' => '2023-11-01 00:00:00',
+//            'start_date_time' => '2023-11-10 00:00:00',
+            'end_date_time' => '2023-12-11 23:59:59',
         ],
     ];
 
@@ -98,6 +106,21 @@ class CommonApplyConst
             'comment',
             'img_pass',
         ],
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'birthday',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'email',
+            'img_pass',
+        ],
     ];
 
     /**
@@ -134,6 +157,14 @@ class CommonApplyConst
             'comment' => '返却同期',
             'img_pass' => 'レシート画像',
         ],
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => [
+            'name' => '名前',
+            'birthday' => '生年月日',
+            'sex' => '性別',
+            'address' => '住所',
+            'email' => 'メールアドレス',
+            'img_pass' => 'レシート画像',
+        ],
     ];
 
     /**
@@ -143,5 +174,6 @@ class CommonApplyConst
         self::APPLY_TYPE_GO_FUN => 'go_fun',
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'try-on-2023-autumn',
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13',
+        self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign',
     ];
 }

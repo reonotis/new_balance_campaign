@@ -19,7 +19,7 @@ class GolfTryOn2023Controller extends Controller
 {
     // 応募期間
     protected string $_startDateTime = "2023-07-10 00:00:00";
-    protected string $_endDateTime = "2023-10-25 23:59:59";
+    protected string $_endDateTime = "2023-09-04 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";

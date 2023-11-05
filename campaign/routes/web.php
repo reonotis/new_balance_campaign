@@ -9,6 +9,7 @@ use App\Http\Controllers\{
         KokuritsuArukuTokyoController,
         MinatoRunnersBaseController,
         S223Controller,
+        SpecialChanceCampaignController,
         TryOnController,
         TryOn2023Controller,
         TryOn2023FreshFormX1080v13Controller
@@ -111,8 +112,7 @@ Route::group(['prefix'=>'try-on-2023-autumn'],function(){
     Route::get('/outsidePeriod', [TryOn2023AutumnController::class, 'outsidePeriod'])->name('try-on-2023-autumn.outsidePeriod');
 });
 
-
-// try_on 2023 autumn キャンペーン
+// try_on 2023 fresh-form-1080-v13 キャンペーン
 Route::group(['prefix'=>'try-on-2023-fresh-form-1080-v13'],function(){
     Route::get('', [TryOn2023FreshFormX1080v13Controller::class, 'index'])->name('try-on-2023-fresh-form-1080-v13.index');
     Route::post('/store', [TryOn2023FreshFormX1080v13Controller::class, 'store'])->name('try-on-2023-fresh-form-1080-v13.store');
@@ -120,6 +120,13 @@ Route::group(['prefix'=>'try-on-2023-fresh-form-1080-v13'],function(){
     Route::get('/outsidePeriod', [TryOn2023FreshFormX1080v13Controller::class, 'outsidePeriod'])->name('try-on-2023-fresh-form-1080-v13.outsidePeriod');
 });
 
+// スペシャルチャンス キャンペーン
+Route::group(['prefix'=>'special-chance-campaign'],function(){
+    Route::get('', [SpecialChanceCampaignController::class, 'index'])->name('special-chance-campaign.index');
+    Route::post('/store', [SpecialChanceCampaignController::class, 'store'])->name('special-chance-campaign.store');
+    Route::get('/complete', [SpecialChanceCampaignController::class, 'complete'])->name('special-chance-campaign.complete');
+    Route::get('/outsidePeriod', [SpecialChanceCampaignController::class, 'outsidePeriod'])->name('special-chance-campaign.outsidePeriod');
+});
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
