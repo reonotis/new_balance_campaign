@@ -1,7 +1,7 @@
 @extends('layouts.special_chance_campaign')
 @section('header')
         <h2 class="text-center font-bold leading-tight">
-            スペシャルチャンス<br class="brSp2">キャンペーン<br class="brSp2">お申込フォーム
+            スペシャルチャンス<br class="brSp2">キャンペーン<br class="brSp2">応募フォーム
         </h2>
 @endsection
 @section('content')
