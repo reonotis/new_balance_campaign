@@ -75,7 +75,7 @@ class SpecialChanceCampaignController extends Controller
             $this->insertApplication($request, $fileName);
 
             // reportメール
-//            $this->sendReportMail($request);
+            $this->sendReportMail($request);
 
             // thank youメール
             $this->sendThankYouMail($request);
