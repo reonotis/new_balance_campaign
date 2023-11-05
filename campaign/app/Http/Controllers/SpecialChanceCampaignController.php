@@ -162,7 +162,7 @@ class SpecialChanceCampaignController extends Controller
             $message->to("nbrun@fluss.co.jp")
                 ->from("info@newbalance-campaign.jp")
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject("申込がありました");
+                ->subject("スペシャルチャンスcキャンペーンに申込がありました");
         });
     }
 
