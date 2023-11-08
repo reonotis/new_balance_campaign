@@ -84,7 +84,7 @@
                                 </div>
                                 /
                                 <div class="" style="margin-left: .5rem;" >
-                                    <input type="text"style="width: 100px;" name="birth_day" value="{{ old("birth_day") }}" placeholder="日">
+                                    <input type="text" style="width: 100px;" name="birth_day" value="{{ old("birth_day") }}" placeholder="日">
                                 </div>
                             </div>
                         </div>
