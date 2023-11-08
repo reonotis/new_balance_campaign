@@ -11,7 +11,7 @@
                 <div class="p-6">
                     <div class="p-6 bg-white">
                         <div class="card-header mb-4">
-                            申し込みが完了しました。
+                            ご応募が完了ました。
                         </div>
                         <div class="card-body">
                             入力したメールアドレスに通知メールを送信しておりますのでご確認ください
