@@ -159,7 +159,7 @@ class SpecialChanceCampaignController extends Controller
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.special_chance_campaign.reportMail', $data, function ($message) {
-            $message->to("nbrun@fluss.co.jp")
+            $message->to("nb_gofun_2023@fluss.co.jp")
                 ->from("info@newbalance-campaign.jp")
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject("スペシャルチャンスキャンペーンに申込がありました");
