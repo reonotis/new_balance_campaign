@@ -127,6 +127,7 @@ class KichijojiShoppingNightController extends Controller
             'read' => $request->f_read . ' ' . $request->l_read,
             'zip' => $request->zip21 . '-' . $request->zip22,
             'streetAddress' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
+            'tel' => $request->tel,
             'email' => $request->email,
             'url' => url('') . '/admin',
         ];
