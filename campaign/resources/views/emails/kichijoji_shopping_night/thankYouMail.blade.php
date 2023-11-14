@@ -7,5 +7,5 @@
 引き続き、ニューバランスをよろしくお願いいたします。<br>
 <br>
 New Balance吉祥寺店OPENイベント事務局<br>
-nb-platium@fluss.co.jp<br>
+mynb_members@fluss.co.jp<br>
 <br><br>

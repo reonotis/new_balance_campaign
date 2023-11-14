@@ -132,7 +132,7 @@ class KichijojiShoppingNightController extends Controller
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.kichijoji_shopping_night.reportMail', $data, function ($message) {
-            $message->to("nb-platium@fluss.co.jp")
+            $message->to("mynb_members@fluss.co.jp")
                 ->from("info@newbalance-campaign.jp")
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject("Kichijoji Special Shopping Nightに申込がありました");
