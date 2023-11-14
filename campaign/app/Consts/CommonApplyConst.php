@@ -8,6 +8,7 @@ class CommonApplyConst
     public const APPLY_TYPE_TRY_ON_2023_AUTUMN = 3;
     public const APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 = 4;
     public const APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN = 5;
+    public const APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT = 6;
 
     /**
      * 申込タイトル
@@ -17,6 +18,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'Running TRY ON 2023 Autumnキャンペーン',
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'Fresh Foam X 1080v13 TRY ON Campaign',
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'スペシャルチャンスキャンペーン',
+        self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'Kichijoji Special Shopping Night',
     ];
 
     /**
@@ -27,6 +29,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2023_AUTUMN => 'try-on-2023-autumn.index',
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13.index',
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign.index',
+        self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'kichijoji-shopping-night.index',
     ];
 
     /**
@@ -46,9 +49,12 @@ class CommonApplyConst
             'end_date_time' => '2023-12-10 23:59:59',
         ],
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => [
-            'start_date_time' => '2023-11-01 00:00:00',
-//            'start_date_time' => '2023-11-10 00:00:00',
+            'start_date_time' => '2023-11-10 00:00:00',
             'end_date_time' => '2023-12-11 23:59:59',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => [
+            'start_date_time' => '2023-11-12 00:00:00',
+            'end_date_time' => '2023-12-06 23:59:59',
         ],
     ];
 
@@ -121,6 +127,19 @@ class CommonApplyConst
             'email',
             'img_pass',
         ],
+        self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+        ],
     ];
 
     /**
@@ -164,6 +183,12 @@ class CommonApplyConst
             'address' => '住所',
             'email' => 'メールアドレス',
             'img_pass' => 'レシート画像',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => [
+            'name' => '名前',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
         ],
     ];
 

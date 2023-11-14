@@ -7,6 +7,7 @@ use App\Http\Controllers\{
         GolfTryOn2023Controller,
         GoFunController,
         KokuritsuArukuTokyoController,
+        KichijojiShoppingNightController,
         MinatoRunnersBaseController,
         S223Controller,
         SpecialChanceCampaignController,
@@ -126,6 +127,14 @@ Route::group(['prefix'=>'special-chance-campaign'],function(){
     Route::post('/store', [SpecialChanceCampaignController::class, 'store'])->name('special-chance-campaign.store');
     Route::get('/complete', [SpecialChanceCampaignController::class, 'complete'])->name('special-chance-campaign.complete');
     Route::get('/outsidePeriod', [SpecialChanceCampaignController::class, 'outsidePeriod'])->name('special-chance-campaign.outsidePeriod');
+});
+
+// 吉祥寺ショッピングナイト
+Route::group(['prefix'=>'kichijoji-shopping-night'],function(){
+    Route::get('', [KichijojiShoppingNightController::class, 'index'])->name('kichijoji-shopping-night.index');
+    Route::post('/store', [KichijojiShoppingNightController::class, 'store'])->name('kichijoji-shopping-night.store');
+    Route::get('/complete', [KichijojiShoppingNightController::class, 'complete'])->name('kichijoji-shopping-night.complete');
+    Route::get('/outsidePeriod', [KichijojiShoppingNightController::class, 'outsidePeriod'])->name('kichijoji-shopping-night.outsidePeriod');
 });
 
 // 管理者
