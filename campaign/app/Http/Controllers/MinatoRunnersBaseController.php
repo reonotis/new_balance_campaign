@@ -35,8 +35,12 @@ class MinatoRunnersBaseController extends Controller
     // protected string $_endDateTime = "2023-10-20 23:59:59";
 
     // 5回目
-    protected string $_startDateTime = "2023-11-08 00:00:00";
-    protected string $_endDateTime = "2023-12-09 23:59:59";
+    // protected string $_startDateTime = "2023-11-08 00:00:00";
+    // protected string $_endDateTime = "2023-12-09 23:59:59";
+
+    // 6回目
+    protected string $_startDateTime = "2024-01-09 00:00:00";
+    protected string $_endDateTime = "2024-12-17 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
