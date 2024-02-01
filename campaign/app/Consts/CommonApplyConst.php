@@ -9,6 +9,7 @@ class CommonApplyConst
     public const APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 = 4;
     public const APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN = 5;
     public const APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT = 6;
+    public const APPLY_TYPE_CELEBRATION_SHEET = 7;
 
     /**
      * 申込タイトル
@@ -55,6 +56,10 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => [
             'start_date_time' => '2023-11-12 00:00:00',
             'end_date_time' => '2023-12-06 23:59:59',
+        ],
+        self::APPLY_TYPE_CELEBRATION_SHEET => [
+            'start_date_time' => '2024-01-28 00:00:00',
+            'end_date_time' => '2024-02-16   23:59:59',
         ],
     ];
 
@@ -139,6 +144,21 @@ class CommonApplyConst
             'street21',
             'tel',
             'email',
+        ],
+        self::APPLY_TYPE_CELEBRATION_SHEET => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
         ],
     ];
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-        TryOn2023AutumnController,
+        CelebrationSheetController,
         GoMurakamiController,
         GolfTryOn2023Controller,
         GoFunController,
@@ -12,6 +12,7 @@ use App\Http\Controllers\{
         S223Controller,
         SpecialChanceCampaignController,
         TryOnController,
+        TryOn2023AutumnController,
         TryOn2023Controller,
         TryOn2023FreshFormX1080v13Controller
     };
@@ -135,6 +136,14 @@ Route::group(['prefix'=>'kichijoji-shopping-night'],function(){
     Route::post('/store', [KichijojiShoppingNightController::class, 'store'])->name('kichijoji-shopping-night.store');
     Route::get('/complete', [KichijojiShoppingNightController::class, 'complete'])->name('kichijoji-shopping-night.complete');
     Route::get('/outsidePeriod', [KichijojiShoppingNightController::class, 'outsidePeriod'])->name('kichijoji-shopping-night.outsidePeriod');
+});
+
+// Run your way Celebration sheet
+Route::group(['prefix'=>'celebration-sheet'],function(){
+    Route::get('', [CelebrationSheetController::class, 'index'])->name('celebration-sheet.index');
+    Route::post('/store', [CelebrationSheetController::class, 'store'])->name('celebration-sheet.store');
+    Route::get('/complete', [CelebrationSheetController::class, 'complete'])->name('celebration-sheet.complete');
+    Route::get('/outsidePeriod', [CelebrationSheetController::class, 'outsidePeriod'])->name('celebration-sheet.outsidePeriod');
 });
 
 // 管理者
