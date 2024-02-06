@@ -17,9 +17,9 @@ use Illuminate\Http\UploadedFile;
  * @property string street21
  * @property string tel
  * @property string email
- * @property string answer_1
+ * @property string choice_1
  */
-class CelebrationSheetRequest extends FormRequest
+class CelebrationSeatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -52,6 +52,7 @@ class CelebrationSheetRequest extends FormRequest
             'tel' => 'required|regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/',
             'email' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/|confirmed',
             'email_confirmation' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/',
+            'image' => 'required',
         ];
     }
 

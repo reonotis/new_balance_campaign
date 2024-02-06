@@ -1,17 +1,18 @@
 
 body {
-    background: linear-gradient(90deg, #06062B99, #06062B99), url("../img/celebration_sheet/22752190_m.jpg");
+    background: linear-gradient(180deg, #825A8F, #b596c3);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Helvetica Neue", "メイリオ", "Meiryo", "Helvetica", Helvetica, Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 header {
     color: #fff;
     font-size: 2rem;
 }
+
 .brSp2 {
     display: none;
 }
@@ -22,18 +23,71 @@ header {
     }
 }
 
+dl.event-explanation {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 1rem 0 3rem;
+}
+
+dl.event-explanation > dt {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #825A8F;
+}
+
+dl.event-explanation > dd {
+    font-size: 1.1rem;
+    padding-left: 1rem;
+    padding-bottom: .5rem;
+    line-height: 1.5;
+}
+
+@media screen and (max-width: 700px) {
+    dl.event-explanation {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+    dl.event-explanation > dt {
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: #825A8F;
+    }
+
+    dl.event-explanation > dd {
+        font-size: .9rem;
+        padding-left: 1rem;
+        padding-bottom: .5rem;
+        line-height: 1.5;
+    }
+}
+
+.form-area {
+    padding: 1.5rem;
+    background: #eee;
+}
+
+@media screen and (max-width: 700px) {
+
+    .form-area {
+        padding: .5rem;
+    }
+}
+
+
 .itemRow {
     position: relative;
     box-sizing: border-box;
     width: calc(100% - 100px);
     margin: 0 0 20px 100px;
     padding: 18px 25px 18px 85px;
-    border: solid 1px #3050ff;
-    background: #fff;
+    background-color: #eae1e6;
     color: #444;
     display: flex;
     align-items: center;
 }
+
 .itemTitle {
     position: absolute;
     width: 160px;
@@ -45,8 +99,7 @@ header {
     line-height: 160%;
     letter-spacing: 1px;
     color: #FFF;
-    border: solid 2px #3050ff;
-    background: #040d1f;
+    background: #825A8F;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +129,7 @@ header {
 
 .mail_supplement {
     line-height: 1.2rem;
-    color: #888;
+    color: #777;
 }
 
 
@@ -105,7 +158,7 @@ input::placeholder {
 
 .submit-btn {
     position: relative;
-    background: #040d1f;
+    background: #825A8F;
     color: #fff;
     padding: 1rem 3rem;
     font-size: 1.5rem;
@@ -120,13 +173,17 @@ input::placeholder {
     height: calc(100% - 6px);
     top: 3px;
     left: 3px;
-    border: solid 2px #3050ff;
+    border: solid 2px #fff;
     box-sizing: border-box;
+}
+
+.submit-btn:hover::before {
+    border: solid 2px #825A8F;
 }
 
 .submit-btn:hover {
     background: #fff;
-    color: #3050ff;
+    color: #825A8F;
 }
 
 .radio-label {

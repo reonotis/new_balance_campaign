@@ -1,4 +1,4 @@
-@extends('layouts.celebration_sheet')
+@extends('layouts.celebration_seat')
 @section('header')
     <h2 class="text-center font-bold leading-tight">
         Run your way. Celebration Sheet.<br class="brSp2">応募フォーム
@@ -10,11 +10,8 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <div class="p-6 bg-white">
-                        <div class="card-header mb-4">
-                            ご応募が完了ました。
-                        </div>
                         <div class="card-body">
-                            入力したメールアドレスに通知メールを送信しておりますのでご確認ください
+                            {{ $errorMessage }}
                         </div>
                     </div>
                 </div>

@@ -182,6 +182,8 @@ class AdminCommonApplyController extends BaseController
                     $apply->pref21 . ' ' . $apply->address21,
                     $apply->street21,
                 ];
+            case 'choice_1':
+                return $apply->choice_1;
             default:
                 dd('不正です。' . $itemKey);
         }

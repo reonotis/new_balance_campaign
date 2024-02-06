@@ -28,13 +28,13 @@
     <!-- Page Heading -->
     <header class="">
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 md:pt-24 md:pb-12">
-            <div class="w-full flex justify-center mb-2 ">
+            <div class="w-full flex justify-center mb-4 ">
                 <div class="w-32 mb-4">
                     <svg id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                          y="0px" viewBox="0 0 146 80" style="enable-background:new 0 0 146 80;" xml:space="preserve">
                                 <style type="text/css">
                                     .st0 {
-                                        fill: #fff;
+                                        fill: #DF1E3B;
                                     }
                                 </style>
                         <path class="st0" d="M29.5,36.3l-2.4,4.2l24.2,1.4l4.4-7.6L29.5,36.3z M43.5,12.1L41,16.3l34.4,2.3l-2.2-8.3L43.5,12.1z M48,4.2

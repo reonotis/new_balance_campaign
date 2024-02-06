@@ -1,14 +1,20 @@
-@extends('layouts.celebration_sheet')
+@extends('layouts.celebration_seat')
 @section('header')
     <h2 class="text-center font-bold leading-tight">
-        Run your way. Celebration Sheet.<br class="brSp2">応募フォーム
+        Run your way. Celebration Seat.<br class="brSp2">応募フォーム
     </h2>
 @endsection
 @section('content')
     <div class="pt-4 pb-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 ">
+                <div class="form-area">
+                    <dl class="event-explanation">
+                        <dt>Celebration Seat</dt>
+                        <dd>大会参加者・対象商品1万円以上ご購入の方限定で抽選。</dd>
+                        <dd>大会終了後の名古屋発〜東京行きの新幹線NB貸切車両に、限定20名様をご招待。</dd>
+                        <dd>大会後の疲れた体をマッサージやプレミアムな軽食サービスなどでおもてなし、セレブレーションします。</dd>
+                    </dl>
 
                     {{-- Validation Errors --}}
                     @if ($errors->any())
@@ -22,7 +28,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('celebration-sheet.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('celebration-seat.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="itemRow">
                             <label for="f_name" class="itemTitle"><span>お名前</span></label>
@@ -134,16 +140,25 @@
                             <div class="itemContent px-2">
                                 <p class="mail_supplement mb-1">※名古屋ウィメンズマラソン2024に出走するかご回答ください</p>
                                 <div class='flex'>
-                                    @foreach(App\Consts\CelebrationSheet::ANSWER_LIST as $key => $val)
+                                    @foreach(App\Consts\CommonApplyConst::CHOICE_1[App\Consts\CommonApplyConst::APPLY_TYPE_CELEBRATION_SEAT] as $key => $val)
                                         <label class="radio-label">
-                                            <input type="radio" class="" name="answer_1" value="{{ $key }}"
-                                                @if(old('answer_1') == $key)
+                                            <input type="radio" class="" name="choice_1" value="{{ $key }}"
+                                                @if(old('choice_1') == $key)
                                                     checked="checked"
                                                 @endif
                                             >
                                             {{ $val }}
                                         </label>
                                     @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itemRow">
+                            <label for="image" class="itemTitle">レシート画像</label>
+                            <div class="itemContent">
+                                <div class="flex">
+                                    <input type="file" id="image" name="image" accept="image/jpeg, image/png">
+                                    <img src="" id="image_preview">
                                 </div>
                             </div>
                         </div>
