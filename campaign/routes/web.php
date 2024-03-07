@@ -14,7 +14,8 @@ use App\Http\Controllers\{
         TryOnController,
         TryOn2023AutumnController,
         TryOn2023Controller,
-        TryOn2023FreshFormX1080v13Controller
+        TryOn2023FreshFormX1080v13Controller,
+        TryOn2024Controller
     };
 use App\Http\Controllers\Admin\{AdminCommonApplyController,
         AdminController,
@@ -144,6 +145,14 @@ Route::group(['prefix'=>'celebration-seat'],function(){
     Route::post('/store', [CelebrationSeatController::class, 'store'])->name('celebration-seat.store');
     Route::get('/complete', [CelebrationSeatController::class, 'complete'])->name('celebration-seat.complete');
     Route::get('/outsidePeriod', [CelebrationSeatController::class, 'outsidePeriod'])->name('celebration-seat.outsidePeriod');
+});
+
+// try_on 2024 キャンペーン
+Route::group(['prefix'=>'try-on-2024'],function(){
+    Route::get('', [TryOn2024Controller::class, 'index'])->name('try-on-2024.index');
+    Route::post('/store', [TryOn2024Controller::class, 'store'])->name('try-on-2024.store');
+    Route::get('/complete', [TryOn2024Controller::class, 'complete'])->name('try-on-2024.complete');
+    Route::get('/outsidePeriod', [TryOn2024Controller::class, 'outsidePeriod'])->name('try-on-2024.outsidePeriod');
 });
 
 // 管理者

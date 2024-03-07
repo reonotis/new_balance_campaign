@@ -268,6 +268,7 @@ class AdminCommonApplyController extends BaseController
                         $birthday = new Carbon($apply->birthday);
                         $body[] = $birthday->format('Y年m月d日');
                     }
+                    break;
                 case 'age':
                     if (empty($apply->age)) {
                         $body[] = '不明';

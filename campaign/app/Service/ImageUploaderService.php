@@ -30,7 +30,7 @@ class ImageUploaderService
         // 登録可能な拡張子か確認して取得する
         $extension = $this->checkFileExtension($file);
 
-        // ファイル名の作成 => TO_ {日時} . {拡張子}
+        // ファイル名の作成 => {ディレクトリ名（判別する為にファイル名にも記載する）}_{日時}.{拡張子}
         $fileName = sprintf(
             '%s_%s.%s',
             $dirName,

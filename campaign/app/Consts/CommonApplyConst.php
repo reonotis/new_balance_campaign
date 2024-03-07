@@ -10,6 +10,7 @@ class CommonApplyConst
     public const APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN = 5;
     public const APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT = 6;
     public const APPLY_TYPE_CELEBRATION_SEAT = 7;
+    public const APPLY_TYPE_TRY_ON_2024 = 8;
 
     /**
      * 申込タイトル
@@ -21,6 +22,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'スペシャルチャンスキャンペーン',
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'Kichijoji Special Shopping Night',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'Run your way. Celebration Seat.',
+        self::APPLY_TYPE_TRY_ON_2024 => 'Running TRY ON 2024',
     ];
 
     /**
@@ -33,6 +35,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign.index',
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'kichijoji-shopping-night.index',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'celebration-seat.index',
+        self::APPLY_TYPE_TRY_ON_2024 => 'try-on-2024.index',
     ];
 
     /**
@@ -62,6 +65,10 @@ class CommonApplyConst
         self::APPLY_TYPE_CELEBRATION_SEAT => [
             'start_date_time' => '2024-01-28 00:00:00',
             'end_date_time' => '2024-02-16   23:59:59',
+        ],
+        self::APPLY_TYPE_TRY_ON_2024 => [
+            'start_date_time' => '2024-03-08 00:00:00', // 2024-03-11
+            'end_date_time' => '2024-04-21 23:59:59',
         ],
     ];
 
@@ -163,6 +170,22 @@ class CommonApplyConst
             'img_pass',
             'choice_1',
         ],
+        self::APPLY_TYPE_TRY_ON_2024 => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+            'img_pass',
+        ],
     ];
 
     /**
@@ -221,6 +244,15 @@ class CommonApplyConst
             'img_pass' => 'レシート画像',
             'choice_1' => '出走',
         ],
+        self::APPLY_TYPE_TRY_ON_2024 => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => '返却同期',
+            'img_pass' => 'レシート画像',
+        ],
     ];
 
     /**
@@ -232,6 +264,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2023_FRESH_FORM_1080_V13 => 'try-on-2023-fresh-form-1080-v13',
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'celebration-seat',
+        self::APPLY_TYPE_TRY_ON_2024 => 'try-on-2024',
     ];
 
     /**
