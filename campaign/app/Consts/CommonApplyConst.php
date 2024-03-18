@@ -64,11 +64,11 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_CELEBRATION_SEAT => [
             'start_date_time' => '2024-01-28 00:00:00',
-            'end_date_time' => '2024-02-16   23:59:59',
+            'end_date_time' => '2024-02-16 23:59:59',
         ],
         self::APPLY_TYPE_TRY_ON_2024 => [
             'start_date_time' => '2024-03-08 00:00:00', // 2024-03-11
-            'end_date_time' => '2024-04-21 23:59:59',
+            'end_date_time' => '2024-04-28 23:59:59',
         ],
     ];
 
