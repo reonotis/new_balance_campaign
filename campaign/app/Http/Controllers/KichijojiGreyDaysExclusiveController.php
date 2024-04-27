@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Consts\Common;
 use App\Consts\CommonApplyConst;
-use App\Http\Requests\KichijojiShoppingNightRequest;
+use App\Http\Requests\KichijojiGreyDaysExclusiveRequest;
 use App\Service\CommonApplyService;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\View;
@@ -54,10 +54,10 @@ class KichijojiGreyDaysExclusiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param KichijojiShoppingNightRequest $request
+     * @param KichijojiGreyDaysExclusiveRequest $request
      * @return Application|Redirector|RedirectResponse
      */
-    public function store(KichijojiShoppingNightRequest $request)
+    public function store(KichijojiGreyDaysExclusiveRequest $request)
     {
         // バリデーションcheck
         $request->validated();
@@ -85,21 +85,21 @@ class KichijojiGreyDaysExclusiveController extends Controller
 
     /**
      * 申し込み内容をDBに登録
-     * @param KichijojiShoppingNightRequest $request
+     * @param KichijojiGreyDaysExclusiveRequest $request
      * @param string $fileName
      * @return void
      */
-    private function insertApplication(KichijojiShoppingNightRequest $request): void
+    private function insertApplication(KichijojiGreyDaysExclusiveRequest $request): void
     {
         $this->commonApplyService->insertCommonApply($request);
     }
 
     /**
      * 申し込み者に自動返信メールを送信
-     * @param KichijojiShoppingNightRequest $request
+     * @param KichijojiGreyDaysExclusiveRequest $request
      * @return void
      */
-    private function sendThankYouMail(KichijojiShoppingNightRequest $request): void
+    private function sendThankYouMail(KichijojiGreyDaysExclusiveRequest $request): void
     {
         $this->email = $request->email;
         Log::info('sendThankYouMail');
@@ -116,26 +116,28 @@ class KichijojiGreyDaysExclusiveController extends Controller
 
     /**
      * レポートメールを送信
-     * @param KichijojiShoppingNightRequest $request
+     * @param KichijojiGreyDaysExclusiveRequest $request
      * @return void
      */
-    private function sendReportMail(KichijojiShoppingNightRequest $request): void
+    private function sendReportMail(KichijojiGreyDaysExclusiveRequest $request): void
     {
         Log::info('sendReportMail');
         $data = [
             'name' => $request->f_name . ' ' . $request->l_name,
             'read' => $request->f_read . ' ' . $request->l_read,
+            'sex' => Common::SEX_LIST[$request->sex],
             'zip' => $request->zip21 . '-' . $request->zip22,
             'streetAddress' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
             'tel' => $request->tel,
             'email' => $request->email,
+            'comment' => $request->comment,
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.kichijoji_grey_days_exclusive.reportMail', $data, function ($message) {
             $message->to("mynb_members@fluss.co.jp")
                 ->from("info@newbalance-campaign.jp")
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject("Kichijoji Special Shopping Nightに申込がありました");
+                ->subject("Kichijoji Grey Days 2024 Exclusive Eventに申込がありました");
         });
     }
 
