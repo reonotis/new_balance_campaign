@@ -8,6 +8,8 @@ use App\Http\Controllers\{
         GoFunController,
         KokuritsuArukuTokyoController,
         KichijojiShoppingNightController,
+        KichijojiGreyDaysExclusiveController,
+        KichijojiGreyDays5kRunningController,
         MinatoRunnersBaseController,
         S223Controller,
         SpecialChanceCampaignController,
@@ -154,6 +156,24 @@ Route::group(['prefix'=>'try-on-2024'],function(){
     Route::get('/complete', [TryOn2024Controller::class, 'complete'])->name('try-on-2024.complete');
     Route::get('/outsidePeriod', [TryOn2024Controller::class, 'outsidePeriod'])->name('try-on-2024.outsidePeriod');
 });
+
+
+// 吉祥寺 grey-days-exclusive
+Route::group(['prefix'=>'kichijoji-grey-days-exclusive'],function(){
+    Route::get('', [KichijojiGreyDaysExclusiveController::class, 'index'])->name('kichijoji-grey-days-exclusive.index');
+    Route::post('/store', [KichijojiGreyDaysExclusiveController::class, 'store'])->name('kichijoji-grey-days-exclusive.store');
+    Route::get('/complete', [KichijojiGreyDaysExclusiveController::class, 'complete'])->name('kichijoji-grey-days-exclusive.complete');
+    Route::get('/outsidePeriod', [KichijojiGreyDaysExclusiveController::class, 'outsidePeriod'])->name('kichijoji-grey-days-exclusive.outsidePeriod');
+});
+
+// 吉祥寺 5k-running
+Route::group(['prefix'=>'kichijoji-grey-days-5k-running'],function(){
+    Route::get('', [KichijojiGreyDays5kRunningController::class, 'index'])->name('kichijoji-grey-days-5k-running.index');
+    Route::post('/store', [KichijojiGreyDays5kRunningController::class, 'store'])->name('kichijoji-grey-days-5k-running.store');
+    Route::get('/complete', [KichijojiGreyDays5kRunningController::class, 'complete'])->name('kichijoji-grey-days-5k-running.complete');
+    Route::get('/outsidePeriod', [KichijojiGreyDays5kRunningController::class, 'outsidePeriod'])->name('kichijoji-grey-days-5k-running.outsidePeriod');
+});
+
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {

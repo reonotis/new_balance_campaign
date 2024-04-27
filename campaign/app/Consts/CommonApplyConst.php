@@ -11,6 +11,8 @@ class CommonApplyConst
     public const APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT = 6;
     public const APPLY_TYPE_CELEBRATION_SEAT = 7;
     public const APPLY_TYPE_TRY_ON_2024 = 8;
+    public const APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE = 9;
+    public const APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING = 10;
 
     /**
      * 申込タイトル
@@ -23,6 +25,8 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'Kichijoji Special Shopping Night',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'Run your way. Celebration Seat.',
         self::APPLY_TYPE_TRY_ON_2024 => 'Running TRY ON 2024',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'Grey Days Exclusive Event',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 5K Running Event',
     ];
 
     /**
@@ -36,6 +40,8 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => 'kichijoji-shopping-night.index',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'celebration-seat.index',
         self::APPLY_TYPE_TRY_ON_2024 => 'try-on-2024.index',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'kichijoji-grey-days-exclusive.index',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'kichijoji-grey-days-5k-running.index',
     ];
 
     /**
@@ -69,6 +75,14 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2024 => [
             'start_date_time' => '2024-03-08 00:00:00', // 2024-03-11
             'end_date_time' => '2024-04-28 23:59:59',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => [
+            'start_date_time' => '2024-04-27 00:00:00', // 2024-05-02
+            'end_date_time' => '2024-05-08 23:59:59',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
+            'start_date_time' => '2024-05-02 00:00:00', // 2024-05-02
+            'end_date_time' => '2024-05-08 23:59:59',
         ],
     ];
 
@@ -186,6 +200,35 @@ class CommonApplyConst
             'comment',
             'img_pass',
         ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+        ],
     ];
 
     /**
@@ -252,6 +295,20 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'comment' => '返却同期',
             'img_pass' => 'レシート画像',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => [
+            'name' => '名前',
+            'sex' => '性別',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => 'ニューバランス Greyに関する質問',
+        ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
+            'name' => '名前',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
         ],
     ];
 
