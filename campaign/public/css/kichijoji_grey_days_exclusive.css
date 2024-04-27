@@ -34,20 +34,19 @@ body {
 .itemRow {
     position: relative;
     box-sizing: border-box;
-    width: calc(100% - 60px);
-    margin: 0 0 20px 60px;
-    padding: 18px 25px 18px 85px;
+    width: 100%;
+    margin: 0 0 20px;
     background: #fff;
     display: flex;
+    flex-flow: column;
     align-items: center;
 }
 
 .itemTitle {
-    position: absolute;
     font-weight: 400;
     word-wrap: break-word;
     color: #fff;
-    width: 160px;
+    width: 100%;
     height: 40px;
     left: -80px;
     font-size: 1em;
@@ -62,21 +61,13 @@ body {
 
 .itemContent {
     width: 100%;
+    padding: 1rem;
 }
 
 @media screen and (max-width: 700px) {
     .itemRow {
         width: 100%;
         margin: 0 0 30px;
-        padding: 25px 10px 10px;
-    }
-
-    .itemTitle {
-        height: 30px;
-        top: -15px;
-        left: 0;
-        right: 0;
-        margin: auto;
     }
 }
 
