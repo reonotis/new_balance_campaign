@@ -81,13 +81,13 @@ class CommonApplyConst
             'end_date_time' => '2024-05-08 23:59:59',
         ],
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
-            'start_date_time' => '2024-05-02 00:00:00', // 2024-05-02
+            'start_date_time' => '2024-04-27 00:00:00', // 2024-05-02
             'end_date_time' => '2024-05-08 23:59:59',
         ],
     ];
 
     /**
-     * 申込フォームで登録させる項目
+     * 申込フォームのリクエストから登録させる項目
      */
     public const APPLY_TYPE_INSERT_COLUMN = [
         self::APPLY_TYPE_GO_FUN => [
@@ -228,6 +228,9 @@ class CommonApplyConst
             'street21',
             'tel',
             'email',
+            'choice_1',
+            'choice_2',
+            'choice_3',
         ],
     ];
 
@@ -306,9 +309,13 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
             'name' => '名前',
+            'sex' => '性別',
             'address' => '住所',
             'tel' => '電話番号',
             'email' => 'メールアドレス',
+            'choice_1' => 'ランニング頻度',
+            'choice_2' => '試し履き希望シューズ',
+            'choice_3' => 'シューズサイズ',
         ],
     ];
 
@@ -332,5 +339,22 @@ class CommonApplyConst
             0 => 'しない',
             1 => 'する',
         ],
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
+            \App\Consts\KichijojiGrayDays5KRun::RUNNING_FREQUENCY,
     ];
+
+
+    public const CHOICE_2 = [
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
+            \App\Consts\KichijojiGrayDays5KRun::DESIRED_SIZE,
+    ];
+
+
+    public const CHOICE_3 = [
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
+            \App\Consts\KichijojiGrayDays5KRun::SHOES_SIZE,
+    ];
+
+
+
 }

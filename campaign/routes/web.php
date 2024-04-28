@@ -167,7 +167,7 @@ Route::group(['prefix'=>'kichijoji-grey-days-exclusive'],function(){
 });
 
 // 吉祥寺 5k-running
-Route::group(['prefix'=>'kichijoji-grey-days-5k-running'],function(){
+Route::group(['prefix'=>'kichijoji-grey-days-5k-runn'],function(){
     Route::get('', [KichijojiGreyDays5kRunningController::class, 'index'])->name('kichijoji-grey-days-5k-running.index');
     Route::post('/store', [KichijojiGreyDays5kRunningController::class, 'store'])->name('kichijoji-grey-days-5k-running.store');
     Route::get('/complete', [KichijojiGreyDays5kRunningController::class, 'complete'])->name('kichijoji-grey-days-5k-running.complete');

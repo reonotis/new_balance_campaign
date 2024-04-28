@@ -62,6 +62,12 @@
                                                 @case('choice_1')
                                                     {{ \App\Consts\CommonApplyConst::CHOICE_1[$applyType][$apply[$itemKey]] }}
                                                     @break
+                                                @case('choice_2')
+                                                    {{ \App\Consts\CommonApplyConst::CHOICE_2[$applyType][$apply[$itemKey]] }}
+                                                    @break
+                                                @case('choice_3')
+                                                    {{ \App\Consts\CommonApplyConst::CHOICE_3[$applyType][$apply[$itemKey]] }}
+                                                    @break
                                                 @default
                                                     <p>{{ $apply[$itemKey] }}</p>
                                             @endswitch

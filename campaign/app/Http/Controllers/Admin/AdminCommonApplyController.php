@@ -184,6 +184,10 @@ class AdminCommonApplyController extends BaseController
                 ];
             case 'choice_1':
                 return $apply->choice_1;
+            case 'choice_2':
+                return $apply->choice_2;
+            case 'choice_3':
+                return $apply->choice_3;
             default:
                 dd('不正です。' . $itemKey);
         }
@@ -267,8 +271,8 @@ class AdminCommonApplyController extends BaseController
                     } else {
                         $birthday = new Carbon($apply->birthday);
                         $body[] = $birthday->format('Y年m月d日');
-                    }
-                    break;
+                        }
+                        break;
                 case 'age':
                     if (empty($apply->age)) {
                         $body[] = '不明';
@@ -279,6 +283,15 @@ class AdminCommonApplyController extends BaseController
                 case 'img_pass':
                     $directory = CommonApplyConst::IMG_DIR[$this->applyType];
                     $body[] = asset("storage/$directory/" . $apply->img_pass);
+                    break;
+                case 'choice_1':
+                    $body[] = CommonApplyConst::CHOICE_1[$this->applyType][$apply->choice_1];
+                    break;
+                case 'choice_2':
+                    $body[] = CommonApplyConst::CHOICE_2[$this->applyType][$apply->choice_2];
+                    break;
+                case 'choice_3':
+                    $body[] = CommonApplyConst::CHOICE_3[$this->applyType][$apply->choice_3];
                     break;
                 default:
                     $body[] = $apply->$firstKey;

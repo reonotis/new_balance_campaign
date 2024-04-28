@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string comment
  * @property int choice_1
  * @property int choice_2
+ * @property int choice_3
  * @property \Illuminate\Support\Carbon created_at
  */
 class CommonApply extends Model
