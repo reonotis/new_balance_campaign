@@ -29,8 +29,9 @@ class CommonApplyService
     public function checkApplicationDuration(): bool
     {
         $now = date('Y-m-d H:i:s');
+        $startDateTime = new \Carbon\Carbon($this->startDateTime);
         if ($now <= $this->startDateTime) {
-            $this->durationMessage = 'まだ開始されていません';
+            $this->durationMessage = $startDateTime->isoFormat('M月D(ddd) H:mm') . 'より応募が可能となります。';
             return false;
         }
 

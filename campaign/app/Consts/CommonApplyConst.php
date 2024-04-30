@@ -77,11 +77,11 @@ class CommonApplyConst
             'end_date_time' => '2024-04-28 23:59:59',
         ],
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => [
-            'start_date_time' => '2024-05-06 00:00:00', // 2024-05-02
+            'start_date_time' => '2024-05-02 00:00:00', // 2024-05-02
             'end_date_time' => '2024-05-08 23:59:59',
         ],
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
-            'start_date_time' => '2024-05-06 00:00:00', // 2024-05-02
+            'start_date_time' => '2024-05-02 00:00:00', // 2024-05-02
             'end_date_time' => '2024-05-08 23:59:59',
         ],
     ];
