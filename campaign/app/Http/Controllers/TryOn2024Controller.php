@@ -163,6 +163,6 @@ class TryOn2024Controller extends Controller
     public function outsidePeriod(): View
     {
         $checkMessage = $this->commonApplyService->getDurationMessage();
-        return view('try-on-2024.notApplicationPeriod', compact('checkMessage'));
+        return view('try_on2024.notApplicationPeriod', compact('checkMessage'));
     }
 }
