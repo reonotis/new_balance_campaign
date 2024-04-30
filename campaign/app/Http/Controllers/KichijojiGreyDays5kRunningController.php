@@ -28,9 +28,9 @@ class KichijojiGreyDays5kRunningController extends Controller
         $this->applyType = CommonApplyConst::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING;
         $this->commonApplyService = new CommonApplyService($this->applyType);
         // 申込期間外であればエラー画面に遷移
-        if (Route::currentRouteName() <> 'kichijoji-grey-days-5k-runn.outsidePeriod') {
+        if (Route::currentRouteName() <> 'kichijoji-grey-days-5k-running.outsidePeriod') {
             if (!$this->commonApplyService->checkApplicationDuration()) {
-                Redirect::route('kichijoji-grey-days-5k-runn.outsidePeriod')->send();
+                Redirect::route('kichijoji-grey-days-5k-running.outsidePeriod')->send();
             }
         }
         $this->secretariat = config('mail.secretariat');
