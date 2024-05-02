@@ -128,8 +128,9 @@
                             </div>
                         </div>
                         <div class="itemRow">
-                            <label for="email" class="itemTitle">ニューバランス Greyに関する質問</label>
+                            <label for="email" class="itemTitle">質問事項</label>
                             <div class="itemContent px-2">
+                                <p class="mail_supplement mb-1">※ニューバランスGreyに関する事やその他ニューバランス社員に聞きたい事がありましたら、ご自由に記入ください。</p>
                                 <div class="w-full mb-1">
                                     <textarea name="comment" id="comment"
                                               class="form-control h-20">{{ old("comment") }}</textarea>
