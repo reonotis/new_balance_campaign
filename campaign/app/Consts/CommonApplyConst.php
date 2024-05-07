@@ -320,6 +320,14 @@ class CommonApplyConst
     ];
 
     /**
+     * 抽選結果当選メールを送る機能がある案件
+     */
+    public const APPLY_LOTTERY_RESULT_WINNING_EMAIL = [
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE,
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING,
+    ];
+
+    /**
      * 画像を格納するディレクトリ名
      */
     public const IMG_DIR = [
@@ -343,18 +351,13 @@ class CommonApplyConst
             \App\Consts\KichijojiGrayDays5KRun::RUNNING_FREQUENCY,
     ];
 
-
     public const CHOICE_2 = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
             \App\Consts\KichijojiGrayDays5KRun::DESIRED_SIZE,
     ];
 
-
     public const CHOICE_3 = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
             \App\Consts\KichijojiGrayDays5KRun::SHOES_SIZE,
     ];
-
-
-
 }

@@ -14,7 +14,15 @@
     <div class="pt-4 pb-12 px-12">
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
-                <div><a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a></div>
+                <div class="flex justify-between" >
+                    <a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a>
+
+                    @if($lotteryResultEmail)
+                        <div id="email_count">
+                            送信予定件数は {{ $emailCount }} 件です
+                        </div>
+                    @endif
+                </div>
                 @if(empty($applyList))
                     申し込みはありません
                 @else
@@ -32,6 +40,9 @@
                                 @foreach ($displayItemList as $itemKey => $displayItem)
                                     <th>{{ $displayItem }}</th>
                                 @endforeach
+                                @if($lotteryResultEmail)
+                                    <th>当選メール送信</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -73,6 +84,20 @@
                                             @endswitch
                                         </td>
                                     @endforeach
+                                    @if($lotteryResultEmail)
+                                        <td>
+                                            @if($apply['sent_lottery_result_email_flg'] == 1)
+                                                送信済み
+                                            @else
+                                                <input type="checkbox" name="" value="1"
+                                                       class="lottery-result-email" id="lottery_result_email_{{ $apply['id'] }}"
+                                                        @if($apply['send_lottery_result_email_flg'])
+                                                            checked
+                                                        @endif
+                                                >
+                                            @endif
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
@@ -89,3 +114,7 @@
     </div>
 
 </x-admin-layout>
+
+<script>
+    const api_url = @json(route('api_admin_lottery_result_email', ['applyType' => $applyType]));
+</script>

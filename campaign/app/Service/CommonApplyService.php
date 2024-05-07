@@ -100,4 +100,50 @@ class CommonApplyService
             ->where('apply_type', $applyType)->paginate($paginate);
     }
 
+    /**
+     */
+    public function getLotteryResultEmailCount()
+    {
+        return CommonApply::where('sent_lottery_result_email_flg', 0)
+            ->where('send_lottery_result_email_flg', 1)
+            ->where('delete_flag', 0)
+            ->where('apply_type', $this->applyType)
+            ->count();
+    }
+
+    /**
+     * @param int $commonApplyId
+     * @param int $val
+     */
+    public function updateLotteryResultEmailById(int $commonApplyId, int $val)
+    {
+        $commonApply = CommonApply::where('sent_lottery_result_email_flg', '0')
+            ->where('delete_flag', 0)
+            ->where('apply_type', $this->applyType)
+            ->find($commonApplyId);
+
+        if (is_null($commonApply)) {
+            return [
+                'error' => [
+                    'code' => 404,
+                    'msg' => '該当のデータが存在しません',
+                ],
+            ];
+        }
+
+        $commonApply->send_lottery_result_email_flg = $val;
+        $commonApply->save();
+
+        $count = CommonApply::where('sent_lottery_result_email_flg', '0')
+            ->where('send_lottery_result_email_flg', '1')
+            ->where('delete_flag', 0)
+            ->where('apply_type', $this->applyType)
+            ->count();
+        return [
+            'success' => [
+                'count' => $count,
+            ],
+        ];
+    }
+
 }

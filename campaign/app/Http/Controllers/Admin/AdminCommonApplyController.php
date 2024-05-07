@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
 class AdminCommonApplyController extends BaseController
@@ -39,10 +40,16 @@ class AdminCommonApplyController extends BaseController
         $paginationList = $service->getByApplyTypeWithPaginate($applyType, 20);
         $applyList = $this->convertOfMapping($displayItemList, $paginationList);
 
+        // 抽選結果などのメール送信機能があるか
+        $lotteryResultEmail = in_array($applyType, CommonApplyConst::APPLY_LOTTERY_RESULT_WINNING_EMAIL);
+        $emailCount = $service->getLotteryResultEmailCount(); // 送信前の件数
+
         return view('admin.common_apply.index')
             ->with('applyType', $this->applyType)
             ->with('applyTitle', $applyTitle)
             ->with('displayItemList', $displayItemList)
+            ->with('lotteryResultEmail', $lotteryResultEmail)
+            ->with('emailCount', $emailCount)
             ->with('paginationList', $paginationList)
             ->with('applyList', $applyList);
     }
@@ -129,6 +136,10 @@ class AdminCommonApplyController extends BaseController
             }
             $items['id'] = $apply->id;
             $items['created_at'] = $apply->created_at->format('Y/m/d H:i');
+
+            // 抽選メールを送る場合に利用する項目
+            $items['send_lottery_result_email_flg'] = $apply->send_lottery_result_email_flg;
+            $items['sent_lottery_result_email_flg'] = $apply->sent_lottery_result_email_flg;
 
             $array[] = $items;
         }
@@ -316,4 +327,22 @@ class AdminCommonApplyController extends BaseController
         $applyTitle = str_replace(' ', '_', $applyTitle);
         return $applyTitle . '_' . date('YmdHis') . '.csv';
     }
+
+    /**
+     * @param int $applyType
+     * @param Request $request
+     * @return bool
+     */
+    public function setLotteryResultEmail(int $applyType, Request $request)
+    {
+        $commonApplyId = $request->input('id');
+        $commonApplyValue = $request->input('value');
+
+        /** @var CommonApplyService $service */
+        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $paginationList = $service->updateLotteryResultEmailById($commonApplyId, $commonApplyValue);
+        return json_encode($paginationList);
+
+    }
+
 }
