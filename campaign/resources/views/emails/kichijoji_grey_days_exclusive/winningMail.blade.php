@@ -13,12 +13,13 @@
 会場：ニューバランス 吉祥寺<br>
 住所：東京都武蔵野市吉祥寺本町2-8-13 Chloris Kichijoji<br>
 電話番号：0422-27-1938<br>
-アクセス： <a href="https://company.newbalance.jp/store/official-store/kichijoji">【NB公式】ニューバランス - ニューバランス吉祥寺 New Balance【公式通販】</a><br>
+アクセス： <a href="https://maps.app.goo.gl/BkhBhmwbYmwPmgLMA">https://maps.app.goo.gl/BkhBhmwbYmwPmgLMA</a><br>
 入場方法：受付にて当選者様のお名前をお伝えいただき、こちらの「当選メール」をご提示ください。<br>
 ぜひお気に入りのニューバランスの“グレー”のシューズをご着用の上、Grey Days 2024 Exclusive Eventにご参加ください。<br>
 <br>
 【注意事項】<br>
 ・お連れ様同行枠はご用意ありません、あらかじめご了承ください。<br>
+・社内資料用として、イベントの様子を当日撮影させていただく場合がございます。予めご了承ください。<br>
 ・当選ご連絡後、キャンセルが必要な場合は、お手数ですが、下記事務局アドレスまでご連絡ください。<br>
 ・当選権利を第三者に譲渡することはできません。<br>
 <br>
