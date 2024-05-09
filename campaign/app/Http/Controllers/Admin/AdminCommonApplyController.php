@@ -6,7 +6,11 @@ use App\Consts\Common;
 use App\Consts\CommonApplyConst;
 use App\Models\CommonApply;
 use App\Service\CommonApplyService;
+use App\Service\MailSendService;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Contracts\View\View;
@@ -112,6 +116,38 @@ class AdminCommonApplyController extends BaseController
         $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName);
 
         return $response;
+    }
+
+    /**
+     * @param int $applyType
+     * @return RedirectResponse
+     */
+    public function lotteryResultEmail(int $applyType): RedirectResponse
+    {
+        $this->applyType = $applyType;
+        if (!isset(CommonApplyConst::APPLY_TYPE_DISPLAY_COLUMN[$applyType])) {
+            dd('不正な画面遷移です');
+        }
+
+        /** @var CommonApplyService $service */
+        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $sendTarget = $service->getLotteryResultEmailList();
+
+        /** @var MailSendService $mailSendService */
+        $mailSendService = app(MailSendService::class, ['applyType' => $applyType]);
+
+        try {
+            foreach ($sendTarget as $target) {
+                $mailSendService->sendmail($target);
+                $target->sent_lottery_result_email_flg = 1;
+                $target->save();
+            }
+
+            return redirect()->back()->with('successes', ['メールの送信が完了しました'])->withInput();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect()->back()->with('errors', ['メールの送信に失敗しました'])->withInput();
+        }
     }
 
     /**

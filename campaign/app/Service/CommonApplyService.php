@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Consts\CommonApplyConst;
 use App\Models\CommonApply;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 
@@ -109,6 +110,18 @@ class CommonApplyService
             ->where('delete_flag', 0)
             ->where('apply_type', $this->applyType)
             ->count();
+    }
+
+    /**
+     * @return Collection<int, CommonApply>
+     */
+    public function getLotteryResultEmailList(): Collection
+    {
+        return CommonApply::where('sent_lottery_result_email_flg', 0)
+            ->where('send_lottery_result_email_flg', 1)
+            ->where('delete_flag', 0)
+            ->where('apply_type', $this->applyType)
+            ->get();
     }
 
     /**

@@ -18,8 +18,11 @@
                     <a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a>
 
                     @if($lotteryResultEmail)
-                        <div id="email_count">
-                            送信予定件数は {{ $emailCount }} 件です
+                        <div class="flex items-center">
+                            <div id="email_count">
+                                送信予定件数は {{ $emailCount }} 件です
+                            </div>
+                            <a href="{{ route('admin.lottery_result_email', ['applyType' => $applyType]) }}" class="common-button" >メール送信</a>
                         </div>
                     @endif
                 </div>

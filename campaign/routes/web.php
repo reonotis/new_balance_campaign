@@ -187,6 +187,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/common_apply/{applyType}', [AdminCommonApplyController::class, 'index'])->name('admin.common_apply');
     Route::get('/common_apply/redirect_apply_form/{applyType}', [AdminCommonApplyController::class, 'redirectApplyForm'])->name('admin.redirect_apply_form');
     Route::get('/common_apply_csv_dl/{applyType}', [AdminCommonApplyController::class, 'csv_dl'])->name('admin.common_apply_csv_dl');
+    Route::get('/lottery_result_email/{applyType}', [AdminCommonApplyController::class, 'lotteryResultEmail'])->name('admin.lottery_result_email');
 });
 
 require __DIR__.'/auth.php';

@@ -35,6 +35,8 @@
                 </div>
             </header>
 
+            @include('layouts.flash_message')
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}

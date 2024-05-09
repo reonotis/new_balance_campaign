@@ -328,6 +328,22 @@ class CommonApplyConst
     ];
 
     /**
+     * 当選メールのテンプレート
+     */
+    public const WINNING_EMAIL_TEMPLATE = [
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'emails.kichijoji_grey_days_exclusive.winningMail',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'emails.kichijoji_grey_days_5k_runn.winningMail',
+    ];
+
+    /**
+     * 当選メールのタイトル
+     */
+    public const WINNING_EMAIL_TITLE = [
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'ご当選おめでとうございます【New Balance Grey Days 2024 Exclusive Event】',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'ご当選おめでとうございます【New Balance Grey Days 2024 5K Running Event】',
+    ];
+
+    /**
      * 画像を格納するディレクトリ名
      */
     public const IMG_DIR = [
@@ -360,4 +376,5 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
             \App\Consts\KichijojiGrayDays5KRun::SHOES_SIZE,
     ];
+
 }
