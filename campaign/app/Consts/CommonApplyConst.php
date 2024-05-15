@@ -339,7 +339,7 @@ class CommonApplyConst
      * 当選メールのタイトル
      */
     public const WINNING_EMAIL_TITLE = [
-        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'ご当選おめでとうございます【New Balance Grey Days 2024 Exclusive Event】',
+        self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'いよいよ「New Balance Grey Days 2024 Exclusive Event」が明日となりました。',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'ご当選おめでとうございます【New Balance Grey Days 2024 5K Running Event】',
     ];
 
