@@ -39,8 +39,12 @@ class MinatoRunnersBaseController extends Controller
     // protected string $_endDateTime = "2023-12-09 23:59:59";
 
     // 6回目
-    protected string $_startDateTime = "2024-01-09 00:00:00";
-    protected string $_endDateTime = "2024-12-17 23:59:59";
+    // protected string $_startDateTime = "2024-01-09 00:00:00";
+    // protected string $_endDateTime = "2024-12-17 23:59:59";
+
+    // 7回目
+    protected string $_startDateTime = "2024-06-22 00:00:00";
+    protected string $_endDateTime = "2024-07-18 23:59:59";
 
     protected string $_f_name = "";
     protected string $_l_name = "";
@@ -215,7 +219,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to($this->_email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ゼビオ名古屋みなとアクルス店 イベントへのお申込みが完了しました。');
+                ->subject('7/20（土）イベントへのお申込みが完了しました。');
         });
     }
 
