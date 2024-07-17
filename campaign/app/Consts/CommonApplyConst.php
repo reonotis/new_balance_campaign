@@ -13,6 +13,7 @@ class CommonApplyConst
     public const APPLY_TYPE_TRY_ON_2024 = 8;
     public const APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE = 9;
     public const APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING = 10;
+    public const APPLY_TYPE_JUNIOR_FOOTBALL_442 = 11;
 
     /**
      * 申込タイトル
@@ -27,6 +28,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TRY_ON_2024 => 'Running TRY ON 2024',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'Grey Days Exclusive Event',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 5K Running Event',
+        self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => 'Junior Football 442',
     ];
 
     /**
@@ -83,6 +85,10 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => [
             'start_date_time' => '2024-05-02 00:00:00', // 2024-05-02
             'end_date_time' => '2024-05-08 23:59:59',
+        ],
+        self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => [
+            'start_date_time' => '2024-07-06 00:00:00', // 2024-07-19
+            'end_date_time' => '2024-08-25 23:59:59',
         ],
     ];
 
@@ -232,6 +238,21 @@ class CommonApplyConst
             'choice_2',
             'choice_3',
         ],
+        self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+            'img_pass',
+        ],
     ];
 
     /**
@@ -317,6 +338,15 @@ class CommonApplyConst
             'choice_2' => '試し履き希望シューズ',
             'choice_3' => 'シューズサイズ',
         ],
+        self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => '返却同期',
+            'img_pass' => 'レシート画像',
+        ],
     ];
 
     /**
@@ -353,6 +383,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SPECIAL_CHANCE_CAMPAIGN => 'special-chance-campaign',
         self::APPLY_TYPE_CELEBRATION_SEAT => 'celebration-seat',
         self::APPLY_TYPE_TRY_ON_2024 => 'try-on-2024',
+        self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => 'junior-football-2024',
     ];
 
     /**

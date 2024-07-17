@@ -17,7 +17,8 @@ use App\Http\Controllers\{
         TryOn2023AutumnController,
         TryOn2023Controller,
         TryOn2023FreshFormX1080v13Controller,
-        TryOn2024Controller
+        TryOn2024Controller,
+        JuniorFootball442Controller
     };
 use App\Http\Controllers\Admin\{AdminCommonApplyController,
         AdminController,
@@ -157,7 +158,6 @@ Route::group(['prefix'=>'try-on-2024'],function(){
     Route::get('/outsidePeriod', [TryOn2024Controller::class, 'outsidePeriod'])->name('try-on-2024.outsidePeriod');
 });
 
-
 // 吉祥寺 grey-days-exclusive
 Route::group(['prefix'=>'kichijoji-grey-days-exclusive'],function(){
     Route::get('', [KichijojiGreyDaysExclusiveController::class, 'index'])->name('kichijoji-grey-days-exclusive.index');
@@ -172,6 +172,14 @@ Route::group(['prefix'=>'kichijoji-grey-days-5k-runn'],function(){
     Route::post('/store', [KichijojiGreyDays5kRunningController::class, 'store'])->name('kichijoji-grey-days-5k-running.store');
     Route::get('/complete', [KichijojiGreyDays5kRunningController::class, 'complete'])->name('kichijoji-grey-days-5k-running.complete');
     Route::get('/outsidePeriod', [KichijojiGreyDays5kRunningController::class, 'outsidePeriod'])->name('kichijoji-grey-days-5k-running.outsidePeriod');
+});
+
+// try_on 2024 キャンペーン
+Route::group(['prefix'=>'442-junior-football'],function(){
+    Route::get('', [JuniorFootball442Controller::class, 'index'])->name('442-junior-football.index');
+    Route::post('/store', [JuniorFootball442Controller::class, 'store'])->name('442-junior-football.store');
+    Route::get('/complete', [JuniorFootball442Controller::class, 'complete'])->name('442-junior-football.complete');
+    Route::get('/outsidePeriod', [JuniorFootball442Controller::class, 'outsidePeriod'])->name('442-junior-football.outsidePeriod');
 });
 
 

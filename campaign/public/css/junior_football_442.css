@@ -1,0 +1,116 @@
+
+body {
+    background: linear-gradient(#111, #111);
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: #fff;
+}
+
+
+.brSp2 {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .brSp2 {
+        display: block;
+    }
+}
+
+.itemRow {
+    position: relative;
+    width: 100%;
+    margin: 0 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch;
+    border: #464646 1px solid;
+}
+
+.itemTitle {
+    font-weight: 400;
+    word-wrap: break-word;
+    color: #fff;
+    width: 160px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+}
+
+.itemContent {
+    width: 100%;
+    padding: .5rem;
+}
+
+@media screen and (max-width: 700px) {
+    .itemRow {
+        display: block;
+        width: 100%;
+        margin: 0 0 30px;
+        padding: 0;
+    }
+
+    .itemTitle {
+        width: 100%;
+        top: -15px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        padding: .25rem;
+    }
+}
+
+.mail_supplement {
+    line-height: 1.2rem;
+    color: #aaa;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input::placeholder {
+    color: #dadada;
+}
+
+.submit-btn {
+    position: relative;
+    background: #E85471;
+    color: #fff;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.submit-btn::before {
+    position: absolute;
+    content: "";
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    top: 3px;
+    left: 3px;
+    border: solid 2px #E85471;
+    box-sizing: border-box;
+}
+
+.submit-btn:hover {
+    background: #555;
+}

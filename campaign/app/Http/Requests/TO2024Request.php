@@ -74,6 +74,7 @@ class TO2024Request extends FormRequest
             'email.regex' => 'メールアドレスを正しく入力してください。',
             'image.required' => 'レシート画像が添付されていません。',
             'reason_applying.required' => '返品動機をご入力ください。',
+            'comment.required' => '返品動機をご入力ください。',
         ];
     }
 }
