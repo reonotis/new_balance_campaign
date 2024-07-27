@@ -34,13 +34,13 @@ class AdminCommonApplyController extends BaseController
     {
         $this->applyType = $applyType;
         if (!isset(CommonApplyConst::APPLY_TYPE_DISPLAY_COLUMN[$applyType])) {
-            dd('不正な画面遷移です');
+            dd('まだ管理画面が作成されていません');
         }
         $displayItemList = CommonApplyConst::APPLY_TYPE_DISPLAY_COLUMN[$applyType];
         $applyTitle = CommonApplyConst::APPLY_TITLE_LIST[$applyType];
 
         /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
         $paginationList = $service->getByApplyTypeWithPaginate($applyType, 20);
         $applyList = $this->convertOfMapping($displayItemList, $paginationList);
 

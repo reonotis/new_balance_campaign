@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Consts\CommonApplyConst;
 use App\Models\CommonApply;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
@@ -11,16 +12,12 @@ use Illuminate\Support\Facades\Log;
 class CommonApplyService
 {
     protected int $applyType;
-    protected string $startDateTime = '';
-    protected string $endDateTime = '';
     protected string $durationMessage = '';
 
-    function __construct(int $applyType)
+    function __construct(int $apply_type, int $number = null)
     {
-        $this->applyType = $applyType;
-        $this->startDateTime = CommonApplyConst::APPLY_TYPE_DURATION[$applyType]['start_date_time'];
-        $this->endDateTime = CommonApplyConst::APPLY_TYPE_DURATION[$applyType]['end_date_time'];
-        $this->checkApplicationDuration();
+        $this->applyType = $apply_type;
+        $this->number = $number;
     }
 
     /**
@@ -29,14 +26,22 @@ class CommonApplyService
      */
     public function checkApplicationDuration(): bool
     {
-        $now = date('Y-m-d H:i:s');
-        $startDateTime = new \Carbon\Carbon($this->startDateTime);
-        if ($now <= $this->startDateTime) {
-            $this->durationMessage = $startDateTime->isoFormat('M月D(ddd) H:mm') . 'より応募が可能となります。';
+        if (!is_null($this->number)) {
+            $start_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['start_date_time'];
+            $end_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['end_date_time'];
+        } else {
+            $start_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType]['start_date_time'];
+            $end_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType]['end_date_time'];
+        }
+
+        $now = Carbon::now();
+        $start_date_time = new Carbon($start_date_time_str);
+        if ($now <= $start_date_time) {
+            $this->durationMessage = $start_date_time->isoFormat('M月D(ddd) H:mm') . 'より応募が可能となります。';
             return false;
         }
 
-        if ($now >= $this->endDateTime) {
+        if ($now >=  new Carbon($end_date_time_str)) {
             $this->durationMessage = '募集期間は終了しました';
             return false;
         }

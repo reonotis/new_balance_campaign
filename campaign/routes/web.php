@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+        Area302RunningClubController,
         CelebrationSeatController,
         GoMurakamiController,
         GolfTryOn2023Controller,
@@ -174,7 +175,7 @@ Route::group(['prefix'=>'kichijoji-grey-days-5k-runn'],function(){
     Route::get('/outsidePeriod', [KichijojiGreyDays5kRunningController::class, 'outsidePeriod'])->name('kichijoji-grey-days-5k-running.outsidePeriod');
 });
 
-// try_on 2024 キャンペーン
+// Junior Football 442 キャンペーン
 Route::group(['prefix'=>'442-junior-football'],function(){
     Route::get('', [JuniorFootball442Controller::class, 'index'])->name('442-junior-football.index');
     Route::post('/store', [JuniorFootball442Controller::class, 'store'])->name('442-junior-football.store');
@@ -182,6 +183,13 @@ Route::group(['prefix'=>'442-junior-football'],function(){
     Route::get('/outsidePeriod', [JuniorFootball442Controller::class, 'outsidePeriod'])->name('442-junior-football.outsidePeriod');
 });
 
+// Area 302 running club キャンペーン
+Route::group(['prefix' => 'area-302-running-club'], function () {
+    Route::get('', [Area302RunningClubController::class, 'index'])->name('area-302-running-club.index');
+    Route::post('/store', [Area302RunningClubController::class, 'store'])->name('area-302-running-club.store');
+    Route::get('/complete', [Area302RunningClubController::class, 'complete'])->name('area-302-running-club.complete');
+    Route::get('/outsidePeriod', [Area302RunningClubController::class, 'outsidePeriod'])->name('area-302-running-club.outsidePeriod');
+});
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {

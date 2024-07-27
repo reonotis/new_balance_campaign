@@ -20,7 +20,7 @@ use Illuminate\Http\UploadedFile;
  * @property string email
  * @property string img_pass
  * @property int reason_applying
- * @property array how_found
+ * @property int how_found
  * @property UploadedFile image
  */
 class MinatoRunnersBaseRequest extends FormRequest
@@ -55,6 +55,7 @@ class MinatoRunnersBaseRequest extends FormRequest
             'zip22' => 'required|size:4',
             'pref21' => 'required',
             'address21' => 'required',
+            'how_found' => 'required',
         ];
     }
 
@@ -72,6 +73,7 @@ class MinatoRunnersBaseRequest extends FormRequest
             'email.regex' => 'メールアドレスを正しく入力してください。',
             'image.required' => 'レシート画像が添付されていません。',
             'reason_applying.required' => '返品動機をご入力ください。',
+            'choice_1.required' => 'どこでイベントについて知りましたかを選択してください。',
         ];
     }
 }
