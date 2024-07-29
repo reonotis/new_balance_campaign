@@ -5,8 +5,8 @@ namespace App\Consts;
 class MinatoRunnersBaseConst
 {
     public const HOW_FOUND = [
-        1 => 'ゼビオみなとアクルス店インスタ',
-        2 => 'ゼビオみなとアクルス店店頭告知',
+        1 => 'スーパースポーツゼビオ東京御茶ノ水本店インスタ',
+        2 => 'スーパースポーツゼビオ東京御茶ノ水本店店頭告知',
         3 => 'ゼビオ他店舗告知',
         4 => 'SNS',
         5 => 'NBgowomen',
