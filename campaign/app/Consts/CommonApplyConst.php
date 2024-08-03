@@ -49,6 +49,7 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'kichijoji-grey-days-exclusive.index',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'kichijoji-grey-days-5k-running.index',
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB => 'area-302-running-club.index',
+        self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'tenjin-runners-gate.index',
     ];
 
     /**
@@ -99,6 +100,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-07-06 00:00:00',
                 'end_date_time' => '2024-08-16 23:59:59',
+            ],
+        ],
+        self::APPLY_TYPE_TENJIN_RUNNERS_GATE => [
+            1 => [
+                'start_date_time' => '2024-07-29 00:00:00',
+                'end_date_time' => '2024-08-24 23:59:59',
             ],
         ],
     ];
@@ -279,6 +286,21 @@ class CommonApplyConst
             'email',
             'choice_1',
         ],
+        self::APPLY_TYPE_TENJIN_RUNNERS_GATE => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+        ],
     ];
 
     /**
@@ -381,6 +403,14 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
         ],
+        self::APPLY_TYPE_TENJIN_RUNNERS_GATE => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => 'どこでイベント知ったか',
+        ],
     ];
 
     /**
@@ -432,6 +462,8 @@ class CommonApplyConst
             \App\Consts\KichijojiGrayDays5KRun::RUNNING_FREQUENCY,
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB =>
             \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
+        self::APPLY_TYPE_TENJIN_RUNNERS_GATE =>
+            \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
     ];
 
     public const CHOICE_2 = [

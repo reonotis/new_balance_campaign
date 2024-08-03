@@ -14,6 +14,7 @@ use App\Http\Controllers\{
         MinatoRunnersBaseController,
         S223Controller,
         SpecialChanceCampaignController,
+        TenjinRunnersGateController,
         TryOnController,
         TryOn2023AutumnController,
         TryOn2023Controller,
@@ -190,6 +191,15 @@ Route::group(['prefix' => 'area-302-running-club'], function () {
     Route::get('/complete', [Area302RunningClubController::class, 'complete'])->name('area-302-running-club.complete');
     Route::get('/outsidePeriod', [Area302RunningClubController::class, 'outsidePeriod'])->name('area-302-running-club.outsidePeriod');
 });
+
+// TENJIN　RUNNERS GATE
+Route::group(['prefix' => 'tenjin-runners-gate'], function () {
+    Route::get('', [TenjinRunnersGateController::class, 'index'])->name('tenjin-runners-gate.index');
+    Route::post('/store', [TenjinRunnersGateController::class, 'store'])->name('tenjin-runners-gate.store');
+    Route::get('/complete', [TenjinRunnersGateController::class, 'complete'])->name('tenjin-runners-gate.complete');
+    Route::get('/outsidePeriod', [TenjinRunnersGateController::class, 'outsidePeriod'])->name('tenjin-runners-gate.outsidePeriod');
+});
+
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
