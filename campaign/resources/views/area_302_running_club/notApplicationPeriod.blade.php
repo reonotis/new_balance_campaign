@@ -1,7 +1,7 @@
 <x-Area302RunningClub-layout>
     <x-slot name="header">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            MINATO RUNNERS BASE キャンペーン <br class="brSp2">お申込フォーム
+            Area 302 running club キャンペーン <br class="brSp2">お申込フォーム
         </h2>
     </x-slot>
 
