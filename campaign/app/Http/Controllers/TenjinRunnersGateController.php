@@ -17,7 +17,7 @@ use Mail;
 
 class TenjinRunnersGateController extends Controller
 {
-    const APPLICATION_LIMIT = 30;
+    const APPLICATION_LIMIT = 31;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
@@ -168,7 +168,7 @@ class TenjinRunnersGateController extends Controller
      */
     private function checkNumberApplications()
     {
-        $count = CommonApply::where('apply_type', CommonApplyConst::APPLY_TYPE_AREA_302_RUNNING_CLUB)
+        $count = CommonApply::where('apply_type', $this->apply_type)
             ->where('delete_flag', 0)
             ->where('created_at', '>=', date(CommonApplyConst::APPLY_TYPE_DURATION[$this->apply_type][$this->number]['start_date_time']))
             ->count();
