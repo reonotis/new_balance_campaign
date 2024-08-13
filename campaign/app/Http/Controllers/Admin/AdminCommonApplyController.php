@@ -84,7 +84,7 @@ class AdminCommonApplyController extends BaseController
         $applyTitle = CommonApplyConst::APPLY_TITLE_LIST[$applyType];
 
         /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
         $applyList = $service->getByApplyType($applyType);
 
         // CSVヘッダー
@@ -130,7 +130,7 @@ class AdminCommonApplyController extends BaseController
         }
 
         /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
         $sendTarget = $service->getLotteryResultEmailList();
 
         /** @var MailSendService $mailSendService */
@@ -375,7 +375,7 @@ class AdminCommonApplyController extends BaseController
         $commonApplyValue = $request->input('value');
 
         /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['applyType' => $applyType]);
+        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
         $paginationList = $service->updateLotteryResultEmailById($commonApplyId, $commonApplyValue);
         return json_encode($paginationList);
 
