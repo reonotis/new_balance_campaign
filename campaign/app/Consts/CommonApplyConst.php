@@ -16,6 +16,7 @@ class CommonApplyConst
     public const APPLY_TYPE_JUNIOR_FOOTBALL_442 = 11;
     public const APPLY_TYPE_AREA_302_RUNNING_CLUB = 12;
     public const APPLY_TYPE_TENJIN_RUNNERS_GATE = 13;
+    public const APPLY_TYPE_TOKYO_LEGACY_HALF = 14;
 
     /**
      * 申込タイトル
@@ -33,6 +34,7 @@ class CommonApplyConst
         self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => 'Junior Football 442',
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB => 'Area 302 running club',
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'Tenjin runners gate',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo',
     ];
 
     /**
@@ -50,6 +52,7 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'kichijoji-grey-days-5k-running.index',
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB => 'area-302-running-club.index',
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'tenjin-runners-gate.index',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'run-club-tokyo.index',
     ];
 
     /**
@@ -106,6 +109,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-07-29 00:00:00',
                 'end_date_time' => '2024-08-24 23:59:59',
+            ],
+        ],
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => [
+            1 => [
+                'start_date_time' => '2024-08-14 00:00:00',
+                'end_date_time' => '2024-08-30 23:59:59',
             ],
         ],
     ];
@@ -301,6 +310,16 @@ class CommonApplyConst
             'email',
             'choice_1',
         ],
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'email',
+            'choice_1',
+            'choice_2',
+        ],
     ];
 
     /**
@@ -411,6 +430,13 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
         ],
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => [
+            'name' => '名前',
+            'sex' => '性別',
+            'email' => 'メールアドレス',
+            'choice_1' => '目標タイム',
+            'choice_2' => 'シューズサイズ',
+        ],
     ];
 
     /**
@@ -464,11 +490,15 @@ class CommonApplyConst
             \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE =>
             \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF =>
+            \App\Consts\RunClubTokyoConstConst::GOAL_TIME,
     ];
 
     public const CHOICE_2 = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
             \App\Consts\KichijojiGrayDays5KRun::DESIRED_SIZE,
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF =>
+            \App\Consts\RunClubTokyoConstConst::SHOES_SIZE,
     ];
 
     public const CHOICE_3 = [

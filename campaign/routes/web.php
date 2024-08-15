@@ -15,6 +15,7 @@ use App\Http\Controllers\{
         S223Controller,
         SpecialChanceCampaignController,
         TenjinRunnersGateController,
+        RunClubTokyoController,
         TryOnController,
         TryOn2023AutumnController,
         TryOn2023Controller,
@@ -199,6 +200,16 @@ Route::group(['prefix' => 'tenjin-runners-gate'], function () {
     Route::get('/complete', [TenjinRunnersGateController::class, 'complete'])->name('tenjin-runners-gate.complete');
     Route::get('/outsidePeriod', [TenjinRunnersGateController::class, 'outsidePeriod'])->name('tenjin-runners-gate.outsidePeriod');
 });
+
+// 東京レガシーハーフマラソン
+Route::group(['prefix' => 'run-club-tokyo'], function () {
+    Route::get('', [RunClubTokyoController::class, 'index'])->name('run-club-tokyo.index');
+    Route::post('/store', [RunClubTokyoController::class, 'store'])->name('run-club-tokyo.store');
+    Route::get('/complete', [RunClubTokyoController::class, 'complete'])->name('run-club-tokyo.complete');
+    Route::get('/outsidePeriod', [RunClubTokyoController::class, 'outsidePeriod'])->name('run-club-tokyo.outsidePeriod');
+});
+
+
 
 
 // 管理者
