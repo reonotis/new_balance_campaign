@@ -136,7 +136,9 @@ class AdminCommonApplyController extends BaseController
         try {
             if ($applyType == CommonApplyConst::APPLY_TYPE_TOKYO_LEGACY_HALF) {
                 // Run Club Tokyo の場合のみ特定の方に告知メールを一斉送信する
-                $mailSendService->sendAnnounceMail();
+
+                // 案内メール送信したため、一旦コメントアウト
+                // $mailSendService->sendAnnounceMail();
             } else {
                 /** @var CommonApplyService $service */
                 $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
