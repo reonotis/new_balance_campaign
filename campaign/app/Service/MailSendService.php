@@ -2,13 +2,10 @@
 
 namespace App\Service;
 
-use App\Consts\Common;
 use App\Consts\CommonApplyConst;
-use App\Consts\KichijojiGrayDays5KRun;
+use App\Consts\RunClubTokyoConstConst;
 use App\Models\CommonApply;
 use Mail;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 
 class MailSendService
@@ -55,8 +52,7 @@ class MailSendService
         $template = CommonApplyConst::WINNING_EMAIL_TEMPLATE[$this->applyType];
         $mailTitle = CommonApplyConst::WINNING_EMAIL_TITLE[$this->applyType];
 
-        $send_targets = ['nbrun@fluss.co.jp'];
-        // $send_targets = \App\Consts\RunClubTokyoConstConst::TARGETS;
+        $send_targets = RunClubTokyoConstConst::TARGETS;
         foreach ($send_targets as $send_target) {
             Log::info('【'.$mailTitle . '】メールを ' . $send_target . 'へ送信');
             Mail::send($template, [], function ($message) use ($send_target, $mailTitle) {

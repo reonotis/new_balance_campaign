@@ -12,10 +12,10 @@ New Balance Run Club Tokyoご参加の皆さま<br>
 日程：8/31（土）<br>
 時間：16:00-18:30　※入場開始 15:00～<br>
 場所：AGFフィールド（東京都調布市西町376番地3）<br>
-　　　AGFフィールド | 施設ガイド ｜ 味の素スタジアム (ajinomotostadium.com)<br>
+　　　<a href="https://www.ajinomotostadium.com/overview/athleticfield.php">AGFフィールド | 施設ガイド ｜ 味の素スタジアム (ajinomotostadium.com)</a><br>
 アクセス：京王線飛田給駅より徒歩10分<br>
 内容：シューズ選びについて、シューズの正しい履き⽅、ランニングフォーム作り、インターバル⾛など<br>
-　　　<a href="https://www.ajinomotostadium.com/overview/athleticfield.php">当日はニューバランスの試し履きシューズもご用意しています。（数量とサイズに限りがございます）</a><br>
+　　　当日はニューバランスの試し履きシューズもご用意しています。（数量とサイズに限りがございます）<br>
 <br>
 ご参加を希望される方は、下記の申込フォームより事前申込をお願いいたします。<br>
 ※お申込みいただいた方はもれなく全員参加可能です。<br>
