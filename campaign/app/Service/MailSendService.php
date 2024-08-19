@@ -48,4 +48,24 @@ class MailSendService
 
     }
 
+    /**
+     */
+    public function sendAnnounceMail()
+    {
+        $template = CommonApplyConst::WINNING_EMAIL_TEMPLATE[$this->applyType];
+        $mailTitle = CommonApplyConst::WINNING_EMAIL_TITLE[$this->applyType];
+
+        $send_targets = ['nbrun@fluss.co.jp'];
+        // $send_targets = \App\Consts\RunClubTokyoConstConst::TARGETS;
+        foreach ($send_targets as $send_target) {
+            Log::info('【'.$mailTitle . '】メールを ' . $send_target . 'へ送信');
+            Mail::send($template, [], function ($message) use ($send_target, $mailTitle) {
+                $message->to($send_target)
+                    ->from("info@newbalance-campaign.jp")
+                    ->bcc("fujisawareon@yahoo.co.jp")
+                    ->subject($mailTitle);
+            });
+        }
+    }
+
 }

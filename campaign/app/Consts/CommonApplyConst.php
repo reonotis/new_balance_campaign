@@ -445,6 +445,7 @@ class CommonApplyConst
     public const APPLY_LOTTERY_RESULT_WINNING_EMAIL = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE,
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING,
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF,
     ];
 
     /**
@@ -453,6 +454,7 @@ class CommonApplyConst
     public const WINNING_EMAIL_TEMPLATE = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'emails.kichijoji_grey_days_exclusive.winningMail',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'emails.kichijoji_grey_days_5k_runn.winningMail',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'emails.run_club_tokyo.announceMail',
     ];
 
     /**
@@ -461,6 +463,7 @@ class CommonApplyConst
     public const WINNING_EMAIL_TITLE = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'Grey Days 2024 Exclusive Eventのご参加ありがとうございました。',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 2024 5K Running Eventのご参加ありがとうございました。',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo始動のお知らせ',
     ];
 
     /**

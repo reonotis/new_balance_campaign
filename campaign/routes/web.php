@@ -209,7 +209,12 @@ Route::group(['prefix' => 'run-club-tokyo'], function () {
     Route::get('/outsidePeriod', [RunClubTokyoController::class, 'outsidePeriod'])->name('run-club-tokyo.outsidePeriod');
 });
 
+// Step様でのプレゼントキャンペーン
+//　開始：9/6
 
+
+// オッシュマンズでのイベント 10/5（土）開催分
+//　開始：9/1
 
 
 // 管理者

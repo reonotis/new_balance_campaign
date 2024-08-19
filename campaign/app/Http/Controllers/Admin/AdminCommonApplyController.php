@@ -124,23 +124,29 @@ class AdminCommonApplyController extends BaseController
      */
     public function lotteryResultEmail(int $applyType): RedirectResponse
     {
+        /** @var MailSendService $mailSendService */
+        $mailSendService = app(MailSendService::class, ['applyType' => $applyType]);
+
         $this->applyType = $applyType;
         if (!isset(CommonApplyConst::APPLY_TYPE_DISPLAY_COLUMN[$applyType])) {
             dd('不正な画面遷移です');
         }
 
-        /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
-        $sendTarget = $service->getLotteryResultEmailList();
-
-        /** @var MailSendService $mailSendService */
-        $mailSendService = app(MailSendService::class, ['applyType' => $applyType]);
 
         try {
-            foreach ($sendTarget as $target) {
-                $mailSendService->sendmail($target);
-                $target->sent_lottery_result_email_flg = 1;
-                $target->save();
+            if ($applyType == CommonApplyConst::APPLY_TYPE_TOKYO_LEGACY_HALF) {
+                // Run Club Tokyo の場合のみ特定の方に告知メールを一斉送信する
+                $mailSendService->sendAnnounceMail();
+            } else {
+                /** @var CommonApplyService $service */
+                $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
+                $sendTarget = $service->getLotteryResultEmailList();
+
+                foreach ($sendTarget as $target) {
+                    $mailSendService->sendmail($target);
+                    $target->sent_lottery_result_email_flg = 1;
+                    $target->save();
+                }
             }
 
             return redirect()->back()->with('successes', ['メールの送信が完了しました'])->withInput();
