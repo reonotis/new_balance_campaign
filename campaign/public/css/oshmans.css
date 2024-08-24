@@ -1,0 +1,162 @@
+
+body {
+    /*background-image: url("../img/run_club_tokyo/background.jpg");*/
+    /*background-position: center center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
+    background: #bbb;
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.transparent {
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.brSp2 {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .brSp2 {
+        display: block;
+    }
+}
+
+.form-area {
+    padding: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+    .form-area {
+        padding: .5rem;
+    }
+}
+
+.event-explanation {
+    margin: 1rem 0 3rem;
+    padding: 1rem;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.event-explanation-row {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.event-explanation-title {
+    width: 100%;
+    font-weight: bold;
+}
+
+.event-explanation-content {
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.item-row {
+    position: relative;
+    background: #fff;
+    box-shadow: 5px 5px 10px #ccc;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 2rem;
+}
+
+.item-title {
+    padding: 0 2rem;
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    background: #969696;
+    word-wrap: break-word;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 160%;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.item-content {
+    width: 100%;
+    padding: .5rem .25rem;
+}
+
+@media screen and (max-width: 700px) {
+    .item-row {
+        width: 100%;
+        margin: 0 0 20px;
+        padding: 25px 5px 10px;
+    }
+
+    .item-title {
+        padding: 0 .5rem;
+    }
+
+    .itemTitle {
+        height: 30px;
+        top: -15px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+}
+
+.mail_supplement {
+    line-height: 1.2rem;
+    color: #333;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input::placeholder {
+    color: #dadada;
+}
+
+.submit-btn {
+    position: relative;
+    background: #111;
+    color: #fff;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.submit-btn::before {
+    position: absolute;
+    content: "";
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    top: 3px;
+    left: 3px;
+    border: solid 2px #fff;
+    box-sizing: border-box;
+}
+
+.submit-btn:hover {
+    background: #555;
+}

@@ -12,6 +12,7 @@ use App\Http\Controllers\{
         KichijojiGreyDaysExclusiveController,
         KichijojiGreyDays5kRunningController,
         MinatoRunnersBaseController,
+        OshmansController,
         S223Controller,
         SpecialChanceCampaignController,
         TenjinRunnersGateController,
@@ -209,12 +210,19 @@ Route::group(['prefix' => 'run-club-tokyo'], function () {
     Route::get('/outsidePeriod', [RunClubTokyoController::class, 'outsidePeriod'])->name('run-club-tokyo.outsidePeriod');
 });
 
+// オッシュマンズでのイベント 10/5（土）開催分
+Route::group(['prefix' => 'oshmans'], function () {
+    Route::get('', [OshmansController::class, 'index'])->name('oshmans.index');
+    Route::post('/store', [OshmansController::class, 'store'])->name('oshmans.store');
+    Route::get('/complete', [OshmansController::class, 'complete'])->name('oshmans.complete');
+    Route::get('/outsidePeriod', [OshmansController::class, 'outsidePeriod'])->name('oshmans.outsidePeriod');
+});
+
+
 // Step様でのプレゼントキャンペーン
 //　開始：9/6
 
 
-// オッシュマンズでのイベント 10/5（土）開催分
-//　開始：9/1
 
 
 // 管理者

@@ -17,6 +17,7 @@ class CommonApplyConst
     public const APPLY_TYPE_AREA_302_RUNNING_CLUB = 12;
     public const APPLY_TYPE_TENJIN_RUNNERS_GATE = 13;
     public const APPLY_TYPE_TOKYO_LEGACY_HALF = 14;
+    public const APPLY_TYPE_OSHMANS = 15;
 
     /**
      * 申込タイトル
@@ -35,6 +36,7 @@ class CommonApplyConst
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB => 'Area 302 running club',
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'Tenjin runners gate',
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo',
+        self::APPLY_TYPE_OSHMANS => 'oshmansスペシャルランニングイベント',
     ];
 
     /**
@@ -53,6 +55,7 @@ class CommonApplyConst
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB => 'area-302-running-club.index',
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'tenjin-runners-gate.index',
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'run-club-tokyo.index',
+        self::APPLY_TYPE_OSHMANS => 'oshmans.index',
     ];
 
     /**
@@ -115,6 +118,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-08-14 00:00:00',
                 'end_date_time' => '2024-08-30 23:59:59',
+            ],
+        ],
+        self::APPLY_TYPE_OSHMANS => [
+            1 => [
+                'start_date_time' => '2024-08-21 00:00:00',
+                'end_date_time' => '2024-10-04 23:59:59',
             ],
         ],
     ];
@@ -320,6 +329,21 @@ class CommonApplyConst
             'choice_1',
             'choice_2',
         ],
+        self::APPLY_TYPE_OSHMANS => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+        ],
     ];
 
     /**
@@ -437,6 +461,14 @@ class CommonApplyConst
             'choice_1' => '目標タイム',
             'choice_2' => 'シューズサイズ',
         ],
+        self::APPLY_TYPE_OSHMANS => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => 'どこでイベント知ったか',
+        ],
     ];
 
     /**
@@ -495,6 +527,8 @@ class CommonApplyConst
             \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
         self::APPLY_TYPE_TOKYO_LEGACY_HALF =>
             \App\Consts\RunClubTokyoConstConst::GOAL_TIME,
+        self::APPLY_TYPE_OSHMANS =>
+            \App\Consts\OshmansConst::HOW_FOUND,
     ];
 
     public const CHOICE_2 = [
