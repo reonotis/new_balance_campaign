@@ -2,15 +2,12 @@
 
     <x-slot name="support">
         <div class="support-content">
-            <p>女性限定</p>
-            <p>スーパースポーツゼビオ 名古屋みなとアクルス店ランニングクラブ</p>
-            <p>MINATO RUNNERS BASE</p>
-            <p>スペシャルイベント</p>
-            <p>RUNNING研究会（座学＆ランニング）</p>
-            <p>日時：7/20（土）10:30-12:30</p>
-            <p>場所：鶴舞公園内 名古屋公会堂　第1集会室</p>
-            <p>内容：前半（座学によるランニング講習）、後半（鶴舞公園内をランニングします）</p>
-            <p>当日記録用に撮影が入りますので、ご了承ください、（可能な限りお顔が映らないよう配慮致します。）</p>
+            <p>SPECIAL EVENT「AYA’S WORKOUT」</p>
+            <p>日時：10/6（日）13:00-14:30</p>
+            <p>場所：ららぽーと名古屋みなとアクルス 屋外イベントスペース「デカゴン」</p>
+            <p>内容：フィットネストレーナーAYAによる楽しく健康になれるフィットネストレーニングイベントを行います。</p>
+            <p>参加人数：先着50名</p>
+            <p>参加費：無料</p>
         </div>
     </x-slot>
     <x-slot name="header">
@@ -185,17 +182,20 @@
                                 <label for="email">どこでイベントについて知りましたか？</label>
                             </div>
                             <div class="item-content px-2">
-                                <div class="">
-                                    @foreach(App\Consts\MinatoRunnersBaseConst::HOW_FOUND as $key => $val)
-                                        <span>
-                                            <label>
-                                                <input type="checkbox" class="how_found" name="how_found[]" value="{{ $key }}"
-                                                       {{ !empty(old("how_found")) && in_array((string)$key, old("how_found"), true) ? 'checked' : '' }}
-                                                >{{ $val }}</label>
-                                        </span>
+                                <div class="flex" style="flex-wrap: wrap;gap: .5rem;">
+                                    @foreach(App\Consts\MinatoRunnersBaseConst::HOW_FOUND as $value => $label)
+                                        <label class="radio-label" style="padding: 0 .5rem;">
+                                            <input type="radio" class="" name="how_found" value="{{ $value }}"
+                                                   @if(old('desired_size') == $value)
+                                                       checked="checked"
+                                                @endif
+                                            >
+                                            {{ $label }}
+                                        </label>
                                     @endforeach
                                 </div>
                             </div>
+
                         </div>
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>

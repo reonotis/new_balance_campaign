@@ -20,7 +20,7 @@ use Illuminate\Http\UploadedFile;
  * @property string email
  * @property string img_pass
  * @property int reason_applying
- * @property int how_found
+ * @property array how_found
  * @property UploadedFile image
  */
 class MinatoRunnersBaseRequest extends FormRequest
@@ -74,6 +74,17 @@ class MinatoRunnersBaseRequest extends FormRequest
             'image.required' => 'レシート画像が添付されていません。',
             'reason_applying.required' => '返品動機をご入力ください。',
             'choice_1.required' => 'どこでイベントについて知りましたかを選択してください。',
+        ];
+    }
+
+    /**
+     * 項目名を定義する
+     * @return array string[]
+     */
+    public function attributes(): array
+    {
+        return [
+            'how_found' => 'どこで知ったか',
         ];
     }
 }

@@ -18,6 +18,7 @@ class CommonApplyConst
     public const APPLY_TYPE_TENJIN_RUNNERS_GATE = 13;
     public const APPLY_TYPE_TOKYO_LEGACY_HALF = 14;
     public const APPLY_TYPE_OSHMANS = 15;
+    public const APPLY_TYPE_MINATO_RUNNERS_BASE = 16;
 
     /**
      * 申込タイトル
@@ -37,6 +38,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'Tenjin runners gate',
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo',
         self::APPLY_TYPE_OSHMANS => 'oshmansスペシャルランニングイベント',
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'ゼビオ名古屋みなと',
     ];
 
     /**
@@ -56,6 +58,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE => 'tenjin-runners-gate.index',
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'run-club-tokyo.index',
         self::APPLY_TYPE_OSHMANS => 'oshmans.index',
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'minato.index',
     ];
 
     /**
@@ -122,6 +125,16 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_OSHMANS => [
             1 => [
+                'start_date_time' => '2024-08-21 00:00:00',
+                'end_date_time' => '2024-10-04 23:59:59',
+            ],
+        ],
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
+            7 => [
+                'start_date_time' => '2024-06-22 00:00:00',
+                'end_date_time' => '2024-07-18 23:59:5',
+            ],
+            8 => [
                 'start_date_time' => '2024-08-21 00:00:00',
                 'end_date_time' => '2024-10-04 23:59:59',
             ],
@@ -344,6 +357,21 @@ class CommonApplyConst
             'email',
             'choice_1',
         ],
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+        ],
     ];
 
     /**
@@ -469,6 +497,14 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
         ],
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => 'どこでイベント知ったか',
+        ],
     ];
 
     /**
@@ -522,13 +558,15 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING =>
             \App\Consts\KichijojiGrayDays5KRun::RUNNING_FREQUENCY,
         self::APPLY_TYPE_AREA_302_RUNNING_CLUB =>
-            \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
+            \App\Consts\Area302RunningClubConst::HOW_FOUND,
         self::APPLY_TYPE_TENJIN_RUNNERS_GATE =>
             \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
         self::APPLY_TYPE_TOKYO_LEGACY_HALF =>
             \App\Consts\RunClubTokyoConstConst::GOAL_TIME,
         self::APPLY_TYPE_OSHMANS =>
             \App\Consts\OshmansConst::HOW_FOUND,
+        self::APPLY_TYPE_MINATO_RUNNERS_BASE =>
+            \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
     ];
 
     public const CHOICE_2 = [

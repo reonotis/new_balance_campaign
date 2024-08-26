@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MinatoRunnersBase;
-use App\Service\ImageUploaderService;
+use App\Consts\CommonApplyConst;
+use App\Models\CommonApply;
+use App\Service\CommonApplyService;
 use App\Consts\MinatoRunnersBaseConst;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -17,7 +18,7 @@ use Mail;
 
 class MinatoRunnersBaseController extends Controller
 {
-    const APPLICATION_LIMIT = 30;
+    const APPLICATION_LIMIT = 50;
     // 1回目
     // protected string $_startDateTime = "2023-05-20 00:00:00";
     // protected string $_endDateTime = "2023-06-24 23:59:59";
@@ -43,37 +44,24 @@ class MinatoRunnersBaseController extends Controller
     // protected string $_endDateTime = "2024-12-17 23:59:59";
 
     // 7回目
-    protected string $_startDateTime = "2024-06-22 00:00:00";
-    protected string $_endDateTime = "2024-07-18 23:59:59";
+    // protected string $_startDateTime = "2024-06-22 00:00:00";
+    // protected string $_endDateTime = "2024-07-18 23:59:59";
 
-    protected string $_f_name = "";
-    protected string $_l_name = "";
-    protected string $_f_read = "";
-    protected string $_l_read = "";
-    protected int $_age = 0;
-    protected string $_zip21 = "";
-    protected string $_zip22 = "";
-    protected string $_pref21 = "";
-    protected string $_address21 = "";
-    protected string $_street21 = "";
-    protected string $_tel = "";
-    protected string $_email = "";
-    protected string $_how_found = "";
-    private string $_baseFileName = "";
-
-    protected $_secretariat = "";
+    private int $apply_type;
+    private int $number;
 
     function __construct()
     {
-        $this->_secretariat = config('mail.secretariat');
-        if (\Route::currentRouteName() <> 'minato.outsidePeriod') {
-            $this->checkApplicationPeriod();
+        $this->apply_type = CommonApplyConst::APPLY_TYPE_MINATO_RUNNERS_BASE;
+        $this->number = 8;
+        $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
+
+        if ($this->checkErrorViewRedirect()) {
+            Redirect::route('minato.outsidePeriod')->send();
         }
     }
 
     /**
-     * Display a listing of the resource.
-     *
      * @return View
      */
     public function index(): View
@@ -82,8 +70,6 @@ class MinatoRunnersBaseController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
      * @return View
      */
     public function complete(): View
@@ -99,18 +85,13 @@ class MinatoRunnersBaseController extends Controller
      */
     public function store(MinatoRunnersBaseRequest $request)
     {
-        // バリデーションcheck
-        $request->validated();
         try {
-            // クラス変数に格納する
-            $this->storeVariable($request);
-
             // 応募内容を登録
             DB::beginTransaction();
-            $this->insertApplication();
+            $this->insertApplication($request);
 
             // thank youメール
-            $this->sendThankYouMail();
+            $this->sendThankYouMail($request);
 
             // reportメール
             $this->sendReportMail($request);
@@ -127,99 +108,34 @@ class MinatoRunnersBaseController extends Controller
     }
 
     /**
-     * クラス変数に格納する
-     * @param MinatoRunnersBaseRequest $request
-     */
-    public function storeVariable(MinatoRunnersBaseRequest $request)
-    {
-        Log::info('storeVariable');
-        $this->_f_name = $request->f_name;
-        $this->_l_name = $request->l_name;
-        $this->_f_read = $request->f_read;
-        $this->_l_read = $request->l_read;
-        $this->_age = $request->age;
-        $this->_zip21 = $request->zip21;
-        $this->_zip22 = $request->zip22;
-        $this->_pref21 = $request->pref21;
-        $this->_address21 = $request->address21;
-        if (!empty($request->street21)) $this->_street21 = $request->street21;
-        $this->_tel = $request->tel;
-        $this->_email = $request->email;
-        if(!empty($request->how_found)){
-            $this->_how_found =  implode(',', $request->how_found);
-        }
-    }
-
-    /**
-     * 画像のバリデーションを確認してアップロードする
-     *
-     * @param  $file
-     * @return void
-     * @throws Exception
-     */
-    private function imgCheckAndUpload($file): void
-    {
-        Log::info('imgCheckAndUpload');
-
-        $IMGUploader = New ImageUploaderService();
-        // 登録可能な拡張子か確認して取得する
-        $extension = $IMGUploader->checkFileExtension($file);
-
-        // ファイル名の作成 => TO_ {日時} . {拡張子}
-        $this->_baseFileName = sprintf(
-            '%s_%s.%s',
-            'TO2023',
-            time(),
-            $extension
-        );
-
-        // 指定されたディレクトリが存在するか確認
-        $dirName = 'TO2023';
-        $IMGUploader->makeDirectory($dirName);
-        $IMGUploader->makeDirectory($dirName . '/resize/');
-        // 画像を保存する
-        $IMGUploader->imgStore($file,'public/' . $dirName, $this->_baseFileName);
-
-    }
-
-    /**
      * 申し込み内容をDBに登録
      *
      */
-    private function insertApplication(): void
+    private function insertApplication(MinatoRunnersBaseRequest $request): void
     {
         Log::info('insertApplication');
-        $minatoRunnersBase = new MinatoRunnersBase;
-        $minatoRunnersBase->f_name = $this->_f_name;
-        $minatoRunnersBase->l_name = $this->_l_name;
-        $minatoRunnersBase->f_read = $this->_f_read;
-        $minatoRunnersBase->l_read = $this->_l_read;
-        $minatoRunnersBase->age = $this->_age;
-        $minatoRunnersBase->zip21 = $this->_zip21;
-        $minatoRunnersBase->zip22 = $this->_zip22;
-        $minatoRunnersBase->pref21 = $this->_pref21;
-        $minatoRunnersBase->address21 = $this->_address21;
-        $minatoRunnersBase->street21 = $this->_street21;
-        $minatoRunnersBase->tel = $this->_tel;
-        $minatoRunnersBase->email = $this->_email;
-        $minatoRunnersBase->how_found = $this->_how_found;
-        $minatoRunnersBase->save();
+
+        $originalColumn = [
+            'choice_1' => $request->how_found,
+        ];
+        $this->apply_service->insertCommonApply($request, $originalColumn);
     }
 
     /**
      * 申し込み者に自動返信メールを送信
      */
-    private function sendThankYouMail()
+    private function sendThankYouMail(MinatoRunnersBaseRequest $request)
     {
         Log::info('sendThankYouMail');
+        $this->email = $request->email;
         $data = [
-            "customerName" => $this->_f_name . $this->_l_name
+            "customerName" => $request->f_name . $request->l_name
         ];
         Mail::send('emails.minato_runners_base.thankYouMail', $data, function ($message) {
-            $message->to($this->_email)
+            $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('7/20（土）イベントへのお申込みが完了しました。');
+                ->subject('ゼビオ名古屋みなとアクルス店 10/6（日）イベント「AYA’S WORKOUT」へのお申込みが完了しました。');
         });
     }
 
@@ -230,77 +146,78 @@ class MinatoRunnersBaseController extends Controller
     {
         Log::info('sendReportMail');
 
-        $howFound = [];
-        if(!empty($request->how_found)){
-            foreach ($request->how_found as $val)
-            $howFound[] = MinatoRunnersBaseConst::HOW_FOUND[$val];
-        }
-
         $data = [
-            "name" => $this->_f_name . " " . $this->_l_name,
-            "read" => $this->_f_read . " " . $this->_l_read,
-            "zip" => $this->_zip21 . "-" . $this->_zip22,
-            "age" => $this->_age,
-            "streetAddress" => $this->_pref21 . " " . $this->_address21 . " " . $this->_street21,
-            "tel" => $this->_tel,
-            "email" => $this->_email,
-            "howFound" => $howFound,
+            "name" => $request->f_name . " " . $request->l_name,
+            "read" => $request->f_read . " " . $request->l_read,
+            "zip" => $request->zip21 . "-" . $request->zip22,
+            "age" => $request->age,
+            "streetAddress" => $request->pref21 . " " . $request->address21 . " " . $request->street21,
+            "tel" => $request->tel,
+            "email" => $request->email,
+            "how_found" => $request->how_found,
             "url" => url('') . '/admin'
         ];
         Mail::send('emails.minato_runners_base.reportMail', $data, function ($message) {
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「MINATO RUNNERS BASE イベント」に申し込みがありました');
+                ->subject('ゼビオ名古屋みなとアクルス店 10/6（日）イベント「AYA’S WORKOUT」に申し込みがありました');
         });
     }
 
     /**
-     */
-    public function checkApplicationPeriod()
-    {
-        $now = date('Y-m-d H:i:s');
-
-        if ($now <= $this->_startDateTime || $now >= $this->_endDateTime) {
-            Redirect::route('minato.outsidePeriod')->send();
-        }
-
-        if (!$this->checkNumberApplications()) {
-            Redirect::route('minato.outsidePeriod')->send();
-        }
-    }
-
-    /**
+     * エラー画面を表示する
      */
     public function outsidePeriod()
     {
-        $now = date('Y-m-d H:i:s');
-        if ($now <= $this->_startDateTime) {
-            $checkMessage = 'まだ開始されていません<br>' . date('n月d日', strtotime($this->_startDateTime)) . 'から申込が開始されます';
-            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
-        }
-        if ($now >= $this->_endDateTime) {
-            $checkMessage = '募集期間は終了しました';
-            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
-        }
-
+        $checkMessage = '';
         if (!$this->checkNumberApplications()) {
             $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
-            return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
         }
 
-        Redirect::route('minato.index')->send();
+        if (!$this->apply_service->checkApplicationDuration()) {
+            $checkMessage = $this->apply_service->getDurationMessage();
+        }
+
+        return view('oshmans.notApplicationPeriod', compact('checkMessage'));
     }
 
+    /**
+     * 対象期間の応募数が最大数に達していない事をチェックする
+     * @return bool
+     */
     private function checkNumberApplications()
     {
-        $count = MinatoRunnersBase::where('delete_flag', 0)
-            ->where('created_at', '>=', $this->_startDateTime)
+        $count = CommonApply::where('apply_type', $this->apply_type)
+            ->where('delete_flag', 0)
+            ->where('created_at', '>=', date(CommonApplyConst::APPLY_TYPE_DURATION[$this->apply_type][$this->number]['start_date_time']))
             ->count();
         if ($count >= self::APPLICATION_LIMIT) {
             return false;
         }
         return true;
+    }
+
+    /**
+     * エラー画面にリダイレクトするか判断する
+     * @return
+     */
+    private function checkErrorViewRedirect()
+    {
+        // 既にエラー画面に以降としている場合は再リダイレクトさせない
+        if (\Route::currentRouteName() ==  'minato.outsidePeriod') {
+            return false;
+        }
+
+        // 申込期間外の場合はリダイレクトする
+        if (!$this->apply_service->checkApplicationDuration()) {
+            return true;
+        }
+
+        // 最大申込数に達している場合はエラー画面に遷移
+        if (!$this->checkNumberApplications()) {
+            return true;
+        }
     }
 
 }
