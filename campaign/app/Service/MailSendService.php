@@ -43,6 +43,7 @@ class MailSendService
                 ->subject($mailTitle);
         });
 
+        Log::info('【'.$mailTitle . '】メールを ' . $target->email . 'へ送信');
     }
 
     /**
