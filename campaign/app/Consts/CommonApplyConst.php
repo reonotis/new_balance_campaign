@@ -531,7 +531,7 @@ class CommonApplyConst
     public const WINNING_EMAIL_TITLE = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'Grey Days 2024 Exclusive Eventのご参加ありがとうございました。',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 2024 5K Running Eventのご参加ありがとうございました。',
-        self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo始動のお知らせ',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => '8/31（土）練習会実施のご連絡',
     ];
 
     /**
