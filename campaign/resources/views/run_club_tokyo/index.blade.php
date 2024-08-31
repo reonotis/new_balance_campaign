@@ -7,11 +7,11 @@
                     <div class="event-explanation">
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">New Balance Run Club Tokyo</div>
-                            <div class="event-explanation-title">8/31（土）練習会</div>
+                            <div class="event-explanation-title">9/14（土）練習会</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">8/31（土）16:00-18:30　※入場開始 15:00～</div>
+                            <div class="event-explanation-content">9/14（土）10:00-12:30　※入場開始 9:30～</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
@@ -29,7 +29,7 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                シューズ選びについて、シューズの正しい履き⽅、ランニングフォーム作り、インターバル⾛など<br>
+                                シューズ選びについて、シューズの正しい履き⽅、ランニングフォーム作り、5,000mタイムトライアルなど<br>
                                 当日はニューバランスの試し履きシューズもご用意しています。（数量とサイズに限りがございます）<br>
                                 ※お申込みいただいた方はもれなく全員参加可能です。
                             </div>

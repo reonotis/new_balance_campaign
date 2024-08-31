@@ -122,6 +122,10 @@ class CommonApplyConst
                 'start_date_time' => '2024-08-14 00:00:00',
                 'end_date_time' => '2024-08-29 23:59:59',
             ],
+            2 => [
+                'start_date_time' => '2024-09-01 00:00:00',
+                'end_date_time' => '2024-09-12 23:59:59',
+            ],
         ],
         self::APPLY_TYPE_OSHMANS => [
             1 => [

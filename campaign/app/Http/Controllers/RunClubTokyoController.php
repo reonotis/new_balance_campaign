@@ -28,7 +28,7 @@ class RunClubTokyoController extends Controller
      */
     function __construct()
     {
-        $this->number = 1;
+        $this->number = 2;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_TOKYO_LEGACY_HALF;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -113,7 +113,7 @@ class RunClubTokyoController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('8/31（土）イベントへのお申込みが完了しました。');
+                ->subject('9/14（土）イベントへのお申込みが完了しました。');
         });
     }
 
@@ -137,7 +137,7 @@ class RunClubTokyoController extends Controller
             $message->to("legacyhalf.tokyo@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「New Balance Run Club Tokyo 練習会」8/31（土）のイベントに申し込みがありました');
+                ->subject('「New Balance Run Club Tokyo 練習会」9/14（土）のイベントに申し込みがありました');
         });
     }
 
