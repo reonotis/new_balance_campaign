@@ -53,8 +53,8 @@ class MailSendService
         $template = CommonApplyConst::WINNING_EMAIL_TEMPLATE[$this->applyType];
         $mailTitle = CommonApplyConst::WINNING_EMAIL_TITLE[$this->applyType];
 
-//        $send_targets = RunClubTokyoConstConst::TARGETS;
-        $send_targets = ['legacyhalf.tokyo@fluss.co.jp'];
+        $send_targets = RunClubTokyoConstConst::TARGETS;
+        // $send_targets = ['legacyhalf.tokyo@fluss.co.jp'];
         foreach ($send_targets as $send_target) {
             Log::info('【'.$mailTitle . '】メールを ' . $send_target . 'へ送信');
             Mail::send($template, [], function ($message) use ($send_target, $mailTitle) {
