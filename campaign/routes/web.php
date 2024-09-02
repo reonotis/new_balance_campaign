@@ -12,11 +12,12 @@ use App\Http\Controllers\{
         KichijojiGreyDaysExclusiveController,
         KichijojiGreyDays5kRunningController,
         MinatoRunnersBaseController,
+        RunClubTokyoController,
         OshmansController,
         S223Controller,
         SpecialChanceCampaignController,
         TenjinRunnersGateController,
-        RunClubTokyoController,
+        TokyoRokutaiFesController,
         TryOnController,
         TryOn2023AutumnController,
         TryOn2023Controller,
@@ -216,6 +217,14 @@ Route::group(['prefix' => 'oshmans'], function () {
     Route::post('/store', [OshmansController::class, 'store'])->name('oshmans.store');
     Route::get('/complete', [OshmansController::class, 'complete'])->name('oshmans.complete');
     Route::get('/outsidePeriod', [OshmansController::class, 'outsidePeriod'])->name('oshmans.outsidePeriod');
+});
+
+// TOKYO ROKUTAI FES 2024
+Route::group(['prefix' => 'tokyo-rokutai-fes-2024'], function () {
+    Route::get('', [TokyoRokutaiFesController::class, 'index'])->name('tokyo-rokutai-fes-2024.index');
+    Route::post('/store', [TokyoRokutaiFesController::class, 'store'])->name('tokyo-rokutai-fes-2024.store');
+    Route::get('/complete', [TokyoRokutaiFesController::class, 'complete'])->name('tokyo-rokutai-fes-2024.complete');
+    Route::get('/outsidePeriod', [TokyoRokutaiFesController::class, 'outsidePeriod'])->name('tokyo-rokutai-fes-2024.outsidePeriod');
 });
 
 

@@ -19,6 +19,7 @@ class CommonApplyConst
     public const APPLY_TYPE_TOKYO_LEGACY_HALF = 14;
     public const APPLY_TYPE_OSHMANS = 15;
     public const APPLY_TYPE_MINATO_RUNNERS_BASE = 16;
+    public const APPLY_TYPE_TOKYO_ROKUTAI_FES = 17;
 
     /**
      * 申込タイトル
@@ -39,6 +40,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'New Balance Run Club Tokyo',
         self::APPLY_TYPE_OSHMANS => 'oshmansスペシャルランニングイベント',
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'ゼビオ名古屋みなと',
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES => '東京六体フェス2024',
     ];
 
     /**
@@ -141,6 +143,12 @@ class CommonApplyConst
             8 => [
                 'start_date_time' => '2024-08-21 00:00:00',
                 'end_date_time' => '2024-10-04 23:59:59',
+            ],
+        ],
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES => [
+            1 => [
+                'start_date_time' => '2024-09-01 00:00:00', // 9/4（水）
+                'end_date_time' => '2024-09-11 23:59:5', // 9/11（水）
             ],
         ],
     ];
@@ -376,6 +384,15 @@ class CommonApplyConst
             'email',
             'choice_1',
         ],
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'email',
+            'choice_1',
+        ],
     ];
 
     /**
@@ -509,6 +526,13 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
         ],
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES => [
+            'name' => '名前',
+            'age' => '年齢',
+            'sex' => '性別',
+            'email' => 'メールアドレス',
+            'choice_1' => '希望種目',
+        ],
     ];
 
     /**
@@ -571,6 +595,8 @@ class CommonApplyConst
             \App\Consts\OshmansConst::HOW_FOUND,
         self::APPLY_TYPE_MINATO_RUNNERS_BASE =>
             \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES =>
+            \App\Consts\TokyoRokutaiFesConst::PREFERRED_EVENT,
     ];
 
     public const CHOICE_2 = [
