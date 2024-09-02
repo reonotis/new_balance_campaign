@@ -61,6 +61,7 @@ class CommonApplyConst
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => 'run-club-tokyo.index',
         self::APPLY_TYPE_OSHMANS => 'oshmans.index',
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'minato.index',
+        self::APPLY_TYPE_TOKYO_ROKUTAI_FES => 'tokyo-rokutai-fes-2024.index',
     ];
 
     /**
@@ -528,7 +529,6 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => [
             'name' => '名前',
-            'age' => '年齢',
             'sex' => '性別',
             'email' => 'メールアドレス',
             'choice_1' => '希望種目',
