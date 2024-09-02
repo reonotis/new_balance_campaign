@@ -145,7 +145,7 @@ class TokyoRokutaiFesController extends Controller
             $message->to("legacyhalf.tokyo@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「スペシャルランニングイベント feat. 志村美希」のイベントに申し込みがありました');
+                ->subject('「TOKYO ROKUTAI FES 2024 New Balance Run Club Tokyo」のイベントに申し込みがありました');
         });
     }
 
