@@ -134,7 +134,7 @@ class AdminCommonApplyController extends BaseController
 
 
         try {
-             if ($applyType == CommonApplyConst::APPLY_TYPE_TOKYO_LEGACY_HALF) {
+             if ($applyType == CommonApplyConst::APPLY_TYPE_TOKYO_ROKUTAI_FES) {
                  // Run Club Tokyo の場合のみ特定の方に告知メールを一斉送信する
                  $mailSendService->sendAnnounceMail();
              } else {
