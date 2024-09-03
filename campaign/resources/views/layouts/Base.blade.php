@@ -13,13 +13,17 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}?<?= date('YmdHis') ?>">
     <link rel="stylesheet" href="{{ asset('css/flash.css') }}?<?= date('YmdHis') ?>">
-    <link rel="stylesheet" href="{{ asset('css/run_club_tokyo.css') }}?<?= date('YmdHis') ?>">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}?<?= date('YmdHis') ?>">
     <link rel="shortcut icon" href="{{ asset('img/logo/favicon.ico') }}">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script> <!-- 住所入力 -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @if (isset($script))
+        {{ $script }}
+    @endif
 
 </head>
 <body>
@@ -33,11 +37,6 @@
                         <svg id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                              x="0px"
                              y="0px" viewBox="0 0 146 80" style="enable-background:new 0 0 146 80;" xml:space="preserve">
-                                        <style type="text/css">
-                                            .st0 {
-                                                fill: #222;
-                                            }
-                                        </style>
                             <path class="st0" d="M29.5,36.3l-2.4,4.2l24.2,1.4l4.4-7.6L29.5,36.3z M43.5,12.1L41,16.3l34.4,2.3l-2.2-8.3L43.5,12.1z M48,4.2
                                         l24,1.5L70.5,0L50.4,0L48,4.2z M22.6,48.4l-2.4,4.2l25,0l3.5-6L22.6,48.4z M98.3,30.3c1.8,0,4.3,1.8,2.9,5.4
                                         c-1.5,3.8-6.3,5.1-8.9,5.1h-5.8l6.1-10.5L98.3,30.3z M104.1,10.3l4.9,0c2.1,0,3.7,2.4,2.5,5.3c-1.3,3.1-4.8,4.6-8.1,4.7l-5,0
@@ -63,9 +62,11 @@
                                     </svg>
                     </div>
                 </div>
-                <h2 class="text-center text-3xl font-bold leading-tight">
-                    New Balance Run Club Tokyo <br class="brSp2">お申込フォーム
-                </h2>
+                @if($page_title)
+            <div class="container">
+                {{ $page_title }}
+            </div>
+                @endif
             </div>
         </header>
 

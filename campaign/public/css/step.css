@@ -1,0 +1,38 @@
+
+body {
+    background: #111;
+    font-family: serif;
+}
+
+h2 {
+    color: white;
+}
+
+.st0 {
+    fill: #fff;
+}
+
+.event-explanation {
+    background: #222;
+    color: #fff;
+}
+
+.item-row {
+    font-family: "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background: #1e1e1e;
+    color: #fff;
+    box-shadow: 3px 3px 10px #444;
+}
+
+.item-title {
+    background: #dbc071;
+    color: #111;
+    font-weight: bold;
+}
+
+.item-content {
+}
+
+.mail_supplement {
+    color: #aaa;
+}

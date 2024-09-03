@@ -20,6 +20,7 @@ class CommonApplyConst
     public const APPLY_TYPE_OSHMANS = 15;
     public const APPLY_TYPE_MINATO_RUNNERS_BASE = 16;
     public const APPLY_TYPE_TOKYO_ROKUTAI_FES = 17;
+    public const APPLY_TYPE_STEP = 18;
 
     /**
      * 申込タイトル
@@ -41,6 +42,7 @@ class CommonApplyConst
         self::APPLY_TYPE_OSHMANS => 'oshmansスペシャルランニングイベント',
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'ゼビオ名古屋みなと',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => '東京六体フェス2024',
+        self::APPLY_TYPE_STEP => 'New Balance Running Campaign',
     ];
 
     /**
@@ -62,6 +64,7 @@ class CommonApplyConst
         self::APPLY_TYPE_OSHMANS => 'oshmans.index',
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'minato.index',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => 'tokyo-rokutai-fes-2024.index',
+        self::APPLY_TYPE_STEP => 'step.index',
     ];
 
     /**
@@ -150,6 +153,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-09-01 00:00:00', // 9/4（水）
                 'end_date_time' => '2024-09-11 23:59:5', // 9/11（水）
+            ],
+        ],
+        self::APPLY_TYPE_STEP => [
+            1 => [
+                'start_date_time' => '2024-09-04 00:00:00', // 2024/9/6
+                'end_date_time' => '2024-10-13 23:59:59', // 2024/10/13
             ],
         ],
     ];
@@ -394,6 +403,22 @@ class CommonApplyConst
             'email',
             'choice_1',
         ],
+        self::APPLY_TYPE_STEP => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+            'img_pass',
+        ],
     ];
 
     /**
@@ -533,6 +558,14 @@ class CommonApplyConst
             'email' => 'メールアドレス',
             'choice_1' => '希望種目',
         ],
+        self::APPLY_TYPE_STEP => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'img_pass' => 'レシート画像',
+        ],
     ];
 
     /**
@@ -576,6 +609,7 @@ class CommonApplyConst
         self::APPLY_TYPE_CELEBRATION_SEAT => 'celebration-seat',
         self::APPLY_TYPE_TRY_ON_2024 => 'try-on-2024',
         self::APPLY_TYPE_JUNIOR_FOOTBALL_442 => 'junior-football-2024',
+        self::APPLY_TYPE_STEP => 'step',
     ];
 
     /**

@@ -1,9 +1,11 @@
 <x-Base-layout>
-
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            New Balance Run Club Tokyo <br class="brSp2">お申込フォーム
+            New Balance Running Campaign <br class="brSp2">お申込フォーム
         </h2>
+    </x-slot>
+    <x-slot name="script">
+        <link rel="stylesheet" href="{{ asset('css/step.css') }}?<?= date('YmdHis') ?>">
     </x-slot>
 
     <div class="py-12">
@@ -23,4 +25,4 @@
         </div>
     </div>
 
-</x-Base-layout>
+</x-Oshmans-layout>

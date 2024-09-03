@@ -15,6 +15,7 @@ use App\Http\Controllers\{
         RunClubTokyoController,
         OshmansController,
         S223Controller,
+        StepController,
         SpecialChanceCampaignController,
         TenjinRunnersGateController,
         TokyoRokutaiFesController,
@@ -230,6 +231,12 @@ Route::group(['prefix' => 'tokyo-rokutai-fes-2024'], function () {
 
 // Step様でのプレゼントキャンペーン
 //　開始：9/6
+Route::group(['prefix' => 'step'], function () {
+    Route::get('', [StepController::class, 'index'])->name('step.index');
+    Route::post('/store', [StepController::class, 'store'])->name('step.store');
+    Route::get('/complete', [StepController::class, 'complete'])->name('step.complete');
+    Route::get('/outsidePeriod', [StepController::class, 'outsidePeriod'])->name('step.outsidePeriod');
+});
 
 
 

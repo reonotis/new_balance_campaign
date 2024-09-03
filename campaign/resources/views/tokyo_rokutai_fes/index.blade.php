@@ -1,4 +1,11 @@
 <x-Base-layout>
+
+    <x-slot name="page_title">
+        <h2 class="text-center text-3xl font-bold leading-tight">
+            New Balance Run Club Tokyo <br class="brSp2">お申込フォーム
+        </h2>
+    </x-slot>
+
     <div class="pt-4 pb-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
