@@ -23,7 +23,7 @@
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">対象</div>
-                            <div class="event-explanation-content">対象品番を10,000円（税込）以上ご購入の方<br>
+                            <div class="event-explanation-content">対象品番を10,000円（税込）以上ご購入の方<br><br>
                                 下記の応募フォームに入力＆レシートもしくは金額のわかる納品書を添付してご応募ください。
                             </div>
                         </div>
