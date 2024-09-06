@@ -16,6 +16,7 @@ use App\Http\Controllers\{
         OshmansController,
         S223Controller,
         StepController,
+        ShinsaibashiShoppingNightController,
         SpecialChanceCampaignController,
         TenjinRunnersGateController,
         TokyoRokutaiFesController,
@@ -228,9 +229,7 @@ Route::group(['prefix' => 'tokyo-rokutai-fes-2024'], function () {
     Route::get('/outsidePeriod', [TokyoRokutaiFesController::class, 'outsidePeriod'])->name('tokyo-rokutai-fes-2024.outsidePeriod');
 });
 
-
 // Step様でのプレゼントキャンペーン
-//　開始：9/6
 Route::group(['prefix' => 'step'], function () {
     Route::get('', [StepController::class, 'index'])->name('step.index');
     Route::post('/store', [StepController::class, 'store'])->name('step.store');
@@ -238,6 +237,13 @@ Route::group(['prefix' => 'step'], function () {
     Route::get('/outsidePeriod', [StepController::class, 'outsidePeriod'])->name('step.outsidePeriod');
 });
 
+// 心斎橋プレオープンショッピングナイト
+Route::group(['prefix' => 'shinsaibashi-shopping-night'], function () {
+    Route::get('', [ShinsaibashiShoppingNightController::class, 'index'])->name('shinsaibashi-shopping-night.index');
+    Route::post('/store', [ShinsaibashiShoppingNightController::class, 'store'])->name('shinsaibashi-shopping-night.store');
+    Route::get('/complete', [ShinsaibashiShoppingNightController::class, 'complete'])->name('shinsaibashi-shopping-night.complete');
+    Route::get('/outsidePeriod', [ShinsaibashiShoppingNightController::class, 'outsidePeriod'])->name('shinsaibashi-shopping-night.outsidePeriod');
+});
 
 
 

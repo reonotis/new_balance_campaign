@@ -21,6 +21,7 @@ class CommonApplyConst
     public const APPLY_TYPE_MINATO_RUNNERS_BASE = 16;
     public const APPLY_TYPE_TOKYO_ROKUTAI_FES = 17;
     public const APPLY_TYPE_STEP = 18;
+    public const APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT = 19;
 
     /**
      * 申込タイトル
@@ -43,6 +44,7 @@ class CommonApplyConst
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'ゼビオ名古屋みなと',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => '東京六体フェス2024',
         self::APPLY_TYPE_STEP => 'New Balance Running Campaign',
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'Shinsaibashi Shopping Night',
     ];
 
     /**
@@ -65,6 +67,7 @@ class CommonApplyConst
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => 'minato.index',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => 'tokyo-rokutai-fes-2024.index',
         self::APPLY_TYPE_STEP => 'step.index',
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'shinsaibashi-shopping-night.index',
     ];
 
     /**
@@ -89,7 +92,7 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_KICHIJOJI_SHOPPING_NIGHT => [
             'start_date_time' => '2023-11-12 00:00:00',
-            'end_date_time' => '2023-12-06 23:59:59',
+            'end_date_time' => '2024-12-06 23:59:59',
         ],
         self::APPLY_TYPE_CELEBRATION_SEAT => [
             'start_date_time' => '2024-01-28 00:00:00',
@@ -159,6 +162,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-09-04 00:00:00', // 2024/9/6
                 'end_date_time' => '2024-10-13 23:59:59', // 2024/10/13
+            ],
+        ],
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
+            1 => [
+                'start_date_time' => '2024-09-10 00:00:00', // 2024/09/10
+                'end_date_time' => '2024-09-13 23:59:59', // 2024/09/13
             ],
         ],
     ];
@@ -419,6 +428,19 @@ class CommonApplyConst
             'comment',
             'img_pass',
         ],
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+        ],
     ];
 
     /**
@@ -565,6 +587,13 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'img_pass' => 'レシート画像',
+        ],
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
         ],
     ];
 

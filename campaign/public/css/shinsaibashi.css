@@ -1,0 +1,61 @@
+
+body {
+    background: #525252;
+    font-family: -apple-system, BlinkMacSystemFont, "MS PMincho", "MS Mincho", "Book Antiqua", "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.brSp2 {
+    display: none;
+}
+
+h2 {
+    color: white;
+}
+.st0 {
+    fill: #fff;
+}
+
+@media screen and (max-width: 700px) {
+    .brSp2 {
+        display: block;
+    }
+}
+
+.event-explanation {
+    border: solid 1px #fff;
+    background: #3E3A39;
+    color: #fff;
+}
+
+.item-row {
+    font-family: "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background: #1e1e1e;
+    color: #fff;
+    box-shadow: 3px 3px 10px #444;
+}
+
+.item-title {
+    border-top: solid 3px #957427;
+    border-bottom: solid 3px #957427;
+    background: #3D3D3D;
+    font-weight: bold;
+}
+
+.item-content {
+    background: #3D3D3D;
+}
+
+.mail-supplement {
+    line-height: 1.2rem;
+    color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+    .item-row {
+        padding: 0;
+    }
+}
+
+.submit-btn::before {
+    border: solid 3px #957427;
+}
