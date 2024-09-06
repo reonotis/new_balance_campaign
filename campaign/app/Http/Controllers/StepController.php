@@ -143,6 +143,7 @@ class StepController extends Controller
             'streetAddress' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
             'tel' => $request->tel,
             'email' => $request->email,
+            'hope_gift' => $request->hope_gift,
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.step.reportMail', $data, function ($message) {

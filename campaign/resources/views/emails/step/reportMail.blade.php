@@ -8,6 +8,8 @@
 <b>■電話番号</b>　　 : {{ $tel }}<br>
 <b>■住所</b>　　　　 : {{ $zip }}<br>
 　　　　　　　　{{ $streetAddress }}<br>
+<b>■電話番号</b>　　 : {{ $hope_gift }}<br>
+<b>■希望景品</b>　　 : {{ \App\Consts\StepConst::HOPE_GIFT[$hope_gift] }}<br>
 <br>
 --------------------------------------<br>
 全体のお申込みは下記よりご確認いただけます。<br>
