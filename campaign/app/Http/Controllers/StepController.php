@@ -105,6 +105,7 @@ class StepController extends Controller
     {
         $original_columns = [
             'img_pass' => $file_name,
+            'choice_1' => $request->hope_gift,
         ];
         $this->apply_service->insertCommonApply($request, $original_columns);
     }

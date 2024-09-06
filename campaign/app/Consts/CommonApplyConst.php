@@ -427,6 +427,7 @@ class CommonApplyConst
             'email',
             'comment',
             'img_pass',
+            'choice_1',
         ],
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
             'f_name',
@@ -587,6 +588,7 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'img_pass' => 'レシート画像',
+            'choice_1' => '希望景品',
         ],
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
             'name' => '名前',
@@ -663,6 +665,8 @@ class CommonApplyConst
             \App\Consts\MinatoRunnersBaseConst::HOW_FOUND,
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES =>
             \App\Consts\TokyoRokutaiFesConst::PREFERRED_EVENT,
+        self::APPLY_TYPE_STEP =>
+            \App\Consts\StepConst::HOPE_GIFT,
     ];
 
     public const CHOICE_2 = [

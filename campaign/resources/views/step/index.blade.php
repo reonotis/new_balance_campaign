@@ -150,6 +150,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="item-row">
+                            <label for="" class="item-title">希望するプレゼント景品を選択して下さい</label>
+                            <div class="item-content px-2">
+                                <div class="flex" style="flex-wrap: wrap;gap: .5rem;">
+                                    @foreach(App\Consts\StepConst::HOPE_GIFT as $value => $label)
+                                        <label class="radio-label" style="padding: 0 .5rem;">
+                                            <input type="radio" class="" name="hope_gift" value="{{ $value }}"
+                                                   @if(old('hope_gift') == $value)
+                                                       checked="checked"
+                                                @endif
+                                            >
+                                            {{ $label }}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>
                         </div>

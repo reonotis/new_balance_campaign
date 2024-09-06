@@ -18,6 +18,7 @@ use Illuminate\Http\UploadedFile;
  * @property string street21
  * @property string tel
  * @property string email
+ * @property string hope_gift
  */
 class StepRequest extends FormRequest
 {
@@ -53,6 +54,7 @@ class StepRequest extends FormRequest
             'address21' => 'required',
             'street21' => 'required',
             'image' => 'required',
+            'hope_gift' => 'required',
         ];
     }
 
@@ -69,6 +71,17 @@ class StepRequest extends FormRequest
             'tel.regex' => '電話番号は市外局番から-(ハイフン)を含めて入力してください。',
             'email.regex' => 'メールアドレスを正しく入力してください。',
             'image.required' => 'レシート画像が添付されていません。',
+        ];
+    }
+
+    /**
+     * 項目名を定義する
+     * @return array string[]
+     */
+    public function attributes(): array
+    {
+        return [
+            'hope_gift' => '希望する景品',
         ];
     }
 }
