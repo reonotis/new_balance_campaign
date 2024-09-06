@@ -18,14 +18,16 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">myNB会員様向け／抽選ご招待</div>
                             <div class="event-explanation-content">
-                                ニューバランス心斎橋店オープン前日にmyNB会員様向けに先行ショッピングができるイベントです。<br>
-                                ご参加いただいた方にはオリジナルのお土産もプレゼント！<br>
+                                ニューバランス心斎橋グランドオープン前日に、myNB会員様向けにショッピングナイトのお時間をご用意しました。ゆっくりとショッピングを体験いただき、他のお客様より早くご来店いただける機会となります。<br>
+                                来場特典として、先行発売商品やドリンク、ささやかなお土産もご用意していますので、ぜひこの機会にご応募いただき、お気に入りのニューバランスをご着用の上、特別なショッピングナイトにご参加ください。<br>
+                                当選者の方にのみ、下記専用事務局アドレスよりご案内を送らせていただきます。<br>
                             </div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
                             <div class="event-explanation-content">
-                                9/26（木）18:00-20:00
+                                9/26（木）18:00-20:00<br>
+                                最終入場 19:30
                             </div>
                         </div>
                         <div class="event-explanation-row">
