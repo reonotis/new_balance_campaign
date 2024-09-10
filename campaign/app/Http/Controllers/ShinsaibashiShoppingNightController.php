@@ -140,7 +140,7 @@ class ShinsaibashiShoppingNightController extends Controller
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.shinsaibashi.reportMail', $data, function ($message) {
-            $message->to("nbrun@fluss.co.jp")
+            $message->to("mynb_members@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
                 ->subject('「ニューバランス心斎橋店プレオープン Special Shopping Night」のイベントに応募がありました');
