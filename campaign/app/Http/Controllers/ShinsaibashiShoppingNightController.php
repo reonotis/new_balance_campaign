@@ -66,11 +66,11 @@ class ShinsaibashiShoppingNightController extends Controller
             // 応募内容を登録
             $this->insertApplication($request);
 
-            // thank youメール
-            $this->sendThankYouMail($request);
-
             // reportメール
             $this->sendReportMail($request);
+
+            // thank youメール
+            $this->sendThankYouMail($request);
 
             DB::commit();
             Redirect::route('step.complete')->send();
@@ -114,11 +114,11 @@ class ShinsaibashiShoppingNightController extends Controller
         $data = [
             'customer_name' => $request->f_name . $request->l_name,
         ];
-        Mail::send('emails.step.thankYouMail', $data, function ($message) use ($email) {
+        Mail::send('emails.shinsaibashi.thankYouMail', $data, function ($message) use ($email) {
             $message->to($email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('New Balance Running Campaignへの応募ありがとうございました。');
+                ->subject('ご応募ありがとうございました。');
         });
     }
 
@@ -139,11 +139,11 @@ class ShinsaibashiShoppingNightController extends Controller
             'email' => $request->email,
             'url' => url('') . '/admin',
         ];
-        Mail::send('emails.step.reportMail', $data, function ($message) {
+        Mail::send('emails.shinsaibashi.reportMail', $data, function ($message) {
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「New Balance Running Campaign」のイベントに申し込みがありました');
+                ->subject('「ニューバランス心斎橋店プレオープン Special Shopping Night」のイベントに応募がありました');
         });
     }
 

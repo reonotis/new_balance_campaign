@@ -592,7 +592,6 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => [
             'name' => '名前',
-            'age' => '年齢',
             'address' => '住所',
             'tel' => '電話番号',
             'email' => 'メールアドレス',
