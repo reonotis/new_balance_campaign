@@ -18,7 +18,7 @@ use Mail;
 
 class MinatoRunnersBaseController extends Controller
 {
-    const APPLICATION_LIMIT = 50;
+    const APPLICATION_LIMIT = 55;
     // 1回目
     // protected string $_startDateTime = "2023-05-20 00:00:00";
     // protected string $_endDateTime = "2023-06-24 23:59:59";
@@ -179,7 +179,7 @@ class MinatoRunnersBaseController extends Controller
             $checkMessage = $this->apply_service->getDurationMessage();
         }
 
-        return view('oshmans.notApplicationPeriod', compact('checkMessage'));
+        return view('minato_runners_base.notApplicationPeriod', compact('checkMessage'));
     }
 
     /**
