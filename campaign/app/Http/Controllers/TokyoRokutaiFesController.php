@@ -31,6 +31,8 @@ class TokyoRokutaiFesController extends Controller
     function __construct()
     {
         $this->number = 1;
+        $this->full_relay_count = 0;
+        $this->endurance_relay_count = 0;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_TOKYO_ROKUTAI_FES;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
