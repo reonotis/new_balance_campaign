@@ -21,7 +21,8 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                スペシャルゲストコーチに志村美希さんを迎えて、ランニング多摩川沿いにてトレーニングやランニングを実施
+                                スペシャルゲストコーチに志村美希さんを迎えて、ランニング多摩川沿いにてトレーニングやランニングを実施<br>
+                                ※当日は多摩川花火大会が開催予定です。お車でご来場の場合は15時以降の交通規制にご注意ください。
                             </div>
                         </div>
                         <div class="event-explanation-row">
