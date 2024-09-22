@@ -1,9 +1,10 @@
-
-<img src="{{url("./img/shinsaiashi/unnamed.jpg")}}"><br>
+New Balance Shinsaibashi　Special Shopping Night（９月26日（木）開催）ご当選者様<br>
 <br>
-この度はmyNB会員様向けNew Balance Shinsaibashi　Special Shopping Night（９月26日（木）開催）へのご応募ありがとうございます。<br>
+この度はお世話になっております。<br>
+New Balance心斎橋店OPENイベント事務局でございます。<br>
 <br>
-抽選の結果、ご当選されましたので、当日のご案内をさせていただきます。<br>
+いよいよ「New Balance Shinsaibashi　Special Shopping Night」開催日前日となりました。<br>
+確認のためのご連絡をさせていただきます。<br>
 <br>
 ＜当日のご案内＞<br>
 日程：9/26（木）<br>
@@ -21,6 +22,7 @@
 ・当選ご連絡後、キャンセルが必要な場合は、お手数ですが、下記事務局アドレスまでご連絡ください。<br>
 ・当選権利を第三者に譲渡することはできません。<br>
 <br>
+※万が一ご都合付かなくなった場合は事務局アドレスまでご一報願います。<br>
 当日お会いできるのを楽しみにしています。<br>
 <br>
 New Balance心斎橋店OPENイベント事務局<br>

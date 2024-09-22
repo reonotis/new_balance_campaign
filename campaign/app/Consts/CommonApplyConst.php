@@ -628,7 +628,7 @@ class CommonApplyConst
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 2024 5K Running Eventのご参加ありがとうございました。',
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => '9/14（土）練習会について【New Balance Run Club Tokyo】',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => 'New Balance Run Club Tokyoご参加の皆さまへ',
-        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'ご当選おめでとうございます【New Balance Shinsaibashi　Special Shopping Night】',
+        self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'いよいよ「New Balance Shinsaibashi Special Shopping Night」開催日前日となりました。',
     ];
 
     /**
