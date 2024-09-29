@@ -5,8 +5,6 @@
 <b>■お名前</b>　　　 : {{ $name }} ({{ $read }}) 様<br>
 <b>■性別</b>　  　　 : {{ App\Consts\Common::SEX_LIST[$sex] }}<br>
 <b>■メールアドレス</b> : {{ $email }}<br>
-<b>■目標タイム</b> : {{ \App\Consts\RunClubTokyoConstConst::GOAL_TIME[$goal_time] }}<br>
-<b>■シューズサイズ</b> : {{ \App\Consts\RunClubTokyoConstConst::SHOES_SIZE[$shoes_size] }}<br>
 --------------------------------------<br>
 <br>
 <br>

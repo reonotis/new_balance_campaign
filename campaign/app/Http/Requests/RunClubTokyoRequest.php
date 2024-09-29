@@ -44,8 +44,8 @@ class RunClubTokyoRequest extends FormRequest
             'sex' => ['required'],
             'email' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/|confirmed',
             'email_confirmation' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/',
-            'goal_time' => ['required', Rule::in(array_keys(RunClubTokyoConstConst::GOAL_TIME))],
-            'shoes_size' => ['required', Rule::in(array_keys(RunClubTokyoConstConst::SHOES_SIZE))],
+            // 'goal_time' => ['required', Rule::in(array_keys(RunClubTokyoConstConst::GOAL_TIME))],
+            // 'shoes_size' => ['required', Rule::in(array_keys(RunClubTokyoConstConst::SHOES_SIZE))],
         ];
     }
 

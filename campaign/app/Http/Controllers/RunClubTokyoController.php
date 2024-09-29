@@ -17,7 +17,7 @@ use Mail;
 
 class RunClubTokyoController extends Controller
 {
-    const APPLICATION_LIMIT = 31;
+    const APPLICATION_LIMIT = 150;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
@@ -28,7 +28,7 @@ class RunClubTokyoController extends Controller
      */
     function __construct()
     {
-        $this->number = 2;
+        $this->number = 3;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_TOKYO_LEGACY_HALF;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -113,7 +113,7 @@ class RunClubTokyoController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('9/14（土）イベントへのお申込みが完了しました。');
+                ->subject('10/13（日）イベントへのお申込みが完了しました。');
         });
     }
 
@@ -129,15 +129,13 @@ class RunClubTokyoController extends Controller
             'read' => $request->f_read . ' ' . $request->l_read,
             'sex' => $request->sex,
             'email' => $request->email,
-            'goal_time' => $request->goal_time,
-            'shoes_size' => $request->shoes_size,
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.run_club_tokyo.reportMail', $data, function ($message) {
             $message->to("legacyhalf.tokyo@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('「New Balance Run Club Tokyo 練習会」9/14（土）のイベントに申し込みがありました');
+                ->subject('「10/13（日）」のイベントに申し込みがありました');
         });
     }
 

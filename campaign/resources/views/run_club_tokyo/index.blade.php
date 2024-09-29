@@ -7,31 +7,32 @@
                     <div class="event-explanation">
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">New Balance Run Club Tokyo</div>
-                            <div class="event-explanation-title">9/14（土）練習会</div>
+                            <div class="event-explanation-title">10/13（日）決起会イベント</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">9/14（土）10:00-12:30　※入場開始 9:30～</div>
+                            <div class="event-explanation-content">10/13（日）11:00-13:00　※入場開始 10:45～</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
                             <div class="event-explanation-content">
-                                AGFフィールド（東京都調布市西町376番地3）<br>
-                                <a href="https://www.ajinomotostadium.com/overview/athleticfield.php">AGFフィールド | 施設ガイド ｜ 味の素スタジアム (ajinomotostadium.com)</a>
+                                Meiji Park Market（明治公園内）<br>
+                                <a href="https://www.meiji-park.tokyo/">都立明治公園 - MEIJI PARK PROJECT (meiji-park.tokyo)</a>
                             </div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">アクセス</div>
                             <div class="event-explanation-content">
-                                京王線飛田給駅より徒歩10分<br>
+                                JR信濃町駅、東京メトロ外苑前駅より徒歩10分、東京メトロ青山一丁目駅、北参道駅より徒歩15分<br>
                             </div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                シューズ選びについて、シューズの正しい履き⽅、ランニングフォーム作り、5,000mタイムトライアルなど<br>
-                                当日はニューバランスの試し履きシューズもご用意しています。（数量とサイズに限りがございます）<br>
-                                ※お申込みいただいた方はもれなく全員参加可能です。
+                                神野大地選手、西谷綾子さんにより激励トークショー＆質問コーナー<br>
+                                参加者の皆さんで応援フラッグへの寄書きや交流会<br>
+                                ※ドリンクは無料ですが、フードについては各自でのお支払いになります。イベント中にお召し上がりいただくことも可能です。<br>
+                                ※会場のキャパシティにより、先着150名様がご参加可能です。
                             </div>
                         </div>
                     </div>
@@ -111,30 +112,6 @@
                                                class="form-control" placeholder="sample@newbalance.co.jp(確認用)">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item-row">
-                            <label for="" class="item-title">東京レガシーハーフマラソン 目標タイム</label>
-                            <div class="item-content px-2">
-                                <select name="goal_time" class="form-control" >
-                                    <option value="">選択してください</option>
-                                    @foreach( App\Consts\RunClubTokyoConstConst::GOAL_TIME as $value => $label)
-                                        <option value="{{ $value }}" @if(old("goal_time") == $value) {{ 'selected' }} @endif >{{ $label }}</option>
-                                    @endforeach
-                                </select>
-
-
-                            </div>
-                        </div>
-                        <div class="item-row">
-                            <label for="" class="item-title">シューズサイズ</label>
-                            <div class="item-content px-2">
-                                <select name="shoes_size" class="form-control" >
-                                    <option value="">選択してください</option>
-                                    @foreach( App\Consts\RunClubTokyoConstConst::SHOES_SIZE as $value => $label)
-                                        <option value="{{ $value }}" @if(old("shoes_size") == $value) {{ 'selected' }} @endif >{{ $label }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                         <div class="p-2 w-full mt-4 flex justify-around">
