@@ -136,8 +136,8 @@ class CommonApplyConst
                 'end_date_time' => '2024-09-12 23:59:59',
             ],
             3 => [
-                'start_date_time' => '2024-10-10 00:00:00',
-                'end_date_time' => '2024-10-25 23:59:59',
+                'start_date_time' => '2024-10-01 00:00:00',
+                'end_date_time' => '2024-10-10 23:59:59',
             ],
         ],
         self::APPLY_TYPE_OSHMANS => [
@@ -630,7 +630,7 @@ class CommonApplyConst
     public const WINNING_EMAIL_TITLE = [
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_EXCLUSIVE => 'Grey Days 2024 Exclusive Eventのご参加ありがとうございました。',
         self::APPLY_TYPE_KICHIJOJI_GREY_DAYS_5K_RUNNING => 'Grey Days 2024 5K Running Eventのご参加ありがとうございました。',
-        self::APPLY_TYPE_TOKYO_LEGACY_HALF => '9/14（土）練習会について【New Balance Run Club Tokyo】',
+        self::APPLY_TYPE_TOKYO_LEGACY_HALF => '10/13（日）決起会イベント【New Balance Run Club Tokyo】',
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => 'New Balance Run Club Tokyoご参加の皆さまへ',
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'いよいよ「New Balance Shinsaibashi Special Shopping Night」開催日前日となりました。',
     ];
