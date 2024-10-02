@@ -338,13 +338,19 @@ class AdminCommonApplyController extends BaseController
                     $body[] = asset("storage/$directory/" . $apply->img_pass);
                     break;
                 case 'choice_1':
-                    $body[] = CommonApplyConst::CHOICE_1[$this->applyType][$apply->choice_1];
+                    if(!is_null($apply->choice_1)){
+                        $body[] = CommonApplyConst::CHOICE_1[$this->applyType][$apply->choice_1];
+                    }
                     break;
                 case 'choice_2':
-                    $body[] = CommonApplyConst::CHOICE_2[$this->applyType][$apply->choice_2];
+                    if(!is_null($apply->choice_2)){
+                        $body[] = CommonApplyConst::CHOICE_2[$this->applyType][$apply->choice_2];
+                    }
                     break;
                 case 'choice_3':
-                    $body[] = CommonApplyConst::CHOICE_3[$this->applyType][$apply->choice_3];
+                    if(!is_null($apply->choice_3)){
+                        $body[] = CommonApplyConst::CHOICE_3[$this->applyType][$apply->choice_3];
+                    }
                     break;
                 default:
                     $body[] = $apply->$firstKey;
