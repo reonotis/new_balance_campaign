@@ -179,8 +179,8 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_NAGASAKI_OPENING => [
             1 => [
-                'start_date_time' => '2024-10-02 00:00:00',
-                'end_date_time' => '2024-10-13 23:59:59', // 2024/10/13
+                'start_date_time' => '2024-10-02 00:00:00', // 2024/10/14
+                'end_date_time' => '2024-10-29 23:59:59', // 2024/10/29
             ],
         ],
     ];
