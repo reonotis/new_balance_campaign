@@ -12,6 +12,7 @@ use App\Http\Controllers\{
         KichijojiGreyDaysExclusiveController,
         KichijojiGreyDays5kRunningController,
         MinatoRunnersBaseController,
+        NagasakiOpeningController,
         RunClubTokyoController,
         OshmansController,
         S223Controller,
@@ -243,6 +244,14 @@ Route::group(['prefix' => 'shinsaibashi-shopping-night'], function () {
     Route::post('/store', [ShinsaibashiShoppingNightController::class, 'store'])->name('shinsaibashi-shopping-night.store');
     Route::get('/complete', [ShinsaibashiShoppingNightController::class, 'complete'])->name('shinsaibashi-shopping-night.complete');
     Route::get('/outsidePeriod', [ShinsaibashiShoppingNightController::class, 'outsidePeriod'])->name('shinsaibashi-shopping-night.outsidePeriod');
+});
+
+// 長崎スタジアムシティオープニングキャンペーン
+Route::group(['prefix' => 'nagasaki-opening'], function () {
+    Route::get('', [NagasakiOpeningController::class, 'index'])->name('nagasaki-opening.index');
+    Route::post('/store', [NagasakiOpeningController::class, 'store'])->name('nagasaki-opening.store');
+    Route::get('/complete', [NagasakiOpeningController::class, 'complete'])->name('nagasaki-opening.complete');
+    Route::get('/outsidePeriod', [NagasakiOpeningController::class, 'outsidePeriod'])->name('nagasaki-opening.outsidePeriod');
 });
 
 
