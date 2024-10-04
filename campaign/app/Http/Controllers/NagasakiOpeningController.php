@@ -128,6 +128,7 @@ class NagasakiOpeningController extends Controller
         $this->email = $request->email;
         $data = [
             'customer_name' => $request->f_name . $request->l_name,
+            'choice_1' => $request->choice_1,
         ];
         Mail::send('emails.nagasaki_opening.thankYouMail', $data, function ($message) {
             $message->to($this->email)
