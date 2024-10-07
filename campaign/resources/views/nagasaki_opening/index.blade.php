@@ -2,7 +2,7 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            長崎ヴェルカ応援キャンペーン <br class="brSp2">お申込フォーム
+            長崎ヴェルカ応援キャンペーン <br class="brSp2">応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -16,14 +16,15 @@
 
                     <div class="event-explanation">
                         <div class="event-explanation-row">
-                            <div class="event-explanation-title">キャンペーン期間</div>
-                            <div class="event-explanation-content">2024年10/14（月・祝）～2024年10月27日（日）</div>
+                            <div class="event-explanation-title">応募期間</div>
+                            <div class="event-explanation-content">2024年10/14（月・祝）～2024年10月29日（火）23:59</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">対象</div>
                             <div class="event-explanation-content">
                                 長崎ヴェルカのユニフォームを含む店内アパレル1点以上ご購入の方<br>
-                                下記の応募フォームにご入力いただき、レシートを添付してご応募ください。
+                                下記の応募フォームにご入力いただき、レシートを添付してご応募ください。<br>
+                                キャンぺーン詳細は<a href="https://company.newbalance.jp/shopmagazine/67888#present">こちら</a>
                             </div>
                         </div>
                     </div>
@@ -108,6 +109,7 @@
                                     <input type="text" name="tel" id="tel" value="{{ old("tel") }}" class="form-control"
                                            placeholder="03-5577-2300">
                                 </div>
+                                <p class="mail_supplement mb-1">※ハイフン「-」を入れて半角数字にて入力お願いいたします。</p>
                             </div>
                         </div>
                         <div class="item-row">
@@ -115,7 +117,11 @@
                             <div class="item-content px-2">
                                 <p class="mail_supplement mb-1">※メールアドレスは確認用の為、2回入力してください</p>
                                 <p class="mail_supplement mb-1">
-                                    ※docomo、au、softbank、iCloud等の各キャリアのメールアドレスは、ドメイン指定受信を設定されている可能性がありメールが正しく届かない事がある為、PC用のメールアドレスを記入する事をお勧め致します。</p>
+                                    ※docomo、au、softbank、iCloud等の各キャリアのメールアドレスは、ドメイン指定受信を設定されている可能性がありメールが正しく届かない事がある為、PC用のメールアドレスを記入する事をお勧め致します。
+                                </p>
+                                <p class="mail_supplement mb-1">
+                                    受信制限機能を利用している方は、「mynb_members@fluss.co.jp」「info@newbalance-campaign.jp」からのメールを受信できるように設定してください。
+                                </p>
                                 <div class="">
                                     <div class="w-full mb-1">
                                         <input type="email" name="email" id="email" value="{{ old("email") }}"
@@ -143,6 +149,7 @@
                                         </label>
                                     @endforeach
                                 </div>
+                                <p class="mail_supplement mt-4">※B・C賞ともに、シートをお選びいただくことはできません。予めご了承ください。</p>
                             </div>
                         </div>
                         <div class="item-row">
