@@ -16,8 +16,12 @@
 
                     <div class="event-explanation">
                         <div class="event-explanation-row">
+                            <div class="event-explanation-title">キャンペーン期間 / レシート有効期間</div>
+                            <div class="event-explanation-content">10/14（月・祝）～10/27（日）</div>
+                        </div>
+                        <div class="event-explanation-row">
                             <div class="event-explanation-title">応募期間</div>
-                            <div class="event-explanation-content">2024年10/14（月・祝）～2024年10月29日（火）23:59</div>
+                            <div class="event-explanation-content">10/14（月・祝）～10/29（火）23:59</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">対象</div>
