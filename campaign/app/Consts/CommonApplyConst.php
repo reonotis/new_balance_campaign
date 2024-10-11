@@ -23,6 +23,7 @@ class CommonApplyConst
     public const APPLY_TYPE_STEP = 18;
     public const APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT = 19;
     public const APPLY_TYPE_NAGASAKI_OPENING = 20;
+    public const APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB = 21;
 
     /**
      * 申込タイトル
@@ -47,6 +48,7 @@ class CommonApplyConst
         self::APPLY_TYPE_STEP => 'New Balance Running Campaign',
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'Shinsaibashi Shopping Night',
         self::APPLY_TYPE_NAGASAKI_OPENING => 'NB長崎スタジアムシティOPENキャンペーン',
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント',
     ];
 
     /**
@@ -71,6 +73,7 @@ class CommonApplyConst
         self::APPLY_TYPE_STEP => 'step.index',
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'shinsaibashi-shopping-night.index',
         self::APPLY_TYPE_NAGASAKI_OPENING => 'nagasaki-opening.index',
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'super-sports-tenjin-runners-club.index',
     ];
 
     /**
@@ -181,6 +184,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-10-02 00:00:00', // 2024/10/14
                 'end_date_time' => '2024-10-29 23:59:59', // 2024/10/29
+            ],
+        ],
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => [
+            1 => [
+                'start_date_time' => '2024-10-09 00:00:00',
+                'end_date_time' => '2024-10-27 23:59:59', // 2024/10/27
             ],
         ],
     ];
@@ -470,6 +479,21 @@ class CommonApplyConst
             'choice_1',
             'img_pass',
         ],
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+            'img_pass',
+        ],
     ];
 
     /**
@@ -632,6 +656,14 @@ class CommonApplyConst
             'choice_1' => '応募商品選択',
             'img_pass' => 'レシート画像',
         ],
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => 'どこでイベント知ったか',
+        ],
     ];
 
     /**
@@ -708,6 +740,8 @@ class CommonApplyConst
             \App\Consts\StepConst::HOPE_GIFT,
         self::APPLY_TYPE_NAGASAKI_OPENING =>
             \App\Consts\NagasakiOpeningConst::SELECT_PRODUCT,
+        self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB =>
+            \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
     ];
 
     public const CHOICE_2 = [

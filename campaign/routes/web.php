@@ -16,9 +16,10 @@ use App\Http\Controllers\{
         RunClubTokyoController,
         OshmansController,
         S223Controller,
-        StepController,
         ShinsaibashiShoppingNightController,
         SpecialChanceCampaignController,
+        StepController,
+        SuperSportsTenjinRunnersClubController,
         TenjinRunnersGateController,
         TokyoRokutaiFesController,
         TryOnController,
@@ -254,6 +255,13 @@ Route::group(['prefix' => 'nagasaki-opening'], function () {
     Route::get('/outsidePeriod', [NagasakiOpeningController::class, 'outsidePeriod'])->name('nagasaki-opening.outsidePeriod');
 });
 
+// スーパースポーツゼビオ 福岡天神店ランニングクラブ
+Route::group(['prefix' => 'super-sports-tenjin-runners-club'], function () {
+    Route::get('', [SuperSportsTenjinRunnersClubController::class, 'index'])->name('super-sports-tenjin-runners-club.index');
+    Route::post('/store', [SuperSportsTenjinRunnersClubController::class, 'store'])->name('super-sports-tenjin-runners-club.store');
+    Route::get('/complete', [SuperSportsTenjinRunnersClubController::class, 'complete'])->name('super-sports-tenjin-runners-club.complete');
+    Route::get('/outsidePeriod', [SuperSportsTenjinRunnersClubController::class, 'outsidePeriod'])->name('super-sports-tenjin-runners-club.outsidePeriod');
+});
 
 
 // 管理者
