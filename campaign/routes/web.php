@@ -7,6 +7,7 @@ use App\Http\Controllers\{
         GoMurakamiController,
         GolfTryOn2023Controller,
         GoFunController,
+        HarajukuAnniversaryController,
         KokuritsuArukuTokyoController,
         KichijojiShoppingNightController,
         KichijojiGreyDaysExclusiveController,
@@ -261,6 +262,14 @@ Route::group(['prefix' => 'super-sports-tenjin-runners-club'], function () {
     Route::post('/store', [SuperSportsTenjinRunnersClubController::class, 'store'])->name('super-sports-tenjin-runners-club.store');
     Route::get('/complete', [SuperSportsTenjinRunnersClubController::class, 'complete'])->name('super-sports-tenjin-runners-club.complete');
     Route::get('/outsidePeriod', [SuperSportsTenjinRunnersClubController::class, 'outsidePeriod'])->name('super-sports-tenjin-runners-club.outsidePeriod');
+});
+
+// 原宿店８周年イベント
+Route::group(['prefix' => 'harajuku-anniversary'], function () {
+    Route::get('', [HarajukuAnniversaryController::class, 'index'])->name('harajuku-anniversary.index');
+    Route::post('/store', [HarajukuAnniversaryController::class, 'store'])->name('harajuku-anniversary.store');
+    Route::get('/complete', [HarajukuAnniversaryController::class, 'complete'])->name('harajuku-anniversary.complete');
+    Route::get('/outsidePeriod', [HarajukuAnniversaryController::class, 'outsidePeriod'])->name('harajuku-anniversary.outsidePeriod');
 });
 
 
