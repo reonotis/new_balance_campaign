@@ -24,6 +24,7 @@ class CommonApplyConst
     public const APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT = 19;
     public const APPLY_TYPE_NAGASAKI_OPENING = 20;
     public const APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB = 21;
+    public const APPLY_TYPE_HARAJUKU_ANNIVERSARY = 22;
 
     /**
      * 申込タイトル
@@ -49,6 +50,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'Shinsaibashi Shopping Night',
         self::APPLY_TYPE_NAGASAKI_OPENING => 'NB長崎スタジアムシティOPENキャンペーン',
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント',
+        self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => '原宿店８周年イベント',
     ];
 
     /**
@@ -74,6 +76,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SHINSAIBASHI_SHOPPING_NIGHT => 'shinsaibashi-shopping-night.index',
         self::APPLY_TYPE_NAGASAKI_OPENING => 'nagasaki-opening.index',
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'super-sports-tenjin-runners-club.index',
+        self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => 'harajuku-anniversary.index',
     ];
 
     /**
@@ -190,6 +193,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-10-09 00:00:00',
                 'end_date_time' => '2024-10-27 23:59:59', // 2024/10/27
+            ],
+        ],
+        self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => [
+            1 => [
+                'start_date_time' => '2024-10-09 00:00:00', // 2024/10/24
+                'end_date_time' => '2024-11-05 23:59:59', // 2024/11
             ],
         ],
     ];
@@ -494,6 +503,21 @@ class CommonApplyConst
             'choice_1',
             'img_pass',
         ],
+        self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+        ],
     ];
 
     /**
@@ -663,6 +687,14 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
+        ],
+        self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => [
+            'name' => '名前',
+            'sex' => '性別',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => 'トークセッション時にニューバランス社員に聞きたい事',
         ],
     ];
 
