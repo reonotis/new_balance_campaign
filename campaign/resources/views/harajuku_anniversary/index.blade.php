@@ -2,7 +2,7 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            原宿店<br class="brSp2"> ８周年イベント <br class="brSp2">申込フォーム
+            New Balance Harajuku 8th Anniversary<br class="brSp2"> “1500” Special Talk Event <br>申込フォーム
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -15,13 +15,13 @@
                 <div class="form-area">
                     <div class="event-explanation">
                         <div class="event-explanation-row">
-                            <div class="event-explanation-title">New Balance Harajuku</div>
+                            <div class="event-explanation-title">New Balance Harajuku 8th Anniversary　“1500” Special Talk Event</div>
                             <div class="event-explanation-content">myNB会員様向け／抽選ご招待</div>
                             <div class="event-explanation-content">ニューバランス原宿8周年記念として、myNB会員様向けに 今年３５周年となる「1500」の魅力をニューバランス社員と一緒に語り合うイベントです。ご参加いただいた方にはオリジナルのお土産もプレゼント！</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">11/8（金）20:00-21:00　※入店最終受付20:30</div>
+                            <div class="event-explanation-content">11/8（金）20:00-21:00　※受付開始19:30、入店最終受付20:30</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
@@ -150,7 +150,7 @@
                         <div class="item-row">
                             <label for="comment" class="item-title">質問事項</label>
                             <div class="item-content px-2">
-                                <p class="mail_supplement mb-1">※トークセッション時にニューバランス社員に聞きたい事がありましたら、ご自由に記入ください。</p>
+                                <p class="mail_supplement mb-1">トークセッション時にニューバランス社員に「1500」について聞きたい事がありましたら、ご自由に記入ください。</p>
                                 <div class="w-full mb-1">
                                     <textarea name="comment" id="comment"
                                               class="form-control h-20">{{ old("comment") }}</textarea>
