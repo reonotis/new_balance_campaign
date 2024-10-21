@@ -45,7 +45,7 @@ class NagasakiOpeningController extends Controller
      * 申込フォーム画面を表示する
      * @return View
      */
-    public function index(): View
+    public function     index(): View
     {
         return view('nagasaki_opening.index');
     }
@@ -171,9 +171,9 @@ class NagasakiOpeningController extends Controller
     public function outsidePeriod()
     {
         $checkMessage = '';
-        if (!$this->checkNumberApplications()) {
-            $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
-        }
+        // if (!$this->checkNumberApplications()) {
+        //     $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
+        // }
 
         if (!$this->apply_service->checkApplicationDuration()) {
             $checkMessage = $this->apply_service->getDurationMessage();
@@ -214,10 +214,10 @@ class NagasakiOpeningController extends Controller
             return true;
         }
 
-        // 最大申込数に達している場合はエラー画面に遷移
-        if (!$this->checkNumberApplications()) {
-            return true;
-        }
+        // // 最大申込数に達している場合はエラー画面に遷移
+        // if (!$this->checkNumberApplications()) {
+        //     return true;
+        // }
     }
 
 }
