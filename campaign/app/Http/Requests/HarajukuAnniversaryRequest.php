@@ -18,6 +18,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string tel
  * @property string email
  * @property string comment
+ * @property string comment2
  */
 class HarajukuAnniversaryRequest extends FormRequest
 {

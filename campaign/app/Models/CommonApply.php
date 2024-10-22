@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string street21
  * @property string img_pass
  * @property string comment
+ * @property string comment2
  * @property int choice_1
  * @property int choice_2
  * @property int choice_3

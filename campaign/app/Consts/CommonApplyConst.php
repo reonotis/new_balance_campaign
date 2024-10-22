@@ -517,6 +517,7 @@ class CommonApplyConst
             'tel',
             'email',
             'comment',
+            'comment2',
         ],
     ];
 
@@ -695,6 +696,7 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'comment' => 'トークセッション時にニューバランス社員に聞きたい事',
+            'comment2' => 'イベント参加に向けた意気込み',
         ],
     ];
 

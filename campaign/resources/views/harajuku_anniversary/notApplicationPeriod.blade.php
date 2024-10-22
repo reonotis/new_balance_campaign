@@ -2,7 +2,7 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            New Balance Harajuku 8th Anniversary<br class="brSp2"> “1500” Special Talk Event <br>申込フォーム
+            New Balance Harajuku 8th Anniversary<br class="brSp2"> “1500” Special Talk Event <br>応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">

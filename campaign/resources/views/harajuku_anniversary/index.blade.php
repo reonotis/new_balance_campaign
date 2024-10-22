@@ -2,7 +2,7 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            New Balance Harajuku 8th Anniversary<br class="brSp2"> “1500” Special Talk Event <br>申込フォーム
+            New Balance Harajuku 8th Anniversary<br class="brSp2"> “1500” Special Talk Event <br>応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -17,15 +17,19 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">New Balance Harajuku 8th Anniversary　“1500” Special Talk Event</div>
                             <div class="event-explanation-content">myNB会員様向け／抽選ご招待</div>
-                            <div class="event-explanation-content">ニューバランス原宿8周年記念として、myNB会員様向けに 今年３５周年となる「1500」の魅力をニューバランス社員と一緒に語り合うイベントです。ご参加いただいた方にはオリジナルのお土産もプレゼント！</div>
+                            <div class="event-explanation-content">ニューバランス原宿店８周年を記念し、今年35周年となる「1500」の魅力をテーマに経験豊富なニューバランス社員が語るスペシャルトークイベントを開催、抽選で４０名様をご招待します。ご参加いただいた方には、ささやかなお土産もご用意しております。皆様のご応募お待ちしております。</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">11/8（金）20:00-21:00　※受付開始19:30、入店最終受付20:30</div>
+                            <div class="event-explanation-content">11月8日（金）20:00-21:00　※受付開始19:30、入店最終受付20:30</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
                             <div class="event-explanation-content">ニューバランス原宿</div>
+                        </div>
+                        <div class="event-explanation-row">
+                            <div class="event-explanation-title">注意事項</div>
+                            <div class="event-explanation-content">会場の都合上、当選者の方のみのご参加とさせていただき、お連れ様の同伴はご遠慮いただきます旨、あらかじめご了承ください。</div>
                         </div>
                     </div>
 
@@ -154,6 +158,15 @@
                                 <div class="w-full mb-1">
                                     <textarea name="comment" id="comment"
                                               class="form-control h-20">{{ old("comment") }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-row">
+                            <label for="comment2" class="item-title">イベント参加に向けた意気込みをお聞かせください。</label>
+                            <div class="item-content px-2">
+                                <div class="w-full mb-1">
+                                    <textarea name="comment2" id="comment2"
+                                              class="form-control h-20">{{ old("comment2") }}</textarea>
                                 </div>
                             </div>
                         </div>
