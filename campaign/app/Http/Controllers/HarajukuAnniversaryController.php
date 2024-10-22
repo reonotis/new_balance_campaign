@@ -149,9 +149,9 @@ class HarajukuAnniversaryController extends Controller
     public function outsidePeriod()
     {
         $checkMessage = '';
-        if (!$this->checkNumberApplications()) {
-            $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
-        }
+        // if (!$this->checkNumberApplications()) {
+        //     $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
+        // }
 
         if (!$this->apply_service->checkApplicationDuration()) {
             $checkMessage = $this->apply_service->getDurationMessage();
@@ -193,9 +193,9 @@ class HarajukuAnniversaryController extends Controller
         }
 
         // 最大申込数に達している場合はエラー画面に遷移
-        if (!$this->checkNumberApplications()) {
-            return true;
-        }
+        // if (!$this->checkNumberApplications()) {
+        //     return true;
+        // }
     }
 
 }
