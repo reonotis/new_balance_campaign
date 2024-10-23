@@ -17,7 +17,7 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">New Balance Harajuku 8th Anniversary　“1500” Special Talk Event</div>
                             <div class="event-explanation-content">myNB会員様向け／抽選ご招待</div>
-                            <div class="event-explanation-content">ニューバランス原宿店８周年を記念し、今年35周年となる「1500」の魅力をテーマに経験豊富なニューバランス社員が語るスペシャルトークイベントを開催、抽選で４０名様をご招待します。ご参加いただいた方には、ささやかなお土産もご用意しております。皆様のご応募お待ちしております。</div>
+                            <div class="event-explanation-content">ニューバランス原宿８周年を記念し、今年35周年となる「1500」の魅力をテーマに経験豊富なニューバランス社員が語るスペシャルトークイベントを開催、抽選で40名様をご招待します。ご参加いただいた方には、ささやかなお土産もご用意しております。皆様のご応募お待ちしております。</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
@@ -154,7 +154,7 @@
                         <div class="item-row">
                             <label for="comment" class="item-title">質問事項</label>
                             <div class="item-content px-2">
-                                <p class="mail_supplement mb-1">トークセッション時にニューバランス社員に「1500」について聞きたい事がありましたら、ご自由に記入ください。</p>
+                                <p class="mail_supplement mb-1">トークセッション時にニューバランス社員に「1500」について質問がございましたら、ご自由に記入ください。</p>
                                 <div class="w-full mb-1">
                                     <textarea name="comment" id="comment"
                                               class="form-control h-20">{{ old("comment") }}</textarea>
