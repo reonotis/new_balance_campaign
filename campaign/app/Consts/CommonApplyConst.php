@@ -198,7 +198,7 @@ class CommonApplyConst
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => [
             1 => [
                 'start_date_time' => '2024-10-09 00:00:00', // 2024/10/24
-                'end_date_time' => '2024-11-05 23:59:59', // 2024/11
+                'end_date_time' => '2024-10-27 23:59:59', // 2024/11
             ],
         ],
     ];
