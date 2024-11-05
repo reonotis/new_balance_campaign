@@ -28,7 +28,7 @@ class OshmansController extends Controller
      */
     function __construct()
     {
-        $this->number = 1;
+        $this->number = 2;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_OSHMANS;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -96,7 +96,7 @@ class OshmansController extends Controller
         Log::info('insertApplication');
 
         $originalColumn = [
-            'choice_1' => $request->how_found,
+            'choice_2' => $request->how_found,
         ];
         $this->apply_service->insertCommonApply($request, $originalColumn);
     }
@@ -115,7 +115,7 @@ class OshmansController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('10/5（土）イベントへのお申込みが完了しました。');
+                ->subject('11/23（土）イベントへのお申込みが完了しました。');
         });
     }
 

@@ -9,7 +9,7 @@
 <b>■住所</b>　　　　 : {{ $zip }}<br>
 　　　　　　　　{{ $streetAddress }}<br>
 <b>■どこでイベントについて知りましたか</b>:<br>
-    ・{{ \App\Consts\OshmansConst::HOW_FOUND[$howFound] }}<br>
+    ・{{ \App\Consts\OshmansConst::HOW_FOUND_2[$howFound] }}<br>
 <br>
 --------------------------------------<br>
 <br>

@@ -10,19 +10,18 @@
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">10/5（土）10:30-12:30</div>
+                            <div class="event-explanation-content">11/23（土） 10:30-12:30</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
                             <div class="event-explanation-content">
-                                オッシュマンズ二子玉川店（二子玉川ライズ・ショッピングセンター リバーフロント3F）
+                                オッシュマンズ阪急西宮ガーデンズ店（阪急西宮ガーデンズ 本館３F東モール）
                             </div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                スペシャルゲストコーチに志村美希さんを迎えて、ランニング多摩川沿いにてトレーニングやランニングを実施<br>
-                                ※当日は多摩川花火大会が開催予定です。お車でご来場の場合は15時以降の交通規制にご注意ください。
+                                スペシャルゲストコーチに志村美希さんを迎えて、武庫川沿いにてトレーニングやランニングを実施
                             </div>
                         </div>
                         <div class="event-explanation-row">

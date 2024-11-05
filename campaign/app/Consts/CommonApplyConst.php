@@ -154,6 +154,10 @@ class CommonApplyConst
                 'start_date_time' => '2024-08-21 00:00:00',
                 'end_date_time' => '2024-10-04 23:59:59',
             ],
+            2 => [
+                'start_date_time' => '2024-11-01 00:00:00',
+                'end_date_time' => '2024-12-25 23:59:59',
+            ],
         ],
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
             7 => [
