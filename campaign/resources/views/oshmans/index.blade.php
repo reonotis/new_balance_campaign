@@ -150,7 +150,7 @@
                             <label for="" class="item-title">どこでイベントについて知りましたか</label>
                             <div class="item-content px-2">
                                 <div class="flex" style="flex-wrap: wrap;gap: .5rem;">
-                                    @foreach(App\Consts\OshmansConst::HOW_FOUND as $value => $label)
+                                    @foreach(App\Consts\OshmansConst::HOW_FOUND_2 as $value => $label)
                                         <label class="radio-label" style="padding: 0 .5rem;">
                                             <input type="radio" class="" name="how_found" value="{{ $value }}"
                                                    @if(old('desired_size') == $value)
