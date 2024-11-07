@@ -422,6 +422,7 @@ class CommonApplyConst
             'tel',
             'email',
             'choice_1',
+            'choice_2',
         ],
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
             'f_name',
