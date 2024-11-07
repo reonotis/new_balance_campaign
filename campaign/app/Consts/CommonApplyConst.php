@@ -647,7 +647,8 @@ class CommonApplyConst
             'address' => '住所',
             'tel' => '電話番号',
             'email' => 'メールアドレス',
-            'choice_1' => 'どこでイベント知ったか',
+            'choice_1' => 'どこでイベント知ったか_二子玉',
+            'choice_2' => 'どこでイベント知ったか_阪急西宮',
         ],
         self::APPLY_TYPE_MINATO_RUNNERS_BASE => [
             'name' => '名前',
@@ -788,6 +789,8 @@ class CommonApplyConst
             \App\Consts\KichijojiGrayDays5KRun::DESIRED_SIZE,
         self::APPLY_TYPE_TOKYO_LEGACY_HALF =>
             \App\Consts\RunClubTokyoConstConst::SHOES_SIZE,
+        self::APPLY_TYPE_OSHMANS =>
+            \App\Consts\OshmansConst::HOW_FOUND_2,
     ];
 
     public const CHOICE_3 = [
