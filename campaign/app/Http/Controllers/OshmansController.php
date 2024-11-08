@@ -17,7 +17,7 @@ use Mail;
 
 class OshmansController extends Controller
 {
-    const APPLICATION_LIMIT = 35;
+    const APPLICATION_LIMIT = 31;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
