@@ -18,7 +18,7 @@ use Mail;
 
 class MinatoRunnersBaseController extends Controller
 {
-    const APPLICATION_LIMIT = 55;
+    const APPLICATION_LIMIT = 31;
     // 1回目
     // protected string $_startDateTime = "2023-05-20 00:00:00";
     // protected string $_endDateTime = "2023-06-24 23:59:59";
@@ -53,7 +53,7 @@ class MinatoRunnersBaseController extends Controller
     function __construct()
     {
         $this->apply_type = CommonApplyConst::APPLY_TYPE_MINATO_RUNNERS_BASE;
-        $this->number = 8;
+        $this->number = 9;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
         if ($this->checkErrorViewRedirect()) {
@@ -90,11 +90,11 @@ class MinatoRunnersBaseController extends Controller
             DB::beginTransaction();
             $this->insertApplication($request);
 
-            // thank youメール
-            $this->sendThankYouMail($request);
-
             // reportメール
             $this->sendReportMail($request);
+
+            // thank youメール
+            $this->sendThankYouMail($request);
 
             DB::commit();
             Redirect::route('minato.complete')->send();
@@ -135,7 +135,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ゼビオ名古屋みなとアクルス店 10/6（日）イベント「AYA’S WORKOUT」へのお申込みが完了しました。');
+                ->subject('ゼビオ名古屋みなとアクルス店 1/13（月祝）イベント「RUN＆EATイベント」へのお申込みが完了しました。');
         });
     }
 
@@ -149,8 +149,8 @@ class MinatoRunnersBaseController extends Controller
         $data = [
             "name" => $request->f_name . " " . $request->l_name,
             "read" => $request->f_read . " " . $request->l_read,
-            "zip" => $request->zip21 . "-" . $request->zip22,
             "age" => $request->age,
+            "zip" => $request->zip21 . "-" . $request->zip22,
             "streetAddress" => $request->pref21 . " " . $request->address21 . " " . $request->street21,
             "tel" => $request->tel,
             "email" => $request->email,
@@ -161,7 +161,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ゼビオ名古屋みなとアクルス店 10/6（日）イベント「AYA’S WORKOUT」に申し込みがありました');
+                ->subject('ゼビオ名古屋みなとアクルス店 1/13（月祝）「RUN＆EATイベント」に申し込みがありました');
         });
     }
 
