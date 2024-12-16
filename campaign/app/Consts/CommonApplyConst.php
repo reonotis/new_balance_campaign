@@ -25,6 +25,7 @@ class CommonApplyConst
     public const APPLY_TYPE_NAGASAKI_OPENING = 20;
     public const APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB = 21;
     public const APPLY_TYPE_HARAJUKU_ANNIVERSARY = 22;
+    public const APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU = 23;
 
     /**
      * 申込タイトル
@@ -51,6 +52,7 @@ class CommonApplyConst
         self::APPLY_TYPE_NAGASAKI_OPENING => 'NB長崎スタジアムシティOPENキャンペーン',
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント',
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => '原宿店８周年イベント',
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'SSX東京御茶ノ水本店イベント',
     ];
 
     /**
@@ -77,6 +79,7 @@ class CommonApplyConst
         self::APPLY_TYPE_NAGASAKI_OPENING => 'nagasaki-opening.index',
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'super-sports-tenjin-runners-club.index',
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => 'harajuku-anniversary.index',
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'super-sports-ochanomizu.index',
     ];
 
     /**
@@ -207,6 +210,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2024-10-09 00:00:00', // 2024/10/24
                 'end_date_time' => '2024-10-27 23:59:59', // 2024/11
+            ],
+        ],
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => [
+            1 => [
+                'start_date_time' => '2024-12-14 00:00:00', // 2024/10/24
+                'end_date_time' => '2025-01-27 23:59:59', // 2024/11
             ],
         ],
     ];
@@ -528,6 +537,21 @@ class CommonApplyConst
             'comment',
             'comment2',
         ],
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'age',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+        ],
     ];
 
     /**
@@ -708,6 +732,14 @@ class CommonApplyConst
             'comment' => 'トークセッション時にニューバランス社員に聞きたい事',
             'comment2' => 'イベント参加に向けた意気込み',
         ],
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => [
+            'name' => '名前',
+            'age' => '年齢',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => 'どこでイベント知ったか',
+        ],
     ];
 
     /**
@@ -786,6 +818,8 @@ class CommonApplyConst
             \App\Consts\NagasakiOpeningConst::SELECT_PRODUCT,
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB =>
             \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU =>
+            \App\Consts\SSXOchanomizuConst::HOW_FOUND,
     ];
 
     public const CHOICE_2 = [

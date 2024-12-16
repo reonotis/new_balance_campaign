@@ -15,7 +15,14 @@
         <div class="w-full mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-between" >
-                    <a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a>
+                    <div>
+                        <div class="mb-4">
+                            <a href="{{ route('admin') }}">一覧に戻る</a>
+                        </div>
+                        <div>
+                            <a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a>
+                        </div>
+                    </div>
 
                     @if($lotteryResultEmail)
                         <div class="flex items-center">

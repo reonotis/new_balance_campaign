@@ -20,6 +20,7 @@ use App\Http\Controllers\{
         ShinsaibashiShoppingNightController,
         SpecialChanceCampaignController,
         StepController,
+        SuperSportsOchanomizuController,
         SuperSportsTenjinRunnersClubController,
         TenjinRunnersGateController,
         TokyoRokutaiFesController,
@@ -270,6 +271,16 @@ Route::group(['prefix' => 'harajuku-anniversary'], function () {
     Route::post('/store', [HarajukuAnniversaryController::class, 'store'])->name('harajuku-anniversary.store');
     Route::get('/complete', [HarajukuAnniversaryController::class, 'complete'])->name('harajuku-anniversary.complete');
     Route::get('/outsidePeriod', [HarajukuAnniversaryController::class, 'outsidePeriod'])->name('harajuku-anniversary.outsidePeriod');
+});
+
+// スーパースポーツゼビオ 東京御茶ノ水本店
+Route::group(['prefix' => 'super-sports-ochanomizu'], function () {
+    Route::controller(SuperSportsOchanomizuController::class)->group(function () {
+        Route::get('', 'index')->name('super-sports-ochanomizu.index');
+        Route::post('/store', 'store')->name('super-sports-ochanomizu.store');
+        Route::get('/complete', 'complete')->name('super-sports-ochanomizu.complete');
+        Route::get('/outsidePeriod', 'outsidePeriod')->name('super-sports-ochanomizu.outsidePeriod');
+    });
 });
 
 
