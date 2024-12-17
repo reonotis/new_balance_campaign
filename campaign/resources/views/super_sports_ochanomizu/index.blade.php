@@ -33,6 +33,20 @@
                             <div class="event-explanation-title">参加費</div>
                             <div class="event-explanation-content">無料</div>
                         </div>
+                        <div class="event-explanation-row">
+                            <div class="event-explanation-title">参加人数</div>
+                            <div class="event-explanation-content">抽選で30名</div>
+                        </div>
+                        <div class="event-explanation-row">
+                            <div class="event-explanation-title">応募期間</div>
+                            <div class="event-explanation-content">12/27（金）23:59まで</div>
+                        </div>
+                        <div class="event-explanation-row">
+                            <div class="event-explanation-title">当選発表</div>
+                            <div class="event-explanation-content">1/6（月）<br>
+                                ※ご当選者にのみ、事務局から直接ご連絡をさせていただきます。
+                            </div>
+                        </div>
                     </div>
 
                     {{-- Validation Errors --}}
@@ -121,6 +135,7 @@
                         <div class="item-row">
                             <label for="tel" class="item-title">電話番号</label>
                             <div class="item-content">
+                                <p class="mail_supplement mb-1">※ハイフン（-）を入れて入力してください。</p>
                                 <div class="flex w-72 px-2">
                                     <input type="text" name="tel" id="tel" value="{{ old("tel") }}" class="form-control"
                                            placeholder="03-5577-2300">

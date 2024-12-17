@@ -3,7 +3,7 @@
     <x-slot name="support">
         <div class="support-content">
             <p>SPECIAL EVENT「RUN＆EATイベント」</p>
-            <p>日時：1/13（月祝）10:30-13:30</p>
+            <p>日時：1/13（月祝）10:30-14:30</p>
             <p>場所：スーパースポーツゼビオ ららぽーと名古屋みなとアクルス店</p>
             <p>内容：12km走（周回コース）とランチ会</p>
             <p>参加人数：先着30名</p>
@@ -151,6 +151,7 @@
                                 <label for="tel">電話番号</label>
                             </div>
                             <div class="item-content">
+                                <p class="mail_supplement mb-1">※ハイフン（-）を入れて入力してください。</p>
                                 <div class="flex w-72 px-2">
                                     <input type="text" name="tel" id="tel" value="{{ old("tel") }}" class="form-control"
                                            placeholder="03-5577-2300">
