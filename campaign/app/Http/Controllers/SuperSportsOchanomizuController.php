@@ -113,7 +113,7 @@ class SuperSportsOchanomizuController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('1/11（土）イベントへのお申込みが完了しました。');
+                ->subject('スーパースポーツゼビオ 東京御茶ノ水本店 スペシャルランニングイベント feat.志村美希へのお申込みが完了しました。');
         });
     }
 
