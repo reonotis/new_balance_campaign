@@ -15,25 +15,21 @@
                 <div class="form-area">
                     <div class="event-explanation">
                         <div class="event-explanation-row">
+                            <div class="event-explanation-title">スーパースポーツゼビオ 福岡天神店ランニングクラブ</div>
+                            <div class="event-explanation-title">TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント</div>
+                        </div>
+                        <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">10/27（日）10:30-12:30</div>
+                            <div class="event-explanation-content">1/26（日）9:30-13:30</div>
                         </div>
                         <div class="event-explanation-row">
-                            <div class="event-explanation-title">集合場所</div>
-                            <div class="event-explanation-content">The Company HALL（天神地下街直結、ミーナ天神8F）</div>
-                        </div>
-                        <div class="event-explanation-row">
-                            <div class="event-explanation-title">ランニング場所</div>
-                            <div class="event-explanation-content">舞鶴公園内（鴻臚館広場）</div>
-                        </div>
-                        <div class="event-explanation-row">
-                            <div class="event-explanation-title">解散場所</div>
+                            <div class="event-explanation-title">場所</div>
                             <div class="event-explanation-content">XEBIO福岡天神店</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                The Company HALLに座学した後に、舞鶴公園でランニングをします。XEBIO天神店での解散となります。
+                                大濠公園にてトレーニングやランニングの後、参加者の皆さんと大濠公園近くのカフェでコーチと一緒にランチをします。
                             </div>
                         </div>
                         <div class="event-explanation-row">
@@ -128,6 +124,7 @@
                         <div class="item-row">
                             <label for="tel" class="item-title">電話番号</label>
                             <div class="item-content">
+                                <p class="mail_supplement mb-1">※ハイフン（-）を入れて入力してください。</p>
                                 <div class="flex w-72 px-2">
                                     <input type="text" name="tel" id="tel" value="{{ old("tel") }}" class="form-control"
                                            placeholder="03-5577-2300">
@@ -160,7 +157,7 @@
                                     @foreach(App\Consts\SSXFukuokaTenjinConst::HOW_FOUND as $value => $label)
                                         <label class="radio-label" style="padding: 0 .5rem;">
                                             <input type="radio" class="" name="how_found" value="{{ $value }}"
-                                                   @if(old('desired_size') == $value)
+                                                   @if(old('how_found') == $value)
                                                        checked="checked"
                                                 @endif
                                             >

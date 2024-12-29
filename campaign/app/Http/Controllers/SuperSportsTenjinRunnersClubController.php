@@ -17,7 +17,7 @@ use Mail;
 
 class SuperSportsTenjinRunnersClubController extends Controller
 {
-    const APPLICATION_LIMIT = 40;
+    const APPLICATION_LIMIT = 30;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
@@ -28,7 +28,7 @@ class SuperSportsTenjinRunnersClubController extends Controller
      */
     function __construct()
     {
-        $this->number = 1;
+        $this->number = 2;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -113,7 +113,7 @@ class SuperSportsTenjinRunnersClubController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('10/27（日）イベントへのお申込みが完了しました。');
+                ->subject('1/26（日）イベントへのお申込みが完了しました。');
         });
     }
 
@@ -139,7 +139,7 @@ class SuperSportsTenjinRunnersClubController extends Controller
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('10/27（日）のイベントに申し込みがありました');
+                ->subject('1/26（日）のイベントに申し込みがありました');
         });
     }
 

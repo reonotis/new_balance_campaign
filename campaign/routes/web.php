@@ -259,10 +259,12 @@ Route::group(['prefix' => 'nagasaki-opening'], function () {
 
 // スーパースポーツゼビオ 福岡天神店ランニングクラブ
 Route::group(['prefix' => 'super-sports-tenjin-runners-club'], function () {
-    Route::get('', [SuperSportsTenjinRunnersClubController::class, 'index'])->name('super-sports-tenjin-runners-club.index');
-    Route::post('/store', [SuperSportsTenjinRunnersClubController::class, 'store'])->name('super-sports-tenjin-runners-club.store');
-    Route::get('/complete', [SuperSportsTenjinRunnersClubController::class, 'complete'])->name('super-sports-tenjin-runners-club.complete');
-    Route::get('/outsidePeriod', [SuperSportsTenjinRunnersClubController::class, 'outsidePeriod'])->name('super-sports-tenjin-runners-club.outsidePeriod');
+    Route::controller(SuperSportsTenjinRunnersClubController::class)->group(function () {
+        Route::get('', 'index')->name('super-sports-tenjin-runners-club.index');
+        Route::post('/store', 'store')->name('super-sports-tenjin-runners-club.store');
+        Route::get('/complete', 'complete')->name('super-sports-tenjin-runners-club.complete');
+        Route::get('/outsidePeriod', 'outsidePeriod')->name('super-sports-tenjin-runners-club.outsidePeriod');
+    });
 });
 
 // 原宿店８周年イベント
