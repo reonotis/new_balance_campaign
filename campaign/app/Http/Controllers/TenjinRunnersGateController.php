@@ -28,7 +28,7 @@ class TenjinRunnersGateController extends Controller
      */
     function __construct()
     {
-        $this->number = 1;
+        $this->number = 2;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_TENJIN_RUNNERS_GATE;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -115,7 +115,7 @@ class TenjinRunnersGateController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('8/25（日）イベントへのお申込みが完了しました。');
+                ->subject('1/26（日）イベントへのお申込みが完了しました。');
         });
     }
 

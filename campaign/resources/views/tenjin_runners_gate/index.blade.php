@@ -8,9 +8,9 @@
                         <dt>スーパースポーツゼビオ 福岡天神店ランニングクラブ</dt>
                         <dt>TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント</dt>
                         <dt>Run＆Eatイベント</dt>
-                        <dt>日時：8/25（日）8:30-13:30</dt>
+                        <dt>日時：1/26（日）9:30-13:30</dt>
                         <dt>場所：XEBIO福岡天神店</dt>
-                        <dt>内容：大濠公園にてトレーニングやランニングの後、参加者の皆さんとコーチと一緒にランチをします。</dt>
+                        <dt>内容：大濠公園にてトレーニングやランニングの後、参加者の皆さんと大濠公園近くのカフェでコーチと一緒にランチをします。</dt>
                         <dt>参加費：無料</dt>
                     </dl>
                     {{-- Validation Errors --}}
@@ -99,6 +99,7 @@
                         <div class="item-row">
                             <label for="tel" class="item-title">電話番号</label>
                             <div class="item-content">
+                                <p class="mail_supplement mb-1">※ハイフン（-）を入れて入力してください。</p>
                                 <div class="flex w-72 px-2">
                                     <input type="text" name="tel" id="tel" value="{{ old("tel") }}" class="form-control"
                                            placeholder="03-5577-2300">

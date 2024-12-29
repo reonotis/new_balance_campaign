@@ -28,7 +28,7 @@ class SuperSportsTenjinRunnersClubController extends Controller
      */
     function __construct()
     {
-        $this->number = 2;
+        $this->number = 1;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
