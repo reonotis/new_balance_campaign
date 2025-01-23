@@ -17,7 +17,7 @@ use Mail;
 
 class SuperSportsOchanomizuController extends Controller
 {
-    const APPLICATION_LIMIT = 0;
+    const APPLICATION_LIMIT = 31;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
@@ -193,9 +193,9 @@ class SuperSportsOchanomizuController extends Controller
         }
 
         // 最大申込数に達している場合はエラー画面に遷移
-        // if (!$this->checkNumberApplications()) {
-        //     return true;
-        // }
+         if (!$this->checkNumberApplications()) {
+             return true;
+         }
     }
 
 }
