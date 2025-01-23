@@ -53,7 +53,7 @@ class MinatoRunnersBaseController extends Controller
     function __construct()
     {
         $this->apply_type = CommonApplyConst::APPLY_TYPE_MINATO_RUNNERS_BASE;
-        $this->number = 9;
+        $this->number = 10;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
         if ($this->checkErrorViewRedirect()) {
@@ -135,7 +135,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ゼビオ名古屋みなとアクルス店 1/13（月祝）イベント「RUN＆EATイベント」へのお申込みが完了しました。');
+                ->subject('ゼビオ名古屋みなとアクルス店 2/16（日）イベント「Runningイベント 20kmチャレンジ」へのお申込みが完了しました。');
         });
     }
 
@@ -161,7 +161,7 @@ class MinatoRunnersBaseController extends Controller
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ゼビオ名古屋みなとアクルス店 1/13（月祝）「RUN＆EATイベント」に申し込みがありました');
+                ->subject('ゼビオ名古屋みなとアクルス店 2/16（日）「Runningイベント 20kmチャレンジ」に申し込みがありました');
         });
     }
 
