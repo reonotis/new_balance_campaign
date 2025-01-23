@@ -28,7 +28,7 @@ class SuperSportsOchanomizuController extends Controller
      */
     function __construct()
     {
-        $this->number = 1;
+        $this->number = 2;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -113,7 +113,7 @@ class SuperSportsOchanomizuController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('スーパースポーツゼビオ 東京御茶ノ水本店 スペシャルランニングイベント feat.志村美希へのお申込みが完了しました。');
+                ->subject('2/15（土）スーパースポーツゼビオ 東京御茶ノ水本店ランニングクラブ イベントへのお申込みが完了しました。');
         });
     }
 
@@ -139,7 +139,7 @@ class SuperSportsOchanomizuController extends Controller
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('1/11（土）のイベントに申し込みがありました');
+                ->subject('2/15（土）スーパースポーツゼビオ東京御茶ノ水本店ランニングクラブのイベントに申し込みがありました');
         });
     }
 

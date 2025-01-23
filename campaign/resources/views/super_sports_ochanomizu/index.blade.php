@@ -3,7 +3,7 @@
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
             スーパースポーツゼビオ <br class="brSp2">東京御茶ノ水本店ランニングクラブ<br>
-            ３０２ RUNNING CLUB <br class="brSp2">スペシャルランニングイベント feat.志村美希 <br class="brSp2">応募フォーム
+            ３０２ RUNNING CLUB <br class="brSp2">女性限定 名古屋ウィメンズマラソン攻略 <br> Special Running イベント <br class="brSp2">応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -17,7 +17,7 @@
                     <div class="event-explanation">
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">1/11（土）10:30-12:30</div>
+                            <div class="event-explanation-content">2/15（土）10:30-12:30</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">集合場所</div>
@@ -26,26 +26,14 @@
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                スペシャルゲストコーチに志村美希さんを迎えて皇居周辺にてトレーニングやランニングを実施します。
+                                名古屋ウィメンズマラソン出走者向けの直前トレーニングイベントを実施します。
+                                フルマラソン直前のトレーニング方法や、当日の準備などについてもお伝えします。
                             </div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">参加費</div>
                             <div class="event-explanation-content">無料</div>
                         </div>
-                        <div class="event-explanation-row">
-                            <div class="event-explanation-title">参加人数</div>
-                            <div class="event-explanation-content">抽選で30名</div>
-                        </div>
-                        <div class="event-explanation-row">
-                            <div class="event-explanation-title">応募期間</div>
-                            <div class="event-explanation-content">12/27（金）23:59まで</div>
-                        </div>
-                        <div class="event-explanation-row">
-                            <div class="event-explanation-title">当選発表</div>
-                            <div class="event-explanation-content">1/6（月）<br>
-                                ※ご当選者にのみ、事務局から直接ご連絡をさせていただきます。
-                            </div>
                         </div>
                     </div>
 
