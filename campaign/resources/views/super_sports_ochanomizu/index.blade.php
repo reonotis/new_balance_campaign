@@ -17,7 +17,7 @@
                     <div class="event-explanation">
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">2/15（土）10:30-12:30</div>
+                            <div class="event-explanation-content">2/15（土）10:00-12:00</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">集合場所</div>
