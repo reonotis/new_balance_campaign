@@ -9,7 +9,7 @@
 <b>■住所</b>　　　　 : {{ $zip }}<br>
 　　　　　　　　{{ $streetAddress }}<br>
 <b>■イベントを知ったきっかけ</b>:<br>
-    ・{{ \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND[$howFound] }}<br>
+    ・{{ \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND_INPUT[$howFound] }}<br>
 <br>
 --------------------------------------<br>
 <br>

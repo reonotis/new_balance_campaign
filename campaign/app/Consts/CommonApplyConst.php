@@ -141,6 +141,10 @@ class CommonApplyConst
                 'start_date_time' => '2024-12-29 00:00:00',
                 'end_date_time' => '2025-01-25 23:59:59', // 2025/01/25
             ],
+            3 => [
+                'start_date_time' => '2025-03-09 00:00:00',
+                'end_date_time' => '2025-03-29 23:59:59',
+            ],
         ],
         self::APPLY_TYPE_TOKYO_LEGACY_HALF => [
             1 => [

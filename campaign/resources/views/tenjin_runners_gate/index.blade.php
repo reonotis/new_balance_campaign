@@ -7,10 +7,10 @@
                     <dl class="event-explanation">
                         <dt>スーパースポーツゼビオ 福岡天神店ランニングクラブ</dt>
                         <dt>TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント</dt>
-                        <dt>Run＆Eatイベント</dt>
-                        <dt>日時：1/26（日）9:30-13:30</dt>
+                        <dt>お花見Run</dt>
+                        <dt>日時：3/30（日）9:30-13:30</dt>
                         <dt>場所：XEBIO福岡天神店</dt>
-                        <dt>内容：大濠公園にてトレーニングやランニングの後、参加者の皆さんと大濠公園近くのカフェでコーチと一緒にランチをします。</dt>
+                        <dt>内容：天神のお花⾒の名所でのお花⾒&ランニングイベントです。</dt>
                         <dt>参加費：無料</dt>
                     </dl>
                     {{-- Validation Errors --}}
@@ -129,7 +129,7 @@
                             <label for="" class="item-title">どこでイベントについて知りましたか</label>
                             <div class="item-content px-2">
                                 <div class="flex" style="flex-wrap: wrap;gap: .5rem;">
-                                    @foreach(App\Consts\SSXFukuokaTenjinConst::HOW_FOUND as $value => $label)
+                                    @foreach(App\Consts\SSXFukuokaTenjinConst::HOW_FOUND_INPUT as $value => $label)
                                         <label class="radio-label" style="padding: 0 .5rem;">
                                             <input type="radio" class="" name="how_found" value="{{ $value }}"
                                                    @if(old('desired_size') == $value)
