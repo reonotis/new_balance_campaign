@@ -12,9 +12,9 @@ class SSXFukuokaTenjinConst
         5 => 'NBgowomen',
         6 => '友人・知人のご紹介',
         7 => 'その他',
+        8 => 'ゲストSNS',
         99 => 'その他',
     ];
-
 
     public const HOW_FOUND_INPUT = [
         2 => 'スーパースポーツゼビオ福岡天神店店頭告知', //
@@ -22,8 +22,6 @@ class SSXFukuokaTenjinConst
         6 => '友人・知人のご紹介', //
         99 => 'その他', //
     ];
-
-
 
 
 }
