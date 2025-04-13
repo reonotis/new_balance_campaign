@@ -72,8 +72,9 @@ class AdminController extends BaseController
     /**
      *
      */
-    public function getFormDetail($apply_type, Request $request)
+    public function getFormDetail(Request $request)
     {
+        $apply_type = $request->query('apply_type');
         $form_no = $request->query('form_no') ?? 1;
 
         $form_setting_query = FormSetting::where('apply_type', $apply_type)

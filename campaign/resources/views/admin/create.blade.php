@@ -121,6 +121,8 @@
 </style>
 
 <script>
+
+    const api_url = @json(route('api_admin_get_form_detail'));
     $(document).ready(function () {
 
         $('#apply_type').on('change', function () {
@@ -134,11 +136,11 @@
     });
 
     function getData() {
-        let id = $('#apply_type').val();
+        let apply_type = $('#apply_type').val();
         let formNo = $('#form_no').val();
 
         $.ajax({
-            url: '/admin/api/get-form-detail/' + id + '?form_no=' + formNo,
+            url: api_url + '?apply_type=' + apply_type + '&form_no=' + formNo,
             method: 'GET',
             success: function (data) {
                 if (data.form_setting) {
