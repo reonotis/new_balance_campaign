@@ -1,0 +1,97 @@
+<x-Base-layout>
+
+    <x-slot name="page_title">
+        <h2 class="text-center text-3xl font-bold leading-tight">
+            {{ $form_setting->title }} <br class="brSp2">応募フォーム
+        </h2>
+    </x-slot>
+    <x-slot name="script">
+{{--        <link rel="stylesheet" href="{{ asset('css/nagasaki_opening.css') }}?<?= date('YmdHis') ?>">--}}
+    </x-slot>
+
+    <div class="pt-4 pb-12">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="form-area">
+{{--                    <div class="event-explanation">--}}
+{{--                        <div class="event-explanation-row">--}}
+{{--                            <div class="event-explanation-title">日時</div>--}}
+{{--                            <div class="event-explanation-content">2/15（土）10:00-12:00</div>--}}
+{{--                        </div>--}}
+{{--                        <div class="event-explanation-row">--}}
+{{--                            <div class="event-explanation-title">集合場所</div>--}}
+{{--                            <div class="event-explanation-content">XEBIO御茶ノ水店</div>--}}
+{{--                        </div>--}}
+{{--                        <div class="event-explanation-row">--}}
+{{--                            <div class="event-explanation-title">内容</div>--}}
+{{--                            <div class="event-explanation-content">--}}
+{{--                                名古屋ウィメンズマラソン出走者向けの直前トレーニングイベントを実施します。--}}
+{{--                                フルマラソン直前のトレーニング方法や、当日の準備などについてもお伝えします。--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="event-explanation-row">--}}
+{{--                            <div class="event-explanation-title">参加費</div>--}}
+{{--                            <div class="event-explanation-content">無料</div>--}}
+{{--                        </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+                    {{-- Validation Errors --}}
+                    @if ($errors->any())
+                        <div class="session-error">
+                            <div class="font-medium text-red-600">下記エラーをご確認下さい</div>
+                            <ul class="mt-3 list-disc text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ $send_route }}" method="post" >
+                        @csrf
+                        <input type="hidden" name="form_setting_id" value="{{ $form_setting->id }}">
+
+                        @foreach($form_items as $form_item)
+                            @switch($form_item->type_no)
+                                @case(1)
+                                    <x-form_items.name/>
+                                    @break
+                                @case(2)
+                                    <x-form_items.yomi/>
+                                    @break
+                                @case(3)
+                                    <x-form_items.sex/>
+                                    @break
+                                @case(4)
+                                    <x-form_items.age/>
+                                    @break
+                                @case(5)
+                                    <x-form_items.address/>
+                                    @break
+                                @case(6)
+                                    <x-form_items.tel/>
+                                    @break
+                                @case(7)
+                                    <x-form_items.email/>
+                                    @break
+                                @default
+                                    @dd('不正なデータが登録されています')
+                            @endswitch
+                        @endforeach
+
+                        <div class="p-2 w-full mt-4 flex justify-around">
+                            <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        function applyConfirm() {
+            return (window.confirm('申し込みを行ってもよろしいですか？')) ? true : false;
+        }
+    </script>
+</x-Base-layout>

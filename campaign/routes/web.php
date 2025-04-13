@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
         Area302RunningClubController,
         CelebrationSeatController,
+        CommonFormController,
         GoMurakamiController,
         GolfTryOn2023Controller,
         GoFunController,
@@ -285,10 +286,24 @@ Route::group(['prefix' => 'super-sports-ochanomizu'], function () {
     });
 });
 
+// 共通フォーム
+Route::group(['prefix' => '{route_name}/form'], function () {
+    Route::controller(CommonFormController::class)->group(function () {
+        Route::get('index', 'index')->name('common_form.index');
+        Route::post('store', 'store')->name('common_form.store');
+        Route::get('complete', 'complete')->name('common_form.complete');
+        Route::get('outsidePeriod', 'outsidePeriod')->name('common_form.outsidePeriod');
+    });
+});
+
 
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
+    Route::post('/form-register', [AdminController::class, 'formRegister'])->name('admin.form-register');
+    Route::get('/api/get-form-detail/{apply_type}', [AdminController::class, 'getFormDetail']);
+
     Route::get('/try-on-2023', [AdminTryOn20232Controller::class, 'index'])->name('admin.try-on-2023');
     Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');
     Route::get('/aruku-tokyo-2022', [AdminArukuTokyo2022Controller::class, 'index'])->name('admin.aruku-tokyo-2022');
