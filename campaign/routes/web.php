@@ -300,6 +300,7 @@ Route::group(['prefix' => '{route_name}/form'], function () {
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/list', [AdminController::class, 'list'])->name('admin.list');
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
     Route::post('/form-register', [AdminController::class, 'formRegister'])->name('admin.form-register');
     Route::get('/item-setting/', [AdminController::class, 'itemSetting'])->name('admin.form-item-setting');

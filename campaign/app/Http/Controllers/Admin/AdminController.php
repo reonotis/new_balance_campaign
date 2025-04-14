@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\FormItem;
 use App\Models\FormSetting;
+use App\Models\Application;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -34,11 +35,39 @@ class AdminController extends BaseController
     }
 
     /**
+     * @return View
+     */
+    public function list(Request $request): View
+    {
+        $apply_type = $request->apply_type;
+        $form_no = $request->form_no;
+
+        $form_setting = FormSetting::where('apply_type', $apply_type)
+            ->where('form_no', $form_no)->first();
+        if (!$form_setting) {
+            abort(404);
+        }
+
+        $applications = Application::where('apply_type' , $request->apply_type)
+            ->where('created_at', '>=', $form_setting->start_at)
+            ->where('created_at', '<=', $form_setting->end_at)
+            ->paginate(50);
+
+        return view('admin.list', [
+            'form_setting' => $form_setting,
+            'applications' => $applications,
+        ]);
+    }
+
+    /**
      *
      */
-    public function formCreate(): View
+    public function formCreate(Request $request): View
     {
-        return view('admin.create', []);
+        return view('admin.create', [
+            'apply_type' => $request->apply_type,
+            'form_no' => $request->form_no,
+        ]);
     }
 
     /**

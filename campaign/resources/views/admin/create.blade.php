@@ -16,7 +16,7 @@
                                 apply_type
                             </th>
                             <td>
-                                <input type="number" name="apply_type" id="apply_type" value="{{ old("apply_type") }}">
+                                <input type="number" name="apply_type" id="apply_type" value="{{ old("apply_type", $apply_type) }}">
                             </td>
                         </tr>
                         <tr>
@@ -25,7 +25,7 @@
                                 form_no
                             </th>
                             <td>
-                                <input type="number" name="form_no" id="form_no" value="{{ old("form_no") }}">
+                                <input type="number" name="form_no" id="form_no" value="{{ old("form_no", $form_no) }}">
                             </td>
                         </tr>
                         <tr>
