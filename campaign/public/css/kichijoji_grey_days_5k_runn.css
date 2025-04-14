@@ -1,27 +1,24 @@
 
 body {
-    background: #717A81;
-    font-family: -apple-system, BlinkMacSystemFont, "MS PMincho", "MS Mincho", "Book Antiqua", "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background: #413F3D;
+}
+
+header svg {
+    fill: #CAC3BF;
 }
 
 .brSp2 {
     display: none;
 }
 
+h2 {
+    color: #CAC3BF;
+}
+
 @media screen and (max-width: 700px) {
     .brSp2 {
         display: block;
     }
-}
-
-.overview-box {
-    font-family: -apple-system,BlinkMacSystemFont,"Noto Sans JP",'Lato',"ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN","ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ", Meiryo,"Helvetica Neue", HelveticaNeue, Helvetica,Arial,"Segoe UI",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    padding: 1rem;
-    margin: 0 auto 5rem;
-    color: #fff;
-    border: solid 1px #fff;
-    background: #333;
-    line-height: 2.2rem;
 }
 
 @media screen and (max-width: 700px) {
@@ -31,120 +28,7 @@ body {
     }
 }
 
-.itemRow {
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0 0 20px;
-    background: #fff;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-}
-
-.itemTitle {
-    font-weight: 400;
-    word-wrap: break-word;
-    color: #fff;
-    width: 100%;
-    height: 40px;
-    left: -80px;
-    font-size: 1em;
-    line-height: 160%;
-    letter-spacing: 1px;
-    background: #3E3A39;
-    border: solid 1px #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.itemContent {
-    width: 100%;
-    padding: 1rem;
-}
-
-@media screen and (max-width: 700px) {
-    .itemRow {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-}
-
-.mail_supplement {
-    line-height: 1.2rem;
-    color: #333;
-}
-
-
-input[type="text"],
-input[type="email"],
-input[type="number"],
-textarea {
-    display: block;
-    width: 100%;
-    height: calc(1.6em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-input::placeholder {
-    color: #dadada;
-}
-
-label:has(input[type="radio"]){
-    margin-right: 1rem;
-    white-space: nowrap
-}
-
-label:has(input[type="radio"]:disabled){
-    color: #ccc;
-    text-decoration:line-through
-}
-
-input[type="radio"]:disabled {
-    background: #ddd;
-}
-
-.submit-btn {
-    position: relative;
-    background: #3E3A39;
-    color: #fff;
-    padding: 1rem 3rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: 0.2s;
-}
-
-.submit-btn::before {
-    position: absolute;
-    content: "";
-    width: calc(100% - 6px);
-    height: calc(100% - 6px);
-    top: 3px;
-    left: 3px;
-    border: solid 2px #fff;
-    box-sizing: border-box;
-}
-
-.submit-btn:hover {
-    background: #fff;
-    color: #3E3A39;
-}
-
-.submit-btn:hover::before {
-    border: solid 2px #3E3A39;
-}
-
-.support-msg {
-    color: #aaa;
-    margin-top: .25rem;
+.item-title {
+    background: #CAC3BF;
+    color: black;
 }

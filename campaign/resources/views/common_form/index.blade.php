@@ -5,8 +5,11 @@
             {{ $form_setting->title }} <br class="brSp2">応募フォーム
         </h2>
     </x-slot>
+
     <x-slot name="script">
-{{--        <link rel="stylesheet" href="{{ asset('css/nagasaki_opening.css') }}?<?= date('YmdHis') ?>">--}}
+        @if($form_setting->css_file_name)
+            <link rel="stylesheet" href="{{ asset('css/' . $form_setting->css_file_name) }}?<?= date('YmdHis') ?>">
+        @endif
     </x-slot>
 
     <div class="pt-4 pb-12">
