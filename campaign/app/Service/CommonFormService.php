@@ -4,7 +4,8 @@ namespace app\Service;
 
 use App\Consts\CommonApplyConst;
 use app\Http\Requests\FormCommonRequest;
-use App\Models\CommonApply;
+use App\Models\Application;
+use App\Models\FormItem;
 use App\Models\FormSetting;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -37,43 +38,53 @@ class CommonFormService
      */
     public function insertCommonApply(array $request, FormSetting $form_setting): bool
     {
-        $common_apply = new CommonApply;
-        $common_apply->apply_type = $form_setting->apply_type;
+        $application = new Application;
+        $application->apply_type = $form_setting->apply_type;
 
         foreach ($form_setting->formItem as $form_item) {
             switch($form_item->type_no){
                 case(1):
-                    $common_apply->f_name = $request['f_name'];
-                    $common_apply->l_name = $request['l_name'];
+                    $application->f_name = $request['f_name'];
+                    $application->l_name = $request['l_name'];
                     break;
                 case(2):
-                    $common_apply->f_read = $request['f_read'];
-                    $common_apply->l_read = $request['l_read'];
+                    $application->f_read = $request['f_read'];
+                    $application->l_read = $request['l_read'];
                     break;
                 case(3):
-                    $common_apply->sex = $request['sex'];
+                    $application->sex = $request['sex'];
                     break;
                 case(4):
-                    $common_apply->age = $request['age'];
+                    $application->age = $request['age'];
                     break;
                 case(5):
-                    $common_apply->zip21 = $request['zip21'];
-                    $common_apply->zip22 = $request['zip22'];
-                    $common_apply->pref21 = $request['pref21'];
-                    $common_apply->address21 = $request['address21'];
-                    $common_apply->street21 = $request['street21'];
+                    $application->zip21 = $request['zip21'];
+                    $application->zip22 = $request['zip22'];
+                    $application->pref21 = $request['pref21'];
+                    $application->address21 = $request['address21'];
+                    $application->street21 = $request['street21'];
                     break;
                 case(6):
-                    $common_apply->tel = $request['tel'];
+                    $application->tel = $request['tel'];
                     break;
                 case(7):
-                    $common_apply->email = $request['email'];
+                    $application->email = $request['email'];
+                    break;
+                case(FormItem::ITEM_TYPE_CHOICE_1):
+                    $application->choice_1 = $request['choice_11'];
+                    break;
+                case(FormItem::ITEM_TYPE_CHOICE_2):
+                    $application->choice_2 = $request['choice_12'];
+                    break;
+                case(FormItem::ITEM_TYPE_CHOICE_3):
+                    $application->choice_3 = $request['choice_13'];
                     break;
                 default:
+                    dd('機能作成中');
             }
         }
 
-        return $common_apply->save();
+        return $application->save();
     }
 
 

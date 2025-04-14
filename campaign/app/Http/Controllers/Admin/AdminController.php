@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\FormItem;
 use App\Models\FormSetting;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -83,6 +84,96 @@ class AdminController extends BaseController
         return response()->json([
             'form_setting' => $form_setting_query->first(),
         ]);
+    }
+
+    /**
+     *
+     */
+    public function itemSetting(Request $request): View
+    {
+        $apply_type = $request->query('apply_type');
+        $form_no = $request->query('form_no') ?? 1;
+
+        $form_setting = FormSetting::where('apply_type', $apply_type)
+            ->where('form_no', $form_no)->first();
+        if (!$form_setting) {
+            abort(404);
+        }
+
+        // 既存の設定してある項目を取得
+        $form_items = $form_setting->formItem;
+
+        // 設定していない項目を取得
+        $none_setting_items = FormItem::ITEM_TYPE_LIST;
+        foreach ($form_items as $form_item) {
+            unset($none_setting_items[$form_item->type_no]);
+        }
+
+        return view('admin.item-setting', [
+            'apply_type' => $apply_type,
+            'form_no' => $form_no,
+            'form_setting' => $form_setting,
+            'form_items' => $form_items,
+            'none_setting_items' => $none_setting_items,
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return void
+     */
+    public function itemSettingUpdate(Request $request)
+    {
+        $apply_type = $request->apply_type;
+        $form_no = $request->form_no;
+        try {
+            DB::beginTransaction();
+
+            $form_setting = FormSetting::where('apply_type', $apply_type)->where('form_no', $form_no)->first();
+
+            // 一度削除
+            FormItem::where('form_setting_id', $form_setting->id)->update([
+                'delete_flag' => 1,
+            ]);
+
+            // 再登録
+            $sort = 1;
+            foreach ($request->type_no as $type_no) {
+                $form_item = FormItem::create([
+                    'form_setting_id' => $form_setting->id,
+                    'type_no' => $type_no,
+                    'sort' => $sort,
+                    'require_flg' => 1,
+                ]);
+
+                // 選択肢の場合
+                if (in_array($type_no, [
+                    FormItem::ITEM_TYPE_CHOICE_1,
+                    FormItem::ITEM_TYPE_CHOICE_2,
+                    FormItem::ITEM_TYPE_CHOICE_3,
+                ])) {
+
+                    $form_item->update([
+                        'choice_data' => [
+                            'item_type' => $request->item_type[$type_no],
+                            'item_name' => $request->item_name[$type_no],
+                            'choices' => $request->choices[$type_no],
+                        ],
+                    ]);
+                }
+
+
+                $sort++;
+            }
+
+            DB::commit();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e->getMessage());
+
+            return redirect()->back()->withInput();
+        }
     }
 
 }

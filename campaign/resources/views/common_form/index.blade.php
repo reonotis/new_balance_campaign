@@ -54,26 +54,78 @@
 
                         @foreach($form_items as $form_item)
                             @switch($form_item->type_no)
-                                @case(1)
+                                @case(App\Models\FormItem::ITEM_TYPE_NAME)
                                     <x-form_items.name/>
                                     @break
-                                @case(2)
+                                @case(App\Models\FormItem::ITEM_TYPE_YOMI)
                                     <x-form_items.yomi/>
                                     @break
-                                @case(3)
+                                @case(App\Models\FormItem::ITEM_TYPE_SEX)
                                     <x-form_items.sex/>
                                     @break
-                                @case(4)
+                                @case(App\Models\FormItem::ITEM_TYPE_AGE)
                                     <x-form_items.age/>
                                     @break
-                                @case(5)
+                                @case(App\Models\FormItem::ITEM_TYPE_ADDRESS)
                                     <x-form_items.address/>
                                     @break
-                                @case(6)
+                                @case(App\Models\FormItem::ITEM_TYPE_TEL)
                                     <x-form_items.tel/>
                                     @break
-                                @case(7)
+                                @case(App\Models\FormItem::ITEM_TYPE_EMAIL)
                                     <x-form_items.email/>
+                                    @break
+                                @case(App\Models\FormItem::ITEM_TYPE_CHOICE_1)
+                                @case(App\Models\FormItem::ITEM_TYPE_CHOICE_2)
+                                @case(App\Models\FormItem::ITEM_TYPE_CHOICE_3)
+                                    <div class="item-row">
+                                        <label for="tel" class="item-title">{{ $form_item->choice_data['item_name'] }}</label>
+                                        <div class="item-content">
+                                            @php
+                                                $choices = preg_split('/\r\n|\r|\n/', $form_item->choice_data['choices']);
+                                            @endphp
+
+                                            @if($form_item->choice_data['item_type'] == 1)
+                                                {{-- ラジオボタン --}}
+                                                <div class="w-full mb-1" >
+                                                    @foreach($choices as $choice)
+                                                        <label class="radio-label" style="margin: 0 .5rem">
+                                                            <input type="radio" class="" name="choice_{{ $form_item->type_no }}" value="{{ $choice }}"
+                                                                   @if(old('desired_size') == $choice)
+                                                                        checked="checked"
+                                                                   @endif
+                                                            >
+                                                            {{ $choice }}
+                                                        </label>
+                                                    @endforeach
+                                                </div>
+                                            @elseif($form_item->choice_data['item_type'] == 2)
+                                                {{-- チェックボックス --}}
+                                                <div class="w-full mb-1" >
+                                                    @foreach($choices as $choice)
+                                                        <label class="radio-label" style="margin: 0 .5rem">
+                                                            <input type="checkbox" class="" name="choice_{{ $form_item->type_no }}" value="{{ $choice }}"
+                                                                   @if(old('desired_size') == $choice)
+                                                                       checked="checked"
+                                                                @endif
+                                                            >
+                                                            {{ $choice }}
+                                                        </label>
+                                                    @endforeach
+                                                </div>
+
+                                            @elseif($form_item->choice_data['item_type'] == 3)
+                                                {{-- セレクトボックス --}}
+                                                <select name="choice_{{ $form_item->type_no }}"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                                    @foreach($choices as $choice)
+                                                        <option value="{{ $choice }}">{{ $choice }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                     @break
                                 @default
                                     @dd('不正なデータが登録されています')

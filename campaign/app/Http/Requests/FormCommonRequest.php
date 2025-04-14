@@ -73,7 +73,7 @@ class FormCommonRequest extends FormRequest
                     $rules['email_confirmation']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/'];
                     break;
                 default:
-                    dd($form_item, '式がいずれの値にも等しくない時の処理');
+//                    dd($form_item, '式がいずれの値にも等しくない時の処理');
             }
         }
 

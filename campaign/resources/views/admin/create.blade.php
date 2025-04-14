@@ -80,6 +80,9 @@
                         <input type="submit" class="btn" value="登録/更新">
                     </div>
                 </form>
+                <div class="flex mt-2">
+                    <a href="#" id="formSettingBtn" class="btn">項目設定</a>
+                </div>
             </div>
         </div>
     </div>
@@ -181,5 +184,24 @@
         const dd = ('0' + date.getDate()).slice(-2);
         return `${yyyy}-${mm}-${dd}`;
     }
+
+    document.getElementById('formSettingBtn').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        let apply_type = $('#apply_type').val();
+        let form_no = $('#form_no').val();
+
+        if (!apply_type) {
+            alert('フォーム番号を入力してください');
+            return;
+        }
+
+        const baseUrl = "{{ route('admin.form-item-setting') }}";
+        const url = `${baseUrl}?apply_type=${encodeURIComponent(apply_type)}&form_no=${encodeURIComponent(form_no)}`;
+
+        window.location.href = url;
+    });
+
+
 </script>
 

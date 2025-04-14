@@ -302,6 +302,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
     Route::post('/form-register', [AdminController::class, 'formRegister'])->name('admin.form-register');
+    Route::get('/item-setting/', [AdminController::class, 'itemSetting'])->name('admin.form-item-setting');
+    Route::post('/item-setting/update', [AdminController::class, 'itemSettingUpdate'])->name('admin.form-item-setting-update');
 
     Route::get('/try-on-2023', [AdminTryOn20232Controller::class, 'index'])->name('admin.try-on-2023');
     Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');

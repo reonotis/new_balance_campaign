@@ -89,9 +89,7 @@ class CommonFormController extends Controller
      */
     public function store(string $route_name, FormCommonRequest $request)
     {
-
         $this->common_service_service = new CommonFormService();
-
         try {
             DB::beginTransaction();
 
