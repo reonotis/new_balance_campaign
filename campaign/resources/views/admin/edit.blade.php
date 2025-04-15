@@ -111,7 +111,6 @@
 
 <script>
 
-    const api_url = @json(route('api_admin_get_form_detail'));
 
     // 日付文字列を YYYY-MM-DD に変換する関数
     function formatDate(dateStr) {
