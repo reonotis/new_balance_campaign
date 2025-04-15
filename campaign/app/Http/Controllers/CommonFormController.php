@@ -34,7 +34,7 @@ class CommonFormController extends Controller
             // 基本設定を取得
             $form_setting = FormSetting::where('route_name', $route_name)
                 ->where('delete_flag', 0)
-                ->orderBy('form_no', 'desc')
+                ->orderBy('id', 'desc')
                 ->first();
 
             // レコードが取得できない場合は設定されていないので404

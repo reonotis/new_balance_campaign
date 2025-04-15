@@ -11,24 +11,6 @@
                     @csrf
                     <table class="create-form" style="width: 800px">
                         <tr>
-                            <th>
-                                申込タイプ（ID）<br>
-                                apply_type
-                            </th>
-                            <td>
-                                <input type="number" name="apply_type" id="apply_type" value="{{ old("apply_type", $form_setting->apply_type?? '') }}">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                フォームナンバー（回数）<br>
-                                form_no
-                            </th>
-                            <td>
-                                <input type="number" name="form_no" id="form_no" value="{{ old("form_no", $form_setting->form_no?? '') }}">
-                            </td>
-                        </tr>
-                        <tr>
                             <th>イベント名</th>
                             <td>
                                 <input type="text" name="title" id="title" class="w-full" value="{{ old("title") }}">

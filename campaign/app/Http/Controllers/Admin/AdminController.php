@@ -116,16 +116,11 @@ class AdminController extends BaseController
         try {
             DB::beginTransaction();
 
-            $form_setting_query = FormSetting::where('apply_type', $request->apply_type)
-                ->where('form_no', $request->form_no)->first();
-
-            if ($form_setting_query) {
-                // 更新
-                $form_setting_query->update($request->except('_token'));
-            } else {
-                // 登録
-                FormSetting::create($request->except('_token'));
-            }
+            // 登録
+            $params = $request->except('_token');
+            $params['start_at'] = $params['start_at']. ' 00:00:00';
+            $params['end_at'] = $params['end_at']. ' 23:59:59';
+            FormSetting::create($params);
 
             DB::commit();
             Redirect::route('admin.form-create')->send();
