@@ -8,9 +8,11 @@
         <div class="mx-auto sm:px-6 lg:px-8" style="max-width: 1200px">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 @foreach(App\Consts\CommonApplyConst::APPLY_TITLE_LIST as $key => $value)
-                    <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => $key]) }}" class="list-href"
-                        > {{ App\Consts\CommonApplyConst::APPLY_TITLE_LIST[$key] }} 申込リストを確認する</a>
-                    </div>
+                    @if($key >= 20)
+                        <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => $key]) }}" class="list-href"
+                            > {{ App\Consts\CommonApplyConst::APPLY_TITLE_LIST[$key] }} 申込リストを確認する</a>
+                        </div>
+                    @endif
                 @endforeach
 
                 @if(\Auth::user()->id === 1)
@@ -22,6 +24,7 @@
                     <tr>
                         <th>イベント名</th>
                         <th>受付期間</th>
+                        <th>申込件数(最大申込可能数)</th>
 
                         @if(\Auth::user()->id === 1)
                             <th>設定</th>
@@ -37,6 +40,12 @@
                             </td>
                             <td>
                                 {{ $form_setting->start_at }}&nbsp;~&nbsp;{{ $form_setting->end_at->format('Y-m-d H:i:s') }}
+                            </td>
+                            <td>
+                                {{ $application_count[$form_setting->id] ?? 0 }}件
+                                @if($form_setting->max_application_count)
+                                ({{ $form_setting->max_application_count }}件)
+                                @endif
                             </td>
                             @if(\Auth::user()->id === 1)
                                 <td>

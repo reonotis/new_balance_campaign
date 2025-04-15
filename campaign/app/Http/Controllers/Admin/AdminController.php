@@ -28,8 +28,15 @@ class AdminController extends BaseController
     {
         $form_settings = FormSetting::paginate(10);
 
+        $form_setting_ids = $form_settings->pluck('id')->toArray();
+        $application_count = Application::select('form_setting_id', DB::raw('COUNT(*) as count'))
+            ->groupBy('form_setting_id')
+            ->pluck('count', 'form_setting_id')
+            ->toArray();
+
         return view('admin.index', [
             'form_settings' => $form_settings,
+            'application_count' => $application_count,
         ]);
     }
 
@@ -38,7 +45,7 @@ class AdminController extends BaseController
      */
     public function list(FormSetting $form_setting): View
     {
-        $applications = Application::where('form_setting_id' , $form_setting->id)
+        $applications = Application::where('form_setting_id', $form_setting->id)
             ->paginate(50);
 
         return view('admin.list', [
@@ -52,8 +59,8 @@ class AdminController extends BaseController
      */
     public function formCreate(Request $request): View
     {
-        $form_setting= null;
-        if($request->form_setting) {
+        $form_setting = null;
+        if ($request->form_setting) {
             $form_setting = FormSetting::find($request->form_setting);
         }
 
