@@ -22,11 +22,9 @@
                     <div class="btn" id="add-item">追加</div>
                 </div>
 
-                <form method="post" action="{{ route('admin.form-item-setting-update') }}">
+                <form method="post" action="{{ route('admin.form-item-update', ['form_setting' => $form_setting->id]) }}">
                     @csrf
                     <div id="sortable-items" class="cursor-move">
-                        <input type="hidden" name="apply_type" value="{{ $apply_type }}">
-                        <input type="hidden" name="form_no" value="{{ $form_no }}">
                         {{-- 設定してある項目 --}}
                         @foreach($form_items as $form_item)
                             @if(in_array($form_item->type_no, [

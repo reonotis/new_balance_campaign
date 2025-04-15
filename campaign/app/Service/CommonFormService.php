@@ -39,7 +39,7 @@ class CommonFormService
     public function insertCommonApply(array $request, FormSetting $form_setting): bool
     {
         $application = new Application;
-        $application->apply_type = $form_setting->apply_type;
+        $application->form_setting_id = $form_setting->id;
 
         foreach ($form_setting->formItem as $form_item) {
             switch($form_item->type_no){

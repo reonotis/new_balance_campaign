@@ -15,7 +15,7 @@ class CreateApplicationTable extends Migration
     {
         Schema::create('application', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('ID');
-            $table->integer('apply_type')->comment('対象となる申込種類');
+            $table->integer('form_setting_id')->comment('申込フォームのID');
 
             $table->string('f_name')->comment('苗字');
             $table->string('l_name')->comment('名前');

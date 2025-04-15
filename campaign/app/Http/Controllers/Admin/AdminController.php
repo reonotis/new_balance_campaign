@@ -26,8 +26,7 @@ class AdminController extends BaseController
      */
     public function index(): View
     {
-        $form_settings = FormSetting::orderBy('form_no', 'desc')
-            ->paginate(10);
+        $form_settings = FormSetting::paginate(10);
 
         return view('admin.index', [
             'form_settings' => $form_settings,
@@ -37,20 +36,9 @@ class AdminController extends BaseController
     /**
      * @return View
      */
-    public function list(Request $request): View
+    public function list(FormSetting $form_setting): View
     {
-        $apply_type = $request->apply_type;
-        $form_no = $request->form_no;
-
-        $form_setting = FormSetting::where('apply_type', $apply_type)
-            ->where('form_no', $form_no)->first();
-        if (!$form_setting) {
-            abort(404);
-        }
-
-        $applications = Application::where('apply_type' , $request->apply_type)
-            ->where('created_at', '>=', $form_setting->start_at)
-            ->where('created_at', '<=', $form_setting->end_at)
+        $applications = Application::where('form_setting_id' , $form_setting->id)
             ->paginate(50);
 
         return view('admin.list', [
@@ -64,10 +52,42 @@ class AdminController extends BaseController
      */
     public function formCreate(Request $request): View
     {
+        $form_setting= null;
+        if($request->form_setting) {
+            $form_setting = FormSetting::find($request->form_setting);
+        }
+
         return view('admin.create', [
-            'apply_type' => $request->apply_type,
-            'form_no' => $request->form_no,
+            'form_setting' => $form_setting,
         ]);
+    }
+
+    /**
+     *
+     */
+    public function formEdit(FormSetting $form_setting): View
+    {
+        return view('admin.edit', [
+            'form_setting' => $form_setting,
+        ]);
+    }
+
+    /**
+     *
+     */
+    public function formUpdate(FormSetting $form_setting, Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $form_setting->update($request->all());
+            DB::commit();
+            Redirect::route('admin.form-edit', ['form_setting' => $form_setting])->send();
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 
     /**
@@ -118,17 +138,8 @@ class AdminController extends BaseController
     /**
      *
      */
-    public function itemSetting(Request $request): View
+    public function formItemEdit(FormSetting $form_setting): View
     {
-        $apply_type = $request->query('apply_type');
-        $form_no = $request->query('form_no') ?? 1;
-
-        $form_setting = FormSetting::where('apply_type', $apply_type)
-            ->where('form_no', $form_no)->first();
-        if (!$form_setting) {
-            abort(404);
-        }
-
         // 既存の設定してある項目を取得
         $form_items = $form_setting->formItem;
 
@@ -138,9 +149,7 @@ class AdminController extends BaseController
             unset($none_setting_items[$form_item->type_no]);
         }
 
-        return view('admin.item-setting', [
-            'apply_type' => $apply_type,
-            'form_no' => $form_no,
+        return view('admin.form-item-edit', [
             'form_setting' => $form_setting,
             'form_items' => $form_items,
             'none_setting_items' => $none_setting_items,
@@ -151,14 +160,10 @@ class AdminController extends BaseController
      * @param Request $request
      * @return void
      */
-    public function itemSettingUpdate(Request $request)
+    public function formItemUpdate(FormSetting $form_setting, Request $request)
     {
-        $apply_type = $request->apply_type;
-        $form_no = $request->form_no;
         try {
             DB::beginTransaction();
-
-            $form_setting = FormSetting::where('apply_type', $apply_type)->where('form_no', $form_no)->first();
 
             // 一度削除
             FormItem::where('form_setting_id', $form_setting->id)->update([
@@ -190,7 +195,6 @@ class AdminController extends BaseController
                         ],
                     ]);
                 }
-
 
                 $sort++;
             }

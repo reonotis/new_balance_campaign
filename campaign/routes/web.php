@@ -300,11 +300,13 @@ Route::group(['prefix' => '{route_name}/form'], function () {
 // 管理者
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/list', [AdminController::class, 'list'])->name('admin.list');
+    Route::get('list/{form_setting}', [AdminController::class, 'list'])->name('admin.list');
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
+    Route::get('/form-edit/{form_setting}', [AdminController::class, 'formEdit'])->name('admin.form-edit');
+    Route::post('/form-update/{form_setting}', [AdminController::class, 'formUpdate'])->name('admin.form-update');
     Route::post('/form-register', [AdminController::class, 'formRegister'])->name('admin.form-register');
-    Route::get('/item-setting/', [AdminController::class, 'itemSetting'])->name('admin.form-item-setting');
-    Route::post('/item-setting/update', [AdminController::class, 'itemSettingUpdate'])->name('admin.form-item-setting-update');
+    Route::get('/form-item-edit/{form_setting}', [AdminController::class, 'formItemEdit'])->name('admin.form-item-edit');
+    Route::post('/form-item-update/{form_setting}', [AdminController::class, 'formItemUpdate'])->name('admin.form-item-update');
 
     Route::get('/try-on-2023', [AdminTryOn20232Controller::class, 'index'])->name('admin.try-on-2023');
     Route::get('/go-murakami-2023', [AdminGoMurakami2023Controller::class, 'index'])->name('admin.go-murakami-2023');

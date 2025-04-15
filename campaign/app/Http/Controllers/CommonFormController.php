@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormCommonRequest;
-use App\Models\CommonApply;
+use App\Models\Application;
 use App\Models\FormSetting;
 use App\Service\CommonFormService;
 use Carbon\Carbon;
@@ -190,8 +190,7 @@ class CommonFormController extends Controller
             return true;
         }
 
-        $count = CommonApply::where('apply_type', $this->form_setting->apply_type)
-            ->where('delete_flag', 0)
+        $count = Application::where('form_setting_id', $this->form_setting->id)
             ->where('created_at', '>=', $this->form_setting->start_at)
             ->count();
 
@@ -210,8 +209,12 @@ class CommonFormController extends Controller
     private function checkErrorViewRedirect(): bool
     {
         $this->setErrorMessage();
-        // 既にエラー画面に行こうとしている場合は再リダイレクトさせない
-        if (Route::currentRouteName() === 'common_form.outsidePeriod') {
+        // 既にエラー画面に行こうとしている場合、
+        // もしくは申込完了画面に行こうとしている場合は再リダイレクトさせない
+        if (
+            Route::currentRouteName() === 'common_form.outsidePeriod' ||
+            Route::currentRouteName() === 'common_form.complete'
+        ) {
             return false;
         }
 

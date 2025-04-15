@@ -17,7 +17,7 @@
                             <a href="{{ route('admin') }}">一覧に戻る</a>
                         </div>
                         <div>
-{{--                            <a href="{{ route('admin.redirect_apply_form', ['applyType' => $applyType]) }}" target="_blank" >申込サイトを確認する</a>--}}
+                            <a href="{{ route('common_form.index', ['route_name' => $form_setting->route_name]) }}" target="_blank" >申込サイトを確認する</a>
                         </div>
                     </div>
                 </div>

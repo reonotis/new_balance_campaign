@@ -32,7 +32,7 @@
                     @foreach($form_settings as $form_setting)
                         <tr>
                             <td>
-                                <a href="{{ route('admin.list', ['apply_type' => $form_setting->apply_type, 'form_no' => $form_setting->form_no ]) }}"
+                                <a href="{{ route('admin.list', ['form_setting' => $form_setting->id]) }}" class="list-href"
                                 >{{ $form_setting->title }}</a>
                             </td>
                             <td>
@@ -40,7 +40,7 @@
                             </td>
                             @if(\Auth::user()->id === 1)
                                 <td>
-                                    <a href="{{ route('admin.form-create', ['apply_type' => $form_setting->apply_type, 'form_no' => $form_setting->form_no]) }}">設定</a>
+                                    <a href="{{ route('admin.form-edit', ['form_setting' => $form_setting->id]) }}">設定</a>
                                 </td>
                             @endif
                         </tr>
