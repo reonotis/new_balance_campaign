@@ -23,5 +23,4 @@ use App\Http\Controllers\Admin\{
 //});
 
 Route::get('/lottery_result_email/{applyType}', [AdminCommonApplyController::class, 'setLotteryResultEmail'])->name('api_admin_lottery_result_email');
-Route::get('/get-form-detail', [AdminController::class, 'getFormDetail'])->name('api_admin_get_form_detail');
 

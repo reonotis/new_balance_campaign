@@ -21,7 +21,7 @@ class AdminController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     *
+     * 申込フォーム一覧画面を表示する
      * @return View
      */
     public function index(): View
@@ -30,6 +30,7 @@ class AdminController extends BaseController
 
         $form_setting_ids = $form_settings->pluck('id')->toArray();
         $application_count = Application::select('form_setting_id', DB::raw('COUNT(*) as count'))
+            ->whereIn('form_setting_id' , $form_setting_ids)
             ->groupBy('form_setting_id')
             ->pluck('count', 'form_setting_id')
             ->toArray();
@@ -41,6 +42,8 @@ class AdminController extends BaseController
     }
 
     /**
+     * 応募一覧を表示する
+     * @param FormSetting $form_setting
      * @return View
      */
     public function list(FormSetting $form_setting): View
@@ -55,7 +58,9 @@ class AdminController extends BaseController
     }
 
     /**
-     *
+     * フォーム作成画面を表示する
+     * @param Request $request
+     * @return View
      */
     public function formCreate(Request $request): View
     {
@@ -70,7 +75,9 @@ class AdminController extends BaseController
     }
 
     /**
-     *
+     * フォーム情報更新画面を表示する
+     * @param FormSetting $form_setting
+     * @return View
      */
     public function formEdit(FormSetting $form_setting): View
     {
@@ -80,7 +87,10 @@ class AdminController extends BaseController
     }
 
     /**
-     *
+     * フォーム情報を更新する
+     * @param FormSetting $form_setting
+     * @param Request $request
+     * @return RedirectResponse|void
      */
     public function formUpdate(FormSetting $form_setting, Request $request)
     {
@@ -98,6 +108,7 @@ class AdminController extends BaseController
     }
 
     /**
+     * フォーム情報を登録する
      * @return RedirectResponse|void
      */
     public function formRegister(Request $request)
@@ -127,23 +138,9 @@ class AdminController extends BaseController
     }
 
     /**
-     *
-     */
-    public function getFormDetail(Request $request)
-    {
-        $apply_type = $request->query('apply_type');
-        $form_no = $request->query('form_no') ?? 1;
-
-        $form_setting_query = FormSetting::where('apply_type', $apply_type)
-            ->where('form_no', $form_no);
-
-        return response()->json([
-            'form_setting' => $form_setting_query->first(),
-        ]);
-    }
-
-    /**
-     *
+     * 申込フォームの項目設定画面を表示する
+     * @param FormSetting $form_setting
+     * @return View
      */
     public function formItemEdit(FormSetting $form_setting): View
     {
@@ -164,6 +161,8 @@ class AdminController extends BaseController
     }
 
     /**
+     * 申込フォームの項目設定を更新する
+     * @param FormSetting $form_setting
      * @param Request $request
      * @return void
      */
