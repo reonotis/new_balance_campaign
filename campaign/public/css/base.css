@@ -127,6 +127,18 @@ input::placeholder {
     color: #dadada;
 }
 
+
+.agreement {
+    padding: .5rem;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.article {
+    font-weight: bold;
+}
+
+
 .submit-btn {
     position: relative;
     background: #111;

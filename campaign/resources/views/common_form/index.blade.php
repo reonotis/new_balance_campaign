@@ -135,6 +135,17 @@
                             @endswitch
                         @endforeach
 
+                        @if(!empty($form_setting->agreement))
+                            <div class="item-row">
+                                <label for="f_name" class="item-title">規約</label>
+                                <div class="item-content">
+                                    <div class="agreement">
+                                        {!! nl2br($form_setting->agreement) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>
                         </div>
