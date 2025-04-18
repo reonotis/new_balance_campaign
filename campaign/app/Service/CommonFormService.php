@@ -79,6 +79,15 @@ class CommonFormService
                 case(FormItem::ITEM_TYPE_CHOICE_3):
                     $application->choice_3 = $request['choice_13'];
                     break;
+                case(FormItem::ITEM_TYPE_COMMENT_1):
+                    $application->comment = $request['comment_41'];
+                    break;
+                case(FormItem::ITEM_TYPE_COMMENT_2):
+                    $application->comment2 = $request['comment_42'];
+                    break;
+                case(FormItem::ITEM_TYPE_COMMENT_3):
+                    $application->comment3 = $request['comment_43'];
+                    break;
                 default:
                     dd('機能作成中');
             }

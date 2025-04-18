@@ -128,7 +128,14 @@
                                             @endif
                                         </div>
                                     </div>
-
+                                    @break
+                                @case(App\Models\FormItem::ITEM_TYPE_RECEIPT_IMAGE)
+                                    <x-form_items.receipt-image/>
+                                    @break
+                                @case(App\Models\FormItem::ITEM_TYPE_COMMENT_1)
+                                @case(App\Models\FormItem::ITEM_TYPE_COMMENT_2)
+                                @case(App\Models\FormItem::ITEM_TYPE_COMMENT_3)
+                                    <x-form_items.comment title="{{ $form_item->comment_title }}" typeNo="{{ (string)$form_item->type_no }}"/>
                                     @break
                                 @default
                                     @dd('不正なデータが登録されています')

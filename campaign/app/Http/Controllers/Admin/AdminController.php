@@ -174,12 +174,23 @@ class AdminController extends BaseController
             // 再登録
             $sort = 1;
             foreach ($request->type_no as $type_no) {
-                $form_item = FormItem::create([
+                $form_item_param = [
                     'form_setting_id' => $form_setting->id,
                     'type_no' => $type_no,
                     'sort' => $sort,
                     'require_flg' => 1,
-                ]);
+                ];
+
+                // コメントの場合は項目名を入れる
+                if (in_array($type_no, [
+                    \App\Models\FormItem::ITEM_TYPE_COMMENT_1,
+                    \App\Models\FormItem::ITEM_TYPE_COMMENT_2,
+                    \App\Models\FormItem::ITEM_TYPE_COMMENT_3,
+                ])) {
+                    $form_item_param['comment_title'] = $request->comment_title[$type_no];
+                }
+
+                $form_item = FormItem::create($form_item_param);
 
                 // 選択肢の場合
                 if (in_array($type_no, [
@@ -187,7 +198,6 @@ class AdminController extends BaseController
                     FormItem::ITEM_TYPE_CHOICE_2,
                     FormItem::ITEM_TYPE_CHOICE_3,
                 ])) {
-
                     $form_item->update([
                         'choice_data' => [
                             'item_type' => $request->item_type[$type_no],

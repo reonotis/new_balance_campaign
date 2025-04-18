@@ -27,6 +27,7 @@
                     <div id="sortable-items" class="cursor-move">
                         {{-- 設定してある項目 --}}
                         @foreach($form_items as $form_item)
+                            {{-- 選択肢3種類 --}}
                             @if(in_array($form_item->type_no, [
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_1,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_2,
@@ -36,7 +37,7 @@
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
                                     </div>
-                                    <div style="width: 100px;">
+                                    <div style="width: 120px;">
                                         {{ \App\Models\FormItem::ITEM_TYPE_LIST[$form_item->type_no] }}
                                     </div>
                                     <div class="">
@@ -67,12 +68,31 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            {{-- コメント3種類 --}}
+                            @elseif(in_array($form_item->type_no, [
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_1,
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_2,
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_3,
+                            ]))
+                                <div class="flex">
+                                    <div style="width: 40px;">
+                                        <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
+                                    </div>
+                                    <div style="width: 120px;">
+                                        {{ \App\Models\FormItem::ITEM_TYPE_LIST[$form_item->type_no] }}
+                                    </div>
+                                    <div style="width: 300px;">
+                                        項目名
+                                        <input type="text" name="comment_title[{{ $form_item->type_no }}]" value="{{ $form_item->comment_title }}">
+                                    </div>
+                                </div>
                             @else
                                 <div class="flex">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
                                     </div>
-                                    <div style="width: 300px;">
+                                    <div style="width: 120px;">
                                         {{ \App\Models\FormItem::ITEM_TYPE_LIST[$form_item->type_no] }}
                                     </div>
                                 </div>
@@ -90,7 +110,7 @@
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}" >
                                     </div>
-                                    <div style="width: 100px;">
+                                    <div style="width: 120px;">
                                         {{ \App\Models\FormItem::ITEM_TYPE_LIST[$none_setting_item_key] }}
                                     </div>
                                     <div class="">
@@ -113,6 +133,23 @@
                                             選択肢
                                             <textarea name="choices[{{ $none_setting_item_key }}]"></textarea>
                                         </div>
+                                    </div>
+                                </div>
+                            @elseif(in_array($none_setting_item_key, [
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_1,
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_2,
+                                \App\Models\FormItem::ITEM_TYPE_COMMENT_3,
+                            ]))
+                                <div class="flex">
+                                    <div style="width: 40px;">
+                                        <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}">
+                                    </div>
+                                    <div style="width: 120px;">
+                                        {{ $none_setting_item }}
+                                    </div>
+                                    <div style="width: 300px;">
+                                        項目名
+                                        <input type="text" name="comment_title[{{ $none_setting_item_key }}]">
                                     </div>
                                 </div>
                             @else
