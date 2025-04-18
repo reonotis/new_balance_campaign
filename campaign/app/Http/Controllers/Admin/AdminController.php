@@ -203,6 +203,7 @@ class AdminController extends BaseController
                             'item_type' => $request->item_type[$type_no],
                             'item_name' => $request->item_name[$type_no],
                             'choices' => $request->choices[$type_no],
+                            'support_msg' => $request->support_msg[$type_no],
                         ],
                     ]);
                 }

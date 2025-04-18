@@ -48,6 +48,12 @@ body {
     padding-left: 1rem;
 }
 
+.banner-image {
+    padding: 0 1.5rem;
+    max-height: 600px;
+    margin: 0 auto 1rem;
+}
+
 .item-row {
     position: relative;
     background: #fff;
@@ -99,9 +105,12 @@ body {
 
 .mail_supplement {
     line-height: 1.2rem;
-    color: #333;
+    color: #777;
 }
 
+.support_msg {
+    color: #777;
+}
 
 input[type="text"],
 input[type="email"],

@@ -33,7 +33,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_2,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_3,
                             ]))
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
                                     </div>
@@ -62,9 +62,13 @@
                                             項目名
                                             <input type="text" name="item_name[{{ $form_item->type_no }}]" value="{{ $form_item->choice_data['item_name'] }}">
                                         </div>
-                                        <div style="width: 300px;">
+                                        <div style="flex:1;">
                                             選択肢
                                             <textarea name="choices[{{ $form_item->type_no }}]">{{ $form_item->choice_data['choices'] }}</textarea>
+                                        </div>
+                                        <div style="flex:1;">
+                                            注意書き
+                                            <textarea type="text" name="support_msg[{{ $form_item->type_no }}]">{{ $form_item->choice_data['support_msg']?? '' }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +79,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_COMMENT_2,
                                 \App\Models\FormItem::ITEM_TYPE_COMMENT_3,
                             ]))
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
                                     </div>
@@ -88,7 +92,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
                                     </div>
@@ -106,7 +110,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_2,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_3,
                             ]))
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}" >
                                     </div>
@@ -129,7 +133,7 @@
                                             項目名
                                             <input type="text" name="item_name[{{ $none_setting_item_key }}]">
                                         </div>
-                                        <div style="width: 300px;">
+                                        <div style="flex:1;">
                                             選択肢
                                             <textarea name="choices[{{ $none_setting_item_key }}]"></textarea>
                                         </div>
@@ -140,7 +144,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_COMMENT_2,
                                 \App\Models\FormItem::ITEM_TYPE_COMMENT_3,
                             ]))
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}">
                                     </div>
@@ -153,7 +157,7 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="flex">
+                                <div class="flex item-row">
                                     <div style="width: 40px;">
                                         <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}">
                                     </div>
@@ -165,9 +169,8 @@
                         @endforeach
 
                     </div>
-                    <input type="submit" class="btn" value="更新">
+                    <input type="submit" class="btn mt-2" value="更新">
                 </form>
-
 
             </div>
         </div>
@@ -175,6 +178,11 @@
 </x-admin-layout>
 
 <style>
+    .item-row {
+        padding: .25rem;
+        border-bottom: solid 1px #333;
+    }
+
     .create-form {
         border-spacing: 0 10px; /* 横0px、縦10pxのスペース */
         border-collapse: separate; /* これが必要 */
@@ -206,6 +214,8 @@
 
     textarea {
         resize: auto;
+        height: 100px;
+        width: 300px;
     }
 
 </style>
@@ -235,6 +245,3 @@
     });
 
 </script>
-<script>
-</script>
-

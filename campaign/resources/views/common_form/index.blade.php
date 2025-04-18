@@ -15,6 +15,11 @@
     <div class="pt-4 pb-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
+
+                @if(!empty($form_setting->banner_file_name))
+                    <img class="banner-image" src="{{ asset('img/banner/' . $form_setting->banner_file_name) }}" alt="">
+                @endif
+
                 <div class="form-area">
 {{--                    <div class="event-explanation">--}}
 {{--                        <div class="event-explanation-row">--}}
@@ -116,7 +121,6 @@
                                                         </label>
                                                     @endforeach
                                                 </div>
-
                                             @elseif($form_item->choice_data['item_type'] == 3)
                                                 {{-- セレクトボックス --}}
                                                 <select name="choice_{{ $form_item->type_no }}"
@@ -125,6 +129,12 @@
                                                         <option value="{{ $choice }}">{{ $choice }}</option>
                                                     @endforeach
                                                 </select>
+                                            @endif
+
+                                            @if(!empty($form_item->choice_data['support_msg']))
+                                                <div class="px-2 support_msg" >
+                                                    {!! nl2br($form_item->choice_data['support_msg']) !!}
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
