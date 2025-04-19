@@ -183,10 +183,20 @@
                                     <div style="width: 120px;">
                                         {{ $none_setting_item }}
                                     </div>
-                                    <div style="flex:1;">
-                                        表示内容
-                                        <textarea name="choices[{{ $none_setting_item_key }}]"></textarea>
+
+
+
+                                    <div class="">
+                                        <div style="width: 300px;">
+                                            項目名
+                                            <input type="text" name="item_name[{{ $none_setting_item_key }}]" >
+                                        </div>
+                                        <div style="flex:1;">
+                                            注意書き
+                                            <textarea type="text" name="support_msg[{{ $none_setting_item_key }}]"></textarea>
+                                        </div>
                                     </div>
+                                    
                                 </div>
                             @else
                                 <div class="flex item-row">
