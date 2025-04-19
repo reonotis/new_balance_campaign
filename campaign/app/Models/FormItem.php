@@ -30,6 +30,7 @@ class FormItem extends Model
     const ITEM_TYPE_COMMENT_1 = 41;
     const ITEM_TYPE_COMMENT_2 = 42;
     const ITEM_TYPE_COMMENT_3 = 43;
+    const ITEM_TYPE_NOTES = 80;
     const ITEM_TYPE_LIST = [
         self::ITEM_TYPE_NAME => 'お名前',
         self::ITEM_TYPE_YOMI => 'ヨミ',
@@ -45,6 +46,7 @@ class FormItem extends Model
         self::ITEM_TYPE_COMMENT_1 => 'コメント1',
         self::ITEM_TYPE_COMMENT_2 => 'コメント2',
         self::ITEM_TYPE_COMMENT_3 => 'コメント3',
+        self::ITEM_TYPE_NOTES => '注意事項',
     ];
 
     protected $table = 'form_item';

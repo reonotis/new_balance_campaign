@@ -190,7 +190,13 @@ class AdminController extends BaseController
                     $form_item_param['comment_title'] = $request->comment_title[$type_no];
                 }
 
-                $form_item = FormItem::create($form_item_param);
+                // 注意事項の場合
+                if ($type_no == FormItem::ITEM_TYPE_NOTES) {
+                    $form_item_param['choice_data'] = [
+                        'item_name' => $request->item_name[$type_no],
+                        'support_msg' => $request->support_msg[$type_no],
+                    ];
+                }
 
                 // 選択肢の場合
                 if (in_array($type_no, [
@@ -198,15 +204,15 @@ class AdminController extends BaseController
                     FormItem::ITEM_TYPE_CHOICE_2,
                     FormItem::ITEM_TYPE_CHOICE_3,
                 ])) {
-                    $form_item->update([
-                        'choice_data' => [
-                            'item_type' => $request->item_type[$type_no],
-                            'item_name' => $request->item_name[$type_no],
-                            'choices' => $request->choices[$type_no],
-                            'support_msg' => $request->support_msg[$type_no],
-                        ],
-                    ]);
+                    $form_item_param['choice_data'] = [
+                        'item_type' => $request->item_type[$type_no],
+                        'item_name' => $request->item_name[$type_no],
+                        'choices' => $request->choices[$type_no],
+                        'support_msg' => $request->support_msg[$type_no],
+                    ];
                 }
+
+                FormItem::create($form_item_param);
 
                 $sort++;
             }

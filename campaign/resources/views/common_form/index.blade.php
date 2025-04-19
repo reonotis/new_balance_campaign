@@ -147,6 +147,17 @@
                                 @case(App\Models\FormItem::ITEM_TYPE_COMMENT_3)
                                     <x-form_items.comment title="{{ $form_item->comment_title }}" typeNo="{{ (string)$form_item->type_no }}"/>
                                     @break
+                                @case(App\Models\FormItem::ITEM_TYPE_NOTES)
+                                    <div class="item-row">
+                                        <label for="tel" class="item-title">{{ $form_item->choice_data['item_name'] }}</label>
+                                        <div class="item-content">
+                                            <div class="agreement">
+                                                {!! nl2br($form_item->choice_data['support_msg']) !!}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @break
                                 @default
                                     @dd('不正なデータが登録されています')
                             @endswitch
@@ -154,7 +165,7 @@
 
                         @if(!empty($form_setting->agreement))
                             <div class="item-row">
-                                <label for="f_name" class="item-title">規約</label>
+                                <label class="item-title">規約</label>
                                 <div class="item-content">
                                     <div class="agreement">
                                         {!! nl2br($form_setting->agreement) !!}

@@ -72,7 +72,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             {{-- コメント3種類 --}}
                             @elseif(in_array($form_item->type_no, [
                                 \App\Models\FormItem::ITEM_TYPE_COMMENT_1,
@@ -89,6 +88,26 @@
                                     <div style="width: 300px;">
                                         項目名
                                         <input type="text" name="comment_title[{{ $form_item->type_no }}]" value="{{ $form_item->comment_title }}">
+                                    </div>
+                                </div>
+                            {{-- 注意事項 --}}
+                            @elseif($form_item->type_no == \App\Models\FormItem::ITEM_TYPE_NOTES)
+                                <div class="flex item-row">
+                                    <div style="width: 40px;">
+                                        <input type="checkbox" name="type_no[]" value="{{ $form_item->type_no }}" checked>
+                                    </div>
+                                    <div style="width: 120px;">
+                                        {{ \App\Models\FormItem::ITEM_TYPE_LIST[$form_item->type_no] }}
+                                    </div>
+                                    <div class="">
+                                        <div style="width: 300px;">
+                                            項目名
+                                            <input type="text" name="item_name[{{ $form_item->type_no }}]" value="{{ $form_item->choice_data['item_name']?? '' }}">
+                                        </div>
+                                        <div style="flex:1;">
+                                            注意書き
+                                            <textarea type="text" name="support_msg[{{ $form_item->type_no }}]">{{ $form_item->choice_data['support_msg']?? '' }}</textarea>
+                                        </div>
                                     </div>
                                 </div>
                             @else
@@ -154,6 +173,19 @@
                                     <div style="width: 300px;">
                                         項目名
                                         <input type="text" name="comment_title[{{ $none_setting_item_key }}]">
+                                    </div>
+                                </div>
+                            @elseif($none_setting_item_key == \App\Models\FormItem::ITEM_TYPE_NOTES)
+                                <div class="flex item-row">
+                                    <div style="width: 40px;">
+                                        <input type="checkbox" name="type_no[]" value="{{ $none_setting_item_key }}" >
+                                    </div>
+                                    <div style="width: 120px;">
+                                        {{ $none_setting_item }}
+                                    </div>
+                                    <div style="flex:1;">
+                                        表示内容
+                                        <textarea name="choices[{{ $none_setting_item_key }}]"></textarea>
                                     </div>
                                 </div>
                             @else
