@@ -118,8 +118,8 @@ class AdminController extends BaseController
 
             // 登録
             $params = $request->except('_token');
-            $params['start_at'] = $params['start_at']. ' 00:00:00';
-            $params['end_at'] = $params['end_at']. ' 23:59:59';
+            $params['start_at'] = $params['start_at'] . ' 00:00:00';
+            $params['end_at'] = $params['end_at'] . ' 23:59:59';
             FormSetting::create($params);
 
             DB::commit();
@@ -208,7 +208,7 @@ class AdminController extends BaseController
                         'item_type' => $request->item_type[$type_no],
                         'item_name' => $request->item_name[$type_no],
                         'choices' => $request->choices[$type_no],
-                        'support_msg' => $request->support_msg[$type_no],
+                        'support_msg' => $request->support_msg[$type_no] ?? null,
                     ];
                 }
 

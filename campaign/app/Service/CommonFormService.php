@@ -89,7 +89,6 @@ class CommonFormService
                     $application->comment3 = $request['comment_43'];
                     break;
                 default:
-                    dd('機能作成中');
             }
         }
 
