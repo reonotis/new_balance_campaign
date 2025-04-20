@@ -301,6 +301,8 @@ Route::group(['prefix' => '{route_name}/form'], function () {
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('list/{form_setting}', [AdminController::class, 'list'])->name('admin.list');
+    Route::get('/get-application-column/{form_setting}', [AdminController::class, 'getApplicationsColumn'])->name('admin.get-application-column');
+    Route::get('/get-application-list/{form_setting}', [AdminController::class, 'getApplicationsList'])->name('admin.get-application-list');
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
     Route::get('/form-edit/{form_setting}', [AdminController::class, 'formEdit'])->name('admin.form-edit');
     Route::post('/form-update/{form_setting}', [AdminController::class, 'formUpdate'])->name('admin.form-update');

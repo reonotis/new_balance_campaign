@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\FormItem;
 use App\Models\FormSetting;
 use App\Models\Application;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -30,7 +31,7 @@ class AdminController extends BaseController
 
         $form_setting_ids = $form_settings->pluck('id')->toArray();
         $application_count = Application::select('form_setting_id', DB::raw('COUNT(*) as count'))
-            ->whereIn('form_setting_id' , $form_setting_ids)
+            ->whereIn('form_setting_id', $form_setting_ids)
             ->groupBy('form_setting_id')
             ->pluck('count', 'form_setting_id')
             ->toArray();
@@ -48,12 +49,149 @@ class AdminController extends BaseController
      */
     public function list(FormSetting $form_setting): View
     {
-        $applications = Application::where('form_setting_id', $form_setting->id)
-            ->paginate(50);
-
         return view('admin.list', [
             'form_setting' => $form_setting,
-            'applications' => $applications,
+        ]);
+    }
+
+    /**
+     * @param int $applyType
+     * @return StreamedResponse
+     */
+    public function csvDownload(int $applyType): StreamedResponse
+    {
+        // CSVヘッダー
+        $header = ['ID', '申込日'];
+
+        // csvデータ
+        $bodyData = [];
+
+        $response = new StreamedResponse (function () use ($header, $bodyData) {
+            $stream = fopen('php://output', 'w');
+
+            //　文字化け回避
+            stream_filter_prepend($stream, 'convert.iconv.utf-8/cp932');
+
+            // ヘッダー
+            fputcsv($stream, $header);
+
+            // CSVデータ
+            foreach ($bodyData as $data) {
+                fputcsv($stream, $data);
+            }
+            fclose($stream);
+        });
+        $response->headers->set('Content-Type', 'application/octet-stream');
+        $fileName = 'applyTitle.csv';
+        $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName);
+
+        return $response;
+    }
+
+    /**
+     * @param FormSetting $form_setting
+     * @param Request $request
+     */
+    public function getApplicationsColumn(FormSetting $form_setting, Request $request)
+    {
+        // カラムを取得
+        $columns = [];
+        $columns[] = ['data' => 'id', 'title' => 'ID', 'orderable' => true];
+
+        foreach ($form_setting->formItem as $form_item) {
+            switch ($form_item->type_no) {
+                case FormItem::ITEM_TYPE_NAME:
+                    $columns[] = ['data' => 'name', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_NAME], 'orderable' => true];
+                    break;
+                case FormItem::ITEM_TYPE_YOMI:
+                    $columns[] = ['data' => 'read', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_YOMI], 'orderable' => true];
+                    break;
+                case FormItem::ITEM_TYPE_SEX:
+                    $columns[] = ['data' => 'sex', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_SEX], 'orderable' => true];
+                    break;
+                case FormItem::ITEM_TYPE_AGE:
+                    $columns[] = ['data' => 'age', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_AGE], 'orderable' => true];
+                    break;
+                case FormItem::ITEM_TYPE_ADDRESS:
+                    $columns[] = ['data' => 'address', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_ADDRESS], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_TEL:
+                    $columns[] = ['data' => 'tel', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_TEL], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_EMAIL:
+                    $columns[] = ['data' => 'email', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_EMAIL], 'orderable' => true];
+                    break;
+                case FormItem::ITEM_TYPE_CHOICE_1:
+                    $columns[] = ['data' => 'choice_1', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_CHOICE_2:
+                    $columns[] = ['data' => 'choice_2', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_CHOICE_3:
+                    $columns[] = ['data' => 'choice_3', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_1:
+                    $columns[] = ['data' => 'comment', 'title' => $form_item->comment_title, 'orderable' => false];
+                    break;
+                default:
+                    break;
+            }
+        }
+        return $columns;
+    }
+
+    /**
+     * @param FormSetting $form_setting
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getApplicationsList(FormSetting $form_setting, Request $request)
+    {
+        Log::warning($request);
+
+        $draw = intval($request->input('draw', 1));
+        $start = intval($request->input('start', 0));
+        $length = intval($request->input('length', 10));
+
+        // 検索条件を加味したクエリ
+        $query = Application::where('form_setting_id', $form_setting->id);
+
+        // 対象フォームに紐づく全申込データ
+        $count = $query->count();
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
+
+        // 絞り込んだ総件数
+        $filtered_count = $query->count();
+
+        // ページング + データ取得
+        $data = $query
+            ->offset($start)
+            ->limit($length)
+            ->get()->map(function ($row) {
+                return [
+                    'id' => $row->id,
+                    'name' => $row->f_name . ' ' . $row->l_name,
+                    'read' => $row->f_read . ' ' . $row->l_read,
+                    'email' => $row->email,
+                    'sex' => $row->sex,
+                    'age' => $row->age,
+                    'tel' => $row->tel,
+                    'address' => $row->zip21,
+                    'choice_1' => $row->choice_1,
+                    'choice_2' => $row->choice_2,
+                    'choice_3' => $row->choice_3,
+                    'comment' => $row->comment,
+                ];
+            });
+
+        return response()->json([
+            'draw' => $draw,
+            'recordsTotal' => $count,
+            'recordsFiltered' => $filtered_count,
+            'data' => $data,
         ]);
     }
 

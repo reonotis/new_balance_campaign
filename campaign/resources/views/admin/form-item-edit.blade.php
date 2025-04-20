@@ -183,9 +183,6 @@
                                     <div style="width: 120px;">
                                         {{ $none_setting_item }}
                                     </div>
-
-
-
                                     <div class="">
                                         <div style="width: 300px;">
                                             項目名
@@ -196,7 +193,7 @@
                                             <textarea type="text" name="support_msg[{{ $none_setting_item_key }}]"></textarea>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             @else
                                 <div class="flex item-row">
