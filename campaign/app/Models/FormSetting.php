@@ -40,10 +40,13 @@ class FormSetting extends Model
         'route_name',
         'start_at',
         'end_at',
+        'form_information',
         'secretariat_mail_address',
         'mail_title',
         'mail_text',
         'image_dir_name',
+        'css_file_name',
+        'banner_file_name',
     ];
 
     /**

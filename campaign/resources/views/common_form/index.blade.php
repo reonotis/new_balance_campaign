@@ -21,28 +21,11 @@
                 @endif
 
                 <div class="form-area">
-{{--                    <div class="event-explanation">--}}
-{{--                        <div class="event-explanation-row">--}}
-{{--                            <div class="event-explanation-title">日時</div>--}}
-{{--                            <div class="event-explanation-content">2/15（土）10:00-12:00</div>--}}
-{{--                        </div>--}}
-{{--                        <div class="event-explanation-row">--}}
-{{--                            <div class="event-explanation-title">集合場所</div>--}}
-{{--                            <div class="event-explanation-content">XEBIO御茶ノ水店</div>--}}
-{{--                        </div>--}}
-{{--                        <div class="event-explanation-row">--}}
-{{--                            <div class="event-explanation-title">内容</div>--}}
-{{--                            <div class="event-explanation-content">--}}
-{{--                                名古屋ウィメンズマラソン出走者向けの直前トレーニングイベントを実施します。--}}
-{{--                                フルマラソン直前のトレーニング方法や、当日の準備などについてもお伝えします。--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="event-explanation-row">--}}
-{{--                            <div class="event-explanation-title">参加費</div>--}}
-{{--                            <div class="event-explanation-content">無料</div>--}}
-{{--                        </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    @if(!empty($form_setting->form_information))
+                        <div class="event-explanation">
+                            {!! nl2br($form_setting->form_information) !!}
+                        </div>
+                    @endif
 
                     {{-- Validation Errors --}}
                     @if ($errors->any())
@@ -189,3 +172,7 @@
         }
     </script>
 </x-Base-layout>
+
+
+<div class="event-explanation-row"><div class="event-explanation-title">日時</div><div class="event-explanation-content">5/22(木) 14:00~18:00</div></div><div class="event-explanation-row"><div class="event-explanation-title">場所</div><div class="event-explanation-content">ニューバランスファクトリーストア軽井沢</div></div><div class="event-explanation-row"><div class="event-explanation-title">参加費</div><div class="event-explanation-content">無料</div></div>
+

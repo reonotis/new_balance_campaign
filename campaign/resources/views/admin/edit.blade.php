@@ -11,14 +11,6 @@
                     @csrf
                     <table class="create-form" style="width: 800px">
                         <tr>
-                            <th> 申込タイプ（apply_type）</th>
-                            <td>{{ $form_setting->apply_type }}</td>
-                        </tr>
-                        <tr>
-                            <th>フォームナンバー（form_no）</th>
-                            <td>{{ $form_setting->form_no }}</td>
-                        </tr>
-                        <tr>
                             <th>イベント名</th>
                             <td><input type="text" name="title" id="title" class="w-full" value="{{ old("title", $form_setting->title) }}"></td>
                         </tr>
@@ -35,6 +27,12 @@
                             <td>
                                 <input type="date" name="start_at" id="start_at" value="{{ old("start_at", $form_setting->start_at->format('Y-m-d')) }}">
                                 <input type="date" name="end_at" id="end_at" value="{{ old("end_at", $form_setting->end_at->format('Y-m-d')) }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>記入事項</th>
+                            <td>
+                                <textarea name="form_information" id="form_information" rows="10" class="w-full">{{ old("information", $form_setting->form_information) }}</textarea>
                             </td>
                         </tr>
                         <tr>
@@ -60,6 +58,14 @@
                             <td>
                                 <input type="text" name="image_dir_name" id="image_dir_name" value="{{ old("image_dir_name", $form_setting->image_dir_name) }}" >
                             </td>
+                        </tr>
+                        <tr>
+                            <th>cssファイル名</th>
+                            <td><input type="text" name="css_file_name" id="css_file_name" class="w-full" value="{{ old("css_file_name", $form_setting->css_file_name) }}"></td>
+                        </tr>
+                        <tr>
+                            <th>バナーファイル名</th>
+                            <td><input type="text" name="banner_file_name" id="banner_file_name" class="w-full" value="{{ old("banner_file_name", $form_setting->banner_file_name) }}"></td>
                         </tr>
                     </table>
                     <div class="flex">
