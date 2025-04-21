@@ -132,8 +132,8 @@ class AdminController extends BaseController
     {
         // カラムを取得
         $columns = [];
-        $columns[] = ['data' => 'id', 'title' => 'ID', 'orderable' => true];
-        $columns[] = ['data' => 'created_at', 'title' => '申込日時', 'orderable' => true];
+        $columns[] = ['data' => 'id', 'title' => 'ID', 'orderable' => false];
+        $columns[] = ['data' => 'created_at', 'title' => '申込日時', 'orderable' => false];
 
         foreach ($form_setting->formItem as $form_item) {
             switch ($form_item->type_no) {
