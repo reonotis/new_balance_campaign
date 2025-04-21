@@ -65,7 +65,7 @@ body {
 
 .item-title {
     padding: 0 2rem;
-    height: 40px;
+    min-height: 40px;
     width: 100%;
     color: #fff;
     background: #969696;
