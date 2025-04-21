@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Consts\CommonApplyConst;
 use App\Http\Requests\FormCommonRequest;
+use App\Http\Requests\NagasakiOpeningRequest;
 use App\Models\Application;
 use App\Models\FormSetting;
 use App\Service\CommonFormService;
+use App\Service\ImageUploaderService;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -105,7 +108,6 @@ class CommonFormController extends Controller
             DB::commit();
 
             Redirect::route('common_form.complete', ['route_name' => $route_name])->send();
-
         } catch (Exception $e) {
             DB::rollback();
             Log::error($e->getMessage());
@@ -123,7 +125,14 @@ class CommonFormController extends Controller
     {
         Log::info('insertApplication');
 
-        $this->common_service_service->insertCommonApply($request->all(), $this->form_setting);
+        $request_data = $request->all();
+        if ($request->image) {
+            $image_uploader_service = new ImageUploaderService();
+            $file_name = $image_uploader_service->imgCheckAndUpload($request->image, $this->form_setting->image_dir_name);
+            $request_data['img_pass'] = $file_name;
+        }
+
+        $this->common_service_service->insertCommonApply($request_data, $this->form_setting);
     }
 
     /**

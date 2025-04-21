@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\FormItem;
 use App\Models\FormSetting;
 use App\Models\Application;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -55,18 +56,18 @@ class AdminController extends BaseController
     }
 
     /**
-     * @param int $applyType
+     * @param FormSetting $form_setting
      * @return StreamedResponse
      */
-    public function csvDownload(int $applyType): StreamedResponse
+    public function csvDownload(FormSetting $form_setting): StreamedResponse
     {
         // CSVヘッダー
-        $header = ['ID', '申込日'];
+        $header = $this->getCsvHeader($form_setting);
 
         // csvデータ
-        $bodyData = [];
+        $body_data = []; // TODO
 
-        $response = new StreamedResponse (function () use ($header, $bodyData) {
+        $response = new StreamedResponse (function () use ($header, $body_data) {
             $stream = fopen('php://output', 'w');
 
             //　文字化け回避
@@ -76,7 +77,7 @@ class AdminController extends BaseController
             fputcsv($stream, $header);
 
             // CSVデータ
-            foreach ($bodyData as $data) {
+            foreach ($body_data as $data) {
                 fputcsv($stream, $data);
             }
             fclose($stream);
@@ -90,13 +91,49 @@ class AdminController extends BaseController
 
     /**
      * @param FormSetting $form_setting
-     * @param Request $request
+     * @return string[]
      */
-    public function getApplicationsColumn(FormSetting $form_setting, Request $request)
+    public function getCsvHeader(FormSetting $form_setting): array
+    {
+        $columns = ['ID', '申込日時'];
+        foreach ($form_setting->formItem as $form_item) {
+            switch ($form_item->type_no) {
+                case FormItem::ITEM_TYPE_NAME:
+                case FormItem::ITEM_TYPE_YOMI:
+                case FormItem::ITEM_TYPE_SEX:
+                case FormItem::ITEM_TYPE_AGE:
+                case FormItem::ITEM_TYPE_ADDRESS:
+                case FormItem::ITEM_TYPE_TEL:
+                case FormItem::ITEM_TYPE_EMAIL:
+                    $columns[] = FormItem::ITEM_TYPE_LIST[$form_item->type_no];
+                    break;
+                case FormItem::ITEM_TYPE_CHOICE_1:
+                case FormItem::ITEM_TYPE_CHOICE_2:
+                case FormItem::ITEM_TYPE_CHOICE_3:
+                    $columns[] = $form_item->choice_data['item_name'];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_1:
+                    $columns[] =  $form_item->comment_title;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        return $columns;
+    }
+
+
+    /**
+     * @param FormSetting $form_setting
+     * @return array
+     */
+    public function getApplicationsColumn(FormSetting $form_setting): array
     {
         // カラムを取得
         $columns = [];
         $columns[] = ['data' => 'id', 'title' => 'ID', 'orderable' => true];
+        $columns[] = ['data' => 'created_at', 'title' => '申込日時', 'orderable' => true];
 
         foreach ($form_setting->formItem as $form_item) {
             switch ($form_item->type_no) {
@@ -142,9 +179,10 @@ class AdminController extends BaseController
 
     /**
      * @param FormSetting $form_setting
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function getApplicationsList(FormSetting $form_setting, Request $request)
+    public function getApplicationsList(FormSetting $form_setting, Request $request): JsonResponse
     {
         Log::warning($request);
 
@@ -162,7 +200,6 @@ class AdminController extends BaseController
             $query->where('name', 'like', '%' . $request->name . '%');
         }
 
-
         // 絞り込んだ総件数
         $filtered_count = $query->count();
 
@@ -173,6 +210,7 @@ class AdminController extends BaseController
             ->get()->map(function ($row) {
                 return [
                     'id' => $row->id,
+                    'created_at' => $row->created_at->format('Y/m/d H:i'),
                     'name' => $row->f_name . ' ' . $row->l_name,
                     'read' => $row->f_read . ' ' . $row->l_read,
                     'email' => $row->email,

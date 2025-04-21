@@ -72,6 +72,9 @@ class FormCommonRequest extends FormRequest
                     $rules['email']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', 'confirmed'];
                     $rules['email_confirmation']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/'];
                     break;
+                case FormItem::ITEM_TYPE_RECEIPT_IMAGE:
+                    $rules['image'] = ['required'];
+                    break;
                 default:
 //                    dd($form_item, '式がいずれの値にも等しくない時の処理');
             }

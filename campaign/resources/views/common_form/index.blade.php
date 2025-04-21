@@ -56,7 +56,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ $send_route }}" method="post" >
+                    <form action="{{ $send_route }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="form_setting_id" value="{{ $form_setting->id }}">
 

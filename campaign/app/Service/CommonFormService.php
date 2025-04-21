@@ -79,6 +79,9 @@ class CommonFormService
                 case(FormItem::ITEM_TYPE_CHOICE_3):
                     $application->choice_3 = $request['choice_13'];
                     break;
+                case(FormItem::ITEM_TYPE_RECEIPT_IMAGE):
+                    $application->img_pass = $request['img_pass'];
+                    break;
                 case(FormItem::ITEM_TYPE_COMMENT_1):
                     $application->comment = $request['comment_41'];
                     break;
