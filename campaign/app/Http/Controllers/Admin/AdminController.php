@@ -273,7 +273,11 @@ class AdminController extends BaseController
         try {
             DB::beginTransaction();
 
-            $form_setting->update($request->all());
+            $request_data = $request->all();
+            $request_data['start_at'] = $request->start_at . ' 00:00:00';
+            $request_data['end_at'] = $request->end_at . ' 23:59:59';
+
+            $form_setting->update($request_data);
             DB::commit();
             Redirect::route('admin.form-edit', ['form_setting' => $form_setting])->send();
         } catch (\Exception $e) {
