@@ -95,7 +95,7 @@
 
                                             @if($form_item->choice_data['item_type'] == 1)
                                                 {{-- ラジオボタン --}}
-                                                <div class="w-full mb-1" >
+                                                <div class="w-full mb-1 flex" style="flex-wrap: wrap;">
                                                     @foreach($choices as $choice)
                                                         <label class="radio-label" style="margin: 0 .5rem">
                                                             <input type="radio" class="" name="choice_{{ $form_item->type_no }}" value="{{ $choice }}"

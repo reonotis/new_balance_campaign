@@ -138,16 +138,16 @@ class AdminController extends BaseController
         foreach ($form_setting->formItem as $form_item) {
             switch ($form_item->type_no) {
                 case FormItem::ITEM_TYPE_NAME:
-                    $columns[] = ['data' => 'name', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_NAME], 'orderable' => true];
+                    $columns[] = ['data' => 'name', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_NAME], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_YOMI:
-                    $columns[] = ['data' => 'read', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_YOMI], 'orderable' => true];
+                    $columns[] = ['data' => 'read', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_YOMI], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_SEX:
-                    $columns[] = ['data' => 'sex', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_SEX], 'orderable' => true];
+                    $columns[] = ['data' => 'sex', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_SEX], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_AGE:
-                    $columns[] = ['data' => 'age', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_AGE], 'orderable' => true];
+                    $columns[] = ['data' => 'age', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_AGE], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_ADDRESS:
                     $columns[] = ['data' => 'address', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_ADDRESS], 'orderable' => false];
@@ -156,7 +156,7 @@ class AdminController extends BaseController
                     $columns[] = ['data' => 'tel', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_TEL], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_EMAIL:
-                    $columns[] = ['data' => 'email', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_EMAIL], 'orderable' => true];
+                    $columns[] = ['data' => 'email', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_EMAIL], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_CHOICE_1:
                     $columns[] = ['data' => 'choice_1', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
