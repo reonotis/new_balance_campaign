@@ -174,5 +174,5 @@
 </x-Base-layout>
 
 
-<div class="event-explanation-row"><div class="event-explanation-title">日時</div><div class="event-explanation-content">5/22(木) 14:00~18:00</div></div><div class="event-explanation-row"><div class="event-explanation-title">場所</div><div class="event-explanation-content">ニューバランスファクトリーストア軽井沢</div></div><div class="event-explanation-row"><div class="event-explanation-title">参加費</div><div class="event-explanation-content">無料</div></div>
+{{--<div class="event-explanation-row"><div class="event-explanation-title">日時</div><div class="event-explanation-content">5/22(木) 9:00~12:00</div></div><div class="event-explanation-row"><div class="event-explanation-title">場所</div><div class="event-explanation-content">ニューバランスファクトリーストア軽井沢</div></div><div class="event-explanation-row"><div class="event-explanation-title">参加定員</div><div class="event-explanation-content">30名</div></div><div class="event-explanation-row"><div class="event-explanation-title">参加費</div><div class="event-explanation-content">無料</div></div>--}}
 
