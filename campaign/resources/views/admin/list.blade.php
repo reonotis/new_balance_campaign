@@ -44,7 +44,6 @@
         const columnsUrl = "{{ route('admin.get-application-column', ['form_setting' => $form_setting->id]) }}";
         const url = "{{ route('admin.get-application-list', ['form_setting' => $form_setting->id]) }}";  // ← Laravelルート名を使う
 
-        // ① 最初にカラム定義を取得
         $.get(columnsUrl, function (columns) {
             $('#applications-table').DataTable({
                 processing: true,

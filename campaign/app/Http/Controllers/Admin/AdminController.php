@@ -64,8 +64,8 @@ class AdminController extends BaseController
         // CSVヘッダー
         $header = $this->getCsvHeader($form_setting);
 
-        // csvデータ
-        $body_data = []; // TODO
+        // CSVデータ
+        $body_data = $this->getCsvRecords($form_setting);
 
         $response = new StreamedResponse (function () use ($header, $body_data) {
             $stream = fopen('php://output', 'w');
@@ -83,8 +83,8 @@ class AdminController extends BaseController
             fclose($stream);
         });
         $response->headers->set('Content-Type', 'application/octet-stream');
-        $fileName = 'applyTitle.csv';
-        $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName);
+        $file_name = $form_setting->title . '.csv';
+        $response->headers->set('Content-Disposition', 'attachment; filename=' . $file_name);
 
         return $response;
     }
@@ -102,10 +102,13 @@ class AdminController extends BaseController
                 case FormItem::ITEM_TYPE_YOMI:
                 case FormItem::ITEM_TYPE_SEX:
                 case FormItem::ITEM_TYPE_AGE:
-                case FormItem::ITEM_TYPE_ADDRESS:
                 case FormItem::ITEM_TYPE_TEL:
                 case FormItem::ITEM_TYPE_EMAIL:
                     $columns[] = FormItem::ITEM_TYPE_LIST[$form_item->type_no];
+                    break;
+                case FormItem::ITEM_TYPE_ADDRESS:
+                    $columns[] = '郵便番号';
+                    $columns[] = '住所';
                     break;
                 case FormItem::ITEM_TYPE_CHOICE_1:
                 case FormItem::ITEM_TYPE_CHOICE_2:
@@ -113,6 +116,8 @@ class AdminController extends BaseController
                     $columns[] = $form_item->choice_data['item_name'];
                     break;
                 case FormItem::ITEM_TYPE_COMMENT_1:
+                case FormItem::ITEM_TYPE_COMMENT_2:
+                case FormItem::ITEM_TYPE_COMMENT_3:
                     $columns[] =  $form_item->comment_title;
                     break;
                 default:
@@ -123,6 +128,70 @@ class AdminController extends BaseController
         return $columns;
     }
 
+    /**
+     * @param FormSetting $form_setting
+     * @return string[]
+     */
+    public function getCsvRecords(FormSetting $form_setting): array
+    {
+        $type_no_list = $form_setting->formItem->pluck('type_no')->all();
+
+        $query = Application::where('form_setting_id', $form_setting->id);
+
+        return $query->get()->map(function ($row) use ($type_no_list) {
+            $record_array = [];
+            $record_array[] = $row->id;
+            $record_array[] = $row->created_at->format('Y/m/d H:i:s');
+
+            foreach ($type_no_list as $type_no) {
+                switch ($type_no) {
+                    case FormItem::ITEM_TYPE_NAME:
+                        $record_array[] = $row->f_name . ' ' . $row->l_name;
+                        break;
+                    case FormItem::ITEM_TYPE_YOMI:
+                        $record_array[] = $row->f_read . ' ' . $row->l_read;
+                        break;
+                    case FormItem::ITEM_TYPE_SEX:
+                        $record_array[] = \App\Consts\Common::SEX_LIST[$row->sex] ?? '';
+                        break;
+                    case FormItem::ITEM_TYPE_AGE:
+                        $record_array[] = $row->age;
+                        break;
+                    case FormItem::ITEM_TYPE_ADDRESS:
+                        $record_array[] = $row->zip21 . '-' . $row->zip22;
+                        $record_array[] = $row->pref21 . ' ' . $row->address21 . ' ' . $row->street21;
+                        break;
+                    case FormItem::ITEM_TYPE_TEL:
+                        $record_array[] = $row->tel;
+                        break;
+                    case FormItem::ITEM_TYPE_EMAIL:
+                        $record_array[] = $row->email;
+                        break;
+                    case FormItem::ITEM_TYPE_CHOICE_1:
+                        $record_array[] = $row->choice_1;
+                        break;
+                    case FormItem::ITEM_TYPE_CHOICE_2:
+                        $record_array[] = $row->choice_2;
+                        break;
+                    case FormItem::ITEM_TYPE_CHOICE_3:
+                        $record_array[] = $row->choice_3;
+                        break;
+                    case FormItem::ITEM_TYPE_COMMENT_1:
+                        $record_array[] = $row->comment;
+                        break;
+                    case FormItem::ITEM_TYPE_COMMENT_2:
+                        $record_array[] = $row->comment2;
+                        break;
+                    case FormItem::ITEM_TYPE_COMMENT_3:
+                        $record_array[] = $row->comment3;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return $record_array;
+        })->all();
+    }
 
     /**
      * @param FormSetting $form_setting
@@ -167,8 +236,17 @@ class AdminController extends BaseController
                 case FormItem::ITEM_TYPE_CHOICE_3:
                     $columns[] = ['data' => 'choice_3', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
                     break;
+                case FormItem::ITEM_TYPE_RECEIPT_IMAGE:
+                    $columns[] = ['data' => 'image', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_RECEIPT_IMAGE], 'orderable' => false];
+                    break;
                 case FormItem::ITEM_TYPE_COMMENT_1:
                     $columns[] = ['data' => 'comment', 'title' => $form_item->comment_title, 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_2:
+                    $columns[] = ['data' => 'comment2', 'title' => $form_item->comment_title, 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_3:
+                    $columns[] = ['data' => 'comment3', 'title' => $form_item->comment_title, 'orderable' => false];
                     break;
                 default:
                     break;
@@ -207,7 +285,7 @@ class AdminController extends BaseController
         $data = $query
             ->offset($start)
             ->limit($length)
-            ->get()->map(function ($row) {
+            ->get()->map(function ($row) use ($form_setting) {
                 return [
                     'id' => $row->id,
                     'created_at' => $row->created_at->format('Y/m/d H:i'),
@@ -221,7 +299,12 @@ class AdminController extends BaseController
                     'choice_1' => $row->choice_1,
                     'choice_2' => $row->choice_2,
                     'choice_3' => $row->choice_3,
+                    'image' => $row->img_pass
+                        ? '<img src="' . asset('storage/'. $form_setting->image_dir_name.  '/resize/' . $row->img_pass) . '" alt="レシート画像" class="resize_img" width="100">'
+                        : '',
                     'comment' => $row->comment,
+                    'comment2' => $row->comment2,
+                    'comment3' => $row->comment3,
                 ];
             });
 

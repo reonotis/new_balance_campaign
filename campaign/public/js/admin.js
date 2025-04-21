@@ -1,17 +1,21 @@
-$(function () {
-    // 画像をクリックしたら
-    $(".try_on_img_resize").click(function () {
+// サムネイル画像をクリックしたら
+$(document).on('click', '.resize_img', function () {
+    $(".resize_img").click(function () {
         var thisSrc = $(this).attr('src')
-        let full_img = thisSrc.replace("_resize", "");
+        let full_img = thisSrc.replace("/resize", "");
         $("#popup-img").children().attr('src', full_img)
         $("#popup-img-mask").fadeIn(250);
     });
+});
 
-    // ×ボタンをクリックしたら
-    $("#popup-img-close-btn").click(function () {
-        $("#popup-img-mask").fadeOut(250);
-    });
+// ×ボタンをクリックしたら
+$(document).on('click', '#popup-img-close-btn', function () {
+    $("#popup-img-mask").fadeOut(250);
+});
 
+
+// TODO
+$(function () {
     // 当選メール送信のチェックボックスをクリックしたら
     $(".lottery-result-email").click(function () {
         let val = 0;
