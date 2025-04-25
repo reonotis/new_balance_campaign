@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Consts\Common;
 use App\Models\FormItem;
 use App\Models\FormSetting;
 use App\Models\Application;
@@ -71,13 +72,18 @@ class AdminController extends BaseController
             $stream = fopen('php://output', 'w');
 
             //　文字化け回避
-            stream_filter_prepend($stream, 'convert.iconv.utf-8/cp932');
+            stream_filter_prepend($stream, 'convert.iconv.utf-8/cp932//TRANSLIT');
 
             // ヘッダー
             fputcsv($stream, $header);
 
             // CSVデータ
             foreach ($body_data as $data) {
+                foreach ($data as $value) {
+                    if (!mb_check_encoding($value, 'UTF-8')) {
+                        \Log::warning('Encoding error in value: ' . json_encode($value));
+                    }
+                }
                 fputcsv($stream, $data);
             }
             fclose($stream);
@@ -262,7 +268,6 @@ class AdminController extends BaseController
      */
     public function getApplicationsList(FormSetting $form_setting, Request $request): JsonResponse
     {
-        Log::warning($request);
 
         $draw = intval($request->input('draw', 1));
         $start = intval($request->input('start', 0));
@@ -292,7 +297,7 @@ class AdminController extends BaseController
                     'name' => $row->f_name . ' ' . $row->l_name,
                     'read' => $row->f_read . ' ' . $row->l_read,
                     'email' => $row->email,
-                    'sex' => $row->sex,
+                    'sex' => Common::SEX_LIST[$row->sex],
                     'age' => $row->age,
                     'tel' => $row->tel,
                     'address' => $row->zip21,
