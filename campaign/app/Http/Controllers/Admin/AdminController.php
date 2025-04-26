@@ -6,6 +6,7 @@ use App\Consts\Common;
 use App\Models\FormItem;
 use App\Models\FormSetting;
 use App\Models\Application;
+use App\Service\CommonApplyService;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Contracts\View\View;
@@ -51,8 +52,14 @@ class AdminController extends BaseController
      */
     public function list(FormSetting $form_setting): View
     {
+        // 一斉メール送信件数
+        $send_mail_count = ($form_setting->send_bulk_mail_flg) ?
+            Application::where('form_setting_id', $form_setting->id)->where('send_lottery_result_email_flg', 1)->count()
+            : 0;
+
         return view('admin.list', [
             'form_setting' => $form_setting,
+            'send_mail_count' => $send_mail_count,
         ]);
     }
 
@@ -258,6 +265,11 @@ class AdminController extends BaseController
                     break;
             }
         }
+
+        if ($form_setting->send_bulk_mail_flg) {
+            $columns[] = ['data' => 'application_sand_email', 'title' => 'メール送信', 'orderable' => false];
+        }
+
         return $columns;
     }
 
@@ -297,7 +309,7 @@ class AdminController extends BaseController
                     'name' => $row->f_name . ' ' . $row->l_name,
                     'read' => $row->f_read . ' ' . $row->l_read,
                     'email' => $row->email,
-                    'sex' => Common::SEX_LIST[$row->sex],
+                    'sex' => Common::SEX_LIST[$row->sex]?? '',
                     'age' => $row->age,
                     'tel' => $row->tel,
                     'address' => $row->zip21,
@@ -310,6 +322,7 @@ class AdminController extends BaseController
                     'comment' => $row->comment,
                     'comment2' => $row->comment2,
                     'comment3' => $row->comment3,
+                    'application_sand_email' => '<input type="checkbox" class="application-sand-email" data-id="' . $row->id . '" ' . ($row->send_lottery_result_email_flg ? 'checked' : '') . '>',
                 ];
             });
 
@@ -493,6 +506,38 @@ class AdminController extends BaseController
 
             return redirect()->back()->withInput();
         }
+    }
+
+    /**
+     * 対象者に一斉メールを送信するか否かの保存を行い、トータル何件送信するかの件数を返却する
+     * @param FormSetting $form_setting
+     * @param Request $request
+     * @return array[]|false|string
+     */
+    public function applicationSandEmailFlg(FormSetting $form_setting, Request $request)
+    {
+        $application_id = $request->input('id');
+        $value = $request->input('value');
+
+        $updated_count = Application::where('form_setting_id', $form_setting->id)->where('id', $application_id)->update([
+            'send_lottery_result_email_flg' => $value,
+        ]);
+
+        if($updated_count === 0) {
+            return json_encode([
+                'error' => [
+                    'code' => 404,
+                    'msg' => '該当のデータが存在しません',
+                ],
+            ]);
+        }
+
+        // 送信予定件数取得
+        return [
+            'success' => [
+                'count' => Application::where('form_setting_id', $form_setting->id)->where('send_lottery_result_email_flg', 1)->count(),
+            ],
+        ];
     }
 
 }

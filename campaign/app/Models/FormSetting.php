@@ -19,6 +19,8 @@ use Illuminate\Support\Carbon;
  * @property int $max_application_count
  * @property Carbon $start_at
  * @property Carbon $end_at
+ * @property bool $send_bulk_mail_flg
+ *
  * @property HasMany<int, FormItem> $formItem
  */
 class FormSetting extends Model

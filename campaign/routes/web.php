@@ -304,6 +304,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('csv/{form_setting}', [AdminController::class, 'csvDownload'])->name('admin.csv-download');
     Route::get('/get-application-column/{form_setting}', [AdminController::class, 'getApplicationsColumn'])->name('admin.get-application-column');
     Route::get('/get-application-list/{form_setting}', [AdminController::class, 'getApplicationsList'])->name('admin.get-application-list');
+
+    Route::get('/application_sand_email_flg/{form_setting}', [AdminController::class, 'applicationSandEmailFlg'])->name('admin.api.application_sand_email_flg');
+
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
     Route::get('/form-edit/{form_setting}', [AdminController::class, 'formEdit'])->name('admin.form-edit');
     Route::post('/form-update/{form_setting}', [AdminController::class, 'formUpdate'])->name('admin.form-update');

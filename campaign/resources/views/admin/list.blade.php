@@ -18,6 +18,12 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex justify-between" >
                     <a href="{{ route('common_form.index', ['route_name' => $form_setting->route_name]) }}" target="_blank" >申込サイトを確認する</a>
+                    @if($form_setting->send_bulk_mail_flg)
+                        <div class="flex items-center">
+                            <span id="send_mail_count_span">送信予定件数は {{ $send_mail_count }} 件です</span>
+                            <button class="common-button" >一斉メール送信</button>
+                        </div>
+                    @endif
                     <a href="{{ route('admin.csv-download', ['form_setting' => $form_setting->id]) }}" class="common-button" >CSV ダウンロード</a>
                 </div>
 
@@ -40,10 +46,13 @@
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
 
+    const api_url = @json(route('admin.api.application_sand_email_flg', ['form_setting' => $form_setting->id]));
+
     $(document).ready(function() {
         const columnsUrl = "{{ route('admin.get-application-column', ['form_setting' => $form_setting->id]) }}";
         const url = "{{ route('admin.get-application-list', ['form_setting' => $form_setting->id]) }}";  // ← Laravelルート名を使う
 
+        // 一覧表を表示する
         $.get(columnsUrl, function (columns) {
             $('#applications-table').DataTable({
                 processing: true,
@@ -76,6 +85,37 @@
                 columns: columns,
                 searching: false,
             });
+        });
+
+
+        $(document).on('click', '.application-sand-email', function () {
+
+            let val = 0;
+            if ($(this).prop("checked")) {
+                val = 1;
+            }
+            let id = $(this).data('id');
+
+            $.ajax({
+                url: api_url,
+                method: 'get',
+                dataType: 'json',
+                data: {
+                    'id': id,
+                    'value': val,
+                },
+            }).done(function (res) {
+                if (typeof res['success'] != 'undefined') {
+                    $('#send_mail_count_span').html('送信予定件数は ' + res['success']['count'] + ' 件です\n')
+                } else {
+                    alert('更新に失敗しました。。画面を再ロードしてください');
+                }
+
+            }).fail(function () {
+                $('#reception_table_area').html('');
+                alert('更新に失敗しました。画面を再ロードしてください');
+            });
+
         });
 
     });
