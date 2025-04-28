@@ -21,7 +21,7 @@
                     @if($form_setting->send_bulk_mail_flg)
                         <div class="flex items-center">
                             <span id="send_mail_count_span">送信予定件数は {{ $send_mail_count }} 件です</span>
-                            <button class="common-button" >一斉メール送信</button>
+                            <button class="common-button" id="send_mail">一斉メール送信</button>
                         </div>
                     @endif
                     <a href="{{ route('admin.csv-download', ['form_setting' => $form_setting->id]) }}" class="common-button" >CSV ダウンロード</a>
@@ -87,13 +87,8 @@
             });
         });
 
-
         $(document).on('click', '.application-sand-email', function () {
-
-            let val = 0;
-            if ($(this).prop("checked")) {
-                val = 1;
-            }
+            let val = ($(this).prop("checked")) ? 1 : 0;
             let id = $(this).data('id');
 
             $.ajax({
@@ -110,15 +105,18 @@
                 } else {
                     alert('更新に失敗しました。。画面を再ロードしてください');
                 }
-
             }).fail(function () {
                 $('#reception_table_area').html('');
                 alert('更新に失敗しました。画面を再ロードしてください');
             });
-
         });
 
+        $('#send_mail').on('click', function(){
+            alert('機能作成中')
+        })
     });
+
+
 </script>
 
 <style>

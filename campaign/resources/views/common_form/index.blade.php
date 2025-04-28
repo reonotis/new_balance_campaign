@@ -17,7 +17,7 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
 
                 @if(!empty($form_setting->banner_file_name))
-                    <img class="banner-image" src="{{ asset('img/banner/' . $form_setting->banner_file_name) }}" alt="">
+                    <img class="banner-image" src="{{ asset('img/banner/' . $form_setting->banner_file_name) }}?date={{ date('YmdHi') }}" alt="">
                 @endif
 
                 <div class="form-area">
