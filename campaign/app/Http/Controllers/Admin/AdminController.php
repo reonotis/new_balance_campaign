@@ -399,6 +399,7 @@ class AdminController extends BaseController
 
             // 登録
             $params = $request->except('_token');
+            $params['send_bulk_mail_flg'] = 0;
             $params['start_at'] = $params['start_at'] . ' 00:00:00';
             $params['end_at'] = $params['end_at'] . ' 23:59:59';
             FormSetting::create($params);

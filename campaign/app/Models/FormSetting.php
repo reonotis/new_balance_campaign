@@ -49,6 +49,7 @@ class FormSetting extends Model
         'image_dir_name',
         'css_file_name',
         'banner_file_name',
+        'send_bulk_mail_flg',
     ];
 
     /**

@@ -19,6 +19,10 @@
                     <div class="mb-4"><a href="{{ route('admin.form-create') }}">新規フォーム作成はこちら</a></div>
                 @endif
 
+                <div class="pagination-container">
+                    {{ $form_settings->links() }}
+                </div>
+
                 <table class="list-tbl">
                     <thead>
                     <tr>
