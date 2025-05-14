@@ -2,7 +2,7 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            {{ $form_setting->title }} <br class="brSp2">応募フォーム
+            {{ $form_setting->title }}
         </h2>
     </x-slot>
 
