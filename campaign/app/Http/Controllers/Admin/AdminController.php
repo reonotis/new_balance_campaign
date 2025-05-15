@@ -312,7 +312,7 @@ class AdminController extends BaseController
                     'sex' => Common::SEX_LIST[$row->sex] ?? '',
                     'age' => $row->age,
                     'tel' => $row->tel,
-                    'address' =>  $row->zip21 . '-' . $row->zip22 . '<br>' . $row->pref21 . ' ' . $row->address21 . ' ' . $row->street21,
+                    'address' =>  $row->zip21 . '-' . $row->zip22 . '<br>' . $row->pref21 . ' ' . $row->address21 . '<br>' . $row->street21,
                     'choice_1' => $row->choice_1,
                     'choice_2' => $row->choice_2,
                     'choice_3' => $row->choice_3,
