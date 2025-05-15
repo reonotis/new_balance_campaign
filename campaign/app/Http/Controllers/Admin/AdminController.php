@@ -131,7 +131,7 @@ class AdminController extends BaseController
                 case FormItem::ITEM_TYPE_COMMENT_1:
                 case FormItem::ITEM_TYPE_COMMENT_2:
                 case FormItem::ITEM_TYPE_COMMENT_3:
-                    $columns[] =  $form_item->comment_title;
+                    $columns[] = $form_item->comment_title;
                     break;
                 default:
                     break;
@@ -309,15 +309,15 @@ class AdminController extends BaseController
                     'name' => $row->f_name . ' ' . $row->l_name,
                     'read' => $row->f_read . ' ' . $row->l_read,
                     'email' => $row->email,
-                    'sex' => Common::SEX_LIST[$row->sex]?? '',
+                    'sex' => Common::SEX_LIST[$row->sex] ?? '',
                     'age' => $row->age,
                     'tel' => $row->tel,
-                    'address' => $row->zip21,
+                    'address' =>  $row->zip21 . '-' . $row->zip22 . ' ' . $row->pref21 . ' ' . $row->address21 . ' ' . $row->street21,
                     'choice_1' => $row->choice_1,
                     'choice_2' => $row->choice_2,
                     'choice_3' => $row->choice_3,
                     'image' => $row->img_pass
-                        ? '<img src="' . asset('storage/'. $form_setting->image_dir_name.  '/resize/' . $row->img_pass) . '" alt="レシート画像" class="resize_img" width="100">'
+                        ? '<img src="' . asset('storage/' . $form_setting->image_dir_name . '/resize/' . $row->img_pass) . '" alt="レシート画像" class="resize_img" width="100">'
                         : '',
                     'comment' => $row->comment,
                     'comment2' => $row->comment2,
@@ -524,7 +524,7 @@ class AdminController extends BaseController
             'send_lottery_result_email_flg' => $value,
         ]);
 
-        if($updated_count === 0) {
+        if ($updated_count === 0) {
             return json_encode([
                 'error' => [
                     'code' => 404,
