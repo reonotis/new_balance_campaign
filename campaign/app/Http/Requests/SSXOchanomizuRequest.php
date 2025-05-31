@@ -86,6 +86,7 @@ class SSXOchanomizuRequest extends FormRequest
     {
         return [
             'how_found' => 'どこで知ったか',
+            'shoes_size' => 'シューズサイズ',
         ];
     }
 }
