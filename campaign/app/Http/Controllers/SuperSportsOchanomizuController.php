@@ -17,7 +17,7 @@ use Mail;
 
 class SuperSportsOchanomizuController extends Controller
 {
-    const APPLICATION_LIMIT = 31;
+    const APPLICATION_LIMIT = 35;
 
     private int $apply_type;
     private CommonApplyService $apply_service;
@@ -28,7 +28,7 @@ class SuperSportsOchanomizuController extends Controller
      */
     function __construct()
     {
-        $this->number = 2;
+        $this->number = 3;
         $this->apply_type = CommonApplyConst::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU;
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
@@ -95,6 +95,7 @@ class SuperSportsOchanomizuController extends Controller
 
         $original_column = [
             'choice_1' => $request->how_found,
+            'choice_2' => $request->shoes_size,
         ];
         $this->apply_service->insertCommonApply($request, $original_column);
     }
@@ -113,7 +114,7 @@ class SuperSportsOchanomizuController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('2/15（土）スーパースポーツゼビオ 東京御茶ノ水本店ランニングクラブ イベントへのお申込みが完了しました。');
+                ->subject('6/28（土）東京御茶ノ水本店ランニングクラブ イベントへのお申込みが完了しました。');
         });
     }
 
@@ -133,13 +134,14 @@ class SuperSportsOchanomizuController extends Controller
             'tel' => $request->tel,
             'email' => $request->email,
             'howFound' => $request->how_found,
+            'shoes_size' => $request->shoes_size,
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.super_sports_ochanomizu.reportMail', $data, function ($message) {
             $message->to("nbrun@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('2/15（土）スーパースポーツゼビオ東京御茶ノ水本店ランニングクラブのイベントに申し込みがありました');
+                ->subject('6/28（土）スーパースポーツゼビオ東京御茶ノ水本店ランニングクラブのイベントに申し込みがありました');
         });
     }
 
@@ -149,9 +151,9 @@ class SuperSportsOchanomizuController extends Controller
     public function outsidePeriod()
     {
         $checkMessage = '';
-        // if (!$this->checkNumberApplications()) {
-        //     $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
-        // }
+         if (!$this->checkNumberApplications()) {
+             $checkMessage = '応募件数が最大に達したため、申し込みを終了しました。';
+         }
 
         if (!$this->apply_service->checkApplicationDuration()) {
             $checkMessage = $this->apply_service->getDurationMessage();

@@ -20,6 +20,7 @@ use Illuminate\Http\UploadedFile;
  * @property string email
  * @property string img_pass
  * @property array how_found
+ * @property int shoes_size
  * @property UploadedFile image
  */
 class SSXOchanomizuRequest extends FormRequest
@@ -54,6 +55,7 @@ class SSXOchanomizuRequest extends FormRequest
             'tel' => ['required', 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/'],
             'email' => ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', 'confirmed'],
             'email_confirmation' => ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/'],
+            'shoes_size' => ['required'],
             'how_found' => ['required'],
         ];
     }

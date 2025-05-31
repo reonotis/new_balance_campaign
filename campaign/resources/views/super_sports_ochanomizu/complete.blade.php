@@ -3,7 +3,7 @@
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
             スーパースポーツゼビオ <br class="brSp2">東京御茶ノ水本店ランニングクラブ<br>
-            ３０２ RUNNING CLUB <br class="brSp2">女性限定 名古屋ウィメンズマラソン攻略 <br> Special Running イベント <br class="brSp2">応募フォーム
+            ３０２ RUNNING CLUB <br class="brSp2">Rebel v5 先行試し履きイベント <br class="brSp2">応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">

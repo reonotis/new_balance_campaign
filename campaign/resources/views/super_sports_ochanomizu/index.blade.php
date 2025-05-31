@@ -3,7 +3,7 @@
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
             スーパースポーツゼビオ <br class="brSp2">東京御茶ノ水本店ランニングクラブ<br>
-            ３０２ RUNNING CLUB <br class="brSp2">女性限定 名古屋ウィメンズマラソン攻略 <br> Special Running イベント <br class="brSp2">応募フォーム
+            ３０２ RUNNING CLUB <br class="brSp2">Rebel v5 先行試し履きイベント <br class="brSp2">応募フォーム
         </h2>
     </x-slot>
     <x-slot name="script">
@@ -15,19 +15,25 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="form-area">
                     <div class="event-explanation">
+
                         <div class="event-explanation-row">
-                            <div class="event-explanation-title">日時</div>
-                            <div class="event-explanation-content">2/15（土）10:00-12:00</div>
+                            <div class="event-explanation-title">スーパースポーツゼビオ 東京御茶ノ水本店ランニングクラブ</div>
+                            <div class="event-explanation-title">AREA 302 RUNNING CLUB</div>
+                            <div class="event-explanation-title">最新モデルRebel v5 先行試履きイベント</div>
                         </div>
                         <div class="event-explanation-row">
-                            <div class="event-explanation-title">集合場所</div>
-                            <div class="event-explanation-content">XEBIO御茶ノ水店</div>
+                            <div class="event-explanation-title">日時</div>
+                            <div class="event-explanation-content">6/28（土）9:30-11:30（受付9:00～）</div>
+                        </div>
+                        <div class="event-explanation-row">
+                            <div class="event-explanation-title">場所</div>
+                            <div class="event-explanation-content">XEBIO御茶ノ水本店</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
                             <div class="event-explanation-content">
-                                名古屋ウィメンズマラソン出走者向けの直前トレーニングイベントを実施します。
-                                フルマラソン直前のトレーニング方法や、当日の準備などについてもお伝えします。
+                                最新ランニングシューズ「Rebel v5」をいち早く体験できる試履きイベントを開催。
+                                Rebel v5の優れた反発性・軽量性を最大限に感じていただけるスピード体感トレーニングを行います。
                             </div>
                         </div>
                         <div class="event-explanation-row">
@@ -146,6 +152,20 @@
                                                class="form-control" placeholder="sample@newbalance.co.jp(確認用)">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="item-row">
+                            <div class="item-title"><label for="" >シューズのサイズ</label></div>
+                            <div class="item-content px-2">
+                                <div class="w-48 px-2" >
+                                    <select name="shoes_size" class="form-control" >
+                                        <option value="">-</option>
+                                        @foreach( App\Consts\SSXOchanomizuConst::SHOES_SIZE as $value => $size_name)
+                                            <option value="{{ $value }}" @if(old("shoes_size") == $value) {{ 'selected' }} @endif >{{ $size_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>　　
                             </div>
                         </div>
 

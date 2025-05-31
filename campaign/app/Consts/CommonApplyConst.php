@@ -233,6 +233,10 @@ class CommonApplyConst
                 'start_date_time' => '2025-01-23 00:00:00', // 2024/10/24
                 'end_date_time' => '2025-02-14 23:59:59', // 2024/11
             ],
+            3 => [
+                'start_date_time' => '2025-05-31 00:00:00', // 2024/06/02
+                'end_date_time' => '2025-06-27 23:59:59', // 2024/06/27
+            ],
         ],
     ];
 
@@ -567,6 +571,7 @@ class CommonApplyConst
             'tel',
             'email',
             'choice_1',
+            'choice_2',
         ],
     ];
 
@@ -755,6 +760,7 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'choice_1' => 'どこでイベント知ったか',
+            'choice_2' => 'シューズのサイズ',
         ],
     ];
 
@@ -845,6 +851,8 @@ class CommonApplyConst
             \App\Consts\RunClubTokyoConstConst::SHOES_SIZE,
         self::APPLY_TYPE_OSHMANS =>
             \App\Consts\OshmansConst::HOW_FOUND_2,
+        self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU =>
+            \App\Consts\SSXOchanomizuConst::SHOES_SIZE,
     ];
 
     public const CHOICE_3 = [
