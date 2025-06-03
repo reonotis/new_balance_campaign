@@ -27,7 +27,7 @@
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">場所</div>
-                            <div class="event-explanation-content">XEBIO御茶ノ水本店</div>
+                            <div class="event-explanation-content">スーパースポーツゼビオ東京御茶ノ水本店</div>
                         </div>
                         <div class="event-explanation-row">
                             <div class="event-explanation-title">内容</div>
