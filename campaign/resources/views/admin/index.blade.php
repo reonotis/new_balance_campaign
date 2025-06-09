@@ -8,7 +8,7 @@
         <div class="mx-auto sm:px-6 lg:px-8" style="max-width: 1400px">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 @foreach(App\Consts\CommonApplyConst::APPLY_TITLE_LIST as $key => $value)
-                    @if($key >= 20)
+                    @if(in_array($key, [16, 23]) )
                         <div class="p-2 mb-2" ><a href="{{ route('admin.common_apply', ['applyType' => $key]) }}" class="list-href"
                             > {{ App\Consts\CommonApplyConst::APPLY_TITLE_LIST[$key] }} 申込リストを確認する</a>
                         </div>

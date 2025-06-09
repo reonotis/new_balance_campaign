@@ -187,6 +187,10 @@ class CommonApplyConst
                 'start_date_time' => '2025-01-23 00:00:00',
                 'end_date_time' => '2025-02-14 23:59:59',
             ],
+            11 => [
+                'start_date_time' => '2025-06-09 00:00:00',
+                'end_date_time' => '2025-07-05 23:59:59',
+            ],
         ],
         self::APPLY_TYPE_TOKYO_ROKUTAI_FES => [
             1 => [
