@@ -26,13 +26,14 @@
                 <table class="list-tbl">
                     <thead>
                     <tr>
-                        <th>イベント名</th>
+                        <th style="width: 500px;">イベント名</th>
                         <th>受付期間</th>
-                        <th>申込件数(最大申込可能数)</th>
+                        <th>申込件数<br>(最大申込可能数)</th>
 
                         @if(\Auth::user()->id === 1)
                             <th>フォーム設定</th>
                             <th>項目設定</th>
+                            <th>メール設定</th>
                         @endif
                     </tr>
                     </thead>
@@ -58,6 +59,8 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.form-item-edit', ['form_setting' => $form_setting->id]) }}">設定</a>
+                                </td>
+                                <td>
                                 </td>
                             @endif
                         </tr>

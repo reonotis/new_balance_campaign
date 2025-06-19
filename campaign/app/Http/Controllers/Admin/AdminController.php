@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Mail;
 
 class AdminController extends BaseController
 {
@@ -268,6 +269,7 @@ class AdminController extends BaseController
 
         if ($form_setting->send_bulk_mail_flg) {
             $columns[] = ['data' => 'application_sand_email', 'title' => 'メール送信', 'orderable' => false];
+            $columns[] = ['data' => 'sent_lottery_result_email_flg', 'title' => 'メール送信', 'orderable' => false];
         }
 
         return $columns;
@@ -323,6 +325,9 @@ class AdminController extends BaseController
                     'comment2' => $row->comment2,
                     'comment3' => $row->comment3,
                     'application_sand_email' => '<input type="checkbox" class="application-sand-email" data-id="' . $row->id . '" ' . ($row->send_lottery_result_email_flg ? 'checked' : '') . '>',
+                    'sent_lottery_result_email_flg' => $row->sent_lottery_result_email_flg
+                        ? '送信済み'
+                        : '未送信',
                 ];
             });
 
@@ -541,4 +546,43 @@ class AdminController extends BaseController
         ];
     }
 
+    /**
+     * 一斉メールを送信する
+     */
+    public function applicationSandMail(FormSetting $form_setting)
+    {
+        if($form_setting->send_bulk_mail_flg == 0) {
+            return false;
+        }
+
+        // 一斉メールを送信する対象を取得
+        $send_mail_list = Application::where('form_setting_id', $form_setting->id)
+            ->where('send_lottery_result_email_flg', 1) // 送信する人
+            ->where('sent_lottery_result_email_flg', 0) // まだ送信していない人
+            ->get();
+
+        $count = 0;
+        foreach ($send_mail_list as $application) {
+            if (
+                is_null($application->email) ||
+                is_null($application->choice_4) ||
+                is_null($application->f_name) ||
+                is_null($application->l_name)
+            ) {
+                continue;
+            }
+
+            Mail::send('emails.' . $form_setting->route_name . '.bulkMail', $application->toArray(), function ($message) use ($application) {
+                $message->to($application->email)
+                    ->from('info@newbalance-campaign.jp')
+                    ->bcc('fujisawareon@yahoo.co.jp')
+                    ->subject('【東京レガシーハーフマラソン2025 出走権プレゼントキャンペーン】');
+            });
+
+            $application->update(['sent_lottery_result_email_flg' => 1]);
+            $count++;
+        }
+
+        return response()->json(['count' => $count]);
+    }
 }

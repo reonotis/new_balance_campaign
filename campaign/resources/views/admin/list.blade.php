@@ -50,7 +50,7 @@
 
     $(document).ready(function() {
         const columnsUrl = "{{ route('admin.get-application-column', ['form_setting' => $form_setting->id]) }}";
-        const url = "{{ route('admin.get-application-list', ['form_setting' => $form_setting->id]) }}";  // ← Laravelルート名を使う
+        const url = "{{ route('admin.get-application-list', ['form_setting' => $form_setting->id]) }}";
 
         // 一覧表を表示する
         $.get(columnsUrl, function (columns) {
@@ -112,7 +112,21 @@
         });
 
         $('#send_mail').on('click', function(){
-            alert('機能作成中')
+            const sand_mail_url = @json(route('admin.api.application_sand_mail', ['form_setting' => $form_setting->id]));
+            $.ajax({
+                url: sand_mail_url,
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (response) {
+                    // response.count に送信件数が返ってくる想定
+                    alert(response.count + '通のメールを送信しました');
+                },
+                error: function () {
+                    alert('メール送信に失敗しました');
+                }
+            });
         })
     });
 

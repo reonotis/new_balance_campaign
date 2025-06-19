@@ -306,6 +306,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/get-application-list/{form_setting}', [AdminController::class, 'getApplicationsList'])->name('admin.get-application-list');
 
     Route::get('/application_sand_email_flg/{form_setting}', [AdminController::class, 'applicationSandEmailFlg'])->name('admin.api.application_sand_email_flg');
+    Route::post('/application_sand_mail/{form_setting}', [AdminController::class, 'applicationSandMail'])->name('admin.api.application_sand_mail');
 
     Route::get('/form-create', [AdminController::class, 'formCreate'])->name('admin.form-create');
     Route::get('/form-edit/{form_setting}', [AdminController::class, 'formEdit'])->name('admin.form-edit');

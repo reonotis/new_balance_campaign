@@ -37,6 +37,11 @@ class Application extends Model
     use HasFactory;
 
     protected $table = 'application';
+
+    protected $fillable = [
+        'sent_lottery_result_email_flg',
+    ];
+
     protected $date = [
         'birthday',
         'created_at',
