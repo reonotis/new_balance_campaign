@@ -1,1 +1,6 @@
-{!! nl2br(e($mail_text)) !!}
+<html>
+<body>
+{!! nl2br($mail_text) !!}
+</body>
+</html>
+
