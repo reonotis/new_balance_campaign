@@ -22,6 +22,7 @@ class FormCommonRequest extends FormRequest
 {
     private \Illuminate\Database\Eloquent\Collection  $form_item;
 
+
     /**
      * @return bool
      */
