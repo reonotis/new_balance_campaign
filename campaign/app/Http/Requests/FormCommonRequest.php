@@ -117,7 +117,7 @@ class FormCommonRequest extends FormRequest
     {
         return [
             'sex' => '性別',
-            'comment_1' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title,
+            'comment_1' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title ?? '',
             'comment_2' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
             'comment_3' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',
         ];
