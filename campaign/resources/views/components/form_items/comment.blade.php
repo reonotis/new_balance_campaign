@@ -4,7 +4,7 @@
     <div class="item-content">
         <div class="flex">
             <div class="w-full px-2">
-                <textarea name="comment_{{ $typeNo }}" id="" class="w-full" style=""></textarea>
+                <textarea name="comment_{{ $typeNo }}" id="" class="w-full" style="">{{ $value }}</textarea>
             </div>
         </div>
     </div>
