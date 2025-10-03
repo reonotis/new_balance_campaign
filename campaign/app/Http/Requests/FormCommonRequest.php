@@ -22,7 +22,6 @@ class FormCommonRequest extends FormRequest
 {
     private \Illuminate\Database\Eloquent\Collection  $form_item;
 
-
     /**
      * @return bool
      */
@@ -44,7 +43,6 @@ class FormCommonRequest extends FormRequest
         }
         $this->form_item = $form_setting->formItem;
 
-//        dd($this->form_item);
         $rules = [];
         foreach ($form_setting->formItem as $form_item) {
             switch ($form_item->type_no){
@@ -80,13 +78,13 @@ class FormCommonRequest extends FormRequest
                     $rules['image'] = ['required'];
                     break;
                 case FormItem::ITEM_TYPE_COMMENT_1:
-                    $rules['comment_1'] = ['required'];
+                    $rules['comment_41'] = ['required'];
                     break;
                 case FormItem::ITEM_TYPE_COMMENT_2:
-                    $rules['comment_2'] = ['required'];
+                    $rules['comment_42'] = ['required'];
                     break;
                 case FormItem::ITEM_TYPE_COMMENT_3:
-                    $rules['comment_3'] = ['required'];
+                    $rules['comment_43'] = ['required'];
                     break;
                 default:
             }
@@ -117,9 +115,9 @@ class FormCommonRequest extends FormRequest
     {
         return [
             'sex' => '性別',
-            'comment_1' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title ?? '',
-            'comment_2' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
-            'comment_3' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',
+            'comment_41' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title ?? '',
+            'comment_42' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
+            'comment_43' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',
         ];
     }
 }
