@@ -8,7 +8,6 @@ use App\Models\FormSetting;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-
 /**
  * @property string f_name
  * @property string l_name
@@ -21,6 +20,8 @@ use Illuminate\Validation\Rule;
  */
 class FormCommonRequest extends FormRequest
 {
+    private \Illuminate\Database\Eloquent\Collection  $form_item;
+
     /**
      * @return bool
      */
@@ -40,7 +41,9 @@ class FormCommonRequest extends FormRequest
         if (empty($form_setting)) {
             abort(404);
         }
+        $this->form_item = $form_setting->formItem;
 
+//        dd($this->form_item);
         $rules = [];
         foreach ($form_setting->formItem as $form_item) {
             switch ($form_item->type_no){
@@ -75,8 +78,16 @@ class FormCommonRequest extends FormRequest
                 case FormItem::ITEM_TYPE_RECEIPT_IMAGE:
                     $rules['image'] = ['required'];
                     break;
+                case FormItem::ITEM_TYPE_COMMENT_1:
+                    $rules['comment_1'] = ['required'];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_2:
+                    $rules['comment_2'] = ['required'];
+                    break;
+                case FormItem::ITEM_TYPE_COMMENT_3:
+                    $rules['comment_3'] = ['required'];
+                    break;
                 default:
-//                    dd($form_item, '式がいずれの値にも等しくない時の処理');
             }
         }
 
@@ -105,6 +116,9 @@ class FormCommonRequest extends FormRequest
     {
         return [
             'sex' => '性別',
+            'comment_1' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title,
+            'comment_2' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
+            'comment_3' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',
         ];
     }
 }
