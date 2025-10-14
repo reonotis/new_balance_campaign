@@ -30,6 +30,8 @@ use Illuminate\Support\Carbon;
  * @property string choice_1
  * @property string choice_2
  * @property string choice_3
+ * @property string choice_4
+ * @property string my_NBID
  * @property Carbon created_at
  */
 class Application extends Model

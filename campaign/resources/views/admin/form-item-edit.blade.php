@@ -32,6 +32,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_1,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_2,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_3,
+                                \App\Models\FormItem::ITEM_TYPE_CHOICE_4,
                             ]))
                                 <div class="flex item-row">
                                     <div style="width: 40px;">
@@ -128,6 +129,7 @@
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_1,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_2,
                                 \App\Models\FormItem::ITEM_TYPE_CHOICE_3,
+                                \App\Models\FormItem::ITEM_TYPE_CHOICE_4,
                             ]))
                                 <div class="flex item-row">
                                     <div style="width: 40px;">

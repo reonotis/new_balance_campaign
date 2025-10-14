@@ -69,6 +69,7 @@
                                 @case(App\Models\FormItem::ITEM_TYPE_CHOICE_1)
                                 @case(App\Models\FormItem::ITEM_TYPE_CHOICE_2)
                                 @case(App\Models\FormItem::ITEM_TYPE_CHOICE_3)
+                                @case(App\Models\FormItem::ITEM_TYPE_CHOICE_4)
                                     <div class="item-row">
                                         <label for="tel" class="item-title">{{ $form_item->choice_data['item_name'] }}</label>
                                         <div class="item-content">
@@ -121,6 +122,9 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @break
+                                @case(App\Models\FormItem::ITEM_TYPE_NBID)
+                                    <x-form_items.nbid/>
                                     @break
                                 @case(App\Models\FormItem::ITEM_TYPE_RECEIPT_IMAGE)
                                     <x-form_items.receipt-image/>

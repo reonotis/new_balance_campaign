@@ -74,6 +74,9 @@ class FormCommonRequest extends FormRequest
                     $rules['email']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', 'confirmed'];
                     $rules['email_confirmation']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/'];
                     break;
+                case FormItem::ITEM_TYPE_NBID:
+                    $rules['nbid']= ['required'];
+                    break;
                 case FormItem::ITEM_TYPE_RECEIPT_IMAGE:
                     $rules['image'] = ['required'];
                     break;
@@ -115,6 +118,7 @@ class FormCommonRequest extends FormRequest
     {
         return [
             'sex' => '性別',
+            'nbid' => 'myNBID(10桁)',
             'comment_41' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title ?? '',
             'comment_42' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
             'comment_43' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',

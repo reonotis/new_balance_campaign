@@ -118,6 +118,7 @@ class AdminController extends BaseController
                 case FormItem::ITEM_TYPE_AGE:
                 case FormItem::ITEM_TYPE_TEL:
                 case FormItem::ITEM_TYPE_EMAIL:
+                case FormItem::ITEM_TYPE_NBID:
                     $columns[] = FormItem::ITEM_TYPE_LIST[$form_item->type_no];
                     break;
                 case FormItem::ITEM_TYPE_ADDRESS:
@@ -127,6 +128,7 @@ class AdminController extends BaseController
                 case FormItem::ITEM_TYPE_CHOICE_1:
                 case FormItem::ITEM_TYPE_CHOICE_2:
                 case FormItem::ITEM_TYPE_CHOICE_3:
+                case FormItem::ITEM_TYPE_CHOICE_4:
                     $columns[] = $form_item->choice_data['item_name'];
                     break;
                 case FormItem::ITEM_TYPE_COMMENT_1:
@@ -190,6 +192,12 @@ class AdminController extends BaseController
                     case FormItem::ITEM_TYPE_CHOICE_3:
                         $record_array[] = $row->choice_3;
                         break;
+                    case FormItem::ITEM_TYPE_CHOICE_4:
+                        $record_array[] = $row->choice_4;
+                        break;
+                    case FormItem::ITEM_TYPE_NBID:
+                        $record_array[] = $row->my_NBID;
+                        break;
                     case FormItem::ITEM_TYPE_COMMENT_1:
                         $record_array[] = $row->comment;
                         break;
@@ -249,6 +257,12 @@ class AdminController extends BaseController
                     break;
                 case FormItem::ITEM_TYPE_CHOICE_3:
                     $columns[] = ['data' => 'choice_3', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_CHOICE_4:
+                    $columns[] = ['data' => 'choice_4', 'title' => $form_item->choice_data['item_name'], 'orderable' => false];
+                    break;
+                case FormItem::ITEM_TYPE_NBID:
+                    $columns[] = ['data' => 'my_NBID', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_NBID], 'orderable' => false];
                     break;
                 case FormItem::ITEM_TYPE_RECEIPT_IMAGE:
                     $columns[] = ['data' => 'image', 'title' => FormItem::ITEM_TYPE_LIST[FormItem::ITEM_TYPE_RECEIPT_IMAGE], 'orderable' => false];
@@ -318,6 +332,8 @@ class AdminController extends BaseController
                     'choice_1' => $row->choice_1,
                     'choice_2' => $row->choice_2,
                     'choice_3' => $row->choice_3,
+                    'choice_4' => $row->choice_4,
+                    'my_NBID' => $row->my_NBID,
                     'image' => $row->img_pass
                         ? '<img src="' . asset('storage/' . $form_setting->image_dir_name . '/resize/' . $row->img_pass) . '" alt="レシート画像" class="resize_img" width="100">'
                         : '',
@@ -490,6 +506,7 @@ class AdminController extends BaseController
                     FormItem::ITEM_TYPE_CHOICE_1,
                     FormItem::ITEM_TYPE_CHOICE_2,
                     FormItem::ITEM_TYPE_CHOICE_3,
+                    FormItem::ITEM_TYPE_CHOICE_4,
                 ])) {
                     $form_item_param['choice_data'] = [
                         'item_type' => $request->item_type[$type_no],
@@ -565,7 +582,6 @@ class AdminController extends BaseController
         foreach ($send_mail_list as $application) {
             if (
                 is_null($application->email) ||
-                is_null($application->choice_4) ||
                 is_null($application->f_name) ||
                 is_null($application->l_name)
             ) {
