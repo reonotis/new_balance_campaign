@@ -15,7 +15,7 @@ class Common
     public const SEX_LIST = [
         self::SEX_MEN => '男性',
         self::SEX_WOMAN => '女性',
-        self::SEX_OTHER => 'その他',
+        self::SEX_OTHER => '回答しない',
     ];
 
     public const APPLY_TYPE_S223 = 1;
