@@ -4,6 +4,9 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+a {
+    color: #770d0d;
+}
 
 .brSp2 {
     display: none;
