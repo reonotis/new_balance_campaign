@@ -45,7 +45,7 @@ class FormItem extends Model
         self::ITEM_TYPE_CHOICE_2 => '選択肢2',
         self::ITEM_TYPE_CHOICE_3 => '選択肢3',
         self::ITEM_TYPE_CHOICE_4 => '選択肢4',
-        self::ITEM_TYPE_NBID => 'myNBID(10桁)',
+        self::ITEM_TYPE_NBID => 'myNB会員ID(10桁)',
         self::ITEM_TYPE_RECEIPT_IMAGE => 'レシート画像',
         self::ITEM_TYPE_COMMENT_1 => 'コメント1',
         self::ITEM_TYPE_COMMENT_2 => 'コメント2',

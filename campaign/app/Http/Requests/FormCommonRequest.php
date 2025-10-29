@@ -118,7 +118,7 @@ class FormCommonRequest extends FormRequest
     {
         return [
             'sex' => '性別',
-            'nbid' => 'myNBID(10桁)',
+            'nbid' => 'myNB会員ID(10桁)',
             'comment_41' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_1)->first()->comment_title ?? '',
             'comment_42' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_2)->first()->comment_title ?? '',
             'comment_43' => $this->form_item->where('type_no', FormItem::ITEM_TYPE_COMMENT_3)->first()->comment_title ?? '',
