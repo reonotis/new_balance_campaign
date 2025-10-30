@@ -2,11 +2,14 @@
 
     <x-slot name="page_title">
         <h2 class="text-center text-3xl font-bold leading-tight">
-            {{ $form_setting->title }} <br class="brSp2">応募フォーム
+            {{ $form_setting->title }}
         </h2>
     </x-slot>
+
     <x-slot name="script">
-        {{--        <link rel="stylesheet" href="{{ asset('css/nagasaki_opening.css') }}?<?= date('YmdHis') ?>">--}}
+        @if($form_setting->css_file_name)
+            <link rel="stylesheet" href="{{ asset('css/' . $form_setting->css_file_name) }}?<?= date('YmdHis') ?>">
+        @endif
     </x-slot>
 
     <div class="py-12">
