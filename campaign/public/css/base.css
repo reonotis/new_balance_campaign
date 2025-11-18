@@ -49,6 +49,7 @@ a {
 .event-explanation-content {
     width: 100%;
     padding-left: 1rem;
+    font-weight: 400;
 }
 
 .banner-image {
