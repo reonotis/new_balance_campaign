@@ -26,6 +26,7 @@ class CommonApplyConst
     public const APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB = 21;
     public const APPLY_TYPE_HARAJUKU_ANNIVERSARY = 22;
     public const APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU = 23;
+    public const APPLY_TYPE_VERSITY_JACKET = 24;
 
     /**
      * 申込タイトル
@@ -53,6 +54,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'TENJIN RUNNERS GATE（テンジン ランナーズ ゲート）スペシャルイベント',
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => '原宿店８周年イベント',
         self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'SSX東京御茶ノ水本店イベント',
+        self::APPLY_TYPE_VERSITY_JACKET => '原宿リニューアル_Versity Jacket ワークショップ',
     ];
 
     /**
@@ -80,6 +82,7 @@ class CommonApplyConst
         self::APPLY_TYPE_SUPER_SPORTS_TENJIN_RUNNERS_CLUB => 'super-sports-tenjin-runners-club.index',
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => 'harajuku-anniversary.index',
         self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'super-sports-ochanomizu.index',
+        self::APPLY_TYPE_VERSITY_JACKET => 'versity-jacket.index',
     ];
 
     /**
@@ -240,6 +243,12 @@ class CommonApplyConst
             3 => [
                 'start_date_time' => '2025-05-31 00:00:00', // 2024/06/02
                 'end_date_time' => '2025-06-27 23:59:59', // 2024/06/27
+            ],
+        ],
+        self::APPLY_TYPE_VERSITY_JACKET => [
+            1 => [
+                'start_date_time' => '2025-12-01 00:00:00', //
+                'end_date_time' => '2026-01-27 23:59:59', //
             ],
         ],
     ];
@@ -577,6 +586,21 @@ class CommonApplyConst
             'choice_1',
             'choice_2',
         ],
+        self::APPLY_TYPE_VERSITY_JACKET => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'choice_1',
+        ],
+
     ];
 
     /**
@@ -766,6 +790,13 @@ class CommonApplyConst
             'choice_1' => 'どこでイベント知ったか',
             'choice_2' => 'シューズのサイズ',
         ],
+        self::APPLY_TYPE_VERSITY_JACKET => [
+            'name' => '名前',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'choice_1' => '刺繍実施日時',
+        ],
     ];
 
     /**
@@ -846,6 +877,8 @@ class CommonApplyConst
             \App\Consts\SSXFukuokaTenjinConst::HOW_FOUND,
         self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU =>
             \App\Consts\SSXOchanomizuConst::HOW_FOUND,
+        self::APPLY_TYPE_VERSITY_JACKET =>
+            \App\Consts\VersityJacketConst::DAY_TIME_LIST,
     ];
 
     public const CHOICE_2 = [

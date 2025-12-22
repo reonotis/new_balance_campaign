@@ -13,8 +13,9 @@ class CommonApplyService
 {
     protected int $applyType;
     protected string $durationMessage = '';
+    private int $number;
 
-    function __construct(int $apply_type, int $number = null)
+    function __construct(int $apply_type, int $number)
     {
         $this->applyType = $apply_type;
         $this->number = $number;
@@ -26,13 +27,8 @@ class CommonApplyService
      */
     public function checkApplicationDuration(): bool
     {
-        if (!is_null($this->number)) {
-            $start_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['start_date_time'];
-            $end_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['end_date_time'];
-        } else {
-            $start_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType]['start_date_time'];
-            $end_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType]['end_date_time'];
-        }
+        $start_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['start_date_time'];
+        $end_date_time_str = CommonApplyConst::APPLY_TYPE_DURATION[$this->applyType][$this->number]['end_date_time'];
 
         $now = Carbon::now();
         $start_date_time = new Carbon($start_date_time_str);
@@ -56,6 +52,12 @@ class CommonApplyService
     public function getDurationMessage(): string
     {
         return $this->durationMessage;
+    }
+
+    public function getaaa()
+    {
+        return CommonApply::where('delete_flag', 0)
+            ->where('apply_type', $this->applyType)->get();
     }
 
     /**

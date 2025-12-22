@@ -40,7 +40,7 @@ class AdminCommonApplyController extends BaseController
         $applyTitle = CommonApplyConst::APPLY_TITLE_LIST[$applyType];
 
         /** @var CommonApplyService $service */
-        $service = app(CommonApplyService::class, ['apply_type' => $applyType]);
+        $service = app(CommonApplyService::class, ['apply_type' => $applyType, 'number' => 1]);
         $paginationList = $service->getByApplyTypeWithPaginate($applyType, 20);
         $applyList = $this->convertOfMapping($displayItemList, $paginationList);
 

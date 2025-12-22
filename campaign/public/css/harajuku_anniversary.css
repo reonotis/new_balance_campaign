@@ -1,18 +1,15 @@
 
 body {
-    background: #717A81;
+    background-image: url("../img/harajyuku/background.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", 'Lato', "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .brSp2 {
     display: none;
-}
-
-h2 {
-    color: white;
-}
-
-.st0 {
-    fill: #fff;
 }
 
 @media screen and (max-width: 700px) {

@@ -5,11 +5,8 @@ use App\Http\Controllers\{
         Area302RunningClubController,
         CelebrationSeatController,
         CommonFormController,
-        GoMurakamiController,
-        GolfTryOn2023Controller,
         GoFunController,
         HarajukuAnniversaryController,
-        KokuritsuArukuTokyoController,
         KichijojiShoppingNightController,
         KichijojiGreyDaysExclusiveController,
         KichijojiGreyDays5kRunningController,
@@ -30,7 +27,7 @@ use App\Http\Controllers\{
         TryOn2023Controller,
         TryOn2023FreshFormX1080v13Controller,
         TryOn2024Controller,
-        JuniorFootball442Controller
+        VersityJacketController
     };
 use App\Http\Controllers\Admin\{AdminCommonApplyController,
         AdminController,
@@ -66,22 +63,6 @@ Route::resource('try_on', TryOnController::class)->only([
 ]);
 Route::get('/try_on/complete', [TryOnController::class, 'complete'])->name('try_on.complete');
 
-// 国立までアルク東京
-Route::group(['prefix'=>'aruku-tokyo-2022'],function(){
-    Route::get('', [KokuritsuArukuTokyoController::class, 'index'])->name('aruku-tokyo-2022.index');
-    Route::post('/store', [KokuritsuArukuTokyoController::class, 'store'])->name('aruku-tokyo-2022.store');
-    Route::get('/complete', [KokuritsuArukuTokyoController::class, 'complete'])->name('aruku-tokyo-2022.complete');
-    Route::get('/outsidePeriod', [KokuritsuArukuTokyoController::class, 'outsidePeriod'])->name('aruku-tokyo-2022.outsidePeriod');
-});
-
-// 村上宗隆選手応援キャンペーン
-Route::group(['prefix'=>'go-murakami-2023'],function(){
-    Route::get('', [GoMurakamiController::class, 'index'])->name('go-murakami-2023.index');
-    Route::post('/store', [GoMurakamiController::class, 'store'])->name('go-murakami-2023.store');
-    Route::get('/complete', [GoMurakamiController::class, 'complete'])->name('go-murakami-2023.complete');
-    Route::get('/outsidePeriod', [GoMurakamiController::class, 'outsidePeriod'])->name('go-murakami-2023.outsidePeriod');
-});
-
 // try_on 2023
 Route::group(['prefix'=>'try-on-2023'],function(){
     Route::get('', [TryOn2023Controller::class, 'index'])->name('try-on-2023.index');
@@ -96,14 +77,6 @@ Route::group(['prefix'=>'minato-runners-base'],function(){
     Route::post('/store', [MinatoRunnersBaseController::class, 'store'])->name('minato.store');
     Route::get('/complete', [MinatoRunnersBaseController::class, 'complete'])->name('minato.complete');
     Route::get('/outsidePeriod', [MinatoRunnersBaseController::class, 'outsidePeriod'])->name('minato.outsidePeriod');
-});
-
-// golf try-on 2023
-Route::group(['prefix'=>'golf-try-on-2023'],function(){
-    Route::get('', [GolfTryOn2023Controller::class, 'index'])->name('golf-try-on-2023.index');
-    Route::post('/store', [GolfTryOn2023Controller::class, 'store'])->name('golf-try-on-2023.store');
-    Route::get('/complete', [GolfTryOn2023Controller::class, 'complete'])->name('golf-try-on-2023.complete');
-    Route::get('/outsidePeriod', [GolfTryOn2023Controller::class, 'outsidePeriod'])->name('golf-try-on-2023.outsidePeriod');
 });
 
 // S223アパレル展示会
@@ -184,14 +157,6 @@ Route::group(['prefix'=>'kichijoji-grey-days-5k-runn'],function(){
     Route::post('/store', [KichijojiGreyDays5kRunningController::class, 'store'])->name('kichijoji-grey-days-5k-running.store');
     Route::get('/complete', [KichijojiGreyDays5kRunningController::class, 'complete'])->name('kichijoji-grey-days-5k-running.complete');
     Route::get('/outsidePeriod', [KichijojiGreyDays5kRunningController::class, 'outsidePeriod'])->name('kichijoji-grey-days-5k-running.outsidePeriod');
-});
-
-// Junior Football 442 キャンペーン
-Route::group(['prefix'=>'442-junior-football'],function(){
-    Route::get('', [JuniorFootball442Controller::class, 'index'])->name('442-junior-football.index');
-    Route::post('/store', [JuniorFootball442Controller::class, 'store'])->name('442-junior-football.store');
-    Route::get('/complete', [JuniorFootball442Controller::class, 'complete'])->name('442-junior-football.complete');
-    Route::get('/outsidePeriod', [JuniorFootball442Controller::class, 'outsidePeriod'])->name('442-junior-football.outsidePeriod');
 });
 
 // Area 302 running club キャンペーン
@@ -285,6 +250,15 @@ Route::group(['prefix' => 'super-sports-ochanomizu'], function () {
         Route::get('/outsidePeriod', 'outsidePeriod')->name('super-sports-ochanomizu.outsidePeriod');
     });
 });
+
+// ジャケット刺繍
+Route::group(['prefix' => 'versity-jacket'], function () {
+    Route::get('', [VersityJacketController::class, 'index'])->name('versity-jacket.index');
+    Route::post('/store', [VersityJacketController::class, 'store'])->name('versity-jacket.store');
+    Route::get('/complete', [VersityJacketController::class, 'complete'])->name('versity-jacket.complete');
+    Route::get('/outsidePeriod', [VersityJacketController::class, 'outsidePeriod'])->name('versity-jacket.outsidePeriod');
+});
+
 
 // 共通フォーム
 Route::group(['prefix' => '{route_name}/form'], function () {
