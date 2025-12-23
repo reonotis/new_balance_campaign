@@ -118,7 +118,7 @@ class VersityJacketController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ご応募ありがとうございました。');
+                ->subject('ご予約ありがとうございました。');
         });
     }
 
@@ -133,8 +133,6 @@ class VersityJacketController extends Controller
             'name' => $request->f_name . ' ' . $request->l_name,
             'read' => $request->f_read . ' ' . $request->l_read,
             'choice_1' => $request->choice_1,
-            'zip' => $request->zip21 . '-' . $request->zip22,
-            'street_address' => $request->pref21 . ' ' . $request->address21 . ' ' . $request->street21,
             'tel' => $request->tel,
             'email' => $request->email,
             'url' => url('') . '/admin',

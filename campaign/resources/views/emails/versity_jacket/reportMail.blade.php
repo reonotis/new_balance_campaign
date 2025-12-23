@@ -6,8 +6,6 @@
 <b>■日時</b>　　　　 : {{ \App\Consts\VersityJacketConst::DAY_TIME_LIST[$choice_1] }}<br>
 <b>■電話番号</b>　　 : {{ $tel }}<br>
 <b>■メールアドレス</b> : {{ $email }}<br>
-<b>■住所</b>　　　　 : {{ $zip }}<br>
-　　　　　　　　{{ $street_address }}<br>
 <br>
 --------------------------------------<br>
 全体のお申込みは下記よりご確認いただけます。<br>

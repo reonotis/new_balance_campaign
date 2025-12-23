@@ -37,17 +37,13 @@ class VersityJacketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'choice_1' => 'required',
+            'choice_1' => 'required', // TODO
             'f_name' => 'required',
             'l_name' => 'required',
             'f_read' => 'required|regex:/^[ァ-ヶー]+$/u',
             'l_read' => 'required|regex:/^[ァ-ヶー]+$/u',
             'email' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/|confirmed',
             'email_confirmation' => 'required|regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/',
-            'zip21' => 'required|size:3',
-            'zip22' => 'required|size:4',
-            'pref21' => 'required',
-            'address21' => 'required',
             'tel' => 'required|regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/',
         ];
     }
@@ -74,7 +70,7 @@ class VersityJacketRequest extends FormRequest
     {
         return [
             'comment' => '質問事項',
-            'choice_1' => '刺繍ご希望日時',
+            'choice_1' => 'ご希望日時',
         ];
     }
 }
