@@ -51,7 +51,7 @@
                             <label for="f_name" class="item-title">ご都合の良い日程を一つ選択してください</label>
                             <div class="item-content">
                                 <p class="mail_supplement mb-1">※ご希望日時は先着順となっている為、既に埋まっている日時は選択する事が出来ません。</p>
-                                ■■1月16日（金）
+                                ■1月16日（金）
                                 <div class="flex mb-2 ml-2" style="flex-wrap: wrap;gap: 0.25rem 1rem;">
                                     @foreach(App\Consts\VersityJacketConst::DAY_1 as $key => $val)
                                         <label class="radio-label">
