@@ -1,3 +1,6 @@
+本文の文頭に差し込んでください<br>
+[Brian Blakely Customs]ライブカスタマイズ体験<br>
+<br>
 お名前：{{ $customer_name }} 様<br>
 日時： {{ \App\Consts\VersityJacketConst::DAY_TIME_LIST[$choice_1] }}<br>
 場所：ニューバランス原宿　4階<br>
