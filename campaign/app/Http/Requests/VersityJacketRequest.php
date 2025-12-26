@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Consts\CommonApplyConst;
+use App\Service\CommonApplyService;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * @property string f_name
@@ -36,8 +39,12 @@ class VersityJacketRequest extends FormRequest
      */
     public function rules(): array
     {
+        $apply_service = new CommonApplyService(CommonApplyConst::APPLY_TYPE_VERSITY_JACKET, 1);
+        $record = $apply_service->getExistRecords();
+        $exist_choice_1 = $record->pluck('choice_1')->toArray();
+
         return [
-            'choice_1' => 'required', // TODO
+            'choice_1' => ['required', Rule::notIn($exist_choice_1)],
             'f_name' => 'required',
             'l_name' => 'required',
             'f_read' => 'required|regex:/^[ァ-ヶー]+$/u',

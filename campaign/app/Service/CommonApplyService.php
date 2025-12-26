@@ -54,7 +54,7 @@ class CommonApplyService
         return $this->durationMessage;
     }
 
-    public function getaaa()
+    public function getExistRecords()
     {
         return CommonApply::where('delete_flag', 0)
             ->where('apply_type', $this->applyType)->get();

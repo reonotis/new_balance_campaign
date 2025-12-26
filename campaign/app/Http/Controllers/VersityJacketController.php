@@ -44,7 +44,7 @@ class VersityJacketController extends Controller
     public function index(): View
     {
         // 登録済みの刺繍希望日時
-        $record = $this->apply_service->getaaa();
+        $record = $this->apply_service->getExistRecords();
         $exist_choice_1 = $record->pluck('choice_1')->toArray();
 
         return view('versity_jacket.index', [
@@ -58,7 +58,6 @@ class VersityJacketController extends Controller
      */
     public function complete(): View
     {
-
         return view('versity_jacket.complete');
     }
 
