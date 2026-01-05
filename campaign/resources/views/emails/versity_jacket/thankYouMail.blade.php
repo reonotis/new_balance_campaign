@@ -1,4 +1,3 @@
-本文の文頭に差し込んでください<br>
 [Brian Blakely Customs]ライブカスタマイズ体験<br>
 <br>
 お名前：{{ $customer_name }} 様<br>
