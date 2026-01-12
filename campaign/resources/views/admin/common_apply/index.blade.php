@@ -82,7 +82,7 @@
                                                     @break
                                                 @case('choice_1')
                                                     @if(!is_null($apply[$itemKey]))
-                                                        {{ \App\Consts\CommonApplyConst::CHOICE_1[$applyType][$apply[$itemKey]] }}
+                                                        {{ \App\Consts\CommonApplyConst::CHOICE_1[$applyType][$apply[$itemKey]] ?? '' }}
                                                     @endif
                                                     @break
                                                 @case('choice_2')

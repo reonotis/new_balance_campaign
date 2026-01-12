@@ -792,7 +792,6 @@ class CommonApplyConst
         ],
         self::APPLY_TYPE_VERSITY_JACKET => [
             'name' => '名前',
-            'address' => '住所',
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'choice_1' => '刺繍実施日時',

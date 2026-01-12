@@ -134,6 +134,7 @@ class VersityJacketController extends Controller
             'choice_1' => $request->choice_1,
             'tel' => $request->tel,
             'email' => $request->email,
+            'nbid' => $request->nbid ?? '',
             'url' => url('') . '/admin',
         ];
         Mail::send('emails.versity_jacket.reportMail', $data, function ($message) {
