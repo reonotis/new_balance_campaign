@@ -71,7 +71,7 @@ class CommonFormService
                     $application->email = $request['email'];
                     break;
                 case(FormItem::ITEM_TYPE_CHOICE_1):
-                    $application->choice_1 = $request['choice_11'];
+                    $application->choice_1 = $this->makeAnswerText($request['choice_11']);
                     break;
                 case(FormItem::ITEM_TYPE_CHOICE_2):
                     $application->choice_2 = $request['choice_12'];
@@ -104,5 +104,18 @@ class CommonFormService
         return $application->save();
     }
 
+    /**
+     * @param mixed|string $data
+     * @return string
+     */
+    private function makeAnswerText($data): string
+    {
+        // 配列じゃなければそのまま返す
+        if (!is_array($data)) {
+            return $data;
+        }
 
+        // 配列ならカンマ区切りで文字列にする
+        return implode(',', $data);
+    }
 }

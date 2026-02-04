@@ -25,13 +25,13 @@
           <b>■メールアドレス</b>　　 : {{ $request['email'] }}<br>
             @break
         @case(App\Models\FormItem::ITEM_TYPE_CHOICE_1)
-          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ $request['choice_11'] }}<br>
-            @break
+          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ is_array($request['choice_11']) ? implode(',', $request['choice_11']) : $request['choice_11'] }}<br>
+          @break
         @case(App\Models\FormItem::ITEM_TYPE_CHOICE_2)
-          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ $request['choice_12'] }}<br>
+          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ is_array($request['choice_12']) ? implode(',', $request['choice_12']) : $request['choice_12'] }}<br>
             @break
         @case(App\Models\FormItem::ITEM_TYPE_CHOICE_3)
-          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ $request['choice_13'] }}<br>
+          <b>■{{ $form_item->choice_data['item_name'] }}</b>　　 : {{ is_array($request['choice_13']) ? implode(',', $request['choice_13']) : $request['choice_13'] }}<br>
             @break
     @endswitch
 @endforeach
