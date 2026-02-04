@@ -80,6 +80,9 @@
                                             @if($form_item->choice_data['item_type'] == 1)
                                                 {{-- ラジオボタン --}}
                                                 <div class="w-full mb-1 flex" style="flex-wrap: wrap;">
+                                                    @if($form_item->comment_title)
+                                                        <p class="mail_supplement mb-1">{{ $form_item->comment_title }}</p>
+                                                    @endif
                                                     @foreach($choices as $choice)
                                                         <label class="radio-label" style="margin: 0 .5rem">
                                                             <input type="radio" class="" name="choice_{{ $form_item->type_no }}" value="{{ $choice }}"
@@ -93,6 +96,9 @@
                                                 </div>
                                             @elseif($form_item->choice_data['item_type'] == 2)
                                                 {{-- チェックボックス --}}
+                                                @if($form_item->comment_title)
+                                                    <p class="mail_supplement mb-1">{{ $form_item->comment_title }}</p>
+                                                @endif
                                                 <div class="w-full mb-1" >
                                                     @foreach($choices as $choice)
                                                         <label class="radio-label" style="margin: 0 .5rem">
@@ -107,6 +113,9 @@
                                                 </div>
                                             @elseif($form_item->choice_data['item_type'] == 3)
                                                 {{-- セレクトボックス --}}
+                                                @if($form_item->comment_title)
+                                                    <p class="mail_supplement mb-1">{{ $form_item->comment_title }}</p>
+                                                @endif
                                                 <select name="choice_{{ $form_item->type_no }}"
                                                         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                                     @foreach($choices as $choice)
