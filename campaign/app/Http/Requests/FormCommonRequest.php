@@ -112,6 +112,7 @@ class FormCommonRequest extends FormRequest
             'age.required' => 'ご年齢を入力してください。',
             'tel.regex' => '電話番号は市外局番から-(ハイフン)を含めて入力してください。',
             'choice_11.required' => '未入力の選択肢があります。',
+
         ];
     }
 
