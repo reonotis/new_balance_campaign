@@ -74,6 +74,10 @@ class FormCommonRequest extends FormRequest
                     $rules['email']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', 'confirmed'];
                     $rules['email_confirmation']= ['required', 'regex:/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/'];
                     break;
+                case FormItem::ITEM_TYPE_CHOICE_1:
+                    $required = ($form_item->require_flg) ? 'required' : 'nullable';
+                    $rules['choice_11'] = [$required];
+                    break;
                 case FormItem::ITEM_TYPE_NBID:
                     $rules['nbid']= ['required'];
                     break;
@@ -107,6 +111,7 @@ class FormCommonRequest extends FormRequest
             'l_read.regex' => 'ナマエは全角カナで入力してください。',
             'age.required' => 'ご年齢を入力してください。',
             'tel.regex' => '電話番号は市外局番から-(ハイフン)を含めて入力してください。',
+            'choice_11.required' => '未入力の選択肢があります。',
         ];
     }
 

@@ -86,7 +86,7 @@
                                                     @foreach($choices as $choice)
                                                         <label class="radio-label" style="margin: 0 .5rem">
                                                             <input type="radio" class="" name="choice_{{ $form_item->type_no }}" value="{{ $choice }}"
-                                                                   @if(old('desired_size') == $choice)
+                                                                   @if(old('choice_'.$form_item->type_no) == $choice)
                                                                         checked="checked"
                                                                    @endif
                                                             >
