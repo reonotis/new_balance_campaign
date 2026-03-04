@@ -11,6 +11,7 @@
         <p class="mail_supplement mb-1">※登録がお済みでない場合、下記より新規会員登録をしてからお申し込みください。</p>
         <p class="mail_supplement mb-1"><a href="https://shop.newbalance.jp/login" target="_blank">https://shop.newbalance.jp/login</a></p>
         <p class="mail_supplement mb-1">※myNB会員IDについては下記よりご確認ください。<br><a href="https://shop.newbalance.jp/guide-faq-mynb.html" target="_blank">https://shop.newbalance.jp/guide-faq-mynb.html</a></p>
+        <p class="mail_supplement mb-1">※会員の個人情報は、ニューバランスプライバシーポリシーに従って取り扱います。<br><a href="https://shop.newbalance.jp/guide-privacy.html" target="_blank">https://shop.newbalance.jp/guide-privacy.html</a></p>
     </div>
 </div>
 
