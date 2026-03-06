@@ -32,3 +32,10 @@
     </div>
 
 </x-Base-layout>
+
+
+
+
+
+
+<div class="event-explanation-row"><div class="event-explanation-title">【Ellipseについて】</div><div class="event-explanation-content">毎日のランニングを一日の中で最も楽しい時間にするために設計されています。ランナーが「もっと楽しみたい」と感じている部分に応えるためにデザインされており、走ることそのものの楽しさをより感じられるように作られたシューズです。</div></div><div class="event-explanation-row"><div class="event-explanation-title">【応募概要】</div><div class="event-explanation-content">■応募締切</div><div class="event-explanation-content">2026年3月30日（月）23:59</div><div class="event-explanation-content">■当選発表</div><div class="event-explanation-content">４月上旬（予定）にメールにてご連絡いたします。<br>※応募フォームに記載いただいたメールアドレスへご連絡の上発送いたします。<br>※ドメイン指定受信を利用されている場合は、「news@email.newbalance.jp」を受信できるように設定をお願いいたします。<br></div></div>
