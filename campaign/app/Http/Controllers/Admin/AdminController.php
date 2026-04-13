@@ -31,7 +31,7 @@ class AdminController extends BaseController
      */
     public function index(): View
     {
-        $form_settings = FormSetting::paginate(10);
+        $form_settings = FormSetting::where('delete_flag', 0)->paginate(10);
 
         $form_setting_ids = $form_settings->pluck('id')->toArray();
         $application_count = Application::select('form_setting_id', DB::raw('COUNT(*) as count'))
