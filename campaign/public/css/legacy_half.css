@@ -22,3 +22,8 @@ body::before {
     background: rgba(255, 255, 255, 0.3); /* 白く透かす */
     z-index: -1; /* 背景として表示する */
 }
+
+h2 {
+    font-size: 1.6rem!important;
+}
+
