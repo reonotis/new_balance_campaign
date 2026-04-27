@@ -1,0 +1,44 @@
+
+body {
+    background: #373b3e;
+}
+
+header svg {
+    fill: #CAC3BF;
+}
+
+.brSp2 {
+    display: none;
+}
+
+h2 {
+    color: #CAC3BF;
+}
+
+@media screen and (max-width: 700px) {
+    .brSp2 {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .overview-box {
+        text-align: center;
+        line-height: 1.5rem;
+    }
+}
+
+.item-title {
+    background: #CAC3BF;
+    color: black;
+}
+
+h2 {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.banner-image {
+    border: solid 1px #fff;
+    max-width: 97%;
+}
