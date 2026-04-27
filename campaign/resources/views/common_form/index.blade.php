@@ -14,7 +14,7 @@
 
     <div class="pt-4 pb-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm" >
 
                 @if(!empty($form_setting->banner_file_name))
                     <img class="banner-image" src="{{ asset('img/banner/' . $form_setting->banner_file_name) }}?date={{ date('YmdHi') }}" alt="">

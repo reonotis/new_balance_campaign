@@ -32,3 +32,13 @@ h2 {
     background: #CAC3BF;
     color: black;
 }
+
+h2 {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.banner-image {
+    border: solid 1px #fff;
+    max-width: 97%;
+}
