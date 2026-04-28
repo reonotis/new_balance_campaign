@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('versity-jacket.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('nishiazabu.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <x-form_items.name/>
@@ -59,6 +59,33 @@
                         <x-form_items.tel/>
 
                         <x-form_items.email/>
+
+                        <div class='item-row'>
+                            <label for="comment" class="item-title">ご自身が最も気に入っているグレーシューズの品番とその理由を教えてください。</label>
+                            <div class="item-content">
+                                <div class="w-full px-2">
+                                    <textarea type='text' name='comment' id='comment' class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='item-row'>
+                            <label for="comment2" class="item-title">初めてご購入いただいたニューバランスのシューズを教えてください。</label>
+                            <div class="item-content">
+                                <div class="w-full px-2">
+                                    <textarea type='text' name='comment2' id='comment2' class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='item-row'>
+                            <label for="comment3" class="item-title">これから履いてみたい、購入を考えているシューズ/アパレルがあれば、教えてください。</label>
+                            <div class="item-content">
+                                <div class="w-full px-2">
+                                    <textarea type='text' name='comment3' id='comment3' class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="p-2 w-full mt-4 flex justify-around">
                             <button type="submit" onclick="return applyConfirm()" class="submit-btn">申し込む</button>

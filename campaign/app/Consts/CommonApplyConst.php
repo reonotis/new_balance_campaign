@@ -56,6 +56,7 @@ class CommonApplyConst
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => '原宿店８周年イベント',
         self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'SSX東京御茶ノ水本店イベント',
         self::APPLY_TYPE_VERSITY_JACKET => '原宿リニューアル_Versity Jacket ワークショップ',
+        self::APPLY_TYPE_NISHIAZABU => 'GREY ART MUSEUM 2026 myNB Members Day',
     ];
 
     /**
@@ -84,6 +85,7 @@ class CommonApplyConst
         self::APPLY_TYPE_HARAJUKU_ANNIVERSARY => 'harajuku-anniversary.index',
         self::APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU => 'super-sports-ochanomizu.index',
         self::APPLY_TYPE_VERSITY_JACKET => 'versity-jacket.index',
+        self::APPLY_TYPE_NISHIAZABU => 'nishiazabu.index',
     ];
 
     /**
@@ -606,8 +608,24 @@ class CommonApplyConst
             'tel',
             'email',
             'choice_1',
+        ], self::APPLY_TYPE_NISHIAZABU => [
+            'f_name',
+            'l_name',
+            'f_read',
+            'l_read',
+            'sex',
+            'tel',
+            'zip21',
+            'zip22',
+            'pref21',
+            'address21',
+            'street21',
+            'tel',
+            'email',
+            'comment',
+            'comment2',
+            'comment3',
         ],
-
     ];
 
     /**
@@ -802,6 +820,17 @@ class CommonApplyConst
             'tel' => '電話番号',
             'email' => 'メールアドレス',
             'choice_1' => '刺繍実施日時',
+        ],
+        self::APPLY_TYPE_NISHIAZABU => [
+            'name' => '名前',
+            'age' => '年齢',
+            'sex' => '性別',
+            'address' => '住所',
+            'tel' => '電話番号',
+            'email' => 'メールアドレス',
+            'comment' => '気に入っているシューズ',
+            'comment2' => '初めて購入したシューズ',
+            'comment3' => '購入を考えているシューズ',
         ],
     ];
 

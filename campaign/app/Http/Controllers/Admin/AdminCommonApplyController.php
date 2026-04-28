@@ -228,6 +228,8 @@ class AdminCommonApplyController extends BaseController
                 return $apply->comment;
             case 'comment2':
                 return $apply->comment2;
+            case 'comment3':
+                return $apply->comment3;
             case 'img_pass':
                 $directory = CommonApplyConst::IMG_DIR[$this->applyType];
                 return asset("storage/$directory/resize/" . $apply->img_pass);

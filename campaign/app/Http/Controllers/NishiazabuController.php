@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Consts\CommonApplyConst;
-use App\Http\Requests\VersityJacketRequest;
+use App\Http\Requests\NishiazabuRequest;
 use App\Models\CommonApply;
 use App\Service\CommonApplyService;
 use Exception;
@@ -33,7 +33,7 @@ class NishiazabuController extends Controller
         $this->apply_service = new CommonApplyService($this->apply_type, $this->number);
 
         if ($this->checkErrorViewRedirect()) {
-            Redirect::route('versity-jacket.outsidePeriod')->send();
+            Redirect::route('nishiazabu.outsidePeriod')->send();
         }
     }
 
@@ -52,15 +52,15 @@ class NishiazabuController extends Controller
      */
     public function complete(): View
     {
-        return view('versity_jacket.complete');
+        return view('nishiazabu.complete');
     }
 
     /**
      * 申込内容登録処理
-     * @param VersityJacketRequest $request
+     * @param NishiazabuRequest $request
      * @return Application|RedirectResponse|Response|Redirector
      */
-    public function store(VersityJacketRequest $request)
+    public function store(NishiazabuRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -68,14 +68,14 @@ class NishiazabuController extends Controller
             // 応募内容を登録
             $this->insertApplication($request);
 
-            // reportメール
-            $this->sendReportMail($request);
-
-            // thank youメール
-            $this->sendThankYouMail($request);
+//            // reportメール
+//            $this->sendReportMail($request);
+//
+//            // thank youメール
+//            $this->sendThankYouMail($request);
 
             DB::commit();
-            Redirect::route('versity-jacket.complete')->send();
+            Redirect::route('nishiazabu.complete')->send();
 
         } catch (Exception $e) {
             DB::rollback();
@@ -87,9 +87,9 @@ class NishiazabuController extends Controller
 
     /**
      * 申し込み内容をDBに登録
-     * @param VersityJacketRequest $request
+     * @param NishiazabuRequest $request
      */
-    private function insertApplication(VersityJacketRequest $request): void
+    private function insertApplication(NishiazabuRequest $request): void
     {
         Log::info('insertApplication');
 
@@ -99,7 +99,7 @@ class NishiazabuController extends Controller
     /**
      * 申し込み者に自動返信メールを送信
      */
-    private function sendThankYouMail(VersityJacketRequest $request)
+    private function sendThankYouMail(NishiazabuRequest $request)
     {
         Log::info('sendThankYouMail');
         $this->email = $request->email;
@@ -118,14 +118,13 @@ class NishiazabuController extends Controller
     /**
      * レポートメールを送信
      */
-    private function sendReportMail(VersityJacketRequest $request)
+    private function sendReportMail(NishiazabuRequest $request)
     {
         Log::info('sendReportMail');
 
         $data = [
             'name' => $request->f_name . ' ' . $request->l_name,
-            'read' => $request->f_read . ' ' . $request->l_read,
-            'choice_1' => $request->choice_1,
+            'read' => $request->f_read,
             'tel' => $request->tel,
             'email' => $request->email,
             'nbid' => $request->nbid ?? '',
@@ -135,7 +134,7 @@ class NishiazabuController extends Controller
             $message->to("mynb_members@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('[Brian Blakely Customs]ライブカスタマイズ体験に申し込みがありました');
+                ->subject('[GREY ART MUSEUM 2026 myNB Members Day]に申し込みがありました');
         });
     }
 
@@ -179,7 +178,7 @@ class NishiazabuController extends Controller
     private function checkErrorViewRedirect()
     {
         // 既にエラー画面に行こうとしている場合は再リダイレクトさせない
-        if (\Route::currentRouteName() ==  'versity-jacket.outsidePeriod') {
+        if (\Route::currentRouteName() ==  'nishiazabu.outsidePeriod') {
             return false;
         }
 

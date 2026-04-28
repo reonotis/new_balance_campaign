@@ -270,8 +270,6 @@ Route::group(['prefix' => 'nishiazabu'], function () {
 
 
 
-
-
 // 共通フォーム
 Route::group(['prefix' => '{route_name}/form'], function () {
     Route::controller(CommonFormController::class)->group(function () {
