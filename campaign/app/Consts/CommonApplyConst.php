@@ -27,6 +27,7 @@ class CommonApplyConst
     public const APPLY_TYPE_HARAJUKU_ANNIVERSARY = 22;
     public const APPLY_TYPE_SUPER_SPORTS_OCHANOMIZU = 23;
     public const APPLY_TYPE_VERSITY_JACKET = 24;
+    public const APPLY_TYPE_NISHIAZABU = 25;
 
     /**
      * 申込タイトル
@@ -249,6 +250,12 @@ class CommonApplyConst
             1 => [
                 'start_date_time' => '2025-12-01 00:00:00', //
                 'end_date_time' => '2026-01-27 23:59:59', //
+            ],
+        ],
+        self::APPLY_TYPE_NISHIAZABU => [
+            1 => [
+                'start_date_time' => '2026-04-25 00:00:00', //
+                'end_date_time' => '2026-05-27 23:59:59', //
             ],
         ],
     ];

@@ -12,6 +12,7 @@ use App\Http\Controllers\{
         KichijojiGreyDays5kRunningController,
         MinatoRunnersBaseController,
         NagasakiOpeningController,
+        NishiazabuController,
         RunClubTokyoController,
         OshmansController,
         S223Controller,
@@ -258,6 +259,17 @@ Route::group(['prefix' => 'versity-jacket'], function () {
     Route::get('/complete', [VersityJacketController::class, 'complete'])->name('versity-jacket.complete');
     Route::get('/outsidePeriod', [VersityJacketController::class, 'outsidePeriod'])->name('versity-jacket.outsidePeriod');
 });
+
+// 西麻布
+Route::group(['prefix' => 'nishiazabu'], function () {
+    Route::get('', [NishiazabuController::class, 'index'])->name('nishiazabu.index');
+    Route::post('/store', [NishiazabuController::class, 'store'])->name('nishiazabu.store');
+    Route::get('/complete', [NishiazabuController::class, 'complete'])->name('nishiazabu.complete');
+    Route::get('/outsidePeriod', [NishiazabuController::class, 'outsidePeriod'])->name('nishiazabu.outsidePeriod');
+});
+
+
+
 
 
 // 共通フォーム
