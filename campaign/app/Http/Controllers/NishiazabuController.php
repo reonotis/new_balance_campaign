@@ -68,11 +68,11 @@ class NishiazabuController extends Controller
             // 応募内容を登録
             $this->insertApplication($request);
 
-//            // reportメール
-//            $this->sendReportMail($request);
-//
-//            // thank youメール
-//            $this->sendThankYouMail($request);
+            // reportメール
+            $this->sendReportMail($request);
+
+            // thank youメール
+            $this->sendThankYouMail($request);
 
             DB::commit();
             Redirect::route('nishiazabu.complete')->send();
@@ -107,7 +107,7 @@ class NishiazabuController extends Controller
             'customer_name' => $request->f_name . ' ' . $request->l_name,
             'choice_1' => $request->choice_1,
         ];
-        Mail::send('emails.versity_jacket.thankYouMail', $data, function ($message) {
+        Mail::send('emails.nishiazabu.thankYouMail', $data, function ($message) {
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
@@ -130,7 +130,7 @@ class NishiazabuController extends Controller
             'nbid' => $request->nbid ?? '',
             'url' => url('') . '/admin',
         ];
-        Mail::send('emails.versity_jacket.reportMail', $data, function ($message) {
+        Mail::send('emails.nishiazabu.reportMail', $data, function ($message) {
             $message->to("mynb_members@fluss.co.jp")
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
@@ -152,7 +152,7 @@ class NishiazabuController extends Controller
             $checkMessage = $this->apply_service->getDurationMessage();
         }
 
-        return view('versity_jacket.notApplicationPeriod', compact('checkMessage'));
+        return view('nishiazabu.notApplicationPeriod', compact('checkMessage'));
     }
 
     /**

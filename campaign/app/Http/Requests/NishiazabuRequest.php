@@ -49,7 +49,7 @@ class NishiazabuRequest extends FormRequest
         return [
             'f_name' => 'required',
             'l_name' => 'required',
-            'f_read' => 'required|regex:/^[ァ-ヶー]+$/u',
+            'f_read' => 'required|regex:/^[A-Za-z ]+$/u',
             'nbid' => 'nullable',
             'sex' => 'required|in:1,2,3',
             'age' => 'required',
@@ -77,8 +77,7 @@ class NishiazabuRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'f_read.regex' => 'ミョウジは全角カナで入力してください。',
-            'l_read.regex' => 'ナマエは全角カナで入力してください。',
+            'f_read.regex' => 'ヨミは半角ローマ字で入力して下さい。',
             'tel.regex' => '電話番号は市外局番から-(ハイフン)を含めて入力してください。',
             'email.regex' => 'メールアドレスを正しく入力してください。',
         ];
@@ -91,6 +90,7 @@ class NishiazabuRequest extends FormRequest
     public function attributes(): array
     {
         return [
+            'sex' => '性別',
             'comment' => 'ご自身が最も気に入っているグレーシューズ',
             'comment2' => '初めてご購入いただいたニューバランスのシューズ',
             'comment3' => 'これから履いてみたい、購入を考えているシューズ/アパレル',
