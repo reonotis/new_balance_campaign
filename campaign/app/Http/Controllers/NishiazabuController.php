@@ -111,7 +111,7 @@ class NishiazabuController extends Controller
             $message->to($this->email)
                 ->from('info@newbalance-campaign.jp')
                 ->bcc("fujisawareon@yahoo.co.jp")
-                ->subject('ご予約ありがとうございました。');
+                ->subject('ご応募ありがとうございました');
         });
     }
 
