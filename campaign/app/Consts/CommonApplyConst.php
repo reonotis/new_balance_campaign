@@ -257,7 +257,7 @@ class CommonApplyConst
         self::APPLY_TYPE_NISHIAZABU => [
             1 => [
                 'start_date_time' => '2026-04-25 00:00:00', //
-                'end_date_time' => '2026-05-27 23:59:59', //
+                'end_date_time' => '2026-05-14 23:59:59', //
             ],
         ],
     ];
