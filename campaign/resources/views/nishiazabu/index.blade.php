@@ -34,6 +34,13 @@
                     <form action="{{ route('nishiazabu.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
+                        <div class='item-row'>
+                            <label for="f_read" class="item-title">注意事項</label>
+                            <div class="item-content" style="text-align: center; padding:1rem 0;">
+                                イベント当日、商品の販売はありません
+                            </div>
+                        </div>
+
                         <x-form_items.name/>
 
                         <div class='item-row'>
