@@ -44,7 +44,7 @@
                         <x-form_items.name/>
 
                         <div class='item-row'>
-                            <label for="f_read" class="item-title">ヨミ</label>
+                            <label for="f_read" class="item-title">ヨミ（アルファベット）</label>
                             <div class="item-content">
                                 <div class='flex'>
                                     <div class="w-full px-2">
