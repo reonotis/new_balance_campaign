@@ -595,6 +595,8 @@ class AdminController extends BaseController
                     ->subject('ご当選おめでとうございます【東京レガシーハーフマラソン2026出走権プレゼントキャンペーン】】');
             });
 
+            Log::info($application->email . 'へ当選メール送信しました');
+
             $application->update(['sent_lottery_result_email_flg' => 1]);
             $count++;
         }
