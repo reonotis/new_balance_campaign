@@ -592,7 +592,7 @@ class AdminController extends BaseController
                 $message->to($application->email)
                     ->from('info@newbalance-campaign.jp')
                     ->bcc('fujisawareon@yahoo.co.jp')
-                    ->subject('【東京レガシーハーフマラソン2025 出走権プレゼントキャンペーン】');
+                    ->subject('ご当選おめでとうございます【東京レガシーハーフマラソン2026出走権プレゼントキャンペーン】】');
             });
 
             $application->update(['sent_lottery_result_email_flg' => 1]);
